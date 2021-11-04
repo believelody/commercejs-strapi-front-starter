@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "transport": "Transport",
+        "game": "Game",
+        "caring": "Care & Esthetic",
+        "about": "About Us",
+        "contact": "Contact Us"
+    },
+    "footer": {
+        "subscription": {
+            "title": "Newsletter",
+            "description": "Join our community and stay in touch with our good deals and blog actuality.",
+            "cta": "Subscribe",
+            "placeholder": "Type your email here"
+        }
+    }
+}

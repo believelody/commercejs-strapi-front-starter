@@ -1,6 +1,5 @@
 <script context="module">
-import { baseUrl } from "$lib/utils/url.util";
-
+    import { baseUrl } from "$lib/utils/url.util";
 
     export async function load({ fetch }) {
         try {
@@ -17,7 +16,7 @@ import { baseUrl } from "$lib/utils/url.util";
 </script>
 
 <script>
-import ProductList from "$lib/components/products/ProductList.svelte";
+    import ProductList from "$lib/components/products/ProductList.svelte";
 
     export let products, meta, error;
 </script>

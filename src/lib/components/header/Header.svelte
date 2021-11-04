@@ -1,5 +1,6 @@
 <script>
-  import { cart } from "$lib/stores";
+  // import { locales } from "$lib/i18n";
+  // import { locale } from '$lib/stores';
   import Nav from "../nav/Nav.svelte";
   import CartNav from "../cart/CartNav.svelte";
 </script>
@@ -12,6 +13,11 @@
       </svg>
       <span class="ml-3 text-xl">PetsLover</span>
     </a>
+      <!-- <select bind:value={$locale}>
+      {#each locales as l}
+        <option value={l}>{l}</option>
+      {/each}
+    </select> -->
     <Nav />
     <div class="flex">
       <CartNav />

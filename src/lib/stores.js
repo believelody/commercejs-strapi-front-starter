@@ -31,3 +31,4 @@ export const checkout = createWritableStore('checkout');
 export const cart = createWritableStore('cart');
 export const modal = writable(null);
 export const sidebar = writable(null);
+export const locale = createWritableStore("lang", "fr");

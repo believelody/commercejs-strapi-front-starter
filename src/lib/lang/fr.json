@@ -1,0 +1,17 @@
+{
+    "menu": {
+        "transport": "Transport",
+        "game": "Jeu",
+        "caring": "Soin & Esthétique",
+        "about": "A propos de nous",
+        "contact": "Nous contactez"
+    },
+    "footer": {
+        "subscription": {
+            "title": "Newsletter",
+            "description": "Abonnez-vous et soyez averti des bons plans, des actus du blog et des réductions.",
+            "cta": "M'inscrire",
+            "placeholder": "Entrez votre email ici"
+        }
+    }
+}
