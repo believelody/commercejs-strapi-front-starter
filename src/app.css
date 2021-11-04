@@ -1,0 +1,11 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#svelte {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
