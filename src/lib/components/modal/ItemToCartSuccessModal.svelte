@@ -1,5 +1,6 @@
 <script>
-	import { modal, sidebar } from '../../stores';
+	import { modal, sidebar } from '$lib/stores';
+	import { t } from '$lib/i18n'
 	import CartSidebar from "../cart/CartSidebar.svelte";
 	import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
 
@@ -21,21 +22,21 @@
 		</div>
 		<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
 			<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
-				Article : {product.name}
+				{$t("product.modal.title", {article: product.name})}
 			</h3>
 			<div class="mt-2">
 				<p class="text-md text-gray-600">
-					Votre article a été ajouté au panier avec succès. Vous pouvez continuer vos achats ou directement au panier pour terminer votre achat. Ne tardez plus !
+					{$t("product.modal.description")}
 				</p>
                 <ul class="text-md mt-3 text-gray-600 list-disc list-inside">
-                    Voici le détail de votre choix concernant cet article:
+                    {$t("product.modal.item-detail.text")}
                     {#if selectedSize}
-                        <li>Taille: {selectedSize.name}</li>
+                        <li>{$t("variants.size.name")}: {selectedSize.name}</li>
                     {/if}
                     {#if selectedColor}
-                        <li>Couleur: {selectedColor.name}</li>
+                        <li>{$t("variants.color.name")}: {selectedColor.name}</li>
                     {/if}
-                    <li>Quantité: {quantity}</li>
+                    <li>{$t("product.detail.quantity")}: {quantity}</li>
                 </ul>
 			</div>
 		</div>
@@ -47,13 +48,13 @@
 		on:click={showCart}
 		class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
 	>
-		Voir le panier
+		{$t("product.modal.cta.check-cart")}
 	</button>
 	<button
 		type="button"
 		on:click={() => $modal = null}
 		class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
 	>
-		Continuer mes achats
+		{$t("product.modal.cta.continue-shopping")}
 	</button>
 </div>

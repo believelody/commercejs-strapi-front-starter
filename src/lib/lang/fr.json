@@ -1,10 +1,64 @@
 {
+    "header": {
+        "connexion": "Connexion",
+        "my-account": "Mon Compte"
+    },
     "menu": {
         "transport": "Transport",
         "game": "Jeu",
         "caring": "Soin & Esthétique",
         "about": "A propos de nous",
         "contact": "Nous contactez"
+    },
+    "product": {
+        "detail": {
+            "reviews": "avis",
+            "characteristics": "Caractéristiques",
+            "quantity": "Quantité"
+        },
+        "cart": {
+            "add": "Ajouter au panier",
+            "adding": "Ajout en cours..."
+        },
+        "modal": {
+            "title": "Article: {{article}}",
+            "description": "Votre article a été ajouté au panier avec succès. Vous pouvez continuer vos achats ou directement aller au panier pour terminer votre achat. Ne tardez plus !",
+            "item-detail": {
+                "text": "Voici le détail de votre choix concernant cet article :"
+            },
+            "cta": {
+                "check-cart": "Voir le panier",
+                "continue-shopping": "Continuer mes achats"
+            }
+        }
+    },
+    "cart": {
+        "title": "Votre panier",
+        "items": {
+            "singular": "article",
+            "plural": "articles"
+        },
+        "cta": {
+            "empty": "Vider le panier",
+            "checkout": "Checkout",
+            "loading": "Mise à jour du panier",
+            "remove-item": "Retirer",
+            "continue-shopping": "Continuer mes achats"
+        },
+        "modal": {
+            "empty": {
+                "title": "Vider le panier ?",
+                "description": ""
+            },
+            "delete-item": {
+                "title": "Retirer {{name}} ?",
+                "description": "Voulez-vous vraiment retirer cet article de votre panier ?"
+            }
+        },
+        "subtotal": "Sous total",
+        "shipping-taxes": "Les taxes et frais d'envoi seront calculés au checkout",
+        "empty": "Votre panier est vide",
+        "or": "ou"
     },
     "footer": {
         "subscription": {
@@ -13,5 +67,39 @@
             "cta": "M'inscrire",
             "placeholder": "Entrez votre email ici"
         }
+    },
+    "variants": {
+        "color": {
+            "name": "Couleur"
+        },
+        "size":{
+            "name": "Taille"
+        }
+    },
+    "modal": {
+        "close": "Fermer",
+        "description": {
+            "default": "Voulez-vous vraiment effectuer cette action ?"
+        },
+        "cta": {
+            "text": {
+                "default": "Confirmer"
+            }
+        },
+        "cancel": {
+            "text": {
+                "default": "Annuler"
+            }
+        },
+        "loading": {
+            "text": {
+                "default": "En cours",
+                "deleting": "Suppression..."
+            }
+        }
+    },
+    "auth": {
+        "login": "Se connecter",
+        "signup": "Créer un compte"
     }
 }

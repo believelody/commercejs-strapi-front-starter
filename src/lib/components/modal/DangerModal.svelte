@@ -1,11 +1,12 @@
 <script>
-	import { modal, cart } from '../../stores';
+	import { modal } from '$lib/stores';
+	import { t } from '$lib/i18n';
 
 	export let title,
 		description,
-		actionText = 'Confirmer',
-		cancelText = 'Annuler',
-		loadingText = 'Suppression ...',
+		actionText = $t('modal.cta.text.default'),
+		cancelText = $t('modal.cancel.text.default'),
+		loadingText = $t('modal.loading.text.deleting'),
 		actionCallback = null;
 	let loading = false;
 

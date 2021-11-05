@@ -1,9 +1,9 @@
 <script>
 	import { bind } from 'svelte-simple-modal';
 	import { sidebar, cart, modal } from '$lib/stores';
-	import { emptyCart, deleteItem, updateItemQuantity } from '../../actions/cart';
+	import { t } from '$lib/i18n'
+	import { emptyCart, deleteItem, updateItemQuantity } from '$lib/actions/cart';
 	import CloseIcon from '../svg/CloseIcon.svelte';
-	import RemoveItemModal from '../modal/DangerModal.svelte';
 	import DangerModal from '../modal/DangerModal.svelte';
 
 	let loading = false;
@@ -21,10 +21,9 @@
 
 	function showRemoveItemModal(item) {
 		modal.set(
-			bind(RemoveItemModal, {
-				item,
-				title: `Retirer ${item.name} ?`,
-				description: 'Voulez-vous vraiment retirer cet article de votre panier ?',
+			bind(DangerModal, {
+				title: $t("cart.modal.delete-item.title", { name: item.name }),
+				description: $t('cart.modal.delete-item.description'),
 				actionCallback: async () => {
 					await deleteItem($cart.id, item.id);
 				}
@@ -44,16 +43,15 @@
 	function showEmptyCartModal() {
 		modal.set(
 			bind(DangerModal, {
-				title: `Vider le panier ?`,
-				description: 'Voulez-vous vraiment effectuer cette action ?',
+				title: $t("cart.modal.empty.title"),
+				description: $t("modal.description.default"),
 				actionCallback: async () => {
 					await emptyCart($cart.id);
+					$sidebar = null
 				}
 			})
 		);
 	}
-
-	$: console.log($cart);
 </script>
 
 <div class="sm:w-screen max-w-md h-screen bg-white flex flex-col relative">
@@ -62,13 +60,13 @@
 		type="button"
 		class="rm-2 mt-2 text-gray-400 right-0 hover:text-gray-500 absolute"
 	>
-		<span class="sr-only">Close panel</span>
+		<span class="sr-only">{$t("modal.close")}</span>
 		<!-- Heroicon name: outline/x -->
 		<CloseIcon />
 	</button>
 	{#if $cart && $cart.total_unique_items > 0}
 		<h2 class="ml-2 mt-2 text-lg font-medium text-gray-900" id="slide-over-title">
-			Votre panier : {$cart.total_unique_items} article{$cart.total_unique_items > 1 ? 's' : ''}
+			{$t("cart.title")} : {$cart.total_unique_items} {$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
 		</h2>
 		<div class="border-b border-gray-200 flex-grow flex flex-col pt-4 overflow-y-hidden">
 			<div class="h-full mt-2 px-2 list">
@@ -121,7 +119,7 @@
 											<button
 												on:click={() => showRemoveItemModal(item)}
 												type="button"
-												class="font-medium text-indigo-600 hover:text-indigo-500">Retirer</button
+												class="font-medium text-indigo-600 hover:text-indigo-500">{$t("cart.cta.remove-item")}</button
 											>
 										</div>
 									</div>
@@ -137,16 +135,16 @@
 				on:click={showEmptyCartModal}
 				class="py-2 w-full border border-transparent shadow-sm text-base font-medium text-white bg-gray-400 hover:bg-gray-500 disabled:opacity-75"
 			>
-				Vider le panier
+				{$t("cart.cta.empty")}
 			</button>
 		</div>
 
 		<div class="actions py-2 px-4 w-full">
 			<div class="flex justify-between text-base font-medium text-gray-900">
-				<p>Subtotal</p>
+				<p>{$t("cart.subtotal")}</p>
 				<p>{$cart.subtotal.formatted_with_symbol}</p>
 			</div>
-			<p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+			<p class="mt-0.5 text-sm text-gray-500">{$t("cart.shipping-taxes")}</p>
 			<div class="mt-6">
 				<button
 					disabled={loading}
@@ -154,21 +152,21 @@
 					class="text-center w-full px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75"
 				>
 					{#if loading}
-						Mise à jour du panier
+						{$t("cart.cta.loading")}
 					{:else}
-						Checkout
+						{$t("cart.cta.checkout")}
 					{/if}
 				</button>
 			</div>
 			<div class="mt-6 flex justify-center text-sm text-center text-gray-500">
 				<p>
-					or
+					{$t("cart.or")}
 					<button
 						on:click={() => ($sidebar = null)}
 						type="button"
 						class="text-indigo-600 font-medium hover:text-indigo-500 ml-2"
 					>
-						Continuer mes achats
+						{$t("cart.cta.continue-shopping")}
 						<span aria-hidden="true" class="text-md"> &rarr;</span>
 					</button>
 				</p>
@@ -176,7 +174,7 @@
 		</div>
 	{:else}
 		<section class="h-full flex items-center justify-center text-xl bg-gray-200 font:medium">
-			Votre panier est vide
+			{$t("cart.empty")}
 		</section>
 	{/if}
 </div>

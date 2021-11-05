@@ -1,15 +1,13 @@
 <script>
-import { goto } from "$app/navigation";
-import { user } from "$lib/stores";
-
-import { onMount } from "svelte";
-
+    import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
+    import { user } from "$lib/stores";
 
     onMount(() => {
         if (!$user) {
             goto("/sign-in");
         }
-    })
+    });
 </script>
 
 {#if $user}

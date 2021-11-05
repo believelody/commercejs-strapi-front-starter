@@ -1,7 +1,5 @@
 <script context="module">
-import ProductDetail from "$lib/components/products/ProductDetail.svelte";
-import { baseUrl } from "$lib/utils/url.util";
-
+    import { baseUrl } from "$lib/utils/url.util";
 
     export async function load({ fetch, page }) {
         try {
@@ -22,6 +20,7 @@ import { baseUrl } from "$lib/utils/url.util";
 </script>
 
 <script>
+    import ProductDetail from "$lib/components/products/ProductDetail.svelte";
     export let product;
 </script>
 

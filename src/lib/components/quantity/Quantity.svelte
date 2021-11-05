@@ -1,9 +1,10 @@
 <script>
+	import { t } from '$lib/i18n'
     export let value;
 </script>
 
 <div class="flex ml-6 items-center">
-	<span class="mr-3">Quantité</span>
+	<span class="mr-3">{$t("product.detail.quantity")}</span>
 	<div class="relative">
 		<select
 			bind:value

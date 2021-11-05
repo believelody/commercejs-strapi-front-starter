@@ -1,7 +1,8 @@
 <script>
     import { bind } from 'svelte-simple-modal';
-    import { cart, modal } from "../../stores";
-    import { addToCart, createCart } from "../../actions/cart";
+    import { cart, modal } from "$lib/stores";
+    import { addToCart, createCart } from "$lib/actions/cart";
+    import { t } from '$lib/i18n'
     import ItemToCartSuccessModal from "../modal/ItemToCartSuccessModal.svelte";
 
     export let product, quantity, selectedColor = null, selectedSize = null;
@@ -21,7 +22,6 @@
             }
         }
         if (!$cart) {
-            console.log("no cart")
             await createCart();
         }
         await addToCart($cart.id, product.id, quantity, options);
@@ -36,8 +36,8 @@
     disabled={loading}
 >
 	{#if loading}
-        Ajout en cours ...
+        {$t("product.cart.adding")}
     {:else}
-        Ajouter au panier
+        {$t("product.cart.add")}
     {/if}
 </button>

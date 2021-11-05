@@ -57,7 +57,6 @@ export const deleteItem = async (cartId, itemId) => {
         });
         const json = await res.json();
         if (json.cart) {
-            console.log("cart :", json.cart);
             cart.set(json.cart);
             cart.useLocalStorage();
         }

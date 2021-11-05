@@ -1,4 +1,5 @@
 <script>
+	import { t } from '$lib/i18n'
 	import Gallery from '../gallery/Gallery.svelte';
 	import Star from '../star/Star.svelte';
 	import FacebookIcon from '../svg/FacebookIcon.svelte';
@@ -28,7 +29,7 @@
 				<div class="flex mb-4">
 					<div class="flex items-center">
 						<Star nb={3.5} />
-						<span class="text-gray-600 ml-3">4 avis</span>
+						<span class="text-gray-600 ml-3">4 {$t("product.detail.reviews")}</span>
 					</div>
 					<span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
 						<FacebookIcon />
@@ -36,7 +37,7 @@
 						<InstagramIcon />
 					</span>
 					<span class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-						Caractéristiques
+						{$t("product.detail.characteristics")}
 					</span>
 				</div>
 				<p class="leading-relaxed">{@html product.description}</p>

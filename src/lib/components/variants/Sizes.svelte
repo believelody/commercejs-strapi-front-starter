@@ -1,9 +1,10 @@
 <script>
+	import { t } from '$lib/i18n'
     export let sizes, value;
 </script>
 
 <div class="flex items-center">
-	<span class="mr-3">{sizes.name}</span>
+	<span class="mr-3">{$t("variants.size.name")}</span>
 	<div class="relative">
 		<select
 			bind:value
