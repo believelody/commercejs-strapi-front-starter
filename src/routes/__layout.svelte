@@ -3,7 +3,7 @@
 	// import "../styles/tailwind-output.css";
 	import { Moon } from 'svelte-loading-spinners';
 	import Modal from 'svelte-simple-modal';
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 	import { cart, modal, sidebar, locale } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
@@ -16,27 +16,31 @@
 	}
 
 	$: {
-		if ($navigating) {
+		if ($navigating && $sidebar) {
 			$sidebar = null;
 		}
 	}
 
-  	$: locale.useLocalStorage()
+	$: locale.useLocalStorage();
 </script>
 
-<Header />
-<main>
-	<Modal show={$modal} />
-	<Sidebar />
-	{#if $navigating}
-		<section>
-			<Moon size="260" color="#FF3E00" unit="px" />
-		</section>
-	{:else}
-		<slot />
-	{/if}
-</main>
-<Footer />
+<Modal show={$modal} />
+<Sidebar />
+{#if $page.path === '/checkout'}
+	<slot />
+{:else}
+	<Header />
+	<main>
+		{#if $navigating}
+			<section>
+				<Moon size="260" color="#FF3E00" unit="px" />
+			</section>
+		{:else}
+			<slot />
+		{/if}
+	</main>
+	<Footer />
+{/if}
 
 <style>
 	main {

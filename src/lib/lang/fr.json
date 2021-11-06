@@ -1,4 +1,9 @@
 {
+    "common": {
+        "or": "ou",
+        "subtotal": "Sous-total",
+        "total": "Total"
+    },
     "header": {
         "connexion": "Connexion",
         "my-account": "Mon Compte"
@@ -100,6 +105,76 @@
     },
     "auth": {
         "login": "Se connecter",
-        "signup": "Créer un compte"
+        "register": "Créer un compte"
+    },
+    "checkout": {
+        "address": {
+            "name": {
+                "label": "Nom *",
+                "placeholder": "Prénom Nom"
+            },
+            "email": {
+                "label": "Email *",
+                "placeholder": "mon@email.fr"
+            },
+            "address1": {
+                "label": "Adresse 1 *",
+                "placeholder": "Votre adresse principale"
+            },
+            "address2": {
+                "label": "Adresse 2",
+                "placeholder": "(Facultatif)"
+            },
+            "city": {
+                "label": "Ville *",
+                "placeholder": "Nantes"
+            },
+            "region": {
+                "label": "Région *",
+                "placeholder": "Normandie"
+            },
+            "department": {
+                "label": "Département *",
+                "placeholder": "Val-de-Marne"
+            },
+            "zip": {
+                "label": "Code Postal *",
+                "placeholder": "75000"
+            },
+            "country": {
+                "label": "Pays *",
+                "placeholder": "France"
+            },
+            "shipping": "Information sur la livraison",
+            "billing": "Information sur la facturation",
+            "both": "Information sur la livraison et la facturation",
+            "checkbox": "Sélectionner en tant qu'adresse de facturation"
+        },
+        "payment": {
+            "title": "Moyen de paiement",
+            "card-number": "Numéro de carte"
+        },
+        "identity": {
+            "title": "Identifiez-vous",
+            "email": {
+                "label": "Email *",
+                "placeholder": "mon@email.fr"
+            },
+            "password": {
+                "label": "Mot de passe *",
+                "placeholder": "Votre mot de passe"
+            },
+            "guest": {
+                "checkbox": "Continuer en tant que visiteur",
+                "text": "Vous pouvez rentrer vos informations dans le formulaire d'adresse"
+            }
+        },
+        "shipping": {
+            "cost": "Coût de la livraison",
+            "free": "Gratuit"
+        },
+        "check-summary": "voir le récapitulatif",
+        "summary": "Récapitulatif",
+        "submit": "Payer {{amount}}"
     }
 }

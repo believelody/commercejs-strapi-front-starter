@@ -1,4 +1,8 @@
-<svg class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<script>
+	export let color, size = 8;
+</script>
+
+<svg class="h-{size} w-{size} text-{color}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 	<path
 		stroke-linecap="round"
 		stroke-linejoin="round"

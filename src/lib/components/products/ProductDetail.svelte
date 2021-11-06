@@ -24,24 +24,25 @@
                 <Gallery images={product.assets} />
             </div>
 			<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-				<h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+				<section>
+					<span class="flex py-2">
+						<FacebookIcon />
+						<TwitterIcon />
+						<InstagramIcon />
+					</span>
+				</section>
 				<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{product.name}</h1>
 				<div class="flex mb-4">
 					<div class="flex items-center">
 						<Star nb={3.5} />
 						<span class="text-gray-600 ml-3">4 {$t("product.detail.reviews")}</span>
 					</div>
-					<span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-						<FacebookIcon />
-						<TwitterIcon />
-						<InstagramIcon />
-					</span>
 					<span class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
 						{$t("product.detail.characteristics")}
 					</span>
 				</div>
-				<p class="leading-relaxed">{@html product.description}</p>
-				<div class="variants items-center py-2 border-b-2 border-gray-100">
+				<p class="leading-relaxed mb-2">{@html product.description}</p>
+				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-200">
 					{#if colors}
 						<Colors {colors} on:selectedColor={({ detail }) => (selectedColor = detail)} />
 					{/if}
@@ -63,8 +64,4 @@
 </section>
 
 <style>
-	.variants {
-		display: flex;
-		justify-content: space-between;
-	}
 </style>

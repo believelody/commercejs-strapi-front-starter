@@ -3,7 +3,7 @@
     export let value;
 </script>
 
-<div class="flex ml-6 items-center">
+<div class="flex md:ml-6 items-center">
 	<span class="mr-3">{$t("product.detail.quantity")}</span>
 	<div class="relative">
 		<select
