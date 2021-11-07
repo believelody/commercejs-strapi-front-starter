@@ -1,9 +1,8 @@
 <script>
-import { getContext } from 'svelte';
-
+    import { getContext } from 'svelte';
     import OrderSummary from './OrderSummary.svelte';
 
-    export let checkout;
+    $: checkout = getContext("checkout");
 </script>
 
 <style>

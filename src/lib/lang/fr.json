@@ -129,13 +129,11 @@
                 "label": "Ville *",
                 "placeholder": "Nantes"
             },
-            "region": {
-                "label": "Région *",
-                "placeholder": "Normandie"
-            },
-            "department": {
-                "label": "Département *",
-                "placeholder": "Val-de-Marne"
+            "subdivision": {
+                "label": "Etat / Région / Département *",
+                "placeholder": "Sélectionnez un département / une région / un état",
+                "loading": "Chargement des données ...",
+                "error": "Sélectionnez d'abord un pays"
             },
             "zip": {
                 "label": "Code Postal *",
@@ -143,7 +141,9 @@
             },
             "country": {
                 "label": "Pays *",
-                "placeholder": "France"
+                "placeholder": "Sélectionnez un pays",
+                "loading": "Chargement des pays ...",
+                "error": "Un problème est survenue"
             },
             "shipping": "Information sur la livraison",
             "billing": "Information sur la facturation",
@@ -172,6 +172,9 @@
         "shipping": {
             "cost": "Coût de la livraison",
             "free": "Gratuit"
+        },
+        "shipping-methods": {
+            "title": "Méthodes de livraison"
         },
         "check-summary": "voir le récapitulatif",
         "summary": "Récapitulatif",

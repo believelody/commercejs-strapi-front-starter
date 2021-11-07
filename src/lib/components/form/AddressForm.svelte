@@ -1,6 +1,13 @@
 <script>
-    import { t } from '$lib/i18n'
+    import { getContext } from 'svelte';
+    import { t } from '$lib/i18n';
+    import { getCountries, getSubdivisions } from '$lib/actions/checkout'
+import InputField from '../field/InputField.svelte';
+import SelectField from '../field/SelectField.svelte';
+
     export let information, title;
+
+    let checkout = getContext("checkout");
 </script>
 
 <style>
@@ -13,74 +20,87 @@
     <h2 class="uppercase tracking-wide text-xl font-semibold text-gray-700 my-2">{title}</h2>
     <fieldset class="mb-3 bg-white shadow-xl rounded text-gray-600 flex-wrap flex">
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <label class="w-full xl:w-1/2 flex h-12 py-3 items-center border-b border-gray-300 xl:border-none">
-                <span class="text-right px-2">{$t("checkout.address.name.label")}</span>
-                <input name="name" class="focus:outline-none px-3" placeholder={$t("checkout.address.name.placeholder")} required="">
-            </label>
-            <label class="w-full xl:w-1/2 flex h-12 py-3 items-center border-b border-gray-300 xl:border-none">
-                <span class="sm:text-right px-2">{$t("checkout.address.email.label")}</span>
-                <input name="email" type="email" class="focus:outline-none px-3" placeholder={$t("checkout.address.email.placeholder")} required="">
-            </label>
+            <InputField
+                name="name"
+                label={$t('checkout.address.name.label')}
+                placeholder={$t('checkout.address.name.placeholder')}
+                bind:value={information.name}
+            />
+            <InputField
+                name="email"
+                label={$t('checkout.address.email.label')}
+                placeholder={$t('checkout.address.email.placeholder')}
+                bind:value={information.email}
+            />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <label class="w-full xl:w-1/2 flex h-12 py-3 items-center border-b border-gray-300 xl:border-none">
-                <span class="sm:text-right px-2">{$t("checkout.address.address1.label")}</span>
-                <input name="address1" class="focus:outline-none px-3" placeholder={$t("checkout.address.address1.placeholder")}>
-            </label>
-            <label class="w-full xl:w-1/2 flex h-12 py-3 items-center border-b border-gray-300 xl:border-none">
-                <span class="sm:text-right px-2">{$t("checkout.address.address2.label")}</span>
-                <input name="address2" class="focus:outline-none px-3" placeholder={$t("checkout.address.address2.placeholder")}>
-            </label>
+            <InputField
+                name="address1"
+                label={$t('checkout.address.address1.label')}
+                placeholder={$t('checkout.address.address1.placeholder')}
+                bind:value={information.address1}
+            />
+            <InputField
+                name="address2"
+                label={$t('checkout.address.address2.label')}
+                placeholder={$t('checkout.address.address2.placeholder')}
+                bind:value={information.address2}
+            />
         </div>
-        <div class="w-full flex flex-col xl:flex-row xl:border-b xl:border-gray-300">
-            <label class="flex items-center py-3 px-0 xl:px-2 border-b border-gray-300 xl:border-none">
-                <span class="sm:text-right px-2 xl:mr-2">{$t("checkout.address.city.label")}</span>
-                <input name="city" class="focus:outline-none px-3 xl:px-0" placeholder={$t("checkout.address.city.placeholder")}>
-            </label>
-            <label class="flex xl:justify-between items-center py-3 px-0 xl:px-2 border-b border-gray-300 xl:border-none">
-                <span class="sm:text-rigth px-2 ">{$t("checkout.address.zip.label")}</span>
-                <input name="zip" class="focus:outline-none" placeholder={$t("checkout.address.zip.placeholder")}>
-            </label>
-            <label class="flex items-center py-3 px-0 xl:px-2 border-b border-gray-300 xl:border-none">
-                <span class="sm:text-right px-2 xl:mr-2">{$t("checkout.address.department.label")}</span>
-                <input name="department" class="focus:outline-none px-3 xl:px-0" placeholder={$t("checkout.address.department.placeholder")}>
-            </label>
+        <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
+            <InputField
+                name="city"
+                label={$t('checkout.address.city.label')}
+                placeholder={$t('checkout.address.city.placeholder')}
+                bind:value={information.city}
+            />
+            <InputField
+                name="zip"
+                label={$t('checkout.address.zip.label')}
+                placeholder={$t('checkout.address.zip.placeholder')}
+                bind:value={information.zip}
+            />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between">
-            <label class="flex xl:w-1/2 border-b border-gray-300 xl:border-none w-full py-3 px-0 xl:px-2">
-                <span class="text-right px-2 xl:px-0 xl:mr-2">{$t("checkout.address.region.label")}</span>
-                <input name="region" class="focus:outline-none px-3 xl:px-0" placeholder={$t("checkout.address.region.placeholder")}>
-            </label>
-            <label class="flex xl:w-1/2 w-full h-12 py-3 items-center select relative px-0 xl:px-2">
-                <span class="text-right px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.label")}</span>
-                <div id="country" class="focus:outline-none px-3 xl:px-0 flex flex-grow items-center">
-                    <select name="country" class="text-center flex-grow bg-transparent flex-1 cursor-pointer focus:outline-none">
-                        <option value="AU">Australia</option>
-                        <option value="BE">Belgium</option>
-                        <option value="BR">Brazil</option>
-                        <option value="CA">Canada</option>
-                        <option value="CN">China</option>
-                        <option value="DK">Denmark</option>
-                        <option value="FI">Finland</option>
-                        <option value="FR">France</option>
-                        <option value="DE">Germany</option>
-                        <option value="HK">Hong Kong</option>
-                        <option value="IE">Ireland</option>
-                        <option value="IT">Italy</option>
-                        <option value="JP">Japan</option>
-                        <option value="LU">Luxembourg</option>
-                        <option value="MX">Mexico</option>
-                        <option value="NL">Netherlands</option>
-                        <option value="PL">Poland</option>
-                        <option value="PT">Portugal</option>
-                        <option value="SG">Singapore</option>
-                        <option value="ES">Spain</option>
-                        <option value="TN">Tunisia</option>
-                        <option value="GB">United Kingdom</option>
-                        <option value="US" selected="selected">United States</option>
-                    </select>
-                </div>
-            </label>
+            <SelectField
+                name="country"
+                class="flex xl:w-1/4 w-full h-12 py-3 items-center select relative px-0 xl:px-2 border-b border-gray-300 xl:border-none"
+                bind:value={information.country}
+                label={$t('checkout.address.country.label')}
+            >
+                <svelte:fragment slot="items">
+                    {#await getCountries(checkout.id)}
+                        <option value="" class="px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.loading")}</option>
+                    {:then countries}
+                        <option value="" class="text-gray-400">{$t('checkout.address.country.placeholder')}</option>
+                        {#each Object.entries(countries) as [key, value]}
+                            <option value={key}>{value}</option>
+                        {/each}
+                    {/await}
+                </svelte:fragment>
+            </SelectField>
+            <SelectField
+                name="subdivision"
+                class="flex xl:w-3/4 w-full h-12 py-3 items-center select relative px-0 xl:px-2 border-b border-gray-300 xl:border-none"
+                disabled={!information.country}
+                bind:value={information.subdivision}
+                label={$t('checkout.address.subdivision.label')}
+            >
+                <svelte:fragment slot="items">
+                    {#if information.country}
+                        {#await getSubdivisions(checkout.id, information.country)}
+                            <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.loading')}</option>
+                        {:then subdivisions}
+                            <option value="" class="text-gray-400">{$t('checkout.address.subdivision.placeholder')}</option>
+                            {#each Object.entries(subdivisions) as [key, value]}
+                                <option value={key}>{value}</option>
+                            {/each}
+                        {/await}
+                    {:else}
+                        <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.error')}</option>
+                    {/if}
+                </svelte:fragment>
+            </SelectField>
         </div>
     </fieldset>
 </form>
