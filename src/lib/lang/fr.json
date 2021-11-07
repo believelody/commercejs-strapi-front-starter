@@ -2,7 +2,8 @@
     "common": {
         "or": "ou",
         "subtotal": "Sous-total",
-        "total": "Total"
+        "total": "Total",
+        "update": "mise à jour ..."
     },
     "header": {
         "connexion": "Connexion",
@@ -147,7 +148,7 @@
             },
             "shipping": "Information sur la livraison",
             "billing": "Information sur la facturation",
-            "both": "Information sur la livraison et la facturation",
+            "isBillingSameAsShipping": "Information sur la livraison et la facturation",
             "checkbox": "Sélectionner en tant qu'adresse de facturation"
         },
         "payment": {
@@ -170,8 +171,9 @@
             }
         },
         "shipping": {
-            "cost": "Coût de la livraison",
-            "free": "Gratuit"
+            "method": "Méthode de livraison",
+            "free": "Gratuit",
+            "no-method": "Sélectionnez une méthode"
         },
         "shipping-methods": {
             "title": "Méthodes de livraison"

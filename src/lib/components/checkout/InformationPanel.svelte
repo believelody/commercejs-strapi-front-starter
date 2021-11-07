@@ -1,22 +1,23 @@
 <script>
     import { t } from '$lib/i18n';
-    import { sidebar } from '$lib/stores'
+    import { sidebar, shipping, checkout } from '$lib/stores'
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
     import Identity from './Identity.svelte';
     import Payment from './Payment.svelte';
     import ArrowRightIcon from '../svg/ArrowRightIcon.svelte';
     import { getContext } from 'svelte';
-import ShippingMethods from './ShippingMethods.svelte';
+    import ShippingMethods from './ShippingMethods.svelte';
 
     function showSidebar() {
-        $sidebar = {
-            component: OrderSidebar,
-            props: { checkout }
-        };
+        $sidebar = OrderSidebar
     }
 
-    $: checkout = getContext("checkout");
+    function pay() {
+        console.log($shipping);
+    }
+
+    // $: checkout = getContext("checkout");
 </script>
 
 <style>
@@ -34,11 +35,13 @@ import ShippingMethods from './ShippingMethods.svelte';
         <div class="h-full overflow-y-auto">
             <Identity />
             <Addresses />
-            <ShippingMethods />
+            {#if $shipping.country}
+                <ShippingMethods />
+            {/if}
             <Payment />
         </div>
     </div>
-    <button disabled class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
-        {$t("checkout.submit", { amount: checkout.live.subtotal.formatted_with_symbol })}
+    <button on:click={pay} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
+        {$t("checkout.submit", { amount: $checkout.live.total.formatted_with_symbol })}
     </button>
 </div>

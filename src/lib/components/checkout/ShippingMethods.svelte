@@ -1,9 +1,12 @@
 <script>
-    import { getContext } from "svelte";
-    import { t } from '$lib/i18n'
+    import { t } from '$lib/i18n';
+    import { shipping, checkout } from '$lib/stores'
+    import { chooseShippingMethod } from '$lib/actions/checkout';
     import RadioField from "../field/RadioField.svelte";
 
-    let checkout = getContext("checkout"), selectedShippingMethod;
+    async function selectShippingMethod(id) {
+        $checkout.live = await chooseShippingMethod($checkout.id, id, $shipping.country);
+    }
 </script>
 
 <style>
@@ -15,13 +18,13 @@
 		{$t("checkout.shipping-methods.title")}
 	</h2>
     <fieldset class="mb-3 px-4 bg-white shadow-lg rounded text-gray-600 flex justify-around">
-        {#each checkout.shipping_methods as method}
+        {#each $checkout.shipping_methods as method}
             <RadioField
                 label={`${method.description} - ${method.price.formatted_with_symbol}`}
                 name="shippingMethod"
                 value={method}
+                on:change={() => selectShippingMethod(method.id)}
                 className="flex xl:w-1/2 items-center py-3 px-0 xl:px-2"
-                bind:group={selectedShippingMethod}
             />
         {/each}
     </fieldset>

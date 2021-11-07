@@ -29,7 +29,9 @@ export const createWritableStore = (key, startValue = null) => {
 export const user = createWritableStore('user');
 export const cart = createWritableStore('cart');
 export const locale = createWritableStore("lang", "fr");
+export const checkout = writable(null);
 export const modal = writable(null);
 export const sidebar = writable(null);
-export const shipping = writable(null);
-export const billing = writable(null);
+export const shipping = writable({});
+export const billing = writable({});
+export const isBillingSameAsShipping = writable(true);

@@ -1,8 +1,10 @@
 <script>
-	import { cart } from '$lib/stores';
+	import { cart, checkout } from '$lib/stores';
 	import { getCheckout } from '$lib/actions/checkout';
-	import Wrapper from '../lib/components/checkout/Wrapper.svelte';
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
+import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
+import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
+import { onMount } from 'svelte';
 
 	function goBack() {
 		if (!window) {
@@ -17,19 +19,14 @@
 		}
 	}
 
-	$: promise = $cart && getCheckout($cart.id, 'cart');
+	$: $cart && getCheckout($cart.id, "cart").then(res => $checkout = res);
 </script>
 
-{#if $cart}
-	{#await promise}
-		<section>
-			<Moon size="260" color="#FF3E00" unit="px" />
-		</section>
-	{:then checkout}
-		<Wrapper {checkout} />
-	{:catch error}
-		<pre>{JSON.stringify(error)}</pre>
-	{/await}
+{#if $cart && $checkout}
+	<div class="flex relative">
+		<InformationPanel />
+		<OrderPanel />
+	</div>
 {:else}
 	<section>
 		<Moon size="260" color="#FF3E00" unit="px" />

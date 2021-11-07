@@ -9,6 +9,7 @@
     <input
         type="radio"
         bind:group
+        on:change
         {name}
         id={name}
         {value}

@@ -1,7 +1,13 @@
 import { baseUrl } from "../utils/url.util"
 
-export const getCheckout = (id, type) => {
-    return fetch(`${baseUrl}/checkout/${id}?type=${type}`).then(res => res.json());
+export const getCheckout = async (id, type) => {
+    try {
+        const res = await fetch(`${baseUrl}/checkout/${id}?type=${type}`);
+        const json = await res.json();
+        return json;
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 export const getCountries = async (tokenId) => {
@@ -19,6 +25,16 @@ export const getSubdivisions = async (checkoutId, countryCode) => {
         const res = await fetch(`${baseUrl}/checkout/${checkoutId}/countries/${countryCode}/subdivisions`);
         const json = await res.json();
         return json.subdivisions;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const chooseShippingMethod = async (checkoutId, shippingMethodId, country) => {
+    try {
+        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/check/shipping?shipping_option_id=${shippingMethodId}&country=${country}`);
+        const json = await res.json();
+        return json.live;
     } catch (error) {
         console.log(error);
     }

@@ -1,13 +1,11 @@
 <script>
-    import { getContext } from 'svelte';
     import { t } from '$lib/i18n';
+    import { checkout } from '$lib/stores'
     import { getCountries, getSubdivisions } from '$lib/actions/checkout'
-import InputField from '../field/InputField.svelte';
-import SelectField from '../field/SelectField.svelte';
+    import InputField from '../field/InputField.svelte';
+    import SelectField from '../field/SelectField.svelte';
 
     export let information, title;
-
-    let checkout = getContext("checkout");
 </script>
 
 <style>
@@ -69,12 +67,12 @@ import SelectField from '../field/SelectField.svelte';
                 label={$t('checkout.address.country.label')}
             >
                 <svelte:fragment slot="items">
-                    {#await getCountries(checkout.id)}
+                    {#await getCountries($checkout.id)}
                         <option value="" class="px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.loading")}</option>
                     {:then countries}
                         <option value="" class="text-gray-400">{$t('checkout.address.country.placeholder')}</option>
                         {#each Object.entries(countries) as [key, value]}
-                            <option value={key}>{value}</option>
+                            <option selected={key === information.country} class="text-black" value={key}>{value}</option>
                         {/each}
                     {/await}
                 </svelte:fragment>
@@ -88,16 +86,16 @@ import SelectField from '../field/SelectField.svelte';
             >
                 <svelte:fragment slot="items">
                     {#if information.country}
-                        {#await getSubdivisions(checkout.id, information.country)}
+                        {#await getSubdivisions($checkout.id, information.country)}
                             <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.loading')}</option>
                         {:then subdivisions}
                             <option value="" class="text-gray-400">{$t('checkout.address.subdivision.placeholder')}</option>
                             {#each Object.entries(subdivisions) as [key, value]}
-                                <option value={key}>{value}</option>
+                                <option selected={key === information.subdivision} class="text-black" value={key}>{value}</option>
                             {/each}
                         {/await}
                     {:else}
-                        <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.error')}</option>
+                        <option value="" class="text-gray-400 px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.error')}</option>
                     {/if}
                 </svelte:fragment>
             </SelectField>

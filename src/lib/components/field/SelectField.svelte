@@ -12,7 +12,7 @@
             bind:value
 			{disabled}
             name="subdivision"
-            class="text-center {value ? "" : "text-gray-400"} flex-grow bg-transparent flex-grow cursor-pointer focus:outline-none"
+            class="text-center {value ? "text-black" : "text-gray-400"} flex-grow bg-transparent flex-grow cursor-pointer focus:outline-none"
         >
             <slot name="items" />                    
         </select>
