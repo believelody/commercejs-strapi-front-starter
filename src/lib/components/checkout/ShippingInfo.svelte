@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
 
-	export let loading, checkout;
+	export let checkout;
 </script>
 
 <div class="flex justify-between py-4 text-gray-600">

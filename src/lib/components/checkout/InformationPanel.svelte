@@ -1,23 +1,25 @@
 <script>
     import { t } from '$lib/i18n';
-    import { sidebar, shipping, checkout } from '$lib/stores'
+    import { sidebar, shipping, checkout, checkoutLoading } from '$lib/stores'
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
     import Identity from './Identity.svelte';
     import Payment from './Payment.svelte';
     import ArrowRightIcon from '../svg/ArrowRightIcon.svelte';
-    import { getContext } from 'svelte';
     import ShippingMethods from './ShippingMethods.svelte';
+
+	let cardElement;
 
     function showSidebar() {
         $sidebar = OrderSidebar
     }
-
+    
     function pay() {
-        console.log($shipping);
+        console.log(cardElement);
     }
-
-    // $: checkout = getContext("checkout");
+    
+    $: $checkout && console.log("checkout updated");
+    $: console.log(cardElement);
 </script>
 
 <style>
@@ -38,10 +40,14 @@
             {#if $shipping.country}
                 <ShippingMethods />
             {/if}
-            <Payment />
+            <Payment bind:cardElement />
         </div>
     </div>
     <button on:click={pay} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
-        {$t("checkout.submit", { amount: $checkout.live.total.formatted_with_symbol })}
+        {#if $checkoutLoading}
+            {$t("common.update")}
+        {:else}
+            {$t("checkout.submit", { amount: $checkout.live.total.formatted_with_symbol })}
+        {/if}
     </button>
 </div>

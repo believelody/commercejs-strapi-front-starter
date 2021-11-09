@@ -35,3 +35,6 @@ export const sidebar = writable(null);
 export const shipping = writable({});
 export const billing = writable({});
 export const isBillingSameAsShipping = writable(true);
+export const paymentMethod = writable(null);
+export const stripe = writable(null);
+export const checkoutLoading = writable(false);
