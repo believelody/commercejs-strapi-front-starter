@@ -1,17 +1,24 @@
 <script>
-	export let name, label, className, value;
+	export let name, group, label = "", className, value;
 </script>
 
 <label class={className}>
     <input
         type="radio"
         on:change
+        bind:group
         {name}
         id={name}
         {value}
         class="focus:outline-none px-3 xl:px-0"
     />
-	<span class="sm:text-right px-2 xl:mr-2">{label}</span>
+    {#if $$slots.default}
+        <slot />
+    {:else}
+	    <span class="sm:text-right px-2 xl:mr-2">
+            {label}
+        </span>
+    {/if}
 </label>
 
 <style>

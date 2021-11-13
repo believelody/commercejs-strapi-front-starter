@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import { shipping, checkout, checkoutLoading, shippingMethod } from '$lib/stores'
+    import { shipping, checkout, checkoutLoading } from '$lib/stores'
     import { chooseShippingMethod } from '$lib/actions/checkout';
     import RadioField from "../field/RadioField.svelte";
 

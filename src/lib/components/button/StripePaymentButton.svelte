@@ -1,12 +1,17 @@
 <script>
     import { t } from '$lib/i18n';
-    import { stripe, checkout, user, shipping, billing, isBillingSameAsShipping, shippingMethod } from '$lib/stores';
-    import { onCaptureOrder, checkVariant } from '$lib/actions/checkout';
-    import { isAddressValid } from "$lib/utils/address.util";
-    import { isUserValid } from "$lib/utils/user.util";
+    import { stripe,
+        checkout,
+        user,
+        shipping,
+        billing,
+        isBillingSameAsShipping,
+        checkoutLoading
+    } from '$lib/stores';
+    import { onCaptureOrder } from '$lib/actions/checkout';
 
-    export let cardElement, isCardComplete;
-    let paymentError, orderData, paymentResult;
+    export let cardElement, isValid;
+    let paymentError, orderData, paymentResult, paymentProcessing = false;
     
     async function pay() {
         paymentError = null;
@@ -71,8 +76,6 @@
             }
         }
     }
-
-    $: isValid = !!(isUserValid($user) && isAddressValid($shipping) && $checkout.live.shipping.id && $stripe && cardElement && isCardComplete);
 </script>
 
 <style>
@@ -85,5 +88,9 @@
     </section>
 {/if}
 <button on:click={pay} disabled={!isValid} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
-    <slot />
+    {#if $checkoutLoading}
+        {$t("common.update")}
+    {:else}
+        {$t("checkout.submit-stripe", { amount: $checkout.live.total.formatted_with_symbol })}
+    {/if}
 </button>

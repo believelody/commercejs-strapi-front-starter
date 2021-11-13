@@ -1,12 +1,12 @@
 <script>
-	export let value, label, name, disabled;
+	export let value, label, name, disabled, required;
 </script>
 
 <label
 	for={name}
 	class={$$restProps.class}
 >
-	<span class="text-right px-2 xl:px-0 xl:mr-2">{label}</span>
+	<span class="text-right px-2 xl:px-0 xl:mr-2">{label} {required ? "*" : ""}</span>
 	<div id={name} class="focus:outline-none px-3 xl:px-0 flex flex-grow items-center">
 		<select
             bind:value

@@ -1,12 +1,16 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import { stripe } from '$lib/stores';
+	import { stripe, checkout, paymentMethod, paypal } from '$lib/stores';
 	import { Card, Container } from 'svelte-stripe-js';
-	import BankCardIcon from '../svg/BankCardIcon.svelte';
+	import RadioField from '../field/RadioField.svelte';
+import PaypalIcon from '../svg/PaypalIcon.svelte';
+
+	export let cardElement;
 
 	const dispatch = createEventDispatcher();
-	export let cardElement;
+	const { gateways } = $checkout;
+
 	let style = {
 		base: {
 			fontSize: '16px',
@@ -18,6 +22,10 @@
 			color: '#fa755a',
 		}
 	};
+
+	onMount(async () => {
+		$paymentMethod = "stripe";
+	})
 </script>
 
 <div class="mx-2 md:mx-12 rounded-md">
@@ -25,22 +33,34 @@
 		{$t("checkout.payment.title")}
 	</h2>
 	<fieldset class="mb-3 py-2 pl-2 bg-white shadow-lg rounded text-gray-600">
-		<!-- <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-			<span class="text-right px-2">
-				<BankCardIcon />
-			</span>
-			<input
-				name="card"
-				class="focus:outline-none px-3 w-full"
-				placeholder="{$t("checkout.payment.card-number")} MM/YY CVC"
-				required=""
-			/>
-		</label> -->
-		{#if $stripe}
-			<Container stripe={$stripe}>
-				<Card on:change={e => dispatch("is-card-complete", e.detail)} {style} hidePostalCode class="border-b border-gray-200 h-12 py-3 focus:outline-none px-3 w-full" bind:element={cardElement} />
-			</Container>
+		{#if gateways.stripe && $stripe}
+			<RadioField
+				name="paymentMethod"
+				value="stripe"
+				className="flex items-center pb-2 border-b border-gray-300"
+				bind:group={$paymentMethod}
+			>
+				<div class="w-full grid grid-flow-col items-center ml-4">
+					<span class="w-auto">{$t("checkout.payment.method.stripe")}</span>
+					{#if $paymentMethod === "stripe"}
+						<Container stripe={$stripe}>
+							<Card on:change={e => dispatch("isCardComplete", e.detail)} {style} hidePostalCode bind:element={cardElement} />
+						</Container>
+					{/if}
+				</div>
+			</RadioField>
 		{/if}
+		<RadioField
+			name="paymentMethod"
+			value="paypal"
+			className="flex items-center pt-2"
+			bind:group={$paymentMethod}
+		>
+			<div class="w-full flex items-center ml-4">
+				<span class="mr-2">{$t("checkout.payment.method.paypal", { amount: $checkout.live.total.formatted_with_code })}</span>
+				<PaypalIcon />
+			</div>
+		</RadioField>
 	</fieldset>
 </div>
 

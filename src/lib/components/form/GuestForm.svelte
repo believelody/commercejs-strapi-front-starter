@@ -49,4 +49,7 @@
             on:change={onChange}
         />
     </div>
+    <div class="my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
+        <button class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register")} ?</button>
+    </div>
 </fieldset>

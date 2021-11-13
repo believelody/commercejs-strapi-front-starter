@@ -147,6 +147,13 @@
         },
         "payment": {
             "title": "Moyen de paiement",
+            "method": {
+                "stripe": "Carte bancaire",
+                "paypal": "Payer {{amount}} via Paypal"
+            },
+            "paypal" : {
+                "not-valid": "Compléter les champs restants avant de procéder au paiement"
+            },
             "card-number": "Numéro de carte",
             "incomplete_number": "Votre numéro de carte est incomplet.",
             "incomplete_expiry": "La date d'expiration de votre carte est incomplète.",
@@ -190,6 +197,7 @@
         },
         "check-summary": "voir le récapitulatif",
         "summary": "Récapitulatif",
-        "submit": "Payer {{amount}}"
+        "submit-stripe": "Payer {{amount}}",
+        "submit-paypal": "Payer {{amount}} avec"
     }
 }

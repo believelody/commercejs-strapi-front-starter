@@ -28,6 +28,7 @@
                 placeholder={$t('checkout.address.address1.placeholder')}
                 value={information.address1}
                 on:change={onChange}
+                required
             />
             <InputField
                 name="address2"
@@ -44,6 +45,7 @@
                 placeholder={$t('checkout.address.city.placeholder')}
                 value={information.city}
                 on:change={onChange}
+                required
             />
             <InputField
                 name="zip"
@@ -51,6 +53,7 @@
                 placeholder={$t('checkout.address.zip.placeholder')}
                 value={information.zip}
                 on:change={onChange}
+                required
             />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between">
@@ -59,6 +62,7 @@
                 class="flex xl:w-1/4 w-full h-12 py-3 items-center select relative px-0 xl:px-2 border-b border-gray-300 xl:border-none"
                 bind:value={information.country}
                 label={$t('checkout.address.country.label')}
+                required
             >
                 <svelte:fragment slot="items">
                     {#await getCountries($checkout.id)}
@@ -77,6 +81,7 @@
                 disabled={!information.country}
                 bind:value={information.subdivision}
                 label={$t('checkout.address.subdivision.label')}
+                required
             >
                 <svelte:fragment slot="items">
                     {#if information.country}
