@@ -1,14 +1,10 @@
 <script>
-	export let group, name, label, className, value;
+	export let name, label, className, value;
 </script>
 
-<label
-	for={name}
-	class={className}
->
+<label class={className}>
     <input
         type="radio"
-        bind:group
         on:change
         {name}
         id={name}

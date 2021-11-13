@@ -11,7 +11,7 @@
 		<select
             bind:value
 			{disabled}
-            name="subdivision"
+            {name}
             class="text-center {value ? "text-black" : "text-gray-400"} flex-grow bg-transparent flex-grow cursor-pointer focus:outline-none"
         >
             <slot name="items" />                    

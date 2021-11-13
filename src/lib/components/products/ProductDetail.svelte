@@ -15,6 +15,8 @@
 	let selectedColor, selectedSize, qty = 1;
 	const sizes = product?.variants[0];
 	const colors = product?.variants[1];
+
+	$: selectedColor = colors?.options[0];
 </script>
 
 <section class="text-gray-600 body-font">
@@ -44,7 +46,7 @@
 				<p class="leading-relaxed mb-2">{@html product.description}</p>
 				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-200">
 					{#if colors}
-						<Colors {colors} on:selectedColor={({ detail }) => (selectedColor = detail)} />
+						<Colors {colors} {selectedColor} />
 					{/if}
 					{#if sizes}
 						<Sizes {sizes} bind:value={selectedSize} />

@@ -1,9 +1,7 @@
 import { cart } from "../stores";
 import { baseUrl } from '../utils/url.util';
-
-export const headers = {
-    "Content-Type": "application/json",
-};
+import { headers } from "../utils/header.util";
+import { updateCheckoutFromCart } from "../utils/cart.util";
 
 export const createCart = async () => {
     try {
@@ -42,6 +40,7 @@ export const updateItemQuantity = async (cartId, id, quantity) => {
         });
         const json = await res.json();
         if (json.cart) {
+            updateCheckoutFromCart(json.cart);
             cart.set(json.cart);
             cart.useLocalStorage();
         }

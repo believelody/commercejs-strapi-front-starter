@@ -3,14 +3,18 @@
 	import { loadStripe } from '@stripe/stripe-js';
 	import { isServer } from 'svelte-stripe-js';
 	import { cart, checkout, checkoutLoading, stripe } from '$lib/stores';
-	import { getCheckout } from '$lib/actions/checkout';
+	import { getCheckoutByCart } from '$lib/actions/checkout';
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';;
 
 	onMount(async () => {
 		if (!isServer) {
-		$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+			$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+		}
+		if ($cart) {
+			$checkoutLoading = true;
+			getCheckoutByCart($cart.id).finally(() => $checkoutLoading = false);
 		}
 	});
 
@@ -24,15 +28,6 @@
 	$: {
 		if (!$cart || $cart.total_unique_items === 0) {
 			// goBack();
-		}
-	}
-
-	$: {
-		if ($cart) {
-			$checkoutLoading = true;
-			getCheckout($cart.id, "cart")
-				.then(res => $checkout = res)
-				.finally(() => $checkoutLoading = false);
 		}
 	}
 </script>

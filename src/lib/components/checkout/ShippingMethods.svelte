@@ -1,11 +1,13 @@
 <script>
     import { t } from '$lib/i18n';
-    import { shipping, checkout } from '$lib/stores'
+    import { shipping, checkout, checkoutLoading, shippingMethod } from '$lib/stores'
     import { chooseShippingMethod } from '$lib/actions/checkout';
     import RadioField from "../field/RadioField.svelte";
 
     async function selectShippingMethod(id) {
-        $checkout.live = await chooseShippingMethod($checkout.id, id, $shipping.country);
+        $checkoutLoading = true;
+        await chooseShippingMethod($checkout.id, id, $shipping.country);
+        $checkoutLoading = false;
     }
 </script>
 

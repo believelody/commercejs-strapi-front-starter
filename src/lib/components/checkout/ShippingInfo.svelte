@@ -1,14 +1,18 @@
 <script>
 	import { t } from '$lib/i18n';
 
-	export let checkout;
+	export let shippingMethod, loading;
 </script>
 
 <div class="flex justify-between py-4 text-gray-600">
 	<span>{$t("checkout.shipping.method")}</span>
-	{#if checkout.live.shipping.description}
+	{#if loading}
 		<span class="font-semibold text-indigo-500">
-			{checkout.live.shipping.description} - {checkout.live.shipping.price.formatted_with_symbol}
+			{$t("common.update")}
+		</span>
+	{:else if shippingMethod.description}
+		<span class="font-semibold text-indigo-500">
+			{shippingMethod.description} - {shippingMethod.price.formatted_with_symbol}
 		</span>
 	{:else}
 		<span class="font-semibold italic text-sm text-gray-400">

@@ -110,16 +110,10 @@
     },
     "checkout": {
         "address": {
-            "name": {
-                "label": "Nom *",
-                "placeholder": "Prénom Nom"
-            },
-            "email": {
-                "label": "Email *",
-                "placeholder": "mon@email.fr"
-            },
+            "shipping-title": "Mon adresse de livraison",
+            "billing-title": "Mon adresse de facturation",
             "address1": {
-                "label": "Adresse 1 *",
+                "label": "Adresse 1",
                 "placeholder": "Votre adresse principale"
             },
             "address2": {
@@ -127,21 +121,21 @@
                 "placeholder": "(Facultatif)"
             },
             "city": {
-                "label": "Ville *",
+                "label": "Ville",
                 "placeholder": "Nantes"
             },
             "subdivision": {
-                "label": "Etat / Région / Département *",
+                "label": "Etat / Région / Département",
                 "placeholder": "Sélectionnez un département / une région / un état",
                 "loading": "Chargement des données ...",
                 "error": "Sélectionnez d'abord un pays"
             },
             "zip": {
-                "label": "Code Postal *",
+                "label": "Code Postal",
                 "placeholder": "75000"
             },
             "country": {
-                "label": "Pays *",
+                "label": "Pays",
                 "placeholder": "Sélectionnez un pays",
                 "loading": "Chargement des pays ...",
                 "error": "Un problème est survenue"
@@ -153,17 +147,33 @@
         },
         "payment": {
             "title": "Moyen de paiement",
-            "card-number": "Numéro de carte"
+            "card-number": "Numéro de carte",
+            "incomplete_number": "Votre numéro de carte est incomplet.",
+            "incomplete_expiry": "La date d'expiration de votre carte est incomplète.",
+            "incomplete_cvc": "Le code de sécurité de votre carte est incomplet.",
+            "invalid_expiry_year_past": "L'année d'expiration de votre carte est passée."
         },
         "identity": {
             "title": "Identifiez-vous",
+            "firstname": {
+                "label": "Prénom",
+                "placeholder": "Entrez votre prénom"
+            },
+            "lastname": {
+                "label": "Nom",
+                "placeholder": "Entrez votre nom"
+            },
             "email": {
-                "label": "Email *",
+                "label": "Email",
                 "placeholder": "mon@email.fr"
             },
             "password": {
-                "label": "Mot de passe *",
+                "label": "Mot de passe",
                 "placeholder": "Votre mot de passe"
+            },
+            "telephone": {
+                "label": "Téléphone",
+                "placeholder": "Si numéro international, mettre l'indicatif svp"
             },
             "guest": {
                 "checkbox": "Continuer en tant que visiteur",

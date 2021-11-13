@@ -6,6 +6,10 @@
     import SelectField from '../field/SelectField.svelte';
 
     export let information, title;
+
+    function onChange(e) {
+        information[e.target.name] = e.target.value;
+    }
 </script>
 
 <style>
@@ -19,30 +23,18 @@
     <fieldset class="mb-3 bg-white shadow-xl rounded text-gray-600 flex-wrap flex">
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
             <InputField
-                name="name"
-                label={$t('checkout.address.name.label')}
-                placeholder={$t('checkout.address.name.placeholder')}
-                bind:value={information.name}
-            />
-            <InputField
-                name="email"
-                label={$t('checkout.address.email.label')}
-                placeholder={$t('checkout.address.email.placeholder')}
-                bind:value={information.email}
-            />
-        </div>
-        <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <InputField
                 name="address1"
                 label={$t('checkout.address.address1.label')}
                 placeholder={$t('checkout.address.address1.placeholder')}
-                bind:value={information.address1}
+                value={information.address1}
+                on:change={onChange}
             />
             <InputField
                 name="address2"
                 label={$t('checkout.address.address2.label')}
                 placeholder={$t('checkout.address.address2.placeholder')}
-                bind:value={information.address2}
+                value={information.address2}
+                on:change={onChange}
             />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
@@ -50,13 +42,15 @@
                 name="city"
                 label={$t('checkout.address.city.label')}
                 placeholder={$t('checkout.address.city.placeholder')}
-                bind:value={information.city}
+                value={information.city}
+                on:change={onChange}
             />
             <InputField
                 name="zip"
                 label={$t('checkout.address.zip.label')}
                 placeholder={$t('checkout.address.zip.placeholder')}
-                bind:value={information.zip}
+                value={information.zip}
+                on:change={onChange}
             />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between">

@@ -39,7 +39,7 @@
 			{$t("cart.title")} : {$cart.total_unique_items} {$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
 		</h2>
 
-		<CartList items={$cart.line_items} {loading} on:is-loading={e => loading = e.detail} />
+		<CartList items={$cart.line_items} {loading} on:loading={e => loading = e.detail} />
 
 		<button
 			disabled={loading}

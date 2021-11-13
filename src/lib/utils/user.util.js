@@ -1,0 +1,1 @@
+export const isUserValid = user => !!(user.firstname && user.email)

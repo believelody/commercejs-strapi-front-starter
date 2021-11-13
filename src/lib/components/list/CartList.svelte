@@ -4,8 +4,8 @@
     import { t } from '$lib/i18n';
     import { cart, modal } from '$lib/stores';
     import { updateItemQuantity, deleteItem } from '$lib/actions/cart'
-import TrashIcon from '../svg/TrashIcon.svelte';
-import DangerModal from '../modal/DangerModal.svelte';
+    import TrashIcon from '../svg/TrashIcon.svelte';
+    import DangerModal from '../modal/DangerModal.svelte';
 
     export let items, loading;
 
@@ -13,12 +13,12 @@ import DangerModal from '../modal/DangerModal.svelte';
 
 	async function updateQuantity(itemId, quantity) {
 		try {
-			dispatch("is-loading", true);
+			dispatch("loading", true);
 			await updateItemQuantity($cart.id, itemId, quantity);
 		} catch (error) {
 			console.log(error);
 		} finally {
-			dispatch("is-loading", false);
+			dispatch("loading", false);
 		}
 	}
 
