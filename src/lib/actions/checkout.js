@@ -16,7 +16,6 @@ export const getCheckoutByCart = async (id) => {
     try {
         const res = await fetch(`${baseUrl}/checkout/${id}?type=cart`);
         const json = await res.json();
-        console.log(json);
         checkout.set(json);
     } catch (error) {
         console.log(error);
@@ -83,8 +82,7 @@ export const onCaptureOrder = async (checkoutId, orderData) => {
             body: JSON.stringify(orderData)
         });
         const json = await res.json();
-        console.log(json);
-        // return json.live;
+        return json;
     } catch (error) {
         console.log("error: ", error);
     }

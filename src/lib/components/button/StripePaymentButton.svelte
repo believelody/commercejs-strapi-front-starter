@@ -6,25 +6,15 @@
     import { isUserValid } from "$lib/utils/user.util";
 
     export let cardElement, isCardComplete;
-    let paymentError, orderData;
-
-    async function checkVariantForItem() {
-        await checkVariant($checkout.id,
-            $checkout.live.line_items[0].id,
-            null,
-            $checkout.live.line_items[0].variants[0].variant_id,
-            $checkout.live.line_items[0].variants[0].option_id);
-    }
+    let paymentError, orderData, paymentResult;
     
     async function pay() {
         paymentError = null;
-        // await checkVariantForItem();
         if ($stripe && cardElement) {
             const { error, paymentMethod } = await $stripe.createPaymentMethod({ type: "card", card: cardElement });
             if (error) {
                 paymentError = error;
             }else {
-                // console.log(paymentMethod)
                 const shippingObj = {
                     name: $shipping.title ?? $t("checkout.address.shipping-title"),
                     street: $shipping.address1 + " " + $shipping.address2,
@@ -46,7 +36,15 @@
                 };
 
                 orderData = {
-                    line_items: $checkout.live.line_items,
+                    line_items: $checkout
+                                    .live.
+                                    line_items
+                                    .map(item => ({
+                                        [item.id] : {
+                                            variant_id: item.variant.id,
+                                            quantity: item.quantity 
+                                        }
+                                    })),
                     customer: {
                         firstname: $user.firstname,
                         lastname: $user.lastname,
@@ -65,8 +63,11 @@
                     }
                 }
 
-                const res = await onCaptureOrder($checkout.id, orderData);
+                paymentResult = await onCaptureOrder($checkout.id, orderData);
                 console.log(res);
+                if (paymentResult.payment_status == "paid") {
+
+                }
             }
         }
     }
