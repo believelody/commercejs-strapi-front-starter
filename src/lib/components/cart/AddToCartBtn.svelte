@@ -26,7 +26,9 @@
         }
         await addToCart($cart.id, product.id, quantity, options);
         loading = false;
-        modal.set(bind(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity }));
+        modal.set({
+            show: bind(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity })
+        });
     }
 </script>
 

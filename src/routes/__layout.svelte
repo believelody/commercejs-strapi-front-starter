@@ -24,7 +24,9 @@
 	$: locale.useLocalStorage();
 </script>
 
-<Modal show={$modal} />
+{#if $modal}
+	<Modal {...$modal} />
+{/if}
 <Sidebar />
 {#if $page.path === '/checkout'}
 	<slot />

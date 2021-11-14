@@ -46,7 +46,7 @@
     {#if $paymentMethod === "stripe"}
         <StripePaymentButton isValid={stripeValid} {cardElement} />
     {:else if $paymentMethod === "paypal"}
-        <section class="w-full bg-blue-500 {paypalValid ? "pt-2" : "cursor-not-allowed py-4"} text-center mt-2">
+        <section class="w-full bg-blue-500 {paypalValid ? "pt-2" : "cursor-not-allowed py-4"} text-center">
             {#if paypalValid}
                 <PaypalPaymentButton />
             {:else}

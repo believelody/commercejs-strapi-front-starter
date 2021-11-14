@@ -20,8 +20,8 @@
 	}
 
 	function showEmptyCartModal() {
-		modal.set(
-			bind(DangerModal, {
+		modal.set({
+			show: bind(DangerModal, {
 				title: $t("cart.modal.empty.title"),
 				description: $t("modal.description.default"),
 				actionCallback: async () => {
@@ -29,7 +29,7 @@
 					$sidebar = null
 				}
 			})
-		);
+		});
 	}
 </script>
 

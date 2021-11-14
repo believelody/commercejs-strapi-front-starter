@@ -1,7 +1,9 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
     import InputField from '../field/InputField.svelte';
 
+    const dispatch = createEventDispatcher();
     let identifier, password;
 
     async function submit() {
@@ -24,23 +26,26 @@
                 name="identifier"
                 type="email"
                 required
-                label={$t('checkout.identity.email.label')}
-                placeholder={$t('checkout.identity.email.placeholder')}
+                label={$t('identity.email.label')}
+                placeholder={$t('identity.email.placeholder')}
                 bind:value={identifier}
             />
             <InputField
                 name="password"
                 type="password"
                 required
-                label={$t('checkout.identity.password.label')}
-                placeholder={$t('checkout.identity.password.placeholder')}
+                label={$t('identity.password.label')}
+                placeholder={$t('identity.password.placeholder')}
                 bind:value={password}
             />
+        </div>
+        <div class="flex items-center justify-center mt-2">
+            <button type="button" class="text-sm text-gray-400 text-center">{$t("identity.password-forgotten")} ?</button>
         </div>
         <div class="my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
             <button disabled={!identifier || !password} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75">{$t("auth.login")}</button>
             <span class="px-16 my-2">{$t("common.or")}</span>
-            <button class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register")}</button>
+            <button type="button" on:click={e => dispatch("auth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register")}</button>
         </div>
     </fieldset>
 </form>

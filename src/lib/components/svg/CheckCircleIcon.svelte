@@ -1,5 +1,8 @@
+<script>
+	export let size = 8, color = "green-500";
+</script>
 <svg
-	class="h-8 w-8 text-green-500"
+	class="h-{size} w-{size} text-{color}"
 	viewBox="0 0 24 24"
 	fill="none"
 	stroke="currentColor"

@@ -23,15 +23,16 @@
 	}
 
 	function showRemoveItemModal(item) {
-		modal.set(
-			bind(DangerModal, {
+		modal.set({
+            show: bind(DangerModal, {
 				title: $t("cart.modal.delete-item.title", { name: item.name }),
 				description: $t('cart.modal.delete-item.description'),
 				actionCallback: async () => {
 					await deleteItem($cart.id, item.id);
 				}
-			})
-		);
+			}),
+            closeButton: false
+        });
 	}
 </script>
 

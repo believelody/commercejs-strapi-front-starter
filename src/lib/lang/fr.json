@@ -1,4 +1,7 @@
 {
+    "country": {
+        "fr": "France"
+    },
     "common": {
         "or": "ou",
         "subtotal": "Sous-total",
@@ -108,6 +111,34 @@
         "login": "Se connecter",
         "register": "Créer un compte"
     },
+    "identity": {
+        "title": "Votre identité",
+        "firstname": {
+            "label": "Prénom",
+            "placeholder": "Entrez votre prénom"
+        },
+        "lastname": {
+            "label": "Nom",
+            "placeholder": "Entrez votre nom"
+        },
+        "email": {
+            "label": "Email",
+            "placeholder": "mon@email.fr"
+        },
+        "password": {
+            "label": "Mot de passe",
+            "placeholder": "Votre mot de passe"
+        },
+        "telephone": {
+            "label": "Téléphone",
+            "placeholder": "Si numéro international, mettre l'indicatif svp"
+        },
+        "guest": {
+            "checkbox": "Continuer en tant que visiteur",
+            "text": "Vous pouvez rentrer vos informations dans le formulaire d'adresse"
+        },
+        "password-forgotten": "Mot de passe oublié"
+    },
     "checkout": {
         "address": {
             "shipping-title": "Mon adresse de livraison",
@@ -154,38 +185,22 @@
             "paypal" : {
                 "not-valid": "Compléter les champs restants avant de procéder au paiement"
             },
+            "processing1": "Veuillez patienter svp",
+            "processing2": "Nous procédons au paiement",
+            "success": {
+                "title": "Votre paiement a bien été reçu",
+                "subtitle": "Voici un recapitulatif de votre commande:",
+                "identity": "Vous êtes",
+                "shipping": {
+                    "title": "Livré à"
+                },
+                "shipping-method": "Méthode de livraison"
+            },
             "card-number": "Numéro de carte",
             "incomplete_number": "Votre numéro de carte est incomplet.",
             "incomplete_expiry": "La date d'expiration de votre carte est incomplète.",
             "incomplete_cvc": "Le code de sécurité de votre carte est incomplet.",
             "invalid_expiry_year_past": "L'année d'expiration de votre carte est passée."
-        },
-        "identity": {
-            "title": "Identifiez-vous",
-            "firstname": {
-                "label": "Prénom",
-                "placeholder": "Entrez votre prénom"
-            },
-            "lastname": {
-                "label": "Nom",
-                "placeholder": "Entrez votre nom"
-            },
-            "email": {
-                "label": "Email",
-                "placeholder": "mon@email.fr"
-            },
-            "password": {
-                "label": "Mot de passe",
-                "placeholder": "Votre mot de passe"
-            },
-            "telephone": {
-                "label": "Téléphone",
-                "placeholder": "Si numéro international, mettre l'indicatif svp"
-            },
-            "guest": {
-                "checkbox": "Continuer en tant que visiteur",
-                "text": "Vous pouvez rentrer vos informations dans le formulaire d'adresse"
-            }
         },
         "shipping": {
             "method": "Méthode de livraison",
