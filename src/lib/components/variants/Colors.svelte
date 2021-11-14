@@ -2,7 +2,6 @@
 	import { t } from '$lib/i18n'
 
 	export let colors, selectedColor;
-	$: console.log(selectedColor);
 </script>
 
 <div class="flex items-center">

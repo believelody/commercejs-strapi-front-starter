@@ -1,5 +1,13 @@
+<script>
+	export let size = 8, color = "red-600";
+</script>
+
+<style>
+	/* your styles go here */
+</style>
+
 <svg
-	class="h-6 w-6 text-red-600"
+	class="h-{size} w-{size} text-{color}"
 	xmlns="http://www.w3.org/2000/svg"
 	fill="none"
 	viewBox="0 0 24 24"

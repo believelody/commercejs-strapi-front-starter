@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import Moon from "svelte-loading-spinners/dist/ts/Moon.svelte";
+    import { Jumper } from "svelte-loading-spinners";
     import { t } from '$lib/i18n';
     import { 
         stripe,
@@ -12,26 +12,29 @@
     } from '$lib/stores';
     import { onCaptureOrder } from '$lib/actions/checkout';
 import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
+import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
     export let cardElement;
     let paymentError, orderData, paymentResult, paymentProcessing = false, paymentSuccess = false;
 
     onMount(async () => {
-        // pay();
-        paymentProcessing = true;
-        const timeout = setTimeout(() => {
-            paymentProcessing = false;
-            paymentSuccess = true;
-        }, 3000);
+        pay();
+        // paymentProcessing = true;
+        // const timeout = setTimeout(() => {
+        //     paymentProcessing = false;
+            // paymentSuccess = false;
+        //     paymentError = true;
+        // }, 3000);
     });
 
     async function pay() {
+        paymentError = false;
         paymentProcessing = true;
-        paymentError = null;
         if ($stripe && cardElement) {
             const { error, paymentMethod } = await $stripe.createPaymentMethod({ type: "card", card: cardElement });
             if (error) {
                 paymentError = error;
+                paymentProcessing = false;
             }else {
                 const shippingObj = {
                     name: $shipping.title ?? $t("checkout.address.shipping-title"),
@@ -82,32 +85,38 @@ import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
                 }
 
                 paymentResult = await onCaptureOrder($checkout.id, orderData);
-                console.log(res);
-                if (paymentResult.payment_status == "paid") {
+                if (paymentResult.status_payment === "paid") {
                     paymentSuccess = true;
-                    paymentProcessing = false;
+                    paymentError = false;
+                    orderData = null;
+                } else if (paymentResult.error) {
+                    paymentSuccess = false;
+                    paymentError = true;
                 }
+                paymentProcessing = false;
             }
         }
     }
-    $: console.log(paymentProcessing);
 </script>
 
-<div class="bg-white h-full flex items-center justify-center px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="bg-white flex items-center justify-center px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
     {#if paymentProcessing}
         <section class="h-4/5 flex flex-col justify-center items-center h-auto">
             <span class="mb-4 font-medium text-lg">{$t("checkout.payment.processing1")},</span>
-            <Moon size="260" color="#FF3E00" unit="px" />
+            <Jumper size="260" color="#FF3E00" unit="px" />
             <span class="mt-4 font-medium text-lg">{$t("checkout.payment.processing2")}.</span>
         </section>
     {:else if paymentSuccess}
         <DisplaySuccessPayment
             user={$user}
             shipping={$shipping}
-            items={$checkout.live.line_items}
-            shippingMethod={$checkout.live.shipping.description}
+            billing={$billing}
+            isBillingSameAsShipping={$isBillingSameAsShipping}
+            live={$checkout.live}
+            reference={paymentResult.customer_reference}
+            orderId={paymentResult.id}
         />
-    {:else}
-        Payment Processing finished
+    {:else if paymentError}
+        <DisplayFailedPayment error={paymentResult.error} />
     {/if}
 </div>

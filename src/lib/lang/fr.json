@@ -190,11 +190,32 @@
             "success": {
                 "title": "Votre paiement a bien été reçu",
                 "subtitle": "Voici un recapitulatif de votre commande:",
+                "subtotal": "Sous total",
                 "identity": "Vous êtes",
                 "shipping": {
-                    "title": "Livré à"
+                    "title": "Livrer à"
                 },
-                "shipping-method": "Méthode de livraison"
+                "shipping-billing": {
+                    "title": "Livrer et facturer à"
+                },
+                "billing": {
+                    "title": "Facturer à"
+                },
+                "shipping-method": "Méthode de livraison",
+                "shipping-cost": "Coût de la livraison",
+                "total": "Total",
+                "action": {
+                    "go-to-home": "Aller au menu d'accueil",
+                    "download-invoice": "Télécharger la facture"
+                },
+                "order-reference": "{{name}}, nous vous remercions pour votre achat. Voici la référence de la commande: {{reference}}."
+            },
+            "failed": {
+                "title": "Votre paiement n'a pas abouti",
+                "subtitle": "Nous sommes désolé, il y a eu une erreur lors de votre paiement. Nous vous proposons de revoir les informations mentionnées sur le formulaire du checkout.",
+                "action": {
+                    "back-to-checkout": "Revenir au checkout"
+                }
             },
             "card-number": "Numéro de carte",
             "incomplete_number": "Votre numéro de carte est incomplet.",

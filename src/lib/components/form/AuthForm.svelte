@@ -9,7 +9,7 @@
 </style>
 
 {#if isLogin}
-    <LoginForm on:auth={e => isLogin = false} />
+    <LoginForm on:auth={() => isLogin = false} />
 {:else}
-    <RegisterForm on:auth={e => isLogin = true} />
+    <RegisterForm on:auth={() => isLogin = true} />
 {/if}

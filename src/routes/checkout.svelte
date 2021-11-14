@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { loadStripe } from '@stripe/stripe-js';
 	import { isServer } from 'svelte-stripe-js';
-	import { cart, checkout, checkoutLoading, stripe, paypal } from '$lib/stores';
+	import { cart, checkout, checkoutLoading, stripe } from '$lib/stores';
 	import { getCheckoutByCart } from '$lib/actions/checkout';
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';

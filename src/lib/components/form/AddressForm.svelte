@@ -1,11 +1,10 @@
 <script>
     import { t } from '$lib/i18n';
-    import { checkout } from '$lib/stores'
     import { getCountries, getSubdivisions } from '$lib/actions/checkout'
     import InputField from '../field/InputField.svelte';
     import SelectField from '../field/SelectField.svelte';
 
-    export let information, title;
+    export let information, title, checkoutId;
 
     function onChange(e) {
         information[e.target.name] = e.target.value;
@@ -65,7 +64,7 @@
                 required
             >
                 <svelte:fragment slot="items">
-                    {#await getCountries($checkout.id)}
+                    {#await getCountries(checkoutId)}
                         <option value="" class="px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.loading")}</option>
                     {:then countries}
                         <option value="" class="text-gray-400">{$t('checkout.address.country.placeholder')}</option>
@@ -85,7 +84,7 @@
             >
                 <svelte:fragment slot="items">
                     {#if information.country}
-                        {#await getSubdivisions($checkout.id, information.country)}
+                        {#await getSubdivisions(checkoutId, information.country)}
                             <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.loading')}</option>
                         {:then subdivisions}
                             <option value="" class="text-gray-400">{$t('checkout.address.subdivision.placeholder')}</option>

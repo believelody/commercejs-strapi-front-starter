@@ -26,7 +26,7 @@
     /* your styles go here */
 </style>
 
-<button on:click={showModal} disabled={isValid} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
+<button on:click={showModal} disabled={!isValid} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:cursor-not-allowed">
     {#if $checkoutLoading}
         {$t("common.update")}
     {:else}

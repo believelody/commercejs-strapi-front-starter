@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import { stripe, checkout, paymentMethod, paypal } from '$lib/stores';
+	import { stripe, checkout, paymentMethod } from '$lib/stores';
 	import { Card, Container } from 'svelte-stripe-js';
 	import RadioField from '../field/RadioField.svelte';
 import PaypalIcon from '../svg/PaypalIcon.svelte';
@@ -40,12 +40,14 @@ import PaypalIcon from '../svg/PaypalIcon.svelte';
 				className="flex items-center pb-2 border-b border-gray-300"
 				bind:group={$paymentMethod}
 			>
-				<div class="w-full grid grid-flow-col items-center ml-4">
-					<span class="w-auto">{$t("checkout.payment.method.stripe")}</span>
+				<div class="w-full flex justify-space-between items-center ml-4">
+					<span class="w-1/2">{$t("checkout.payment.method.stripe")}</span>
 					{#if $paymentMethod === "stripe"}
-						<Container stripe={$stripe}>
-							<Card on:change={e => dispatch("isCardComplete", e.detail)} {style} hidePostalCode bind:element={cardElement} />
-						</Container>
+						<div class="flex-grow">
+							<Container stripe={$stripe}>
+								<Card on:change={e => dispatch("isCardComplete", e.detail)} {style} hidePostalCode bind:element={cardElement} />
+							</Container>
+						</div>
 					{/if}
 				</div>
 			</RadioField>

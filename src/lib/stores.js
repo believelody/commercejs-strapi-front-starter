@@ -39,3 +39,21 @@ export const paymentMethod = writable(null);
 export const stripe = writable(null);
 export const paypal = writable(null);
 export const checkoutLoading = writable(false);
+export const resettingStores = writable(false);
+
+export const resetStores = () => {
+	modal.set(null);
+	user.set({});
+	user.useLocalStorage();
+	cart.set(null);
+	cart.useLocalStorage();
+	checkout.set(null);
+	checkoutLoading.set(false);
+	paymentMethod.set(null);
+	shipping.set(null);
+	isBillingSameAsShipping.set(true);
+	billing.set(null);
+	paypal.set(null);
+	stripe.set(null);
+	resettingStores.set(false);
+}
