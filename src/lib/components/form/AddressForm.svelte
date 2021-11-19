@@ -4,7 +4,7 @@
     import InputField from '../field/InputField.svelte';
     import SelectField from '../field/SelectField.svelte';
 
-    export let information, title, checkoutId;
+    export let information = {}, title, checkoutId;
 
     function onChange(e) {
         information[e.target.name] = e.target.value;

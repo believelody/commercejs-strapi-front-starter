@@ -1,19 +1,13 @@
 <script>
-    import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
-    import { resettingStores } from '$lib/stores';
+    import { resetStores, modal } from '$lib/stores';
     import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
 
-    export let live, user, shipping, billing, isBillingSameAsShipping, reference, orderId;
+    export let live, user, shipping, billing, isBillingSameAsShipping, reference;
 
-    function goToHome() {
-        $resettingStores = true;
-        goto("/");
-    }
-
-    function goToOrderPage() {
-        $resettingStores = true;
-        goto(`/order/${orderId}`);
+    function hideModal() {
+        resetStores();
+        $modal = null;
     }
 </script>
 
@@ -67,15 +61,9 @@
             </p>
         </div>
     </div>
-    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex md:justify-center sm:flex-row-reverse">
+    <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center">
         <button
-            on:click={goToOrderPage}
-            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-        >
-            {$t("checkout.payment.success.action.download-invoice")}
-        </button>
-        <button
-            on:click={goToHome}
+            on:click={hideModal}
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
         >
             {$t("checkout.payment.success.action.go-to-home")}

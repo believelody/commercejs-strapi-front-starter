@@ -39,7 +39,6 @@ export const paymentMethod = writable(null);
 export const stripe = writable(null);
 export const paypal = writable(null);
 export const checkoutLoading = writable(false);
-export const resettingStores = writable(false);
 
 export const resetStores = () => {
 	modal.set(null);
@@ -55,5 +54,4 @@ export const resetStores = () => {
 	billing.set(null);
 	paypal.set(null);
 	stripe.set(null);
-	resettingStores.set(false);
 }

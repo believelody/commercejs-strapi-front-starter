@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { Jumper } from "svelte-loading-spinners";
+    import { goto } from '$app/navigation';
     import { t } from '$lib/i18n';
     import { 
         stripe,
@@ -15,11 +16,20 @@ import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
 import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
     export let cardElement;
-    let paymentError, orderData, paymentResult, paymentProcessing = false, paymentSuccess = false;
+    let paymentError,
+        orderData,
+        paymentResult,
+        paymentProcessing = false,
+        paymentSuccess = false,
+        live = $checkout.live,
+        shippingValue = $shipping,
+        billingValue = $billing,
+        isBillingSameAsShippingValue = $isBillingSameAsShipping;
 
     onMount(async () => {
-        pay();
-        // paymentProcessing = true;
+        paymentProcessing = true;
+        await pay();
+        paymentProcessing = false;
         // const timeout = setTimeout(() => {
         //     paymentProcessing = false;
             // paymentSuccess = false;
@@ -29,7 +39,6 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
     async function pay() {
         paymentError = false;
-        paymentProcessing = true;
         if ($stripe && cardElement) {
             const { error, paymentMethod } = await $stripe.createPaymentMethod({ type: "card", card: cardElement });
             if (error) {
@@ -37,23 +46,23 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
                 paymentProcessing = false;
             }else {
                 const shippingObj = {
-                    name: $shipping.title ?? $t("checkout.address.shipping-title"),
-                    street: $shipping.address1 + " " + $shipping.address2,
-                    town_city: $shipping.city,
-                    county_state: $shipping.subdivision,
-                    postal_zip_code: $shipping.zip,
-                    country: $shipping.country,
+                    name: shippingValue.title ?? $t("checkout.address.shipping-title"),
+                    street: shippingValue.address1 + " " + shippingValue.address2,
+                    town_city: shippingValue.city,
+                    county_state: shippingValue.subdivision,
+                    postal_zip_code: shippingValue.zip,
+                    country: shippingValue.country,
                 };
-                const billingObj = $isBillingSameAsShipping ? {
-                    name: $shipping.title ?? $t("checkout.address.billing-title"),
+                const billingObj = isBillingSameAsShippingValue ? {
+                    name: shippingValue.title ?? $t("checkout.address.billing-title"),
                     ...shippingObj
                 } : {
-                    name: $billing.title ?? $t("checkout.address.billing-title"),
-                    street: $billing.address1 + " " + $billing.address2,
-                    town_city: $billing.city,
-                    county_state: $billing.subdivision,
-                    postal_zip_code: $billing.zip,
-                    country: $billing.country,
+                    name: billingValue.title ?? $t("checkout.address.billing-title"),
+                    street: billingValue.address1 + " " + billingValue.address2,
+                    town_city: billingValue.city,
+                    county_state: billingValue.subdivision,
+                    postal_zip_code: billingValue.zip,
+                    country: billingValue.country,
                 };
 
                 orderData = {
@@ -89,11 +98,11 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
                     paymentSuccess = true;
                     paymentError = false;
                     orderData = null;
+                    goto("/");
                 } else if (paymentResult.error) {
                     paymentSuccess = false;
                     paymentError = true;
                 }
-                paymentProcessing = false;
             }
         }
     }
@@ -109,12 +118,11 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
     {:else if paymentSuccess}
         <DisplaySuccessPayment
             user={$user}
-            shipping={$shipping}
-            billing={$billing}
-            isBillingSameAsShipping={$isBillingSameAsShipping}
-            live={$checkout.live}
+            shipping={shippingValue}
+            billing={billingValue}
+            isBillingSameAsShipping={isBillingSameAsShippingValue}
+            {live}
             reference={paymentResult.customer_reference}
-            orderId={paymentResult.id}
         />
     {:else if paymentError}
         <DisplayFailedPayment error={paymentResult.error} />

@@ -12,11 +12,9 @@
 	import Quantity from '../quantity/Quantity.svelte';
 
 	export let product;
-	let selectedColor, selectedSize, qty = 1;
 	const sizes = product?.variants[0];
 	const colors = product?.variants[1];
-
-	$: selectedColor = colors?.options[0];
+	let selectedColor = colors?.options[0], selectedSize, qty = 1;
 </script>
 
 <section class="text-gray-600 body-font">
@@ -46,14 +44,14 @@
 				<p class="leading-relaxed mb-2">{@html product.description}</p>
 				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-200">
 					{#if colors}
-						<Colors {colors} {selectedColor} />
+						<Colors {colors} bind:selectedColor />
 					{/if}
 					{#if sizes}
 						<Sizes {sizes} bind:value={selectedSize} />
 					{/if}
 					<Quantity bind:value={qty} />
 				</div>
-				<div class="flex mt-4">
+				<div class="flex items-center mt-4">
 					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
 					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
 					<button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">

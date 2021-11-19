@@ -5,7 +5,7 @@
     import { t } from '$lib/i18n'
     import ItemToCartSuccessModal from "../modal/ItemToCartSuccessModal.svelte";
 
-    export let product, quantity, selectedColor = null, selectedSize = null;
+    export let product, quantity, selectedColor, selectedSize;
     let loading = false;
 
 	async function addItem() {

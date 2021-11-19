@@ -16,17 +16,9 @@
 </script>
 
 <script>
-	import { resettingStores, resetStores } from '$lib/stores';
 	import ProductList from '$lib/components/products/ProductList.svelte';
-	import { onMount } from 'svelte';
 
 	export let products, meta, error;
-
-	onMount(() => {
-		if ($resettingStores) {
-			resetStores();
-		}
-	});
 </script>
 
 <ProductList {products} />
