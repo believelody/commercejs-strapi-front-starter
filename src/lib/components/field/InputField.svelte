@@ -1,5 +1,5 @@
 <script>
-	export let value, name, label, placeholder, type = "text", pattern, required;
+	export let value, name, label, placeholder, type = "text", required;
 </script>
 
 <label
@@ -13,17 +13,27 @@
 		{/if}
 	</span>
 	<input
-		value={value || ""}
+		value={value ?? ""}
 		{name}
 		{type}
-		{pattern}
         id={name}
-		on:change
+		on:input
+		on:blur
 		class="flex-grow focus:outline-none px-3 xl:px-0"
 		{placeholder}
 	/>
 </label>
 
-<style>
-	/* your styles go here */
+<style>	
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 </style>

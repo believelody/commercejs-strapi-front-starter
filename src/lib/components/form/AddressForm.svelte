@@ -6,7 +6,7 @@
 
     export let information = {}, title, checkoutId;
 
-    function onChange(e) {
+    function onInput(e) {
         information[e.target.name] = e.target.value;
     }
     
@@ -29,7 +29,7 @@
                 label={$t('checkout.address.address1.label')}
                 placeholder={$t('checkout.address.address1.placeholder')}
                 value={information.address1}
-                on:change={onChange}
+                on:input={onInput}
                 required
             />
             <InputField
@@ -37,7 +37,7 @@
                 label={$t('checkout.address.address2.label')}
                 placeholder={$t('checkout.address.address2.placeholder')}
                 value={information.address2}
-                on:change={onChange}
+                on:input={onInput}
             />
         </div>
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
@@ -46,7 +46,7 @@
                 label={$t('checkout.address.city.label')}
                 placeholder={$t('checkout.address.city.placeholder')}
                 value={information.city}
-                on:change={onChange}
+                on:input={onInput}
                 required
             />
             <InputField
@@ -54,7 +54,7 @@
                 label={$t('checkout.address.zip.label')}
                 placeholder={$t('checkout.address.zip.placeholder')}
                 value={information.zip}
-                on:change={onChange}
+                on:input={onInput}
                 required
             />
         </div>
