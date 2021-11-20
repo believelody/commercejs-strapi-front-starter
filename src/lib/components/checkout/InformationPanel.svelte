@@ -37,7 +37,7 @@
         <div class="h-full overflow-y-auto">
             <Identity />
             <Addresses />
-            {#if $shipping.country}
+            {#if $shipping?.country}
                 <ShippingMethods />
             {/if}
             <Payment on:isCardComplete={e => isCardComplete = e.detail.complete} bind:cardElement />

@@ -2,8 +2,9 @@
     import { createEventDispatcher } from 'svelte';
     import { bind } from 'svelte-simple-modal';
     import { t } from '$lib/i18n';
-    import { cart, modal } from '$lib/stores';
-    import { updateItemQuantity, deleteItem } from '$lib/actions/cart'
+    import { cart, modal, checkout } from '$lib/stores';
+    import { updateItemQuantity, deleteItem } from '$lib/actions/cart';
+    import { checkQuantity } from '$lib/actions/checkout';
     import TrashIcon from '../svg/TrashIcon.svelte';
     import DangerModal from '../modal/DangerModal.svelte';
 
@@ -11,10 +12,13 @@
 
     const dispatch = createEventDispatcher();
 
-	async function updateQuantity(itemId, quantity) {
+	async function updateQuantity(item, quantity) {
 		try {
 			dispatch("loading", true);
-			await updateItemQuantity($cart.id, itemId, quantity);
+            if ($checkout) {
+                await checkQuantity($checkout.id, item.id, quantity, item.variant.id)
+            }
+            await updateItemQuantity($cart.id, item.id, quantity);
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -75,14 +79,14 @@
                                 <p class="text-gray-500">
                                     <button
                                         disabled={item.quantity <= 1 || loading}
-                                        on:click={() => updateQuantity(item.id, item.quantity - 1)}
+                                        on:click={() => updateQuantity(item, item.quantity - 1)}
                                         class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
                                         >-</button
                                     >
                                     <span class="mx-4 text-lg">{item.quantity} x {item.price.formatted_with_symbol}</span>
                                     <button
                                         disabled={item.quantity >= 5 || loading}
-                                        on:click={() => updateQuantity(item.id, item.quantity + 1)}
+                                        on:click={() => updateQuantity(item, item.quantity + 1)}
                                         class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
                                         >+</button
                                     >

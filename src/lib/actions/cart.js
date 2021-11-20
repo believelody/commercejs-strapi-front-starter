@@ -1,7 +1,9 @@
-import { cart } from "../stores";
+import { cart, checkout } from "../stores";
 import { baseUrl } from '../utils/url.util';
 import { headers } from "../utils/header.util";
 import { updateCheckoutFromCart } from "../utils/cart.util";
+import { get } from "svelte/store";
+import { getCheckout, getCheckoutByCart } from "./checkout";
 
 export const createCart = async () => {
     try {
@@ -40,7 +42,10 @@ export const updateItemQuantity = async (cartId, id, quantity) => {
         });
         const json = await res.json();
         if (json.cart) {
-            updateCheckoutFromCart(json.cart);
+            // updateCheckoutFromCart(json.cart);
+            // if (get(checkout)) {
+            //     await getCheckout(get(checkout).id);
+            // }
             cart.set(json.cart);
             cart.useLocalStorage();
         }

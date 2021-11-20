@@ -54,9 +54,27 @@ export const chooseShippingMethod = async (checkoutId, shippingMethodId, country
     }
 }
 
+export const checkQuantity = async (checkoutId, itemId, amount, variantId) => {
+    try {
+        let path = new URL(`${baseUrl}/checkout/${checkoutId}/check/${itemId}/quantity`);
+        path.searchParams.append("amount", amount);
+        path.searchParams.append("variant_id", variantId);
+        const res = await fetch(path);
+        const json = await res.json();
+        if (json.error) {
+            console.log(json.error);
+        }
+        else if (json.available) {
+            await getCheckout(checkoutId)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const checkVariant = async (checkoutId, itemId, variantId = "", groupId = "", optionId = "") => {
     try {
-        let path = new URL(`${baseUrl}/checkout/${checkoutId}/${itemId}/variant`);
+        let path = new URL(`${baseUrl}/checkout/${checkoutId}/check/${itemId}/variant`);
         if (variantId) {
             path.searchParams.append("variant_id", variantId);
         }

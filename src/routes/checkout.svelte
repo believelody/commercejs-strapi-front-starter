@@ -3,7 +3,7 @@
 	import { loadStripe } from '@stripe/stripe-js';
 	import { isServer } from 'svelte-stripe-js';
 	import { cart, checkout, checkoutLoading, stripe, user, shipping, billing, isBillingSameAsShipping } from '$lib/stores';
-	import { getCheckoutByCart } from '$lib/actions/checkout';
+	import { getCheckoutByCart, getCheckout } from '$lib/actions/checkout';
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';;
@@ -12,11 +12,6 @@
 		if (!isServer) {
 			$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 			
-		}
-		if (!$user) {
-			$shipping = null;
-			$billing = null;
-			$isBillingSameAsShipping = true;
 		}
 		if ($cart) {
 			$checkoutLoading = true;

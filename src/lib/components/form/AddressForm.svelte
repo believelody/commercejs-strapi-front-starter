@@ -9,6 +9,9 @@
     function onChange(e) {
         information[e.target.name] = e.target.value;
     }
+    
+    $: countriesPromise = checkoutId && getCountries(checkoutId);
+    $: subdivisionsPromise = checkoutId && information?.country && getSubdivisions(checkoutId, information.country);
 </script>
 
 <style>
@@ -64,14 +67,18 @@
                 required
             >
                 <svelte:fragment slot="items">
-                    {#await getCountries(checkoutId)}
-                        <option value="" class="px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.loading")}</option>
-                    {:then countries}
+                    {#if checkoutId}
+                        {#await countriesPromise}
+                            <option value="" class="px-2 xl:px-0 xl:mr-2">{$t("checkout.address.country.loading")}</option>
+                        {:then countries}
+                            <option value="" class="text-gray-400">{$t('checkout.address.country.placeholder')}</option>
+                            {#each Object.entries(countries) as [key, value]}
+                                <option selected={key === information.country} class="text-black" value={key}>{value}</option>
+                            {/each}
+                        {/await}
+                        {:else}
                         <option value="" class="text-gray-400">{$t('checkout.address.country.placeholder')}</option>
-                        {#each Object.entries(countries) as [key, value]}
-                            <option selected={key === information.country} class="text-black" value={key}>{value}</option>
-                        {/each}
-                    {/await}
+                    {/if}
                 </svelte:fragment>
             </SelectField>
             <SelectField
@@ -84,7 +91,7 @@
             >
                 <svelte:fragment slot="items">
                     {#if information.country}
-                        {#await getSubdivisions(checkoutId, information.country)}
+                        {#await subdivisionsPromise}
                             <option value="" class="px-2 xl:px-0 xl:mr-2">{$t('checkout.address.subdivision.loading')}</option>
                         {:then subdivisions}
                             <option value="" class="text-gray-400">{$t('checkout.address.subdivision.placeholder')}</option>
