@@ -12,8 +12,8 @@
         isBillingSameAsShipping
     } from '$lib/stores';
     import { onCaptureOrder } from '$lib/actions/checkout';
-import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
-import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
+    import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
+    import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
     export let cardElement;
     let paymentError,
@@ -95,10 +95,10 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
                 paymentResult = await onCaptureOrder($checkout.id, orderData);
                 if (paymentResult.status_payment === "paid") {
+                    goto("/");
                     paymentSuccess = true;
                     paymentError = false;
                     orderData = null;
-                    goto("/");
                 } else if (paymentResult.error) {
                     paymentSuccess = false;
                     paymentError = true;
@@ -125,6 +125,6 @@ import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
             reference={paymentResult.customer_reference}
         />
     {:else if paymentError}
-        <DisplayFailedPayment error={paymentResult.error} />
+        <DisplayFailedPayment />
     {/if}
 </div>

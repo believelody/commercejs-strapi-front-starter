@@ -212,7 +212,8 @@
             },
             "failed": {
                 "title": "Votre paiement n'a pas abouti",
-                "subtitle": "Nous sommes désolé, il y a eu une erreur lors de votre paiement. Nous vous proposons de revoir les informations mentionnées sur le formulaire du checkout.",
+                "subtitle": "Nous sommes désolé, une erreur a été rencontré lors de votre paiement.",
+                "html-description": "<p class='text-md text-gray-600'>L'une des raisons ci-dessous peut en être la cause:<ol class='text-gray-600 list-disc list-inside pl-1'><li>Votre établissement bancaire a refusé le paiement à cause de fonds insuffisants;</li><li>La carte utilisée présente un haut risque de sécurité;</li><li>Le système de paiement n'est pas fonctionnel;</li><li>Les informations bancaires entrées sont incorrectes.</li></ol></p>",
                 "action": {
                     "back-to-checkout": "Revenir au checkout"
                 }

@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import { sidebar, shipping, paymentMethod, user, checkout, stripe, paypal } from '$lib/stores';
+    import { sidebar, shipping, paymentMethod, user, checkout, stripe } from '$lib/stores';
     import { isAddressValid } from "$lib/utils/address.util";
     import { isUserValid } from "$lib/utils/user.util";
     import OrderSidebar from './OrderSidebar.svelte';
