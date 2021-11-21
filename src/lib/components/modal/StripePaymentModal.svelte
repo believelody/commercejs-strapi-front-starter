@@ -125,6 +125,6 @@
             reference={paymentResult.customer_reference}
         />
     {:else if paymentError}
-        <DisplayFailedPayment />
+        <DisplayFailedPayment error={paymentResult.error} />
     {/if}
 </div>

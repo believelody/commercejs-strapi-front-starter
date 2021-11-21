@@ -6,7 +6,8 @@
         "or": "ou",
         "subtotal": "Sous-total",
         "total": "Total",
-        "update": "mise à jour ..."
+        "update": "mise à jour ...",
+        "validate": "Valider"
     },
     "header": {
         "connexion": "Connexion",
@@ -138,6 +139,10 @@
             "text": "Vous pouvez rentrer vos informations dans le formulaire d'adresse"
         },
         "password-forgotten": "Mot de passe oublié"
+    },
+    "discount": {
+        "title": "code promo",
+        "placeholder": "Ex: PROMO10"
     },
     "checkout": {
         "address": {

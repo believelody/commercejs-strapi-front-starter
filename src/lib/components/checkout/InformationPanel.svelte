@@ -1,8 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import { sidebar, shipping, paymentMethod, user, checkout, stripe } from '$lib/stores';
-    import { isAddressValid } from "$lib/utils/address.util";
-    import { isUserValid } from "$lib/utils/user.util";
+    import { requiredFieldsValidation } from "$lib/utils/form.util";
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
     import Identity from './Identity.svelte';
@@ -11,6 +10,8 @@
     import ShippingMethods from './ShippingMethods.svelte';
     import StripePaymentButton from '../button/StripePaymentButton.svelte';
     import PaypalPaymentButton from '../button/PaypalPaymentButton.svelte';
+import Discount from '../discount/Discount.svelte';
+import { emailValidation } from '../../utils/form.util';
 
 	let cardElement, isCardComplete = false;
 
@@ -18,8 +19,13 @@
         $sidebar = OrderSidebar
     }
 
-    $: paypalValid = !!(isUserValid($user) && isAddressValid($shipping) && $checkout.live.shipping.id);
-    $: stripeValid = !!(paypalValid && $stripe && cardElement && isCardComplete);
+    $: checkoutValid = !!(
+        requiredFieldsValidation($user, ["firstname", "email"]) &&
+        emailValidation($user.email) &&
+        requiredFieldsValidation($shipping, ["address1", "city", "zip", "country", "subdivision"]) &&
+        $checkout.live.shipping.id
+    );
+    $: stripeValid = !!(checkoutValid && $stripe && cardElement && isCardComplete);
 </script>
 
 <style>
@@ -36,6 +42,7 @@
     <div class="flex flex-col flex-grow overflow-y-hidden">
         <div class="h-full overflow-y-auto">
             <Identity />
+            <Discount />
             <Addresses />
             {#if $shipping?.country}
                 <ShippingMethods />
@@ -46,8 +53,8 @@
     {#if $paymentMethod === "stripe"}
         <StripePaymentButton isValid={stripeValid} {cardElement} />
     {:else if $paymentMethod === "paypal"}
-        <section class="w-full bg-blue-500 {paypalValid ? "pt-2" : "cursor-not-allowed py-4"} text-center">
-            {#if paypalValid}
+        <section class="w-full bg-blue-500 {checkoutValid ? "pt-2" : "cursor-not-allowed py-4"} text-center">
+            {#if checkoutValid}
                 <PaypalPaymentButton />
             {:else}
                 <span class="text-white text-md">{$t("checkout.payment.paypal.not-valid")}</span> 
