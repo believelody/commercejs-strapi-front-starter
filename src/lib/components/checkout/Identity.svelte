@@ -16,10 +16,18 @@
     {#if isGuest}
         <GuestForm bind:data={$user} />
     {:else}
-        <AuthForm />
+        {#if $user.customer}
+             <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex items-center justify-center">
+                 {$t("identity.greetings", { name: `${$user.customer.firstname} ${$user.customer.lastname}`})}
+             </div>
+        {:else}
+            <AuthForm />
+        {/if}
     {/if}
-    <label for="guest">
-        <input id="guest" name="guest" type="checkbox" bind:checked={isGuest} />
-        <span class="px-2 text-gray-600">{$t("identity.guest.checkbox")}</span>
-    </label>
+    {#if !$user.customer}
+        <label for="guest">
+            <input id="guest" name="guest" type="checkbox" bind:checked={isGuest} />
+            <span class="px-2 text-gray-600">{$t("identity.guest.checkbox")}</span>
+        </label>
+    {/if}
 </div>

@@ -110,9 +110,11 @@
     },
     "auth": {
         "login": "Se connecter",
-        "register": "Créer un compte"
+        "register": "Créer un compte",
+        "failed": "Email ou mot de passe incorrects"
     },
     "identity": {
+        "greetings": "Bienvenue {{name}}",
         "title": "Votre identité",
         "firstname": {
             "label": "Prénom",
