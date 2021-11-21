@@ -1,12 +1,22 @@
 <script>
-    import { t } from '$lib/i18n'
-import Fieldset from '../field/Fieldset.svelte';
+    import { t } from '$lib/i18n';
+    import { checkout, checkoutLoading, modal } from '$lib/stores';
+    import { checkDiscount } from '$lib/actions/checkout';
+    import Fieldset from '../field/Fieldset.svelte';
     import InputField from "../field/InputField.svelte";
+    import DiscountFailedModal from './DiscountFailedModal.svelte';
+    import DiscountSuccessModal from './DiscountSuccessModal.svelte';
 
-    let code;
+    let code, isCodeValid, loading = false;
 
-    function submit() {
-        console.log("submit");
+    async function submit() {
+        loading = true;
+        isCodeValid = await checkDiscount($checkout.id, code);
+        loading = false;
+        code = "";
+        modal.set({
+            show: isCodeValid ? DiscountSuccessModal : DiscountFailedModal
+        });
     }
 </script>
 
@@ -26,7 +36,7 @@ import Fieldset from '../field/Fieldset.svelte';
                     on:input={e => code = e.target.value}
                 />
                 <button
-                    disabled={!code}
+                    disabled={!code || $checkoutLoading || loading}
                     type="submit"
                     class="text-center xl:w-1/3 px-6 py-3 rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
                     {$t("common.validate")}

@@ -1,6 +1,6 @@
 import { baseUrl } from "../utils/url.util";
 import { headers } from "../utils/header.util";
-import { checkout } from "../stores";
+import { checkout, checkoutLoading } from "../stores";
 
 export const getCheckout = async (checkoutId) => {
     try {
@@ -87,6 +87,21 @@ export const checkVariant = async (checkoutId, itemId, variantId = "", groupId =
         const res = await fetch(path);
         const json = await res.json();
         console.log(json);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const checkDiscount = async (checkoutId, code) => {
+    try {
+        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/check/discount?code=${code}`);
+        const json = await res.json();
+        if (json.valid) {
+            checkoutLoading.set(true);
+            await getCheckout(checkoutId);
+            checkoutLoading.set(false);
+        }
+        return json.valid;
     } catch (error) {
         console.log(error);
     }

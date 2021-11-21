@@ -3,6 +3,7 @@
     import { t } from '$lib/i18n'
     import CartList from '../list/CartList.svelte';
     import ShippingInfo from './ShippingInfo.svelte';
+	import DiscountInfo from '../discount/DiscountInfo.svelte';
     import TotalCheckout from './TotalCheckout.svelte';
 
 	let cartLoading = false;
@@ -20,6 +21,7 @@
 		<span class="font-semibold text-indigo-500">{cartLoading ? $t("common.update") : $checkout.live.subtotal.formatted_with_symbol}</span>
 	</div>
 	<ShippingInfo loading={$checkoutLoading} shippingMethod={$checkout.live.shipping} />
+	<DiscountInfo />
 </div>
 <TotalCheckout loading={$checkoutLoading || cartLoading} total={$checkout.live.total.formatted_with_symbol} />
 

@@ -142,7 +142,17 @@
     },
     "discount": {
         "title": "code promo",
-        "placeholder": "Ex: PROMO10"
+        "placeholder": "Ex: PROMO10",
+        "label": "Réduction",
+        "empty": "Aucun code utilisé",
+        "success": {
+            "title": "Réduction ajoutée",
+            "description": "Votre code promo ou coupon de réduction a bien été ajouté. Votre panier a été mis à jour. Vous pouvez fermer cette fenêtre et continuer votre achat."
+        },
+        "failed": {
+            "title": "Erreur",
+            "description": "Votre code promo a peut-être expiré ou n'est pas correcte. Veuillez reessayer et vous assurez de sa conformité."
+        }
     },
     "checkout": {
         "address": {
