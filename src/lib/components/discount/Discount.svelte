@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import { checkout, checkoutLoading, modal } from '$lib/stores';
-    import { checkDiscount } from '$lib/actions/checkout';
+    import api from '$lib/api';
     import Fieldset from '../field/Fieldset.svelte';
     import InputField from "../field/InputField.svelte";
     import DiscountFailedModal from './DiscountFailedModal.svelte';
@@ -11,7 +11,7 @@
 
     async function submit() {
         loading = true;
-        isCodeValid = await checkDiscount($checkout.id, code);
+        isCodeValid = await api.checkout.checkDiscount($checkout.id, code);
         loading = false;
         code = "";
         modal.set({

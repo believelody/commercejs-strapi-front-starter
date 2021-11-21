@@ -1,24 +1,18 @@
 <script context="module">
-	import { baseUrl } from '$lib/utils/url.util';
+    import api from '$lib/api';
 
-	export async function load({ fetch }) {
-		try {
-			const res = await fetch(`${baseUrl}/products/category/pets`);
-			const { products, meta } = await res.json();
-			return {
-				props: { products, meta }
-			};
-		} catch (error) {
-			console.log(error);
-			return { props: { error } };
-		}
+	export async function load() {
+		const { products, meta } = await api.product.getProducts();
+		return {
+			props: { products, meta }
+		};
 	}
 </script>
 
 <script>
 	import ProductList from '$lib/components/products/ProductList.svelte';
 
-	export let products, meta, error;
+	export let products, meta;
 </script>
 
 <ProductList {products} />

@@ -3,8 +3,7 @@
     import { bind } from 'svelte-simple-modal';
     import { t } from '$lib/i18n';
     import { cart, modal, checkout } from '$lib/stores';
-    import { updateItemQuantity, deleteItem } from '$lib/actions/cart';
-    import { checkQuantity } from '$lib/actions/checkout';
+    import api from '$lib/api';
     import TrashIcon from '../svg/TrashIcon.svelte';
     import DangerModal from '../modal/DangerModal.svelte';
 
@@ -16,9 +15,9 @@
 		try {
 			dispatch("loading", true);
             if ($checkout) {
-                await checkQuantity($checkout.id, item.id, quantity, item.variant.id)
+                await api.checkout.checkQuantity($checkout.id, item.id, quantity, item.variant.id)
             }
-            await updateItemQuantity($cart.id, item.id, quantity);
+            await api.cart.updateItemQuantity($cart.id, item.id, quantity);
 		} catch (error) {
 			console.log(error);
 		} finally {

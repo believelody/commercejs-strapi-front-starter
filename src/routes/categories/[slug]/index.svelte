@@ -1,23 +1,12 @@
 <script context="module">
-import { baseUrl } from "../../../lib/utils/url.util";
+    import api from '$lib/api'
+    export async function load({ page }) {
+        const { slug } = page.params;
+        const { category } = await api.category.getCategories(slug);
+        const { products, meta } = await api.category.getProductByCategory();
 
-
-    export async function load({ fetch, page }) {
-        try {
-            const { slug } = page.params;
-            const categoryRes = await fetch(`${baseUrl}/categories/${slug}`);
-            const { category } = await categoryRes.json();
-            const productsRes = await fetch(`${baseUrl}/products/category/${slug}`);
-            const { products, meta } = await productsRes.json();
-
-            return {
-                props: { category, products, meta }
-            }
-        } catch (error) {
-            console.log(error);
-            return {
-                props: { error }
-            }
+        return {
+            props: { category, products, meta }
         }
     }
 </script>
@@ -25,7 +14,7 @@ import { baseUrl } from "../../../lib/utils/url.util";
 <script>
     import ProductList from "../../../lib/components/products/ProductList.svelte";
 
-    export let category, products, meta, error;
+    export let category, products, meta;
 </script>
 
 <style>

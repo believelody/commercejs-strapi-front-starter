@@ -11,7 +11,7 @@
         billing,
         isBillingSameAsShipping
     } from '$lib/stores';
-    import { onCaptureOrder } from '$lib/actions/checkout';
+    import api from '$lib/api';
     import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
     import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
 
@@ -30,11 +30,6 @@
         paymentProcessing = true;
         await pay();
         paymentProcessing = false;
-        // const timeout = setTimeout(() => {
-        //     paymentProcessing = false;
-            // paymentSuccess = false;
-        //     paymentError = true;
-        // }, 3000);
     });
 
     async function pay() {
@@ -93,7 +88,7 @@
                     }
                 }
 
-                paymentResult = await onCaptureOrder($checkout.id, orderData);
+                paymentResult = await api.checkout.onCaptureOrder($checkout.id, orderData);
                 if (paymentResult.status_payment === "paid") {
                     goto("/");
                     paymentSuccess = true;

@@ -3,20 +3,15 @@
 	import { goto } from '$app/navigation'
 	import { sidebar, cart, modal } from '$lib/stores';
 	import { t } from '$lib/i18n'
-	import { emptyCart, deleteItem, updateItemQuantity } from '$lib/actions/cart';
-	import CloseIcon from '../svg/CloseIcon.svelte';
+	import api from '$lib/api';
 	import DangerModal from '../modal/DangerModal.svelte';
 	import CartList from '../list/CartList.svelte';
 
 	let loading = false;
 
-	async function goToCheckout() {
-		try {
-			$sidebar = null;
-			await goto('/checkout');
-		} catch (error) {
-			console.log(error);
-		}
+	function goToCheckout() {
+		$sidebar = null;
+		goto('/checkout');
 	}
 
 	function showEmptyCartModal() {
@@ -25,7 +20,7 @@
 				title: $t("cart.modal.empty.title"),
 				description: $t("modal.description.default"),
 				actionCallback: async () => {
-					await emptyCart($cart.id);
+					await api.cart.emptyCart($cart.id);
 					$sidebar = null
 				}
 			})

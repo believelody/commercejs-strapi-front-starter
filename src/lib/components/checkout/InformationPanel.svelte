@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import { sidebar, shipping, paymentMethod, user, checkout, stripe } from '$lib/stores';
-    import { requiredFieldsValidation } from "$lib/utils/form.util";
+    import { requiredFieldsValidation, emailValidation } from "$lib/utils/form.util";
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
     import Identity from './Identity.svelte';
@@ -10,8 +10,7 @@
     import ShippingMethods from './ShippingMethods.svelte';
     import StripePaymentButton from '../button/StripePaymentButton.svelte';
     import PaypalPaymentButton from '../button/PaypalPaymentButton.svelte';
-import Discount from '../discount/Discount.svelte';
-import { emailValidation } from '../../utils/form.util';
+    import Discount from '../discount/Discount.svelte';
 
 	let cardElement, isCardComplete = false;
 

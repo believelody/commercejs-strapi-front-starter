@@ -1,15 +1,10 @@
 <script>
     import { t } from '$lib/i18n';
     import { shipping, billing, isBillingSameAsShipping, checkout } from '$lib/stores'
-import { onMount } from 'svelte';
     import { derived } from 'svelte/store';
     import AddressForm from "../form/AddressForm.svelte";
 
     let checkoutId;
-
-    // onMount(() => {
-    //     checkoutId = $checkout.id;
-    // })
 
     $: checkoutId = derived(checkout, $checkout => $checkout ? $checkout.id : checkoutId);
 </script>

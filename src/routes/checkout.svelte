@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	import { loadStripe } from '@stripe/stripe-js';
 	import { isServer } from 'svelte-stripe-js';
-	import { cart, checkout, checkoutLoading, stripe, user, shipping, billing, isBillingSameAsShipping } from '$lib/stores';
-	import { getCheckoutByCart, getCheckout } from '$lib/actions/checkout';
+	import { cart, checkout, checkoutLoading, stripe } from '$lib/stores';
+	import api from '$lib/api';
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';;
@@ -15,7 +15,7 @@
 		}
 		if ($cart) {
 			$checkoutLoading = true;
-			getCheckoutByCart($cart.id).finally(() => $checkoutLoading = false);
+			api.checkout.getCheckoutByCart($cart.id).finally(() => $checkoutLoading = false);
 		}
 	});
 

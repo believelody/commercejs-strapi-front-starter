@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import { getCountries, getSubdivisions } from '$lib/actions/checkout'
+    import api from '$lib/api';
     import InputField from '../field/InputField.svelte';
     import SelectField from '../field/SelectField.svelte';
 
@@ -10,8 +10,8 @@
         information[e.target.name] = e.target.value;
     }
     
-    $: countriesPromise = checkoutId && getCountries(checkoutId);
-    $: subdivisionsPromise = checkoutId && information?.country && getSubdivisions(checkoutId, information.country);
+    $: countriesPromise = checkoutId && api.checkout.getCountries(checkoutId);
+    $: subdivisionsPromise = checkoutId && information?.country && api.checkout.getSubdivisions(checkoutId, information.country);
 </script>
 
 <style>

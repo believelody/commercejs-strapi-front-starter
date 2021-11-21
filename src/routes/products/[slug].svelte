@@ -1,20 +1,12 @@
 <script context="module">
-    import { baseUrl } from "$lib/utils/url.util";
+    import api from '$lib/api';
 
-    export async function load({ fetch, page }) {
-        try {
-            const { slug } = page.params;
-            const res = await fetch(`${baseUrl}/products/${slug}`);
-            const { product } = await res.json();
+    export async function load({ page }) {
+        const { slug } = page.params;            
+        const { product } = await api.product.getProdyctBySlug(slug);
 
-            return {
-                props: { product }
-            }
-        } catch (error) {
-            console.log(error);
-            return {
-                props: { error }
-            }
+        return {
+            props: { product }
         }
     }
 </script>

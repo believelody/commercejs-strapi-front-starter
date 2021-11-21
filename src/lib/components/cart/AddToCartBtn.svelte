@@ -1,7 +1,7 @@
 <script>
     import { bind } from 'svelte-simple-modal';
     import { cart, modal } from "$lib/stores";
-    import { addToCart, createCart } from "$lib/actions/cart";
+    import api from "$lib/api";
     import { t } from '$lib/i18n'
     import ItemToCartSuccessModal from "../modal/ItemToCartSuccessModal.svelte";
 
@@ -22,9 +22,9 @@
             }
         }
         if (!$cart) {
-            await createCart();
+            await api.cart.createCart();
         }
-        await addToCart($cart.id, product.id, quantity, options);
+        await api.cart.addToCart($cart.id, product.id, quantity, options);
         loading = false;
         modal.set({
             show: bind(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity })

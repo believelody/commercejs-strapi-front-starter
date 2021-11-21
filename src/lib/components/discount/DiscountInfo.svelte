@@ -1,9 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
     import { checkout } from '$lib/stores';
-
-    $: console.log($checkout.live.discount.length > 0);
-    $: console.log(typeof $checkout.live.discount);
 </script>
 
 <style>
