@@ -1,10 +1,21 @@
 <script>
     import { t } from '$lib/i18n';
-    import { user } from '$lib/stores';
+    import { user, modal } from '$lib/stores';
+    import { bind } from 'svelte-simple-modal';
+    import { fullname } from '$lib/utils/user.util'
     import AuthForm from '../form/AuthForm.svelte';
     import GuestForm from '../form/GuestForm.svelte';
+    import RegisterSuccessModal from '../modal/RegisterSuccessModal.svelte';
     
     let isGuest = false;
+
+    function showRegisterSuccessModal({ success, data  }) {
+        if (success) {
+            modal.set({
+                show: bind(RegisterSuccessModal, { fullname: fullname(data.firstname, data.lastname) })
+            });
+        }
+    }
 </script>
 
 <style>
@@ -16,12 +27,16 @@
     {#if isGuest}
         <GuestForm bind:data={$user} />
     {:else}
-        {#if $user.customer}
-             <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex items-center justify-center">
-                 {$t("identity.greetings", { name: `${$user.customer.firstname} ${$user.customer.lastname}`})}
-             </div>
+        {#if !$user.customer}
+            <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex flex-col items-center justify-center">
+                <span class="font-medium">{$t("identity.greetings.name", { name: `${$user.customer.firstname} ${$user.customer.lastname}`})}</span>
+                <span>{$t("identity.greetings.email", { email: `${$user.customer.email}` })}</span>
+                {#if $user.customer.phone}
+                    <span>{$t("identity.greetings.phone", { phone: `${$user.customer.phone}` })}</span>
+                {/if}
+            </div>
         {:else}
-            <AuthForm />
+            <AuthForm on:registerEvent={e => showRegisterSuccessModal(e.detail)} />
         {/if}
     {/if}
     {#if !$user.customer}

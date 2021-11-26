@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
-    import api from '$lib/api'
+    import api from '$lib/api';
     import { emailValidation } from '../../utils/form.util';
     import InputField from '../field/InputField.svelte';
 
@@ -36,6 +36,7 @@
                 placeholder={$t('identity.email.placeholder')}
                 value={identifier}
                 on:input={e => identifier = e.target.value}
+                on:focus={() => hasError = false}
             />
             <InputField
                 name="password"
@@ -45,20 +46,21 @@
                 placeholder={$t('identity.password.placeholder')}
                 value={password}
                 on:input={e => password = e.target.value}
+                on:focus={() => hasError = false}
             />
         </div>
         {#if hasError}
             <div class="flex items-center justify-center mt-2">
-                <p class="text-sm text-red-400 text-center">{$t("auth.failed")}</p>
+                <p class="text-sm text-red-400 text-center">{$t("auth.login.failed")}</p>
             </div>
         {/if}
         <div class="flex items-center justify-center mt-2">
             <button type="button" class="text-sm text-gray-400 text-center">{$t("identity.password-forgotten")} ?</button>
         </div>
         <div class="my-2 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
-            <button disabled={!isValid || loading} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">{$t("auth.login")}</button>
+            <button disabled={!isValid || loading} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">{$t("auth.login.submit")}</button>
             <span class="px-16 my-2">{$t("common.or")}</span>
-            <button type="button" on:click={e => dispatch("auth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register")}</button>
+            <button type="button" on:click={e => dispatch("toggleAuth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register.submit")}</button>
         </div>
     </fieldset>
 </form>

@@ -1,33 +1,47 @@
 <script>
-	export let value, name, label = "", placeholder, type = "text", required;
-	let error, complete = false;
+import HidePasswordIcon from "../svg/HidePasswordIcon.svelte";
+import ShowPasswordIcon from "../svg/ShowPasswordIcon.svelte";
 
-	function onBlur(e) {
-		
-	}
+
+	export let value, name, hint, label = "", placeholder, type = "text", required;
+	let showPwd = false;
 </script>
 
-<label
-	for={name}
-	class="flex xl:w-1/2 items-center py-3 px-2 {complete ? "border-2 border-green-400 rounded" : error ? "border-2 border-red-400 rounded" : "border-b border-gray-300"} xl:border-none"
->
-	<span class="sm:text-right xl:mr-2">
-		{label}
-		{#if required}
-			*
+<div class="flex flex-col xl:w-1/2 items-center py-3 px-2 border-b border-gray-300 xl:border-none">
+	<label
+		for={name}
+		class="flex items-center w-full"
+	>
+		<span class="sm:text-right xl:mr-2">
+			{label}
+			{#if required}
+				*
+			{/if}
+		</span>
+		<input
+			value={value ?? ""}
+			{name}
+			type={showPwd ? "text" : type}
+			id={name}
+			on:input
+			on:focus
+			class="flex-grow focus:outline-none px-3 xl:px-0"
+			{placeholder}
+		/>
+		{#if type === "password"}
+			<span on:click={() => showPwd = !showPwd}>
+				{#if showPwd}
+					<HidePasswordIcon color="blue-500" />
+				{:else}
+					<ShowPasswordIcon />
+				{/if}
+			</span>
 		{/if}
-	</span>
-	<input
-		value={value ?? ""}
-		{name}
-		{type}
-        id={name}
-		on:input
-		on:blur={onBlur}
-		class="flex-grow focus:outline-none px-3 xl:px-0"
-		{placeholder}
-	/>
-</label>
+	</label>
+	{#if hint}
+		<span class="text-xs text-gray-400 italic">{hint}</span>
+	{/if}
+</div>
 
 <style>
 	* {

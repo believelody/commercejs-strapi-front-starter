@@ -1,5 +1,5 @@
 <script>
-	export let color, size = 8;
+	export let color = "black", size = 8;
 </script>
 
 <svg class="h-{size} w-{size} text-{color}" fill="none" viewBox="0 0 24 24" stroke="currentColor">

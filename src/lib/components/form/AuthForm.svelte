@@ -2,14 +2,14 @@
     import LoginForm from "./LoginForm.svelte";
     import RegisterForm from "./RegisterForm.svelte";
 
-    let isLogin = true;
+    let isLogin = false;
 </script>
 
 <style>
 </style>
 
 {#if isLogin}
-    <LoginForm on:auth={() => isLogin = false} />
+    <LoginForm on:loginEvent on:toggleAuth={() => isLogin = false} />
 {:else}
-    <RegisterForm on:auth={() => isLogin = true} />
+    <RegisterForm on:registerEvent on:toggleAuth={() => isLogin = true} />
 {/if}

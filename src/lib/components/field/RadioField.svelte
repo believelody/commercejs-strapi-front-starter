@@ -1,5 +1,5 @@
 <script>
-	export let name, group, label = "", className, value;
+	export let name, id, group, label = "", className, value;
 </script>
 
 <label class={className}>
@@ -8,7 +8,7 @@
         on:change
         bind:group
         {name}
-        id={name}
+        id={id || name}
         {value}
         class="focus:outline-none px-3 xl:px-0"
     />

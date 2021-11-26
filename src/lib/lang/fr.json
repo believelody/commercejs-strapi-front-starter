@@ -109,13 +109,31 @@
         }
     },
     "auth": {
-        "login": "Se connecter",
-        "register": "Créer un compte",
-        "failed": "Email ou mot de passe incorrects"
+        "login": {
+            "submit": "Se connecter",
+            "failed": "Email ou mot de passe incorrect"
+        },
+        "register": {
+            "submit": "Créer un compte",
+            "failed": "Cet email est déjà utilisé"
+        },
+        "success": {
+            "title": "Merci de faire partie de la communauté PetLovers, {{name}}",
+            "description": "Nous vous avons envoyé un email de confirmation avec un code. Celà ne vous empêche de faire vos achats sur notre site-web. Vous aurez cependant quelques restrictions. Alors ne tardez pas et confirmez votre email ! Cela vous prendra quelques secondes, promis ;)"
+        }
     },
     "identity": {
-        "greetings": "Bienvenue {{name}}",
+        "greetings": {
+            "name": "Bienvenue {{name}}",
+            "email": "Votre email: {{email}}",
+            "phone": "Votre numéro de téléphone: {{phone}}"
+        },
         "title": "Votre identité",
+        "civility": {
+            "title": "Civilité *",
+            "m": "Monsieur",
+            "f": "Madame"
+        },
         "firstname": {
             "label": "Prénom",
             "placeholder": "Entrez votre prénom"
@@ -130,7 +148,8 @@
         },
         "password": {
             "label": "Mot de passe",
-            "placeholder": "Votre mot de passe"
+            "placeholder": "Votre mot de passe",
+            "hint": "8 caractères minimum, dont 1 lettre et 1 chiffre"
         },
         "telephone": {
             "label": "Téléphone",

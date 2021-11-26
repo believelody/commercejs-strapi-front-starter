@@ -70,10 +70,16 @@
                                             quantity: item.quantity 
                                         }
                                     })),
-                    customer: {
+                    customer: $user.customer ?? {
                         firstname: $user.firstname,
                         lastname: $user.lastname,
                         email: $user.email,
+                        phone: $user.phone,
+                        meta: {
+                            shipping: [shippingObj],
+                            billing: [billingObj],
+                            isGuest: true
+                        }
                     },
                     shipping: shippingObj,
                     billing: billingObj,

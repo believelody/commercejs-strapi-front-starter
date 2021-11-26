@@ -4,7 +4,7 @@
 	import { Moon } from 'svelte-loading-spinners';
 	import Modal from 'svelte-simple-modal';
 	import { navigating, page } from '$app/stores';
-	import { cart, modal, sidebar, locale } from '$lib/stores';
+	import { cart, modal, sidebar, locale, user } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
@@ -22,6 +22,7 @@
 	}
 
 	$: locale.useLocalStorage();
+	$: user.useLocalStorage();
 </script>
 
 {#if $modal}
