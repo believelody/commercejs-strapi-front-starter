@@ -109,11 +109,29 @@
         }
     },
     "account": {
+        "image": {
+            "no-image": {
+                "text1": "Pas de photos",
+                "text2": "Téléchargez-en une en cliquant ici"
+            }
+        },
+        "dashboard": {
+            "link": "Tableau de bord"
+        },
         "orders": {
             "link": "Mes commandes"
         },
         "profile": {
-            "link": "Mon profil"
+            "link": "Gérer mon compte"
+        },
+        "addresses": {
+            "link": "Mes adresses"
+        },
+        "wishlist": {
+            "link": "Mes produits favoris"
+        },
+        "reviews": {
+            "link": "Mes avis"
         },
         "logout": "Se déconnecter"
     },

@@ -1,4 +1,5 @@
 import { user, jwt } from '$lib/stores';
+import { profile } from '../stores';
 import { authenticateHeaders, headers } from '../utils/header.util';
 import { baseUrl } from '../utils/url.util';
 
@@ -53,7 +54,8 @@ export const getMe = async () => {
             headers: authenticateHeaders()
         });
         const json = await res.json();
-        return json;
+        profile.set(json);
+        profile.useLocalStorage()
     } catch (error) {
         console.log(error);
     }
