@@ -27,6 +27,7 @@ export const createWritableStore = (key, startValue = null) => {
 };
 
 export const user = createWritableStore('user', {});
+export const jwt = createWritableStore('jwt');
 export const cart = createWritableStore('cart');
 export const locale = createWritableStore("lang", "fr");
 export const checkout = writable(null);

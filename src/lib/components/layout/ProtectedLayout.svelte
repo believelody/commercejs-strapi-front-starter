@@ -1,17 +1,27 @@
 <script>
     import { onMount } from "svelte";
-    import { goto } from "$app/navigation";
-    import { user } from "$lib/stores";
+    import { navigating } from '$app/stores';
+    import Moon from "svelte-loading-spinners/dist/ts/Moon.svelte";
+    import { jwt } from '$lib/stores';
+    import Loading from "../loading/Loading.svelte";
+
+    let isAuth = false;
 
     onMount(() => {
-        if (!$user) {
-            goto("/sign-in");
+        if (jwt) {
+            isAuth = true;
+        } else {
+            if (window) {
+                window.history.back();
+            }
         }
     });
 </script>
 
-{#if $user}
-    <slot />
+{#if !isAuth || $navigating}
+    <Loading>
+        <Moon size="260" color="#FF3E00" unit="px" />
+    </Loading>
 {:else}
-    <div>Loading...</div>
+    <slot />
 {/if}

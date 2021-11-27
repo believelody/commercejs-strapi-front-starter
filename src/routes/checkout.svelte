@@ -7,6 +7,7 @@
 	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';;
+import Loading from '../lib/components/loading/Loading.svelte';
 
 	onMount(async () => {
 		if (!isServer) {
@@ -39,16 +40,7 @@
 		<OrderPanel />
 	</div>
 {:else}
-	<section>
+	<Loading>
 		<Moon size="260" color="#FF3E00" unit="px" />
-	</section>
+	</Loading>
 {/if}
-
-<style>
-	section {
-		top: 50%;
-		left: 50%;
-		position: absolute;
-		transform: translate3d(-50%, -50%, 0);
-	}
-</style>

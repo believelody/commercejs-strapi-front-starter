@@ -108,14 +108,38 @@
             }
         }
     },
+    "account": {
+        "orders": {
+            "link": "Mes commandes"
+        },
+        "profile": {
+            "link": "Mon profil"
+        },
+        "logout": "Se déconnecter"
+    },
     "auth": {
         "login": {
             "submit": "Se connecter",
+            "loading": "Connexion en cours ...",
             "failed": "Email ou mot de passe incorrect"
         },
         "register": {
             "submit": "Créer un compte",
+            "loading": "Création du compte en cours...",
             "failed": "Cet email est déjà utilisé"
+        },
+        "code": {
+            "title": "Confirmation d'email",
+            "placeholder": "Entrez votre code reçu par mail",
+            "no-code": "Pas de code ? Cliquez ici pour en recevoir un autre.",
+            "resent": "Un nouveau code vient de vous être envoyé.",
+            "error": "Une erreur a été détectée. Nous vous prions de nous excuser.",
+            "invalid": "Le code utilisé n'est pas correcte.",
+            "expired": "Le code utilisé est expiré.",
+            "success": {
+                "title": "Email vérifié",
+                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
+            }
         },
         "success": {
             "title": "Merci de faire partie de la communauté PetLovers, {{name}}",

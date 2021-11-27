@@ -7,6 +7,7 @@
     import DiscountFailedModal from './DiscountFailedModal.svelte';
     import DiscountSuccessModal from './DiscountSuccessModal.svelte';
 
+    export let withoutShadow = false;
     let code, isCodeValid, loading = false;
 
     async function submit() {
@@ -27,7 +28,7 @@
 <div class="mx-2 md:mx-12 rounded-md mb-8">
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("discount.title")}</h2>
     <form on:submit|preventDefault={submit}>
-        <Fieldset>
+        <Fieldset {withoutShadow}>
             <div class="w-full flex flex-col xl:flex-row xl:justify-between">
                 <InputField
                     name="code"

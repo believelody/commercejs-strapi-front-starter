@@ -1,23 +1,24 @@
 <script>
-  import { t } from "$lib/i18n";
   import { goto } from '$app/navigation';
-  import { user } from '$lib/stores';
+  import { t } from "$lib/i18n";
+  import { user, modal, jwt } from '$lib/stores';
   // import { locale } from '$lib/stores';
   import Nav from "../nav/Nav.svelte";
   import CartNav from "../cart/CartNav.svelte";
   import UserCircleIcon from "../svg/UserCircleIcon.svelte";
   import ShortRightArrowIcon from "../svg/ShortRightArrowIcon.svelte";
+  import AuthModal from "../modal/AuthModal.svelte";
 
-  function showMyAccountModal() {
-    if ($user.confirmed) {
-      goto("/my-account");
-    } else {
-      console.log("not confirmed yet");
-    }
-  }
+  // function showMyAccountModal() {
+  //   goto(`/my-account/${$user.username}`);
+  // }
 
   function showLoginModal() {
-    console.log("login");
+    modal.set({
+      show: AuthModal,
+      closeOnEsc: false,
+      closeOnOuterClick: false,
+    })
   }
 </script>
 
@@ -37,8 +38,8 @@
     <Nav />
     <div class="flex">
       <CartNav />
-      {#if $user.customer}
-        <button on:click={showMyAccountModal} class="inline-flex items-center lg:justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+      {#if $jwt}
+        <button on:click={() => goto(`/my-account/${$user.username}`)} class="inline-flex items-center lg:justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
           <span class="lg:hidden">{$t("header.my-account")}</span>
           <UserCircleIcon color="gray-600" />
       </button>

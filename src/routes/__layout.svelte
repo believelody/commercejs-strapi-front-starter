@@ -4,10 +4,11 @@
 	import { Moon } from 'svelte-loading-spinners';
 	import Modal from 'svelte-simple-modal';
 	import { navigating, page } from '$app/stores';
-	import { cart, modal, sidebar, locale, user } from '$lib/stores';
+	import { cart, modal, sidebar, locale, user, jwt } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
+	import Loading from '../lib/components/loading/Loading.svelte';
 
 	$: {
 		if (!$cart) {
@@ -23,6 +24,7 @@
 
 	$: locale.useLocalStorage();
 	$: user.useLocalStorage();
+	$: jwt.useLocalStorage();
 </script>
 
 {#if $modal}
@@ -35,9 +37,9 @@
 	<Header />
 	<main>
 		{#if $navigating}
-			<section>
+			<Loading>
 				<Moon size="260" color="#FF3E00" unit="px" />
-			</section>
+			</Loading>
 		{:else}
 			<slot />
 		{/if}
@@ -49,11 +51,5 @@
 	main {
 		flex: 1 0 auto;
 		position: relative;
-	}
-	section {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate3d(-50%, -50%, 0);
 	}
 </style>
