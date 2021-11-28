@@ -1,6 +1,6 @@
 <script>
-	import { modal } from '$lib/stores';
 	import { t } from '$lib/i18n';
+	import {getContext} from "svelte";
 
 	export let title,
 		description,
@@ -9,6 +9,7 @@
 		loadingText = $t('modal.loading.text.deleting'),
 		actionCallback = null;
 	let loading = false;
+	const { close } = getContext("simple-modal");
 
 	async function actionFn() {
 		try {
@@ -16,7 +17,7 @@
 			if (actionCallback) {
 				await actionCallback();
 			}
-			$modal = null;
+			close();
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -54,7 +55,7 @@
 	</button>
 	<button
 		type="button"
-		on:click={() => ($modal = null)}
+		on:click={close}
 		class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-75 disabled:cursor-wait"
 	>
 		{cancelText}

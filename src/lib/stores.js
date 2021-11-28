@@ -1,5 +1,5 @@
 import { browser } from "$app/env";
-import { writable } from "svelte/store";
+import {get, writable} from "svelte/store";
 
 export const createWritableStore = (key, startValue = null) => {
 	const { subscribe, set } = writable(startValue);
@@ -32,7 +32,6 @@ export const jwt = createWritableStore('jwt');
 export const cart = createWritableStore('cart');
 export const locale = createWritableStore("lang", "fr");
 export const checkout = writable(null);
-export const modal = writable(null);
 export const sidebar = writable(null);
 export const shipping = writable({});
 export const billing = writable({});
@@ -43,9 +42,10 @@ export const paypal = writable(null);
 export const checkoutLoading = writable(false);
 
 export const resetStores = () => {
-	modal.set(null);
-	user.set({});
-	user.useLocalStorage();
+	if (!get(jwt)) {
+		user.set({});
+		user.useLocalStorage();
+	}
 	cart.set(null);
 	cart.useLocalStorage();
 	checkout.set(null);

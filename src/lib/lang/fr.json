@@ -113,6 +113,9 @@
         }
     },
     "account": {
+        "draft": {
+            "confirm": "Vos modifications seront perdues si vous quittez sans sauvegarder. Continuer ?"
+        },
         "image": {
             "no-image": {
                 "text1": "Pas de photos",
@@ -126,7 +129,20 @@
             "link": "Mes commandes"
         },
         "profile": {
-            "link": "Gérer mon compte"
+            "link": "Gérer mon compte",
+            "birthday": {
+                "label": "Votre date de naissance",
+                "placeholder": "Nous souhaitons connaître votre année de naissance",
+                "hint": "Nous souhaitons connaître votre année de naissance"
+            },
+            "subscribed": {
+                "label": "S'abonner à la newsletter"
+            },
+            "update": {
+                "failed": "Nous avons rencontré une erreur. Veuillez nous en excuser.",
+                "submit": "Mettre à jour mes informations personnelles",
+                "loading": "Mise à jour"
+            }
         },
         "addresses": {
             "link": "Mes adresses"

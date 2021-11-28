@@ -20,24 +20,16 @@
 </script>
 <script>
     import { t } from '$lib/i18n';
+    import CenterSection from '$lib/components/center-section/CenterSection.svelte';
 
     export let orders = [], pagination = null, error = null;
 </script>
 
-<style>
-    section {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
-    }
-</style>
-
 {#each orders as order}
     <pre>{JSON.stringify(order, null, 2)}</pre>
 {:else}
-    <section class="rounded p-6 w-auto bg-indigo-200 flex flex-col justify-center">
+    <CenterSection class="rounded p-6 w-auto bg-indigo-200 flex flex-col justify-center">
         <span>{$t("order.empty")}</span>
         <a href="/" class="underline hover:text-blue-700">{$t("order.link")}</a>
-    </section>
+    </CenterSection>
 {/each}

@@ -1,19 +1,18 @@
 <script>
-    import { t } from '$lib/i18n';
-    import { user, modal } from '$lib/stores';
-    import { bind } from 'svelte-simple-modal';
-    import { fullname } from '$lib/utils/user.util'
+    import {t} from '$lib/i18n';
+    import {user} from '$lib/stores';
     import AuthForm from '../form/AuthForm.svelte';
     import GuestForm from '../form/GuestForm.svelte';
     import RegisterSuccessModal from '../modal/RegisterSuccessModal.svelte';
-    
-    let isGuest = false;
+    import {getContext} from "svelte";
+    import CheckboxField from "../field/CheckboxField.svelte";
 
-    function showRegisterSuccessModal({ success, data  }) {
+    let isGuest = false;
+    const {open} = getContext("simple-modal");
+
+    function showRegisterSuccessModal({success, data}) {
         if (success) {
-            modal.set({
-                show: bind(RegisterSuccessModal, { fullname: fullname(data.firstname, data.lastname) })
-            });
+            open(RegisterSuccessModal, {fullname: `${data.firstname} ${data.lastname}`});
         }
     }
 </script>
@@ -40,9 +39,10 @@
         {/if}
     {/if}
     {#if !$user.customer}
-        <label for="guest">
-            <input id="guest" name="guest" type="checkbox" bind:checked={isGuest} />
-            <span class="px-2 text-gray-600">{$t("identity.guest.checkbox")}</span>
-        </label>
+        <CheckboxField
+                bind:checked={{isGuest}}
+                name="guest"
+                label={$t("identity.guest.checkbox")}
+        />
     {/if}
 </div>

@@ -1,23 +1,23 @@
 <script>
     import { t } from '$lib/i18n';
-    import { checkout, checkoutLoading, modal } from '$lib/stores';
+    import { checkout, checkoutLoading } from '$lib/stores';
     import api from '$lib/api';
     import Fieldset from '../field/Fieldset.svelte';
     import InputField from "../field/InputField.svelte";
     import DiscountFailedModal from './DiscountFailedModal.svelte';
     import DiscountSuccessModal from './DiscountSuccessModal.svelte';
+    import {getContext} from "svelte";
 
     export let withoutShadow = false;
     let code, isCodeValid, loading = false;
+    const { open } = getContext("simple-modal");
 
     async function submit() {
         loading = true;
         isCodeValid = await api.checkout.checkDiscount($checkout.id, code);
         loading = false;
         code = "";
-        modal.set({
-            show: isCodeValid ? DiscountSuccessModal : DiscountFailedModal
-        });
+        open(isCodeValid ? DiscountSuccessModal : DiscountFailedModal);
     }
 </script>
 

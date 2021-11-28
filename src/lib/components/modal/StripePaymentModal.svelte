@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import { Jumper } from "svelte-loading-spinners";
     import { goto } from '$app/navigation';
     import { t } from '$lib/i18n';
     import { 
@@ -14,6 +13,7 @@
     import api from '$lib/api';
     import DisplaySuccessPayment from "../display/DisplaySuccessPayment.svelte";
     import DisplayFailedPayment from "../display/DisplayFailedPayment.svelte";
+    import StripePaymentLoading from "../loading/StripePaymentLoading.svelte";
 
     export let cardElement;
     let paymentError,
@@ -111,11 +111,7 @@
 
 <div class="bg-white flex items-center justify-center px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
     {#if paymentProcessing}
-        <section class="h-4/5 flex flex-col justify-center items-center h-auto">
-            <span class="mb-4 font-medium text-lg">{$t("checkout.payment.processing1")},</span>
-            <Jumper size="260" color="#FF3E00" unit="px" />
-            <span class="mt-4 font-medium text-lg">{$t("checkout.payment.processing2")}.</span>
-        </section>
+        <StripePaymentLoading />
     {:else if paymentSuccess}
         <DisplaySuccessPayment
             user={$user}

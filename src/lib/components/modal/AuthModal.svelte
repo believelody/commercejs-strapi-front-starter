@@ -1,15 +1,17 @@
 <script>
     import { goto } from '$app/navigation';
-    import { modal, user, jwt } from '$lib/stores';
+    import {getContext} from "svelte";
+    import { jwt } from '$lib/stores';
     import LoginForm from '../form/LoginForm.svelte';
     import RegisterForm from '../form/RegisterForm.svelte';
 
     let isLogin = true;
+    const { close } = getContext("simple-modal");
 
     function gotoMyAccount() {
         if (jwt) {
-            goto(`/my-account/${$user.username}`);
-            modal.set(null);
+            goto(`/my-account`);
+            close();
         }
     }
 </script>

@@ -1,9 +1,27 @@
 <script>
+    import {getContext, onMount} from 'svelte';
     import { page } from '$app/stores';
     import { t } from '$lib/i18n';
-    import { profile } from '$lib/stores';
+    import api from '$lib/api'
+    import { profile, user } from '$lib/stores';
+    import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
     import ProtectedLayout from '../../lib/components/layout/ProtectedLayout.svelte';
-import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
+    import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
+
+    const { open } = getContext("simple-modal");
+
+    onMount(async () => {
+        if ($user.confirmed) {
+            await api.auth.getMe();
+        } else {
+            open(ConfirmationEmailModal);
+            if (window) {
+                window.history.back();
+            }
+        }
+    });
+
+    $: !$profile && profile.useLocalStorage();
 </script>
 
 <ProtectedLayout>

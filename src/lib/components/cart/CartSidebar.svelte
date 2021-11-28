@@ -1,29 +1,27 @@
 <script>
-	import { bind } from 'svelte-simple-modal';
+	import {getContext, onDestroy} from "svelte";
 	import { goto } from '$app/navigation'
-	import { sidebar, cart, modal } from '$lib/stores';
+	import { sidebar, cart } from '$lib/stores';
 	import { t } from '$lib/i18n'
 	import api from '$lib/api';
 	import DangerModal from '../modal/DangerModal.svelte';
 	import CartList from '../list/CartList.svelte';
 
 	let loading = false;
+	const { open } = getContext("simple-modal");
 
-	function goToCheckout() {
+	onDestroy(() => {
 		$sidebar = null;
-		goto('/checkout');
-	}
+	});
 
 	function showEmptyCartModal() {
-		modal.set({
-			show: bind(DangerModal, {
-				title: $t("cart.modal.empty.title"),
-				description: $t("modal.description.default"),
-				actionCallback: async () => {
-					await api.cart.emptyCart($cart.id);
-					$sidebar = null
-				}
-			})
+		open(DangerModal, {
+			title: $t("cart.modal.empty.title"),
+			description: $t("modal.description.default"),
+			actionCallback: async () => {
+				await api.cart.emptyCart($cart.id);
+				$sidebar = null
+			}
 		});
 	}
 </script>
@@ -42,7 +40,7 @@
 			class="py-2 w-full border border-transparent shadow-sm text-base font-medium text-white bg-gray-400 hover:bg-gray-500 disabled:opacity-75 disabled:cursor-wait"
 		>
 			{$t("cart.cta.empty")}
-		</button>	
+		</button>
 
 		<div class="actions py-2 px-4 w-full">
 			<div class="flex justify-between text-base font-medium text-gray-900">
@@ -51,17 +49,17 @@
 			</div>
 			<p class="mt-0.5 text-sm text-gray-500">{$t("cart.shipping-taxes")}</p>
 			<div class="mt-6">
-				<button
-					disabled={loading}
-					on:click={goToCheckout}
-					class="text-center w-full px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:cursor-wait"
+				<a
+					id="cart-id-goto-checkout"
+					href="/checkout"
+					class="flex flex-grow justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:cursor-wait"
 				>
 					{#if loading}
 						{$t("cart.cta.loading")}
 					{:else}
 						{$t("cart.cta.checkout")}
 					{/if}
-				</button>
+				</a>
 			</div>
 			<div class="mt-6 flex justify-center text-sm text-center text-gray-500">
 				<p>

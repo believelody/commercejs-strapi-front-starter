@@ -1,18 +1,18 @@
 <script>
     import { goto } from '$app/navigation';
     import { t } from '$lib/i18n';
-    import { user } from '$lib/stores';
+    import api from '$lib/api';
     import ConfirmationEmailForm from "../form/ConfirmationEmailForm.svelte";
-import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
+    import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
 
     let success = false;
 
-    function handleSubmitEvent({ detail }) {
+    async function handleSubmitEvent({ detail }) {
         console.log(detail);
         if (detail.success) {
             success = detail.success
-            $user.confirmed = true;
-            goto(`/my-account/${$user.username}`);
+            await api.auth.getMe()
+            goto(`/my-account`);
         }
     }
 </script>

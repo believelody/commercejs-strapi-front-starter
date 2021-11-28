@@ -4,10 +4,9 @@
 	import { isServer } from 'svelte-stripe-js';
 	import { cart, checkout, checkoutLoading, stripe } from '$lib/stores';
 	import api from '$lib/api';
-	import Moon from 'svelte-loading-spinners/dist/ts/Moon.svelte';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
-	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';;
-import Loading from '../lib/components/loading/Loading.svelte';
+	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
+	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
 
 	onMount(async () => {
 		if (!isServer) {
@@ -40,7 +39,5 @@ import Loading from '../lib/components/loading/Loading.svelte';
 		<OrderPanel />
 	</div>
 {:else}
-	<Loading>
-		<Moon size="260" color="#FF3E00" unit="px" />
-	</Loading>
+	<MoonLoading />
 {/if}

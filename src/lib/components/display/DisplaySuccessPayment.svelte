@@ -1,13 +1,15 @@
 <script>
 	import { t } from '$lib/i18n';
-    import { resetStores, modal } from '$lib/stores';
+    import { resetStores } from '$lib/stores';
     import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
+    import {getContext} from "svelte";
 
     export let live, user, shipping, billing, isBillingSameAsShipping, reference;
+    const { close } = getContext("simple-modal");
 
     function hideModal() {
         resetStores();
-        $modal = null;
+        close();
     }
 </script>
 

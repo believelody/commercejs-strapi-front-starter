@@ -3,7 +3,7 @@
 
     export async function load({ page }) {
         const { slug } = page.params;            
-        const { product } = await api.product.getProdyctBySlug(slug);
+        const { product } = await api.product.getProductBySlug(slug);
 
         return {
             props: { product }

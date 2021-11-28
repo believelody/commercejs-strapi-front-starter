@@ -1,42 +1,39 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    import { bind } from 'svelte-simple-modal';
-    import { t } from '$lib/i18n';
-    import { cart, modal, checkout } from '$lib/stores';
+    import {createEventDispatcher, getContext} from 'svelte';
+    import {t} from '$lib/i18n';
+    import {cart, checkout} from '$lib/stores';
     import api from '$lib/api';
     import TrashIcon from '../svg/TrashIcon.svelte';
     import DangerModal from '../modal/DangerModal.svelte';
+    import {deleteItem} from "../../api/cart";
 
     export let items, loading;
-
     const dispatch = createEventDispatcher();
+    const {open} = getContext("simple-modal");
 
-	async function updateQuantity(item, quantity) {
-		try {
-			dispatch("loading", true);
+    async function updateQuantity(item, quantity) {
+        try {
+            dispatch("loading", true);
             if ($checkout) {
                 await api.checkout.checkQuantity($checkout.id, item.id, quantity, item.variant.id)
             }
             await api.cart.updateItemQuantity($cart.id, item.id, quantity);
-		} catch (error) {
-			console.log(error);
-		} finally {
-			dispatch("loading", false);
-		}
-	}
+        } catch (error) {
+            console.log(error);
+        } finally {
+            dispatch("loading", false);
+        }
+    }
 
-	function showRemoveItemModal(item) {
-		modal.set({
-            show: bind(DangerModal, {
-				title: $t("cart.modal.delete-item.title", { name: item.name }),
-				description: $t('cart.modal.delete-item.description'),
-				actionCallback: async () => {
-					await deleteItem($cart.id, item.id);
-				}
-			}),
-            closeButton: false
+    function showRemoveItemModal(item) {
+        open(DangerModal, {
+            title: $t("cart.modal.delete-item.title", {name: item.name}),
+            description: $t('cart.modal.delete-item.description'),
+            actionCallback: async () => {
+                await deleteItem($cart.id, item.id);
+            }
         });
-	}
+    }
 </script>
 
 <style>
@@ -50,13 +47,13 @@
                 {#each items as item}
                     <li class="py-6 flex">
                         <a
-                            href="/products/{item.permalink}"
-                            class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
+                                href="/products/{item.permalink}"
+                                class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
                         >
                             <img
-                                src={item.image.url}
-                                alt={item.product_name}
-                                class="w-full h-full object-center object-cover"
+                                    src={item.image.url}
+                                    alt={item.product_name}
+                                    class="w-full h-full object-center object-cover"
                             />
                         </a>
 
@@ -77,27 +74,28 @@
                             <div class="flex items-center justify-between text-sm">
                                 <p class="text-gray-500">
                                     <button
-                                        disabled={item.quantity <= 1 || loading}
-                                        on:click={() => updateQuantity(item, item.quantity - 1)}
-                                        class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
-                                        >-</button
-                                    >
-                                    <span class="mx-4 text-lg">{item.quantity} x {item.price.formatted_with_symbol}</span>
+                                            disabled={item.quantity <= 1 || loading}
+                                            on:click={() => updateQuantity(item, item.quantity - 1)}
+                                            class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
+                                        >-
+                                    </button>
+                                    <span class="mx-4 text-lg">{item.quantity}
+                                        x {item.price.formatted_with_symbol}</span>
                                     <button
-                                        disabled={item.quantity >= 5 || loading}
-                                        on:click={() => updateQuantity(item, item.quantity + 1)}
-                                        class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
-                                        >+</button
-                                    >
+                                            disabled={item.quantity >= 5 || loading}
+                                            on:click={() => updateQuantity(item, item.quantity + 1)}
+                                            class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
+                                        >+
+                                    </button>
                                 </p>
                                 <div>
                                     <button
-                                        on:click={() => showRemoveItemModal(item)}
-                                        type="button"
-                                        class="font-medium text-indigo-600 hover:text-indigo-500 hover:bg-red-200 p-2 rounded"
+                                            on:click={() => showRemoveItemModal(item)}
+                                            type="button"
+                                            class="font-medium text-indigo-600 hover:text-indigo-500 hover:bg-red-200 p-2 rounded"
                                     >
                                         <span class="sr-only">{$t("cart.cta.remove-item")}</span>
-                                        <TrashIcon size={6} color="red-400" />
+                                        <TrashIcon size={6} color="red-400"/>
                                     </button>
                                 </div>
                             </div>

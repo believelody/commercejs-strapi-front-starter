@@ -1,12 +1,13 @@
 <script>
-    import { bind } from 'svelte-simple-modal';
-    import { cart, modal } from "$lib/stores";
+    import { cart } from "$lib/stores";
     import api from "$lib/api";
     import { t } from '$lib/i18n'
     import ItemToCartSuccessModal from "../modal/ItemToCartSuccessModal.svelte";
+    import {getContext} from "svelte";
 
     export let product, quantity, selectedColor, selectedSize;
     let loading = false;
+    const { open } = getContext("simple-modal");
 
 	async function addItem() {
         let options = {};
@@ -26,9 +27,7 @@
         }
         await api.cart.addToCart($cart.id, product.id, quantity, options);
         loading = false;
-        modal.set({
-            show: bind(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity })
-        });
+        open(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity });
     }
 </script>
 
