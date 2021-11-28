@@ -42,6 +42,10 @@
             }
         }
     },
+    "order": {
+        "empty": "Vous n'avez aucune commande pour l'instant.",
+        "link": "Commencez vos achats en cliquant ici !"
+    },
     "cart": {
         "title": "Votre panier",
         "items": {
