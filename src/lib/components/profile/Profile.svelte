@@ -35,8 +35,6 @@
 
     $: isDraft = firstname !== $profile?.customer.firstname || lastname !== $profile?.customer.lastname || email !== $profile?.customer.email || $profile?.customer.birthday || subscribed !== $profile?.customer.subscribed;
     $: isValid = !!(firstname && lastname && email && emailValidation(email)) && isDraft;
-    $: console.log(isDraft);
-    $: console.log(isValid);
 </script>
 
 <style>

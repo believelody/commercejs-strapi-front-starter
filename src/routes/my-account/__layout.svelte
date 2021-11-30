@@ -1,14 +1,15 @@
 <script>
     import {getContext, onMount} from 'svelte';
-    import { page } from '$app/stores';
-    import { t } from '$lib/i18n';
+    import {page} from '$app/stores';
+    import {t} from '$lib/i18n';
     import api from '$lib/api'
-    import { profile, user } from '$lib/stores';
+    import {profile, user} from '$lib/stores';
     import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
     import ProtectedLayout from '../../lib/components/layout/ProtectedLayout.svelte';
     import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
+    import ImageUploadField from "../../lib/components/field/ImageUploadField.svelte";
 
-    const { open } = getContext("simple-modal");
+    const {open} = getContext("simple-modal");
 
     onMount(async () => {
         if ($user.confirmed) {
@@ -27,13 +28,8 @@
 <ProtectedLayout>
     <div class="container flex justify-space-between mx-auto mt-8">
         <aside class="sticky top-0 inset-x-0 xs:hidden md:w-1/3 xl:w-1/4 h-full border shadow-lg rounded flex flex-col md:mr-2 xl:mr-6">
-            <div class="w-full rounded-tl rounded-tr bg-indigo-300 h-96">
-                <h3 class="h-full text-md flex flex-col items-center justify-center">
-                    <span>{$t("account.image.no-image.text1")}</span>
-                    <a href="/" class="underline hover:text-blue-800">{$t("account.image.no-image.text2")}</a>
-                </h3>
-            </div>
-            <h3 class="font-medium text-md text-center py-4 border-b border-gray-300">
+            <ImageUploadField name="image" on:upload={e => console.log(e.detail)} class="w-full rounded-tl rounded-tr bg-gray-300 h-96" />
+            <h3 class="font-medium text-md text-center py-4 border-b border-t border-gray-300">
                 {#if $profile}
                     {$profile.customer.firstname} {$profile.customer.lastname}
                 {:else}

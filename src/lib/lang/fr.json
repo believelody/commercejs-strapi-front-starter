@@ -138,6 +138,14 @@
             "subscribed": {
                 "label": "S'abonner à la newsletter"
             },
+            "image": {
+                "alt": "Photo de profil de {{name}}",
+                "btn": {
+                    "change": "Changer de photo",
+                    "add": "Ajouter une photo"
+                },
+                "no-image": "Aucune photo disponible"
+            },
             "update": {
                 "failed": "Nous avons rencontré une erreur. Veuillez nous en excuser.",
                 "submit": "Mettre à jour mes informations personnelles",
