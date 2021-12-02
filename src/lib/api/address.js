@@ -25,7 +25,7 @@ export const getCountries = async () => {
             method: "get",
             headers: authenticateHeaders()
         });
-        const json = await res.json();
+        const { countries: json } = await res.json();
         return json.countries;
     } catch (error) {
         console.log(error);
