@@ -7,7 +7,7 @@ import ShowPasswordIcon from "../svg/ShowPasswordIcon.svelte";
 	let showPwd = false;
 </script>
 
-<div class="flex flex-col xl:w-1/2 items-center py-3 px-2 border-b border-gray-300 xl:border-none">
+<div class="flex flex-col items-center py-3 px-2 border-b border-gray-300 xl:border-none">
 	<label
 		for={name}
 		class="flex items-center w-full"

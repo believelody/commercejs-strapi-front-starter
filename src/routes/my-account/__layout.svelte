@@ -26,7 +26,7 @@
 </script>
 
 <ProtectedLayout>
-    <div class="container flex justify-space-between mx-auto mt-8">
+    <div class="container flex justify-space-between mx-auto mt-4">
         <aside class="sticky top-0 inset-x-0 xs:hidden md:w-1/3 xl:w-1/4 h-full border shadow-lg rounded flex flex-col md:mr-2 xl:mr-6">
             <ImageUploadField name="image" on:upload={e => console.log(e.detail)} class="w-full rounded-tl rounded-tr bg-gray-300 h-96" />
             <h3 class="font-medium text-md text-center py-4 border-b border-t border-gray-300">

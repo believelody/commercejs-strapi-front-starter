@@ -3,7 +3,7 @@
     import { t } from '$lib/i18n';
     import { user } from '$lib/stores';
     import api from '$lib/api';
-    import Fieldset from '../field/Fieldset.svelte';
+    import Fields from '../field/Fields.svelte';
     import InputField from "../field/InputField.svelte";
 
     export let withoutShadow = false;
@@ -40,7 +40,7 @@
 
 <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 text-center my-2">{$t("auth.code.title")}</h2>
 <form id="confirm-email-form" on:submit|preventDefault={submit}>
-    <Fieldset {withoutShadow}>
+    <Fields {withoutShadow}>
         <div class="w-full flex flex-col xl:flex-row xl:justify-between">
                 <InputField
                     name="code"
@@ -56,7 +56,7 @@
                     {$t("common.validate")}
                 </button>
             </div>
-    </Fieldset>
+    </Fields>
 </form>
 <button disabled={loading} on:click={resendCode} class="border-none text-center cursor-pointer lg:text-left text-sm text-gray-400 italic underline disabled:opacity-75 disabled:cursor-not-allowed">{$t("auth.code.no-code")}</button>
 {#if codeResent}

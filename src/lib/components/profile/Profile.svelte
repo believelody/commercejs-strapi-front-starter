@@ -2,8 +2,7 @@
     import {navigating} from '$app/stores';
     import {t} from '$lib/i18n';
     import {profile} from '$lib/stores';
-    import Fieldset from '../field/Fieldset.svelte';
-    import FileField from '../field/FileField.svelte';
+    import Fields from '../field/Fields.svelte';
     import InputField from '../field/InputField.svelte';
     import MoonLoading from '../loading/MoonLoading.svelte';
     import {clickLinkOutside} from "../../actions/clickOutside";
@@ -44,8 +43,9 @@
 {#if !$profile || $navigating}
     <MoonLoading />
 {:else}
-    <form use:clickLinkOutside={{ isDraft, text: $t("account.draft.confirm") }} on:clicklinkoutside={() => isDraft = false} id="profile-form" on:submit|preventDefault={submit}>
-        <Fieldset>
+    <h2 class="text-xl text-center text-gray-600 my-8">{$t("account.profile.title")}</h2>
+    <form use:clickLinkOutside={{ isDraft, text: $t("account.profile.draft.confirm") }} on:clicklinkoutside={() => isDraft = false} id="profile-form" on:submit|preventDefault={submit}>
+        <Fields class="border mx-4">
             <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
                 <InputField
                         name="firstname"
@@ -111,6 +111,6 @@
             <div class="w-full my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
                 <button type="submit" disabled={!isValid || loading} class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">{$t(`account.profile.update.${loading ? "loading" : "submit"}`)}</button>
             </div>
-        </Fieldset>
+        </Fields>
     </form>
 {/if}

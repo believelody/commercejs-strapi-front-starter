@@ -113,9 +113,6 @@
         }
     },
     "account": {
-        "draft": {
-            "confirm": "Vos modifications seront perdues si vous quittez sans sauvegarder. Continuer ?"
-        },
         "image": {
             "no-image": {
                 "text1": "Pas de photos",
@@ -129,6 +126,10 @@
             "link": "Mes commandes"
         },
         "profile": {
+            "draft": {
+                "confirm": "Vos modifications seront perdues si vous quittez sans sauvegarder. Continuer ?"
+            },
+            "title": "Gérez vos informations personnelles",
             "link": "Gérer mon compte",
             "birthday": {
                 "label": "Votre date de naissance",
@@ -153,7 +154,17 @@
             }
         },
         "addresses": {
-            "link": "Mes adresses"
+            "link": "Mes adresses",
+            "title": "Gérez vos adresses",
+            "no-address": "Aucune adresse sélectionnée",
+            "add": "Ajouter une adresse",
+            "select": "Sélectionner une autre adresse",
+            "shipping": {
+                "label": "Adresse de livraison"
+            },
+            "billing": {
+                "label": "Adresse de facturation"
+            }
         },
         "wishlist": {
             "link": "Mes produits favoris"
@@ -249,6 +260,10 @@
         "address": {
             "shipping-title": "Mon adresse de livraison",
             "billing-title": "Mon adresse de facturation",
+            "title": {
+                "label": "Titre",
+                "placeholder": "Donnez un titre à votre adresse. Ex: Ma maison"
+            },
             "address1": {
                 "label": "Adresse 1",
                 "placeholder": "Votre adresse principale"

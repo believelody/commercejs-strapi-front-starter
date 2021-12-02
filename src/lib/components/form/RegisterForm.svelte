@@ -4,7 +4,7 @@
     import api from '$lib/api';
     import InputField from '../field/InputField.svelte';
     import { emailValidation } from '../../utils/form.util';
-    import Fieldset from '../field/Fieldset.svelte';
+    import Fields from '../field/Fields.svelte';
 
     export let withoutShadow = false;
     let firstname, lastname, email, password, loading = false, hasError = false;
@@ -31,7 +31,7 @@
 </style>
 
 <form id="register-form" on:submit|preventDefault={submit}>
-    <Fieldset {withoutShadow}>
+    <Fields {withoutShadow}>
         <!-- <div class="w-full flex justify-between border-b border-gray-300 py-3 px-2">
             <span class="sm:text-right xl:mr-2">{$t("identity.civility.title")}</span>
             <div class="flex justify-around flex-grow">
@@ -99,5 +99,5 @@
             <span class="px-16 my-2">{$t("common.or")}</span>
             <button type="button" on:click={e => dispatch("toggleAuth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.login.submit")}</button>
         </div>
-    </Fieldset>
+    </Fields>
 </form>

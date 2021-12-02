@@ -4,7 +4,7 @@
     import api from '$lib/api';
     import { emailValidation } from '../../utils/form.util';
     import InputField from '../field/InputField.svelte';
-    import Fieldset from '../field/Fieldset.svelte';
+    import Fields from '../field/Fields.svelte';
 
     export let withoutShadow = false;
     let identifier, password, loading = false, hasError = false;
@@ -30,7 +30,7 @@
 </style>
 
 <form id="identity-form" on:submit|preventDefault={submit}>
-    <Fieldset {withoutShadow}>
+    <Fields {withoutShadow}>
         <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
             <InputField
                 name="identifier"
@@ -66,5 +66,5 @@
             <span class="px-16 my-2">{$t("common.or")}</span>
             <button type="button" on:click={e => dispatch("toggleAuth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.register.submit")}</button>
         </div>
-    </Fieldset>
+    </Fields>
 </form>

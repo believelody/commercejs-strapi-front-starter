@@ -2,7 +2,7 @@
     import { t } from '$lib/i18n';
     import { checkout, checkoutLoading } from '$lib/stores';
     import api from '$lib/api';
-    import Fieldset from '../field/Fieldset.svelte';
+    import Fields from '../field/Fields.svelte';
     import InputField from "../field/InputField.svelte";
     import DiscountFailedModal from './DiscountFailedModal.svelte';
     import DiscountSuccessModal from './DiscountSuccessModal.svelte';
@@ -28,7 +28,7 @@
 <div class="mx-2 md:mx-12 rounded-md mb-8">
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("discount.title")}</h2>
     <form on:submit|preventDefault={submit}>
-        <Fieldset {withoutShadow}>
+        <Fields {withoutShadow}>
             <div class="w-full flex flex-col xl:flex-row xl:justify-between">
                 <InputField
                     name="code"
@@ -43,6 +43,6 @@
                     {$t("common.validate")}
                 </button>
             </div>
-        </Fieldset>
+        </Fields>
     </form>
 </div>

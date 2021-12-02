@@ -1,6 +1,7 @@
 <script>
 	import CheckCircleIcon from "../svg/CheckCircleIcon.svelte";
 	import DangerIcon from "../svg/DangerIcon.svelte";
+	import ModalBox from "../box/ModalBox.svelte";
 
 	export let title, description, status = "info";
 </script>
@@ -9,7 +10,7 @@
 	/* your styles go here */
 </style>
 
-<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<ModalBox>
 	<div class="sm:flex sm:items-start">
 		<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
 			<h3 class="flex items-center border-b border-gray-200 pb-2" id="modal-title">
@@ -29,4 +30,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</ModalBox>
