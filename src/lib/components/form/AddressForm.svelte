@@ -1,33 +1,38 @@
 <script>
+    import {createEventDispatcher, onMount} from "svelte";
     import {t} from '$lib/i18n';
     import api from '$lib/api';
     import InputField from '../field/InputField.svelte';
-    import SelectField from '../field/SelectField.svelte';
     import Fields from "../field/Fields.svelte";
-    import {onMount} from "svelte";
     import SearchField from "../field/SearchField.svelte";
     import {requiredFieldsValidation} from "../../utils/form.util";
 
-    export let information = {}, title, checkoutId, hideSubmitButton = false, submitLabel = "", withoutShadow = false,
+    export let information = {}, title, type, checkoutId = "", hideSubmitButton = false, submitLabel = "", withoutShadow = false,
         hideTitleAddress = false;
     let loading = false, countries = [];
+    const dispatch = createEventDispatcher();
 
     function onInput(e) {
         information[e.target.name] = e.target.value;
     }
 
-    function submit(e) {
-        console.log(information)
+    async function submit() {
+        if ($$props.submit) {
+            loading = true;
+            const res = await $$props.submit({...information, type});
+            console.log(res);
+            loading = false;
+            if (res.success) {
+                dispatch("success");
+            }
+        }
     }
 
     onMount(async () => {
         countries = await api.address.getCountries();
     });
 
-    // $: countriesPromise = api.address.getCountries();
-    // $: subdivisionsPromise = checkoutId && information?.country && api.checkout.getSubdivisions(checkoutId, information.country);
     $: isValid = requiredFieldsValidation(information, ["address1", "city", "zip", "country"]);
-    $: console.log(information);
 </script>
 
 <style>
@@ -46,7 +51,6 @@
                     placeholder={$t('checkout.address.title.placeholder')}
                     value={information.title}
                     on:input={onInput}
-                    required
             />
         {/if}
         <InputField

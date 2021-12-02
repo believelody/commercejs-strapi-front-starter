@@ -14,14 +14,14 @@
 <script>
     import DisplayAddress from "../../../lib/components/display/DisplayAddress.svelte";
 
-    export let addresses = [];
+    export let addresses;
 
-    $: shippings = addresses.filter(address => address.type === "shipping");
-    $: billings = addresses.filter(address => address.type === "billing");
+    $: shippings = addresses ? addresses.filter(address => address.type === "shipping") : [];
+    $: billings = addresses ? addresses.filter(address => address.type === "billing") : [];
 </script>
 
-<div class="flex flex-col">
-    <h2 class="text-center text-xl font-semibold text-gray-600 pt-4 pb-2">{$t("account.addresses.title")}</h2>
-    <DisplayAddress noAddresses={!shippings?.length} type="shipping" information={$profile.customer?.shipping} />
-    <DisplayAddress noAddresses={!billings?.length} type="billing" information={$profile.customer?.billing} />
+<div class="flex flex-col items-center px-4 lg:px-0">
+    <h2 class="text-xl font-semibold text-gray-600 mt-4 mb-2">{$t("account.addresses.title")}</h2>
+    <DisplayAddress noAddresses={!shippings?.length} type="shipping" information={$profile.customer.meta.shipping} />
+    <DisplayAddress noAddresses={!billings?.length} type="billing" information={$profile.customer.meta.billing} />
 </div>

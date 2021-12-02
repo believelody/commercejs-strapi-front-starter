@@ -156,15 +156,16 @@
         "addresses": {
             "link": "Mes adresses",
             "title": "Gérez vos adresses",
-            "no-address": "Aucune adresse sélectionnée",
-            "add": "Ajouter une adresse",
-            "select": "Sélectionner une autre adresse",
             "shipping": {
                 "label": "Adresse de livraison"
             },
             "billing": {
                 "label": "Adresse de facturation"
-            }
+            },
+            "no-address": "Aucune adresse sélectionnée",
+            "select": "Sélectionner une autre adresse",
+            "add": "Ajouter une adresse",
+            "update": "Modifier cette adresse"
         },
         "wishlist": {
             "link": "Mes produits favoris"

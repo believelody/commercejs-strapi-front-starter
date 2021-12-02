@@ -32,7 +32,7 @@
                 type="text"
                 id={name}
                 list="list-{name}"
-                class="flex-grow focus:outline-none text-center px-3 xl:px-0"
+                class="flex-grow focus:outline-none px-3 xl:px-0"
                 {placeholder}
         />
         <datalist id="list-{name}">
