@@ -26,7 +26,14 @@
 	$: !$jwt && jwt.useLocalStorage();
 </script>
 
-<Modal>
+<Modal
+	on:open={() => console.log("open")}
+	on:opening={() => console.log("opening")}
+	on:opened={() => console.log("opened")}
+	on:close={() => console.log("close")}
+	on:closing={() => console.log("closing")}
+	on:closed={() => console.log("closed")}
+>
 	<Sidebar />
 	{#if $page.path === '/checkout'}
 		<slot />

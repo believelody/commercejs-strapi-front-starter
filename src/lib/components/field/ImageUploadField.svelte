@@ -5,7 +5,7 @@
     import ImageModal from "../modal/ImageModal.svelte";
     import CloseIcon from "../svg/CloseIcon.svelte";
 
-    export let name, label = "", image = "", required;
+    export let name, image = "";
     let field, formElement;
     const {open} = getContext("simple-modal");
 

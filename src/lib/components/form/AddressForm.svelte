@@ -1,15 +1,15 @@
 <script>
     import {createEventDispatcher, onMount} from "svelte";
-    import {t} from '$lib/i18n';
+    import { t } from '$lib/i18n';
     import api from '$lib/api';
     import InputField from '../field/InputField.svelte';
     import Fields from "../field/Fields.svelte";
     import SearchField from "../field/SearchField.svelte";
     import {requiredFieldsValidation} from "../../utils/form.util";
 
-    export let information = {}, title, type, checkoutId = "", hideSubmitButton = false, submitLabel = "", withoutShadow = false,
+    export let information = {}, type, title, checkoutId = "", hideSubmitButton = false, submitLabel = "", withoutShadow = false,
         hideTitleAddress = false;
-    let loading = false, countries = [];
+    let countries = [];
     const dispatch = createEventDispatcher();
 
     function onInput(e) {
@@ -18,12 +18,9 @@
 
     async function submit() {
         if ($$props.submit) {
-            loading = true;
             const res = await $$props.submit({...information, type});
-            console.log(res);
-            loading = false;
             if (res.success) {
-                dispatch("success");
+                dispatch("submitEvent");
             }
         }
     }
@@ -88,17 +85,18 @@
                 name="countries"
                 label={$t('checkout.address.country.label')}
                 placeholder={$t('checkout.address.country.placeholder')}
+                defaultValue={information.country?.value}
                 on:value={e => information.country = e.detail}
                 items={Object.entries(countries).map(([key, value]) => ({key, value}))}
                 required
         />
         {#if !hideSubmitButton}
             <div class="flex justify-center flex-grow pt-3 pb-2">
-                <button disabled={!isValid || loading} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
+                <button disabled={!isValid} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
                     {#if submitLabel}
                         {submitLabel}
                     {:else}
-                        {$t(`common.${loading ? "update" : "validate"}`)}
+                        {$t(`common.validate`)}
                     {/if}
                 </button>
             </div>

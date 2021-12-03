@@ -9,6 +9,7 @@
     import {onMount} from "svelte";
     import CheckboxField from "../field/CheckboxField.svelte";
     import {emailValidation} from "../../utils/form.util";
+import HeaderTitle from '../header/HeaderTitle.svelte';
 
     let firstname, lastname, birthday, email, subscribed, password = "", hasError = false, loading, isDraft = false;
 
@@ -43,7 +44,7 @@
 {#if !$profile || $navigating}
     <MoonLoading />
 {:else}
-    <h2 class="text-xl text-center text-gray-600 my-8">{$t("account.profile.title")}</h2>
+    <HeaderTitle title={$t("account.profile.title")} />
     <form use:clickLinkOutside={{ isDraft, text: $t("account.profile.draft.confirm") }} on:clicklinkoutside={() => isDraft = false} id="profile-form" on:submit|preventDefault={submit}>
         <Fields class="border mx-4">
             <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">

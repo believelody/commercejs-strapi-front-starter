@@ -196,7 +196,8 @@
             "expired": "Le code utilisé est expiré.",
             "success": {
                 "title": "Email vérifié",
-                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
+                "link": "Aller à la page Mon compte",
+                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-center text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
             }
         },
         "success": {

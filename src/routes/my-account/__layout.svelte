@@ -1,9 +1,10 @@
 <script>
+    import { goto } from '$app/navigation'
     import {getContext, onMount} from 'svelte';
     import {page} from '$app/stores';
     import {t} from '$lib/i18n';
     import api from '$lib/api'
-    import {profile, user} from '$lib/stores';
+    import {profile, user, jwt} from '$lib/stores';
     import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
     import ProtectedLayout from '../../lib/components/layout/ProtectedLayout.svelte';
     import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
@@ -11,10 +12,18 @@
 
     const {open} = getContext("simple-modal");
 
+    function logout() {
+        $profile = null;
+        $user = {};
+        $jwt = null;
+        goto("/");
+    }
+
     onMount(async () => {
         if ($user.confirmed) {
             await api.auth.getMe();
         } else {
+            console.log("in confirmation email");
             open(ConfirmationEmailModal);
             if (window) {
                 window.history.back();
@@ -43,7 +52,7 @@
                 <a class="px-2 py-2 {$page.path === "/my-account/addresses" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/addresses">{$t("account.addresses.link")}</a>
                 <a class="px-2 py-2 {$page.path === "/my-account/whishlist" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/wishlist">{$t("account.wishlist.link")}</a>
                 <a class="px-2 py-2 {$page.path === "/my-account/reviews" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/reviews">{$t("account.reviews.link")}</a>
-                <button class="relative w-full py-2 hover:bg-gray-200">
+                <button on:click={logout} class="relative w-full py-2 hover:bg-gray-200">
                     <span class="absolute left-2 top-1"><LogoutIcon /></span>
                     <span>{$t("account.logout")}</span>
                 </button>

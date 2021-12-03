@@ -1,7 +1,7 @@
 import { baseUrl } from "../utils/url.util";
 import { authenticateHeaders } from '$lib/utils/header.util';
 import {get} from "svelte/store";
-import {user} from "../stores";
+import {profile} from "../stores";
 
 export const getAll = async (type = "") => {
     try {
@@ -14,6 +14,9 @@ export const getAll = async (type = "") => {
             headers: authenticateHeaders()
         });
         const json = await res.json();
+        if (json.error) {
+            return { statusCode: json.statusCode };
+        }
         return json;
     } catch (error) {
         console.log(error);
@@ -26,8 +29,11 @@ export const getCountries = async () => {
             method: "get",
             headers: authenticateHeaders()
         });
-        const { countries: json } = await res.json();
-        return json.countries;
+        const json = await res.json();
+        if (json.error) {
+            return { statusCode: json.statusCode };
+        }
+        return json.countries.countries;
     } catch (error) {
         console.log(error);
     }
@@ -41,7 +47,19 @@ export const create = async (data) => {
             body: JSON.stringify(data),
         });
         const json = await res.json();
-        console.log(json);
+        if (json.error) {
+            return { success: false }
+        }
+        profile.set({
+            ...get(profile),
+            customer: {
+                ...get(profile).customer,
+                meta: {
+                    ...get(profile).customer.meta,
+                    [data.type]: json.address,
+                }
+            }
+        });
         return { success: true };
     } catch (error) {
         console.log(error);
@@ -50,14 +68,27 @@ export const create = async (data) => {
 
 export const update = async (data) => {
     try {
-        const userStore = get(user);
-        const res = await fetch(`${baseUrl}/addresses/${userStore.id}`, {
+        const res = await fetch(`${baseUrl}/addresses/${data.id}`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify(data),
         });
         const json = await res.json();
-        console.log(json);
+        console.log("update address: ", json);
+        if (json.error) {
+            return { success: false }
+        }
+        profile.set({
+            ...get(profile),
+            customer: {
+                ...get(profile).customer,
+                meta: {
+                    ...get(profile).customer.meta,
+                    [data.type]: json.address,
+                }
+            }
+        });
+        return { success: true };
     } catch (error) {
         console.log(error);
     }

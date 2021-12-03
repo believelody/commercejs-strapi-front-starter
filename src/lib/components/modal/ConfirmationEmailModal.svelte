@@ -1,5 +1,5 @@
 <script>
-    import {goto} from '$app/navigation';
+    import { getContext } from 'svelte';
     import {t} from '$lib/i18n';
     import api from '$lib/api';
     import ConfirmationEmailForm from "../form/ConfirmationEmailForm.svelte";
@@ -7,13 +7,12 @@
     import ModalBox from "../box/ModalBox.svelte";
 
     let success = false;
+    const { close } = getContext("simple-modal");
 
     async function handleSubmitEvent({detail}) {
-        console.log(detail);
         if (detail.success) {
-            success = detail.success
-            await api.auth.getMe()
-            goto(`/my-account`);
+            success = detail.success;
+            await api.auth.getMe();
         }
     }
 </script>
@@ -31,6 +30,10 @@
             <span class="ml-8">{$t(`auth.code.success.title`)}</span>
         </h3>
         {@html $t(`auth.code.success.text`)}
+        <h5 class="w-full text-center text-gray-500">{$t("common.or")}</h5>
+        <div class="flex items-center text-gray-500 justify-center">
+            <a on:click={() => close()} class="p-2 bg-indigo-300 text-black rounded" href="/my-account">{$t("auth.code.success.link")}</a>
+        </div>
     {:else}
         <ConfirmationEmailForm withoutShadow on:submitEvent={handleSubmitEvent} />
     {/if}

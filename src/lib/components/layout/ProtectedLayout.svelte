@@ -7,7 +7,7 @@
     let isAuth = false;
 
     onMount(() => {
-        if (jwt) {
+        if ($jwt) {
             isAuth = true;
         } else {
             if (window) {
