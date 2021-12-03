@@ -3,8 +3,8 @@
     import ShowPasswordIcon from "../svg/ShowPasswordIcon.svelte";
     import {createEventDispatcher} from "svelte";
 
-    export let name, items, hint, label = "", placeholder, required;
-    let value = "";
+    export let name, items, defaultValue = "", hint, label = "", placeholder, required;
+    let value = defaultValue;
     const dispatch = createEventDispatcher();
 
     $: {
@@ -15,12 +15,12 @@
     }
 </script>
 
-<div class="flex flex-col items-center py-3 px-2 border-b border-gray-300 xl:border-none">
+<div class="flex flex-col items-center py-3 px-2">
     <label
             for={name}
             class="flex items-center w-full"
     >
-		<span class="sm:text-right xl:mr-2">
+		<span class="sm:text-right mr-2">
 			{label}
             {#if required}
 				*
@@ -32,7 +32,7 @@
                 type="text"
                 id={name}
                 list="list-{name}"
-                class="flex-grow focus:outline-none px-3 xl:px-0"
+                class="border rounded flex-grow focus:outline-none p-3"
                 {placeholder}
         />
         <datalist id="list-{name}">

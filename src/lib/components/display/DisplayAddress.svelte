@@ -21,7 +21,7 @@
     }
 </script>
 
-<section class="relative flex flex-col rounded my-4 justify-center border shadow-md w-full lg:w-3/5 items-center">
+<section class="relative flex flex-col rounded my-4 justify-center border shadow-md w-full xl:w-3/5 items-center">
     <h3 class="border-b w-full py-2 text-center text-lg font-medium">{$t(`account.addresses.${type}.label`)}</h3>
     <div class="py-{information ? 4 : 12} flex flex-col justify-center items-center">
         {#if information}

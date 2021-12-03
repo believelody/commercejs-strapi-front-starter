@@ -20,8 +20,8 @@
     $: billings = addresses ? addresses.filter(address => address.type === "billing") : [];
 </script>
 
-<div class="flex flex-col items-center px-4 lg:px-0">
+<div class="flex flex-col items-center px-4 xl:px-0">
     <h2 class="text-xl font-semibold text-gray-600 mt-4 mb-2">{$t("account.addresses.title")}</h2>
-    <DisplayAddress noAddresses={!shippings?.length} type="shipping" information={$profile.customer.meta.shipping} />
-    <DisplayAddress noAddresses={!billings?.length} type="billing" information={$profile.customer.meta.billing} />
+    <DisplayAddress type="shipping" information={$profile.customer.meta.shipping} />
+    <DisplayAddress type="billing" information={$profile.customer.meta.billing} />
 </div>

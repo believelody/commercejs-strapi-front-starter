@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher, onMount} from "svelte";
-    import {t} from '$lib/i18n';
+    import { t } from '$lib/i18n';
     import api from '$lib/api';
     import InputField from '../field/InputField.svelte';
     import Fields from "../field/Fields.svelte";
@@ -20,11 +20,11 @@
         if ($$props.submit) {
             loading = true;
             const res = await $$props.submit({...information, type});
-            console.log(res);
-            loading = false;
+            console.log("in address form: ", res);
             if (res.success) {
                 dispatch("success");
             }
+            loading = false;
         }
     }
 
@@ -88,6 +88,7 @@
                 name="countries"
                 label={$t('checkout.address.country.label')}
                 placeholder={$t('checkout.address.country.placeholder')}
+                defaultValue={information.country?.value}
                 on:value={e => information.country = e.detail}
                 items={Object.entries(countries).map(([key, value]) => ({key, value}))}
                 required
