@@ -21,17 +21,19 @@
 
     onMount(async () => {
         if ($user.confirmed) {
-            await api.auth.getMe();
+            if (!$profile) {
+                await api.auth.getMe();
+            }
+            if (!$profile?.addresses) {
+                await api.address.getAll();
+            }
         } else {
-            console.log("in confirmation email");
             open(ConfirmationEmailModal);
             if (window) {
                 window.history.back();
             }
         }
     });
-
-    $: !$profile && profile.useLocalStorage();
 </script>
 
 <ProtectedLayout>

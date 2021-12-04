@@ -17,11 +17,11 @@
 			if (actionCallback) {
 				await actionCallback();
 			}
-			close();
 		} catch (error) {
 			console.log(error);
 		} finally {
 			loading = false;
+			close();
 		}
 	}
 </script>

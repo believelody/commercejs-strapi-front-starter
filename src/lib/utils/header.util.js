@@ -2,7 +2,7 @@ import { get } from "svelte/store";
 import { jwt } from "../stores";
 
 export const authenticateHeaders = () => {
-    if (get(jwt)) {
+    if (get(jwt) && window) {
         return {
             "Content-Type": "application/json",
             "Authorization" : `Bearer ${get(jwt)}`

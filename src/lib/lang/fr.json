@@ -7,7 +7,10 @@
         "subtotal": "Sous-total",
         "total": "Total",
         "update": "mise à jour ...",
-        "validate": "Valider"
+        "validate": "Valider",
+        "delete": "Supprimer",
+        "remove": "Retirer",
+        "select": "Sélectionner"
     },
     "header": {
         "connexion": "Connexion",
@@ -165,7 +168,21 @@
             "no-address": "Aucune adresse sélectionnée",
             "select": "Sélectionner une autre adresse",
             "add": "Ajouter une adresse",
-            "update": "Modifier cette adresse"
+            "update": "Modifier cette adresse",
+            "sidebar": {
+                "shipping": {
+                    "title": "Adresses de livraison"
+                },
+                "billing": {
+                    "title": "Adresses de facturation"
+                }
+            },
+            "modal": {
+                "delete": {
+                    "title": "Supprimer cette adresse ?",
+                    "description": "Souhaitez-vous réellement effectuer cette action ? Vous ne pourrez plus revenir en arrière."
+                }
+            }
         },
         "wishlist": {
             "link": "Mes produits favoris"
