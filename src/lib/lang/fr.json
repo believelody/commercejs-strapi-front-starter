@@ -46,8 +46,13 @@
         }
     },
     "order": {
-        "empty": "Vous n'avez aucune commande pour l'instant.",
-        "link": "Commencez vos achats en cliquant ici !"
+        "account": {
+            "title": "Mes commandes"
+        },
+        "empty": {
+            "text": "Vous n'avez aucune commande pour l'instant.",
+            "link": "Commencez vos achats en cliquant ici !"
+        }
     },
     "cart": {
         "title": "Votre panier",
@@ -192,8 +197,23 @@
         },
         "logout": "Se déconnecter"
     },
+    "wishlist": {
+        "account": {
+            "title": "Liste de souhaits"
+        },
+        "empty": {
+            "text": "Vous n'avez pas encore sélectionné d'articles dans votre liste de souhait",
+            "link": "Commencez vos achats en cliquant ici !"
+        },
+        "modal": {
+            "auth": {
+                "title": "Vous devez vous authentifier"
+            }
+        }
+    },
     "auth": {
         "login": {
+            "title": "Connexion",
             "submit": "Se connecter",
             "loading": "Connexion en cours ...",
             "failed": "Email ou mot de passe incorrect"

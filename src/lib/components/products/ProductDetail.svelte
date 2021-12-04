@@ -5,11 +5,11 @@
 	import FacebookIcon from '../svg/FacebookIcon.svelte';
 	import InstagramIcon from '../svg/InstagramIcon.svelte';
 	import TwitterIcon from '../svg/TwitterIcon.svelte';
-	import HeartIcon from "../svg/HeartCircleIcon.svelte";
 	import Colors from '../variants/Colors.svelte';
 	import Sizes from '../variants/Sizes.svelte';
 	import AddToCartBtn from '../cart/AddToCartBtn.svelte';
 	import Quantity from '../quantity/Quantity.svelte';
+	import WishlistButton from '../button/WishlistButton.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -54,9 +54,7 @@
 				<div class="flex items-center mt-4">
 					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
 					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
-					<button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-						<HeartIcon />
-					</button>
+					<WishlistButton {product} />
 				</div>
 			</div>
 		</div>

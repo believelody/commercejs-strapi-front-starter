@@ -40,7 +40,7 @@
 	{:else}
 		<Header />
 		<main>
-			{#if $navigating}
+			{#if $navigating && !$page.path.includes("/my-account")}
 				<MoonLoading />
 			{:else}
 				<slot />

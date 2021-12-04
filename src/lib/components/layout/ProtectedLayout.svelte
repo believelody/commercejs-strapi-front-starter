@@ -3,6 +3,7 @@
     import { navigating } from '$app/stores';
     import { jwt } from '$lib/stores';
     import MoonLoading from "../loading/MoonLoading.svelte";
+import CenterSection from "../center-section/CenterSection.svelte";
 
     let isAuth = false;
 
@@ -18,7 +19,9 @@
 </script>
 
 {#if !isAuth || $navigating}
-    <MoonLoading />
+    <CenterSection>
+        <MoonLoading />
+    </CenterSection>
 {:else}
     <slot />
 {/if}

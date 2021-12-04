@@ -7,7 +7,6 @@
     export let type, addAddress;
 
     $: items = $profile?.addresses.filter(item => item.type === type) ?? [];
-    $: console.log(items.length);
 </script>
 
 <style>

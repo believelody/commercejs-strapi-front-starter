@@ -6,7 +6,7 @@
     import { emailValidation } from '../../utils/form.util';
     import Fields from '../field/Fields.svelte';
 
-    export let withoutShadow = false;
+    export let withoutShadow = false, title;
     let firstname, lastname, email, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
@@ -31,7 +31,7 @@
 </style>
 
 <form id="register-form" on:submit|preventDefault={submit}>
-    <Fields {withoutShadow}>
+    <Fields {withoutShadow} class="flex-col">
         <!-- <div class="w-full flex justify-between border-b border-gray-300 py-3 px-2">
             <span class="sm:text-right xl:mr-2">{$t("identity.civility.title")}</span>
             <div class="flex justify-around flex-grow">
@@ -51,44 +51,40 @@
                 />
             </div>
         </div> -->
-        <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <InputField
-                name="firstname"
-                required
-                label={$t('identity.firstname.label')}
-                placeholder={$t('identity.firstname.placeholder')}
-                on:input={e => firstname = e.target.value}
-                on:focus={() => hasError = false}
-            />
-            <InputField
-                name="lastname"
-                label={$t('identity.lastname.label')}
-                placeholder={$t('identity.lastname.placeholder')}
-                on:input={e => lastname = e.target.value}
-                on:focus={() => hasError = false}
-            />
-        </div>
-        <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <InputField
-                name="email"
-                type="email"
-                required
-                label={$t('identity.email.label')}
-                placeholder={$t('identity.email.placeholder')}
-                on:input={e => email = e.target.value}
-                on:focus={() => hasError = false}
-            />
-            <InputField
-                name="password"
-                type="password"
-                hint={$t("identity.password.hint")}
-                required
-                label={$t('identity.password.label')}
-                placeholder={$t('identity.password.placeholder')}
-                on:input={e => password = e.target.value}
-                on:focus={() => hasError = false}
-            />
-        </div>
+        <InputField
+            name="firstname"
+            required
+            label={$t('identity.firstname.label')}
+            placeholder={$t('identity.firstname.placeholder')}
+            on:input={e => firstname = e.target.value}
+            on:focus={() => hasError = false}
+        />
+        <InputField
+            name="lastname"
+            label={$t('identity.lastname.label')}
+            placeholder={$t('identity.lastname.placeholder')}
+            on:input={e => lastname = e.target.value}
+            on:focus={() => hasError = false}
+        />
+        <InputField
+            name="email"
+            type="email"
+            required
+            label={$t('identity.email.label')}
+            placeholder={$t('identity.email.placeholder')}
+            on:input={e => email = e.target.value}
+            on:focus={() => hasError = false}
+        />
+        <InputField
+            name="password"
+            type="password"
+            hint={$t("identity.password.hint")}
+            required
+            label={$t('identity.password.label')}
+            placeholder={$t('identity.password.placeholder')}
+            on:input={e => password = e.target.value}
+            on:focus={() => hasError = false}
+        />
         {#if hasError}
             <div class="w-full flex items-center justify-center mt-2">
                 <p class="text-sm text-red-400">{$t("auth.register.failed")}</p>

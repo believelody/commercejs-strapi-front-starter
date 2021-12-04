@@ -21,15 +21,21 @@
 <script>
     import { t } from '$lib/i18n';
     import CenterSection from '$lib/components/center-section/CenterSection.svelte';
+import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
 
     export let orders = [], pagination = null, error = null;
 </script>
 
-{#each orders as order}
-    <pre>{JSON.stringify(order, null, 2)}</pre>
-{:else}
-    <CenterSection class="rounded p-6 w-auto bg-indigo-200 flex flex-col justify-center">
-        <span>{$t("order.empty")}</span>
-        <a href="/" class="underline hover:text-blue-700">{$t("order.link")}</a>
-    </CenterSection>
-{/each}
+<div class="relative bg-indigo-100 flex flex-col h-full pb-2">
+    <HeaderTitle title={$t("order.account.title")} />
+    <ul class="border bg-white mx-2 shadow-md rounded h-full flex flex-col lg:flex-row items-center justify-center">
+        {#each orders as order}
+            <li class="w-full lg:w-1/2"></li>
+        {:else}
+            <CenterSection class="rounded p-6 w-auto bg-indigo-200 flex flex-col justify-center">
+                <span>{$t("order.empty.text")}</span>
+                <a href="/" class="underline hover:text-blue-700">{$t("order.empty.link")}</a>
+            </CenterSection>
+        {/each}
+    </ul>
+</div>

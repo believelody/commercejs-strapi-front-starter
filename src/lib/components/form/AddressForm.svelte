@@ -40,7 +40,7 @@
 
 <form id="address-form" on:submit|preventDefault={submit}>
     <h2 class="uppercase tracking-wide text-xl font-semibold text-gray-700 my-2">{title}</h2>
-    <Fields class="flex-col overflow-y-hidden" {withoutShadow}>
+    <Fields class="flex-col" {withoutShadow}>
         {#if !hideTitleAddress}
             <InputField
                     name="title"

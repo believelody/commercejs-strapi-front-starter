@@ -7,6 +7,7 @@
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
 
+    export let title;
     let isLogin = true;
     const {close} = getContext("simple-modal");
 
@@ -15,10 +16,6 @@
             close();
         }
     }
-
-    onDestroy(() => {
-        goto("/my-account");
-    })
 </script>
 
 <style>
@@ -27,8 +24,8 @@
 
 <ModalBox>
 	{#if isLogin}
-        <LoginForm withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = false} />
+        <LoginForm {title} withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = false} />
     {:else}
-        <RegisterForm withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = true} />
+        <RegisterForm {title} withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = true} />
     {/if}
 </ModalBox>

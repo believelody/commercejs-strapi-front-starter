@@ -5,5 +5,15 @@ import * as product from './product';
 import * as category from './category';
 import * as order from './order';
 import * as address from './address';
+import * as wishlist from './wishlist';
 
-export default { auth, cart, checkout, product, category, order, address };
+export default {
+    auth,
+    cart,
+    checkout,
+    product,
+    category,
+    order,
+    address,
+    wishlist
+};
