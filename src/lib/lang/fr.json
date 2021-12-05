@@ -48,7 +48,26 @@
     },
     "order": {
         "account": {
-            "title": "Mes commandes"
+            "title": "Mes commandes",
+            "table": {
+                "header": {
+                    "reference": "N° Commande",
+                    "date": "Date",
+                    "price": "Montant",
+                    "shipping": "Livraison",
+                    "tracking": "N° suivi",
+                    "fulfillment": "Statut d'envoi",
+                    "details": "Detail de la commande"
+                },
+                "body": {
+                    "button": {
+                        "view": "Voir le détail",
+                        "bill": "Facture",
+                        "re-order": "Renouveler la commande"
+                    },
+                    "not-fulfill": "En préparation"
+                }
+            }
         },
         "empty": {
             "text": "Vous n'avez aucune commande pour l'instant.",

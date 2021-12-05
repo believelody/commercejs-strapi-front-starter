@@ -45,7 +45,6 @@
 
     $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
     $: isValid = requiredFieldsValidation(information, ["address1", "city", "zip", "country"]);
-    $: console.log(isValid);
 </script>
 
 <style>
