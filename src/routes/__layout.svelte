@@ -3,7 +3,7 @@
 	// import "../styles/tailwind-output.css";
 	import Modal from 'svelte-simple-modal';
 	import { navigating, page } from '$app/stores';
-	import { cart, sidebar, locale, user, jwt } from '$lib/stores';
+	import { cart, sidebar, locale, user, jwt, profile } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
@@ -24,6 +24,7 @@
 	$: !$locale && locale.useLocalStorage();
 	$: !Object.values($user).some(v => v) && user.useLocalStorage();
 	$: !$jwt && jwt.useLocalStorage();
+	$: !$profile && profile.useLocalStorage();
 </script>
 
 <Modal

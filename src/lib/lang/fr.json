@@ -199,7 +199,17 @@
     },
     "wishlist": {
         "account": {
-            "title": "Liste de souhaits"
+            "title": "Liste de souhaits",
+            "cart": {
+                "add": "Ajouter au panier"
+            },
+            "remove": {
+                "button": "Retirer des favoris",
+                "modal": {
+                    "title": "Retirer l'article de vos favoris ?",
+                    "description": "En confirmant, l'article sera enlevé de votre liste de souhaits. Il sera cependant toujours possible de le consulter."
+                }
+            }
         },
         "empty": {
             "text": "Vous n'avez pas encore sélectionné d'articles dans votre liste de souhait",

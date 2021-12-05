@@ -4,7 +4,7 @@
 
 <section class="text-gray-600 body-font">
 	<div class="container px-5 py-24 mx-auto">
-		<ul class="flex flex-wrap -m-4">
+		<ul class="flex flex-wrap m-4">
 			{#each products as product}
 				<li class="lg:w-1/4 md:w-1/2 p-4 w-full">
 					<a href="/products/{product.permalink}" class="block relative h-48 rounded overflow-hidden">

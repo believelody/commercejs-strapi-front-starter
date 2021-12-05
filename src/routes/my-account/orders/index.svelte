@@ -1,41 +1,41 @@
-<script context="module">
-    import api from '$lib/api';
-    
-    export async function load() {
-        const res = await api.order.getOrders();
-
-        if (res.error) {
-            return {
-                props: { error: res.error }
-            };
-        }
-
-        return {
-            props: {
-                orders: res.orders,
-                pagination: res.meta.pagination
-            }
-        }
-    }
-</script>
 <script>
+    import { onMount } from 'svelte';
+    import { navigating } from '$app/stores';
+    import api from '$lib/api';
     import { t } from '$lib/i18n';
-    import CenterSection from '$lib/components/center-section/CenterSection.svelte';
-import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
+    import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
+    import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
 
-    export let orders = [], pagination = null, error = null;
+    let orders = [], pagination = null, error = null, loading = true;
+
+    async function getAll() {
+        loading = true;
+        const res = await api.order.getOrders();
+        if (res.success) {
+            orders = res.orders;
+        }
+        loading = false;
+    }
+
+    onMount(async () => {
+        await getAll();
+    });
 </script>
 
-<div class="relative bg-indigo-100 flex flex-col h-full pb-2">
+{#if loading || $navigating}
+    <MoonLoading />
+{:else}
+<div class="bg-indigo-100 flex flex-col h-full pb-2">
     <HeaderTitle title={$t("order.account.title")} />
-    <ul class="border bg-white mx-2 shadow-md rounded h-full flex flex-col lg:flex-row items-center justify-center">
+    <ul class="relative border bg-white mx-2 shadow-md rounded h-full flex flex-wrap">
         {#each orders as order}
             <li class="w-full lg:w-1/2"></li>
         {:else}
-            <CenterSection class="rounded p-6 w-auto bg-indigo-200 flex flex-col justify-center">
+            <section class="rounded p-6 my-2 mx-auto h-24 bg-indigo-200 flex flex-col justify-center">
                 <span>{$t("order.empty.text")}</span>
                 <a href="/" class="underline hover:text-blue-700">{$t("order.empty.link")}</a>
-            </CenterSection>
+            </section>
         {/each}
     </ul>
 </div>
+{/if}

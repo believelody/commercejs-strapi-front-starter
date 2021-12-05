@@ -20,16 +20,17 @@
 <section class="text-gray-600 body-font">
 	<div class="px-5 py-24 mx-auto">
 		<div class="lg:w-4/5 mx-auto flex flex-wrap">
-			<div class="p-0 m-0 lg:w-1/2 w-full h-auto">
+			<div class="lg:w-1/2 w-full h-auto">
                 <Gallery images={product.assets} />
             </div>
-			<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-				<section>
-					<span class="flex py-2">
-						<FacebookIcon />
-						<TwitterIcon />
-						<InstagramIcon />
-					</span>
+			<div class="lg:w-1/2 w-full lg:pl-4 xl:pl-10 xl:py-6 mt-6 lg:mt-0">
+				<section class="flex items-center justify-between">
+					<div class="flex py-2">
+						<span><FacebookIcon /></span>
+						<span class="mx-2"><TwitterIcon /></span>
+						<span><InstagramIcon /></span>
+					</div>
+					<WishlistButton {product} />
 				</section>
 				<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{product.name}</h1>
 				<div class="flex mb-4">
@@ -54,7 +55,6 @@
 				<div class="flex items-center mt-4">
 					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
 					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
-					<WishlistButton {product} />
 				</div>
 			</div>
 		</div>
