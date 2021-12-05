@@ -5,6 +5,7 @@
     import { 
         stripe,
         user,
+        profile,
         checkout,
         shipping,
         billing,
@@ -28,11 +29,11 @@
 
     onMount(async () => {
         paymentProcessing = true;
-        await pay();
+        await pay($profile.customer ?? $user);
         paymentProcessing = false;
     });
 
-    async function pay() {
+    async function pay(customer) {
         paymentError = false;
         if ($stripe && cardElement) {
             const { error, paymentMethod } = await $stripe.createPaymentMethod({ type: "card", card: cardElement });
@@ -42,24 +43,30 @@
             }else {
                 const shippingObj = {
                     name: shippingValue.title ?? $t("checkout.address.shipping-title"),
-                    street: shippingValue.address1 + " " + shippingValue.address2,
+                    street: `${shippingValue.address1} ${shippingValue.address2 || ""}`,
                     town_city: shippingValue.city,
-                    county_state: shippingValue.subdivision,
                     postal_zip_code: shippingValue.zip,
-                    country: shippingValue.country,
+                    country: shippingValue.country.key,
                 };
+                if (shippingValue.subdivision) {
+                    shippingObj.county_state = shippingValue.subdivision.key;
+                }
                 const billingObj = isBillingSameAsShippingValue ? {
                     name: shippingValue.title ?? $t("checkout.address.billing-title"),
                     ...shippingObj
                 } : {
                     name: billingValue.title ?? $t("checkout.address.billing-title"),
-                    street: billingValue.address1 + " " + billingValue.address2,
+                    street: `${billingValue.address1} ${billingValue.address2 || ""}`,
                     town_city: billingValue.city,
-                    county_state: billingValue.subdivision,
                     postal_zip_code: billingValue.zip,
-                    country: billingValue.country,
+                    country: billingValue.country.key,
                 };
-
+                if (billingValue.subdivision) {
+                    billingObj.county_state = shippingValue.subdivision.key;
+                }
+                if (customer.hasOwnProperty("phone") && !customer.phone) {
+                    delete customer.phone;
+                }
                 orderData = {
                     line_items: $checkout
                                     .live.
@@ -70,15 +77,12 @@
                                             quantity: item.quantity 
                                         }
                                     })),
-                    customer: $user.customer ?? {
-                        firstname: $user.firstname,
-                        lastname: $user.lastname,
-                        email: $user.email,
-                        phone: $user.phone,
+                    customer: {
+                        ...customer,
                         meta: {
-                            shipping: [shippingObj],
-                            billing: [billingObj],
-                            isGuest: true
+                            shipping: shippingValue,
+                            billing: billingValue,
+                            isGuest: customer.meta?.isGuest
                         }
                     },
                     shipping: shippingObj,
@@ -109,12 +113,12 @@
     }
 </script>
 
-<div class="bg-white flex items-center justify-center px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+<div class="relative bg-white flex items-center justify-center px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
     {#if paymentProcessing}
         <StripePaymentLoading />
     {:else if paymentSuccess}
         <DisplaySuccessPayment
-            user={$user}
+            user={$profile.customer ?? $user}
             shipping={shippingValue}
             billing={billingValue}
             isBillingSameAsShipping={isBillingSameAsShippingValue}

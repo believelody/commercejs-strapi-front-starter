@@ -1,6 +1,6 @@
 <script>
     import {t} from '$lib/i18n';
-    import {user} from '$lib/stores';
+    import {profile} from '$lib/stores';
     import AuthForm from '../form/AuthForm.svelte';
     import GuestForm from '../form/GuestForm.svelte';
     import RegisterSuccessModal from '../modal/RegisterSuccessModal.svelte';
@@ -24,23 +24,23 @@
 <div class="mx-2 md:mx-12 rounded-md mb-8">
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("identity.title")}</h2>
     {#if isGuest}
-        <GuestForm bind:data={$user} />
+        <GuestForm bind:data={$profile} />
     {:else}
-        {#if !$user.customer}
+        {#if $profile.customer}
             <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex flex-col items-center justify-center">
-                <span class="font-medium">{$t("identity.greetings.name", { name: `${$user.customer.firstname} ${$user.customer.lastname}`})}</span>
-                <span>{$t("identity.greetings.email", { email: `${$user.customer.email}` })}</span>
-                {#if $user.customer.phone}
-                    <span>{$t("identity.greetings.phone", { phone: `${$user.customer.phone}` })}</span>
+                <span class="font-medium">{$t("identity.greetings.name", { name: `${$profile.customer.firstname} ${$profile.customer.lastname}`})}</span>
+                <span>{$t("identity.greetings.email", { email: `${$profile.customer.email}` })}</span>
+                {#if $profile.customer.phone}
+                    <span>{$t("identity.greetings.phone", { phone: `${$profile.customer.phone}` })}</span>
                 {/if}
             </div>
         {:else}
             <AuthForm on:registerEvent={e => showRegisterSuccessModal(e.detail)} />
         {/if}
     {/if}
-    {#if !$user.customer}
+    {#if !$profile.customer}
         <CheckboxField
-                bind:checked={{isGuest}}
+                bind:checked={isGuest}
                 name="guest"
                 label={$t("identity.guest.checkbox")}
         />

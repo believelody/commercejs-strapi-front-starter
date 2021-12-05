@@ -28,8 +28,6 @@
             }
         });
     }
-
-    $: console.log(items);
 </script>
 
 <section class="flex flex-col bg-white rounded my-4 justify-center border shadow-md w-full xl:w-3/5 items-center">

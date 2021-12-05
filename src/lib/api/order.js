@@ -8,7 +8,10 @@ export const getOrders = async () => {
             headers: authenticateHeaders()
         });
         const json = await res.json();
-        return json;
+        if (json.error) {
+            return { success: false, error: json.error }
+        }
+        return {success: true, ...json};
     } catch (error) {
         console.log(error);
     }

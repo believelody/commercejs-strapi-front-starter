@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import { sidebar, shipping, paymentMethod, user, checkout, stripe } from '$lib/stores';
+    import { sidebar, shipping, paymentMethod, user, profile, jwt, checkout, stripe } from '$lib/stores';
     import { requiredFieldsValidation, emailValidation } from "$lib/utils/form.util";
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
@@ -12,16 +12,17 @@
     import PaypalPaymentButton from '../button/PaypalPaymentButton.svelte';
     import Discount from '../discount/Discount.svelte';
 
-	let cardElement, isCardComplete = false;
+	let cardElement, isCountryAvailable = true, isCardComplete = false;
 
     function showSidebar() {
-        $sidebar = OrderSidebar
+        $sidebar = OrderSidebar;
     }
 
     $: checkoutValid = !!(
-        requiredFieldsValidation($user, ["firstname", "email"]) &&
+        requiredFieldsValidation($jwt ? $profile.customer : $user, ["firstname", "email"]) &&
         emailValidation($user.email) &&
-        requiredFieldsValidation($shipping, ["address1", "city", "zip", "country", "subdivision"]) &&
+        requiredFieldsValidation($shipping, ["address1", "city", "zip", "country"]) &&
+        isCountryAvailable &&
         $checkout.live.shipping.id
     );
     $: stripeValid = !!(checkoutValid && $stripe && cardElement && isCardComplete);
@@ -42,7 +43,7 @@
         <div class="h-full overflow-y-auto">
             <Identity />
             <Discount />
-            <Addresses />
+            <Addresses on:isCountryAvailable={({ detail }) => isCountryAvailable = detail.isCountryAvailableForShipping} />
             {#if $shipping?.country}
                 <ShippingMethods />
             {/if}

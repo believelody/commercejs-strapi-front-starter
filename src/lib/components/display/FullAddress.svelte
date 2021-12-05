@@ -17,6 +17,9 @@ import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
     <span>{information.address2}</span>
 {/if}
 <span>{information.zip} {information.city}</span>
+{#if information.subdivision}
+    <span>{information.subdivision.value}</span>
+{/if}
 <span>{$t(`country.${information.country.key.toLowerCase()}`)}</span>
 <div class="pt-3 flex flex-col lg:flex-row items-center justify-center">
     <button disabled={loading} on:click={callback1} class="bg-indigo-300 py-1 px-3 mr-0 {isSelected ? "" : "lg:mr-6"} mb-4 lg:mb-0 rounded disabled:opacity-75 disabled:cursor-wait">

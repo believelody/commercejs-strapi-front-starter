@@ -11,8 +11,12 @@
     async function getAll() {
         loading = true;
         const res = await api.order.getOrders();
+        console.log(res);
         if (res.success) {
             orders = res.orders;
+            pagination = res.pagination;
+        } else {
+            error = res.error;
         }
         loading = false;
     }
@@ -29,7 +33,9 @@
     <HeaderTitle title={$t("order.account.title")} />
     <ul class="relative border bg-white mx-2 shadow-md rounded h-full flex flex-wrap">
         {#each orders as order}
-            <li class="w-full lg:w-1/2"></li>
+            <li class="w-full lg:w-1/2">
+                <pre>{JSON.stringify(order, null, 2)}</pre>
+            </li>
         {:else}
             <section class="rounded p-6 my-2 mx-auto h-24 bg-indigo-200 flex flex-col justify-center">
                 <span>{$t("order.empty.text")}</span>

@@ -26,7 +26,7 @@
             <p class="text-md text-gray-600">
                 {$t("checkout.payment.success.subtitle")}
             </p>
-            <ul class="text-md mt-3 text-gray-600 list-disc list-inside">
+            <ul class="text-md text-gray-600 list-disc list-inside">
                 {#each live.line_items as item}
                     <li>{item.name} x {item.quantity} - {item.variants.map(variant => `${variant.variant_name} : ${variant.option_name}`).join(" , ")}</li>
                 {/each}
@@ -35,17 +35,39 @@
                 {$t("checkout.payment.success.subtotal")} : {live.subtotal.formatted_with_symbol}
             </p>
         </div>
-        <div class="my-2">
-            <section class="flex flex-col text-md text-gray-600">
-                <span>{$t(`checkout.payment.success.${isBillingSameAsShipping ? "shipping-billing" : "shipping"}.title`)} : </span>
-                <span class="underline">{shipping.address1} {shipping.address2}, {shipping.city} {shipping.zip}, {$t(`country.${shipping.country.toLowerCase()}`)}</span>
+        <div class="my-2 flex justify-start">
+            <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.${isBillingSameAsShipping ? "shipping-billing" : "shipping"}.title`)} : </section>
+            <section class="flex flex-col flex-grow text-md text-gray-600">
+                    <span>{shipping.address1}</span>
+                    {#if shipping.address2}
+                        <span>{shipping.address2}</span>
+                    {/if}
+                <div class="flex">
+                    <span class="mr-2">{shipping.city}</span>
+                    <span>{shipping.zip}</span>
+                </div>
+                {#if shipping.subdivision}
+                    <span>{shipping.subdivision.value}</span>
+                {/if}
+                <span>{$t(`country.${shipping.country.key.toLowerCase()}`)}</span>
             </section>
         </div>
         {#if !isBillingSameAsShipping}
-            <div class="mt-2">
-                <section class="flex items-start justify-start text-md text-gray-600">
-                    <span class="flex-grow">{$t("checkout.payment.success.billing.title")} : </span>
-                    <span class="ml-2 underline">{billing.address1} {billing.address2}, {billing.city} {billing.zip}, {$t(`country.${billing.country.toLowerCase()}`)}</span>
+            <div class="mt-2 flex justify-start">
+                <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.billing.title`)} : </section>
+                <section class="flex flex-col flex-grow text-md text-gray-600">
+                        <span>{billing.address1}</span>
+                        {#if billing.address2}
+                            <span>{billing.address2}</span>
+                        {/if}
+                    <div class="flex">
+                        <span class="mr-2">{billing.city}</span>
+                        <span>{billing.zip}</span>
+                    </div>
+                    {#if billing.subdivision}
+                        <span>{billing.subdivision.value}</span>
+                    {/if}
+                    <span>{$t(`country.${billing.country.key.toLowerCase()}`)}</span>
                 </section>
             </div>
         {/if}
@@ -68,7 +90,7 @@
             on:click={hideModal}
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
         >
-            {$t("checkout.payment.success.action.go-to-home")}
+            {$t("checkout.payment.success.modal.close")}
         </button>
     </div>
 </div>

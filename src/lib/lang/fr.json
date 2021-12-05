@@ -1,5 +1,6 @@
 {
     "country": {
+        "bj": "Bénin",
         "fr": "France"
     },
     "common": {
@@ -344,7 +345,8 @@
             "shipping": "Information sur la livraison",
             "billing": "Information sur la facturation",
             "isBillingSameAsShipping": "Information sur la livraison et la facturation",
-            "checkbox": "Sélectionner en tant qu'adresse de facturation"
+            "checkbox": "Sélectionner en tant qu'adresse de facturation",
+            "country-not-available": "Nous sommes désolé, nous ne livrons pas dans ce pays."
         },
         "payment": {
             "title": "Moyen de paiement",
@@ -374,9 +376,8 @@
                 "shipping-method": "Méthode de livraison",
                 "shipping-cost": "Coût de la livraison",
                 "total": "Total",
-                "action": {
-                    "go-to-home": "Aller au menu d'accueil",
-                    "download-invoice": "Télécharger la facture"
+                "modal": {
+                    "close": "Fermer cette boîte de dialogue"
                 },
                 "order-reference": "{{name}}, nous vous remercions pour votre achat. Voici la référence de la commande: {{reference}}."
             },
@@ -405,6 +406,10 @@
         "check-summary": "voir le récapitulatif",
         "summary": "Récapitulatif",
         "submit-stripe": "Payer {{amount}}",
-        "submit-paypal": "Payer {{amount}} avec"
+        "submit-paypal": "Payer {{amount}} avec",
+        "no-cart": {
+            "title": "Checkout indisponible",
+            "description": "Votre panier d'achat est vide. Vous ne pouvez pas accéder à cette page. Commencez votre shopping dès maintenant !"
+        }
     }
 }
