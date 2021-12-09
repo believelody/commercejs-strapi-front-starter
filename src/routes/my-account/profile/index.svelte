@@ -5,4 +5,6 @@
 </script>
 
 <HeaderTitle title={$t("account.profile.title")} />
-<ProfileForm />
+<div class="w-full lg:w-4/5">
+    <ProfileForm />
+</div>

@@ -41,7 +41,7 @@
 </style>
 
 <form use:clickLinkOutside={{ isDraft, text: $t("account.profile.draft.confirm") }} on:clicklinkoutside={() => isDraft = false} id="profile-form" on:submit|preventDefault={submit}>
-    <Fields class="border mx-4 flex-col">
+    <Fields class="flex flex-col">
             <InputField
                     name="firstname"
                     label={$t('identity.firstname.label')}
@@ -99,7 +99,7 @@
                 <p class="text-sm text-red-400">{$t("account.profile.update.failed")}</p>
             </div>
         {/if}
-        <div class="w-full my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
+        <div class="w-full my-4 xl:mx-4 flex justify-center items-center">
             <button type="submit" disabled={!isValid || loading} class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">{$t(`account.profile.update.${loading ? "loading" : "submit"}`)}</button>
         </div>
     </Fields>

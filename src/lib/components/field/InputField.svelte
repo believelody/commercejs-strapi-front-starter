@@ -7,7 +7,7 @@
 	let showPwd = false;
 </script>
 
-<div class="flex flex-col items-center py-3 px-2">
+<div class="{$$props.class} w-full py-3 px-2">
 	<label
 			for={name}
 			class="flex items-center w-full"
