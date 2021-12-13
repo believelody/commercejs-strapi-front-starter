@@ -1,40 +1,48 @@
 <script>
     import { onMount } from 'svelte';
-    import { navigating } from '$app/stores';
+    import { navigating, page } from '$app/stores';
+    import { goto } from '$app/navigation';
     import { paginate, PaginationNav } from 'svelte-paginate';
     import api from '$lib/api';
     import { t } from '$lib/i18n';
+    import { orders } from '$lib/stores';
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
     import FilePDFIcon from '../../../lib/components/svg/FilePDFIcon.svelte';
 
-    let orders = [], error = null, loading = true, currentPage = 1, pageSize = 6;
+    let error = null, loading = false, currentPage = +$page.query.get("page"), pageSize = 6;
 
     async function getAll() {
         loading = true;
         const res = await api.order.getOrders();
-        console.log(res);
         if (res.success) {
-            orders = res.orders;
+            $orders = res.orders;
         } else {
             error = res.error;
         }
         loading = false;
     }
 
+    function setPage({ detail }) {
+        currentPage = detail.page;
+        goto(`orders?page=${detail.page}`);
+    }
+
     onMount(async () => {
-        await getAll();
+        if (!$orders.length) {
+            await getAll();
+        }
     });
 
-    $: paginatedOrders = orders.length && paginate({ items: orders, pageSize, currentPage });
+    $: paginatedOrders = $orders.length && paginate({ items: $orders, pageSize, currentPage });
 </script>
 
-{#if loading || $navigating}
+{#if (loading || $navigating) && !$orders.length}
     <MoonLoading />
 {:else}
     <HeaderTitle title={$t("order.account.title")} />
     <div class="relative w-full lg:w-4/5">
-        {#if orders.length}
+        {#if $orders.length}
             <table class="border shadow-md rounded bg-white w-full">
                 <thead class="border-b">
                     <tr>
@@ -74,7 +82,7 @@
                             <td class="border w-3/16 text-center">{$t("order.account.table.body.not-fulfill")}</td>
                             <td class="p-1">
                                 <section class="flex flex-col items-center">
-                                    <button class="bg-green-500 rounded py-1 px-3">{$t("order.account.table.body.button.re-order")}</button>
+                                    <button class="bg-green-400 rounded py-1 px-3">{$t("order.account.table.body.button.re-order")}</button>
                                     <a href={`/orders/${order.id}`} class="underline font-medium">{$t("order.account.table.body.button.view")}</a>
                                     <button class="border border-blue-500 rounded px-4 flex items-center">
                                         <FilePDFIcon size={4} color="blue-500" />
@@ -88,12 +96,12 @@
             </table>
             <section class="flex justify-center mt-8">
                 <PaginationNav
-                    totalItems={orders.length}
+                    totalItems={$orders.length}
                     {pageSize}
                     {currentPage}
                     limit={1}
                     showStepOptions
-                    on:setPage={ e => currentPage = e.detail.page }
+                    on:setPage={setPage}
                 />
             </section>
         {:else}
@@ -108,5 +116,17 @@
 <style>
     :global(.pagination-nav) {
         display: flex;
+        justify-content: space-between;
+    }
+    :global(.number) {
+        margin: 0 8px;
+        cursor: pointer;
+    }
+    :global(.prev), :global(.next) {
+        cursor: pointer;
+    }
+    :global(.active) {
+        text-decoration: underline;
+        font-weight: bold;
     }
 </style>

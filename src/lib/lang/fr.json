@@ -241,6 +241,15 @@
             }
         }
     },
+    "review": {
+        "account": {
+            "title": "Liste de vos avis sur les articles"
+        },
+        "empty": {
+            "text": "Vous n'avez pas encore laissé un avis sur un article",
+            "link": "Rendez-vous sur Mes commandes et laissez-nous un petit commentaire ;) !"
+        }
+    },
     "auth": {
         "login": {
             "title": "Connexion",

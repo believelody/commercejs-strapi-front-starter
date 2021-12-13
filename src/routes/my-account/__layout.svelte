@@ -48,7 +48,7 @@
         </h3>
         <nav class="flex flex-col h-auto">
             <a class="px-2 py-2 {$page.path === "/my-account" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account">{$t("account.dashboard.link")}</a>
-            <a class="px-2 py-2 {$page.path === "/my-account/orders" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/orders">{$t("account.orders.link")}</a>
+            <a class="px-2 py-2 {$page.path === "/my-account/orders" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/orders?page=1">{$t("account.orders.link")}</a>
             <a class="px-2 py-2 {$page.path === "/my-account/profile" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/profile">{$t("account.profile.link")}</a>
             <a class="px-2 py-2 {$page.path === "/my-account/addresses" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/addresses">{$t("account.addresses.link")}</a>
             <a class="px-2 py-2 {$page.path === "/my-account/wishlist" ? "border-l-8 border-l-indigo-200" : ""} border-b border-gray-300 hover:bg-gray-200" href="/my-account/wishlist">{$t("account.wishlist.link")}</a>

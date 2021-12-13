@@ -6,6 +6,7 @@ import * as category from './category';
 import * as order from './order';
 import * as address from './address';
 import * as wishlist from './wishlist';
+import * as review from './review';
 
 export default {
     auth,
@@ -15,5 +16,6 @@ export default {
     category,
     order,
     address,
-    wishlist
+    wishlist,
+    review
 };
