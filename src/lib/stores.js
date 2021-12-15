@@ -40,6 +40,7 @@ export const paymentMethod = writable(null);
 export const stripe = writable(null);
 export const paypal = writable(null);
 export const checkoutLoading = writable(false);
+export const orders = writable([]);
 
 export const resetStores = () => {
 	if (!get(jwt)) {

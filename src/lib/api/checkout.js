@@ -16,7 +16,11 @@ export const getCheckoutByCart = async (id) => {
     try {
         const res = await fetch(`${baseUrl}/checkout/${id}?type=cart`);
         const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
         checkout.set(json);
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -26,7 +30,10 @@ export const getCountries = async (tokenId) => {
     try {
         const res = await fetch(`${baseUrl}/checkout/${tokenId}/available-countries`);
         const json = await res.json();
-        return json.countries;
+        if (res.error) {
+            return { success: false };
+        }
+        return { success: true, countries: json.countries };
     } catch (error) {
         console.log(error);
     }

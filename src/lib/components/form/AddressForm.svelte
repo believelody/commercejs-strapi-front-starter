@@ -7,9 +7,9 @@
     import SearchField from "../field/SearchField.svelte";
     import {requiredFieldsValidation} from "../../utils/form.util";
 
-    export let information = {}, title, type, checkoutId = "", hideSubmitButton = false, submitLabel = "", withoutShadow = false,
+    export let information = {}, type, title, hideSubmitButton = false, submitLabel = "", withoutShadow = false,
         hideTitleAddress = false;
-    let loading = false, countries = [];
+    let countries = [], subdivisions = [];
     const dispatch = createEventDispatcher();
 
     function onInput(e) {
@@ -18,20 +18,32 @@
 
     async function submit() {
         if ($$props.submit) {
-            loading = true;
             const res = await $$props.submit({...information, type});
-            console.log("in address form: ", res);
             if (res.success) {
-                dispatch("success");
+                dispatch("submitEvent");
             }
-            loading = false;
+        }
+    }
+
+    async function getCountries() {
+        const res = await api.address.getCountries();
+        if (res.success) {
+            countries = res.countries;
+        }
+    }
+
+    async function getSubdivisions(countryCode) {
+        const res = await api.address.getSubdivisions(countryCode);
+        if (res.success) {
+            return res.subdivisions;
         }
     }
 
     onMount(async () => {
-        countries = await api.address.getCountries();
+        await getCountries();
     });
 
+    $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
     $: isValid = requiredFieldsValidation(information, ["address1", "city", "zip", "country"]);
 </script>
 
@@ -43,14 +55,14 @@
 
 <form id="address-form" on:submit|preventDefault={submit}>
     <h2 class="uppercase tracking-wide text-xl font-semibold text-gray-700 my-2">{title}</h2>
-    <Fields class="flex-col overflow-y-hidden" {withoutShadow}>
+    <Fields class="flex-col" {withoutShadow}>
         {#if !hideTitleAddress}
             <InputField
-                    name="title"
-                    label={$t('checkout.address.title.label')}
-                    placeholder={$t('checkout.address.title.placeholder')}
-                    value={information.title}
-                    on:input={onInput}
+                name="title"
+                label={$t('checkout.address.title.label')}
+                placeholder={$t('checkout.address.title.placeholder')}
+                value={information.title}
+                on:input={onInput}
             />
         {/if}
         <InputField
@@ -62,11 +74,11 @@
             required
         />
         <InputField
-                name="address2"
-                label={$t('checkout.address.address2.label')}
-                placeholder={$t('checkout.address.address2.placeholder')}
-                value={information.address2}
-                on:input={onInput}
+            name="address2"
+            label={$t('checkout.address.address2.label')}
+            placeholder={$t('checkout.address.address2.placeholder')}
+            value={information.address2}
+            on:input={onInput}
         />
         <InputField
             name="city"
@@ -77,29 +89,38 @@
             required
         />
         <InputField
-                name="zip"
-                label={$t('checkout.address.zip.label')}
-                placeholder={$t('checkout.address.zip.placeholder')}
-                value={information.zip}
-                on:input={onInput}
-                required
+            name="zip"
+            label={$t('checkout.address.zip.label')}
+            placeholder={$t('checkout.address.zip.placeholder')}
+            value={information.zip}
+            on:input={onInput}
+            required
         />
         <SearchField
-                name="countries"
-                label={$t('checkout.address.country.label')}
-                placeholder={$t('checkout.address.country.placeholder')}
-                defaultValue={information.country?.value}
-                on:value={e => information.country = e.detail}
-                items={Object.entries(countries).map(([key, value]) => ({key, value}))}
-                required
+            name="countries"
+            label={$t('checkout.address.country.label')}
+            placeholder={$t('checkout.address.country.placeholder')}
+            defaultValue={information.country?.value}
+            on:value={e => information.country = e.detail}
+            items={Object.entries(countries).map(([key, value]) => ({key, value}))}
+            required
         />
+        <!-- <SearchField
+            name="subdivisions"
+            label={$t('checkout.address.subdivision.label')}
+            placeholder={$t('checkout.address.subdivision.placeholder')}
+            defaultValue={information.subdivision?.value}
+            on:value={e => information.subdivision = e.detail}
+            items={Object.entries(subdivisions).map(([key, value]) => ({key, value}))}
+            required
+        /> -->
         {#if !hideSubmitButton}
             <div class="flex justify-center flex-grow pt-3 pb-2">
-                <button disabled={!isValid || loading} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
+                <button disabled={!isValid} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
                     {#if submitLabel}
                         {submitLabel}
                     {:else}
-                        {$t(`common.${loading ? "update" : "validate"}`)}
+                        {$t(`common.validate`)}
                     {/if}
                 </button>
             </div>

@@ -1,9 +1,13 @@
+<script>
+	export let size = 8, color = "gray-500";
+</script>
+
 <svg
 	fill="currentColor"
 	stroke-linecap="round"
 	stroke-linejoin="round"
 	stroke-width="2"
-	class="w-5 h-5"
+	class="w-{size} h-{size} text-{color}"
 	viewBox="0 0 24 24"
 >
 	<path

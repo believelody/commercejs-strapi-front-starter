@@ -6,6 +6,7 @@
 	import api from '$lib/api';
 	import DangerModal from '../modal/DangerModal.svelte';
 	import CartList from '../list/CartList.svelte';
+	import SidebarWrapper from "../sidebar/SidebarWrapper.svelte";
 
 	let loading = false;
 	const { open } = getContext("simple-modal");
@@ -26,7 +27,7 @@
 	}
 </script>
 
-<div class="sm:w-screen max-w-md h-screen bg-white flex flex-col relative">
+<SidebarWrapper>
 	{#if $cart && $cart.total_unique_items > 0}
 		<h2 class="ml-2 mt-2 text-lg font-medium text-gray-900" id="slide-over-title">
 			{$t("cart.title")} : {$cart.total_unique_items} {$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
@@ -80,7 +81,7 @@
 			{$t("cart.empty")}
 		</section>
 	{/if}
-</div>
+</SidebarWrapper>
 
 <style>
 	.list {

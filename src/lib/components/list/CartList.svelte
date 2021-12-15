@@ -5,7 +5,6 @@
     import api from '$lib/api';
     import TrashIcon from '../svg/TrashIcon.svelte';
     import DangerModal from '../modal/DangerModal.svelte';
-    import {deleteItem} from "../../api/cart";
 
     export let items, loading;
     const dispatch = createEventDispatcher();
@@ -30,7 +29,7 @@
             title: $t("cart.modal.delete-item.title", {name: item.name}),
             description: $t('cart.modal.delete-item.description'),
             actionCallback: async () => {
-                await deleteItem($cart.id, item.id);
+                await api.cart.deleteItem($cart.id, item.id);
             }
         });
     }

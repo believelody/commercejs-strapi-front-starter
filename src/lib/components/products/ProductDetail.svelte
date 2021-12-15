@@ -5,11 +5,11 @@
 	import FacebookIcon from '../svg/FacebookIcon.svelte';
 	import InstagramIcon from '../svg/InstagramIcon.svelte';
 	import TwitterIcon from '../svg/TwitterIcon.svelte';
-	import HeartIcon from "../svg/HeartCircleIcon.svelte";
 	import Colors from '../variants/Colors.svelte';
 	import Sizes from '../variants/Sizes.svelte';
 	import AddToCartBtn from '../cart/AddToCartBtn.svelte';
 	import Quantity from '../quantity/Quantity.svelte';
+	import WishlistButton from '../button/WishlistButton.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -20,16 +20,17 @@
 <section class="text-gray-600 body-font">
 	<div class="px-5 py-24 mx-auto">
 		<div class="lg:w-4/5 mx-auto flex flex-wrap">
-			<div class="p-0 m-0 lg:w-1/2 w-full h-auto">
+			<div class="lg:w-1/2 w-full h-auto">
                 <Gallery images={product.assets} />
             </div>
-			<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-				<section>
-					<span class="flex py-2">
-						<FacebookIcon />
-						<TwitterIcon />
-						<InstagramIcon />
-					</span>
+			<div class="lg:w-1/2 w-full lg:pl-4 xl:pl-10 xl:py-6 mt-6 lg:mt-0">
+				<section class="flex items-center justify-between">
+					<div class="flex py-2">
+						<span><FacebookIcon /></span>
+						<span class="mx-2"><TwitterIcon /></span>
+						<span><InstagramIcon /></span>
+					</div>
+					<WishlistButton {product} />
 				</section>
 				<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{product.name}</h1>
 				<div class="flex mb-4">
@@ -54,9 +55,6 @@
 				<div class="flex items-center mt-4">
 					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
 					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
-					<button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-						<HeartIcon />
-					</button>
 				</div>
 			</div>
 		</div>

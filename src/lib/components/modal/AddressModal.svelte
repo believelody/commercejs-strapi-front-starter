@@ -5,6 +5,10 @@
     export let title, withoutShadow, information, type, submit;
     const { close } = getContext("simple-modal");
 
+    function closeModal() {
+        close();
+    }
+
 </script>
 
-<AddressForm {title} {withoutShadow} {information} {type} {submit} on:success={() => close()} />
+<AddressForm {title} {withoutShadow} {information} {type} {submit} on:submitEvent={closeModal} />

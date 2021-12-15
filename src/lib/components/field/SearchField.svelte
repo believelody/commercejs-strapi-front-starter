@@ -1,9 +1,7 @@
 <script>
-    import HidePasswordIcon from "../svg/HidePasswordIcon.svelte";
-    import ShowPasswordIcon from "../svg/ShowPasswordIcon.svelte";
     import {createEventDispatcher} from "svelte";
 
-    export let name, items, defaultValue = "", hint, label = "", placeholder, required;
+    export let name, items, defaultValue = "", hint, error, label = "", placeholder, required;
     let value = defaultValue;
     const dispatch = createEventDispatcher();
 
@@ -43,6 +41,9 @@
     </label>
     {#if hint}
         <span class="text-xs text-gray-400 italic">{hint}</span>
+    {/if}
+    {#if error}
+        <span class="text-xs text-red-400 italic">{error}</span>
     {/if}
 </div>
 

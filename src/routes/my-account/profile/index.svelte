@@ -1,5 +1,10 @@
 <script>
-    import Profile from "../../../lib/components/profile/Profile.svelte";
+    import { t } from '$lib/i18n';
+    import ProfileForm from "../../../lib/components/form/ProfileForm.svelte";
+    import HeaderTitle from "../../../lib/components/header/HeaderTitle.svelte";
 </script>
 
-<Profile />
+<HeaderTitle title={$t("account.profile.title")} />
+<div class="w-full lg:w-4/5">
+    <ProfileForm />
+</div>

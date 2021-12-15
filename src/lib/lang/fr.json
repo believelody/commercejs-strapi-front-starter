@@ -1,5 +1,6 @@
 {
     "country": {
+        "bj": "Bénin",
         "fr": "France"
     },
     "common": {
@@ -7,7 +8,10 @@
         "subtotal": "Sous-total",
         "total": "Total",
         "update": "mise à jour ...",
-        "validate": "Valider"
+        "validate": "Valider",
+        "delete": "Supprimer",
+        "remove": "Retirer",
+        "select": "Sélectionner"
     },
     "header": {
         "connexion": "Connexion",
@@ -43,8 +47,32 @@
         }
     },
     "order": {
-        "empty": "Vous n'avez aucune commande pour l'instant.",
-        "link": "Commencez vos achats en cliquant ici !"
+        "account": {
+            "title": "Mes commandes",
+            "table": {
+                "header": {
+                    "reference": "N° Commande",
+                    "date": "Date",
+                    "price": "Montant",
+                    "shipping": "Livraison",
+                    "tracking": "N° suivi",
+                    "fulfillment": "Statut d'envoi",
+                    "details": "Detail de la commande"
+                },
+                "body": {
+                    "button": {
+                        "view": "Voir le détail",
+                        "bill": "Facture",
+                        "re-order": "Renouveler la commande"
+                    },
+                    "not-fulfill": "En préparation"
+                }
+            }
+        },
+        "empty": {
+            "text": "Vous n'avez aucune commande pour l'instant.",
+            "link": "Commencez vos achats en cliquant ici !"
+        }
     },
     "cart": {
         "title": "Votre panier",
@@ -165,7 +193,21 @@
             "no-address": "Aucune adresse sélectionnée",
             "select": "Sélectionner une autre adresse",
             "add": "Ajouter une adresse",
-            "update": "Modifier cette adresse"
+            "update": "Modifier cette adresse",
+            "sidebar": {
+                "shipping": {
+                    "title": "Adresses de livraison"
+                },
+                "billing": {
+                    "title": "Adresses de facturation"
+                }
+            },
+            "modal": {
+                "delete": {
+                    "title": "Supprimer cette adresse ?",
+                    "description": "Souhaitez-vous réellement effectuer cette action ? Vous ne pourrez plus revenir en arrière."
+                }
+            }
         },
         "wishlist": {
             "link": "Mes produits favoris"
@@ -175,8 +217,42 @@
         },
         "logout": "Se déconnecter"
     },
+    "wishlist": {
+        "account": {
+            "title": "Liste de souhaits",
+            "cart": {
+                "add": "Ajouter au panier"
+            },
+            "remove": {
+                "button": "Retirer des favoris",
+                "modal": {
+                    "title": "Retirer l'article de vos favoris ?",
+                    "description": "En confirmant, l'article sera enlevé de votre liste de souhaits. Il sera cependant toujours possible de le consulter."
+                }
+            }
+        },
+        "empty": {
+            "text": "Vous n'avez pas encore sélectionné d'articles dans votre liste de souhait",
+            "link": "Commencez vos achats en cliquant ici !"
+        },
+        "modal": {
+            "auth": {
+                "title": "Vous devez vous authentifier"
+            }
+        }
+    },
+    "review": {
+        "account": {
+            "title": "Liste de vos avis sur les articles"
+        },
+        "empty": {
+            "text": "Vous n'avez pas encore laissé un avis sur un article",
+            "link": "Rendez-vous sur Mes commandes et laissez-nous un petit commentaire ;) !"
+        }
+    },
     "auth": {
         "login": {
+            "title": "Connexion",
             "submit": "Se connecter",
             "loading": "Connexion en cours ...",
             "failed": "Email ou mot de passe incorrect"
@@ -196,7 +272,8 @@
             "expired": "Le code utilisé est expiré.",
             "success": {
                 "title": "Email vérifié",
-                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
+                "link": "Aller à la page Mon compte",
+                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-center text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
             }
         },
         "success": {
@@ -296,7 +373,8 @@
             "shipping": "Information sur la livraison",
             "billing": "Information sur la facturation",
             "isBillingSameAsShipping": "Information sur la livraison et la facturation",
-            "checkbox": "Sélectionner en tant qu'adresse de facturation"
+            "checkbox": "Sélectionner en tant qu'adresse de facturation",
+            "country-not-available": "Nous sommes désolé, nous ne livrons pas dans ce pays."
         },
         "payment": {
             "title": "Moyen de paiement",
@@ -326,9 +404,8 @@
                 "shipping-method": "Méthode de livraison",
                 "shipping-cost": "Coût de la livraison",
                 "total": "Total",
-                "action": {
-                    "go-to-home": "Aller au menu d'accueil",
-                    "download-invoice": "Télécharger la facture"
+                "modal": {
+                    "close": "Fermer cette boîte de dialogue"
                 },
                 "order-reference": "{{name}}, nous vous remercions pour votre achat. Voici la référence de la commande: {{reference}}."
             },
@@ -357,6 +434,10 @@
         "check-summary": "voir le récapitulatif",
         "summary": "Récapitulatif",
         "submit-stripe": "Payer {{amount}}",
-        "submit-paypal": "Payer {{amount}} avec"
+        "submit-paypal": "Payer {{amount}} avec",
+        "no-cart": {
+            "title": "Checkout indisponible",
+            "description": "Votre panier d'achat est vide. Vous ne pouvez pas accéder à cette page. Commencez votre shopping dès maintenant !"
+        }
     }
 }

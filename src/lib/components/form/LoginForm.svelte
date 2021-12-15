@@ -6,7 +6,7 @@
     import InputField from '../field/InputField.svelte';
     import Fields from '../field/Fields.svelte';
 
-    export let withoutShadow = false;
+    export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
@@ -30,29 +30,28 @@
 </style>
 
 <form id="identity-form" on:submit|preventDefault={submit}>
-    <Fields {withoutShadow}>
-        <div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
-            <InputField
-                name="identifier"
-                type="email"
-                required
-                label={$t('identity.email.label')}
-                placeholder={$t('identity.email.placeholder')}
-                value={identifier}
-                on:input={e => identifier = e.target.value}
-                on:focus={() => hasError = false}
-            />
-            <InputField
-                name="password"
-                type="password"
-                required
-                label={$t('identity.password.label')}
-                placeholder={$t('identity.password.placeholder')}
-                value={password}
-                on:input={e => password = e.target.value}
-                on:focus={() => hasError = false}
-            />
-        </div>
+    <h2 class="uppercase tracking-wide text-xl font-semibold text-gray-700 my-2">{title}</h2>
+    <Fields class="flex-col" {withoutShadow}>
+        <InputField
+            name="identifier"
+            type="email"
+            required
+            label={$t('identity.email.label')}
+            placeholder={$t('identity.email.placeholder')}
+            value={identifier}
+            on:input={e => identifier = e.target.value}
+            on:focus={() => hasError = false}
+        />
+        <InputField
+            name="password"
+            type="password"
+            required
+            label={$t('identity.password.label')}
+            placeholder={$t('identity.password.placeholder')}
+            value={password}
+            on:input={e => password = e.target.value}
+            on:focus={() => hasError = false}
+        />
         {#if hasError}
             <div class="w-full flex items-center justify-center mt-2">
                 <span class="text-sm text-red-400">{$t("auth.login.failed")}</span>

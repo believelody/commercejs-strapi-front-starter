@@ -2,7 +2,7 @@
     export let name, checked, label, labelBeforeCheckbox = false, required = false;
 </script>
 
-<label class="flex items-center xl:w-1/2" for={name}>
+<label class="flex items-center {$$props.class}" for={name}>
     {#if labelBeforeCheckbox}
         <span class="px-2 text-gray-600">
             {label}

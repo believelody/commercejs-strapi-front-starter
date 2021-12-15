@@ -6,7 +6,7 @@
 
     async function selectShippingMethod(id) {
         $checkoutLoading = true;
-        await api.checkout.chooseShippingMethod($checkout.id, id, $shipping.country);
+        await api.checkout.chooseShippingMethod($checkout.id, id, $shipping.country.key);
         $checkoutLoading = false;
     }
 </script>

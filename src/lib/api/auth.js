@@ -1,4 +1,5 @@
 import { user, jwt } from '$lib/stores';
+import { get } from 'svelte/store';
 import { profile } from '../stores';
 import { authenticateHeaders, headers } from '../utils/header.util';
 import { baseUrl } from '../utils/url.util';
@@ -17,7 +18,7 @@ export const login = async (identifier, password) => {
             jwt.useLocalStorage();
             user.set({ email, id, username, provider, confirmed, blocked });
             user.useLocalStorage();
-            return { statusCode: 200 }
+            return { statusCode: 200 };
         }
         return json
     } catch (error) {
@@ -39,9 +40,9 @@ export const register = async (firstname, lastname, email, password) => {
             jwt.useLocalStorage();
             user.set({ email, id, username, provider, confirmed, blocked });
             user.useLocalStorage();
-            return { statusCode: 200 }
+            return { statusCode: 200 };
         }
-        return json
+        return json;
     } catch (error) {
         console.log(error);
     }
@@ -55,7 +56,7 @@ export const getMe = async () => {
         });
         const json = await res.json();
         profile.set(json);
-        profile.useLocalStorage()
+        profile.useLocalStorage();
     } catch (error) {
         console.log(error);
     }
@@ -69,7 +70,12 @@ export const codeVerification = async (email, code) => {
             body: JSON.stringify({ email, code })
         });
         const json = await res.json();
-        console.log(json);
+        if (json.success) {
+            user.set({
+                ...get(user),
+                confirmed: true,
+            });
+        }
         return json;
     } catch (error) {
         console.log(error);
@@ -83,7 +89,7 @@ export const resendCode = async (email) => {
             headers,
             body: JSON.stringify({ email }),
         });
-        const json = res.json();
+        const json = await res.json();
         return json;
     } catch (error) {
         console.log(error);

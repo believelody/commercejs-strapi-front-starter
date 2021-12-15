@@ -1,6 +1,5 @@
 <script>
   import {getContext} from "svelte";
-  import { goto } from '$app/navigation';
   import { t } from "$lib/i18n";
   import { jwt } from '$lib/stores';
   // import { locale } from '$lib/stores';

@@ -2,6 +2,7 @@
 	import CheckCircleIcon from "../svg/CheckCircleIcon.svelte";
 	import DangerIcon from "../svg/DangerIcon.svelte";
 	import ModalBox from "../box/ModalBox.svelte";
+import InfoCircleIcon from "../svg/InfoCircleIcon.svelte";
 
 	export let title, description, status = "info";
 </script>
@@ -19,6 +20,8 @@
 						<CheckCircleIcon size={12} />
 					{:else if status === "danger"}
 						<DangerIcon size={12} />
+					{:else}
+						<InfoCircleIcon size={12} color="blue-400" />
 					{/if}
 				</span>
 				<span class="ml-4 text-lg leading-6 font-medium text-gray-900">{title}</span>

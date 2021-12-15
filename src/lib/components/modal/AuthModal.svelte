@@ -1,17 +1,18 @@
 <script>
+    import {getContext, onDestroy} from "svelte";
+    import { page } from '$app/stores';
     import {goto} from '$app/navigation';
-    import {getContext} from "svelte";
     import {jwt} from '$lib/stores';
     import LoginForm from '../form/LoginForm.svelte';
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
 
+    export let title;
     let isLogin = true;
     const {close} = getContext("simple-modal");
 
-    function gotoMyAccount() {
+    function closeModal() {
         if (jwt) {
-            goto(`/my-account`);
             close();
         }
     }
@@ -21,10 +22,10 @@
     /* your styles go here */
 </style>
 
-<ModalBox color="indigo-600">
+<ModalBox>
 	{#if isLogin}
-        <LoginForm withoutShadow on:submitEvent={gotoMyAccount} on:toggleAuth={() => isLogin = false} />
+        <LoginForm {title} withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = false} />
     {:else}
-        <RegisterForm withoutShadow on:submitEvent={gotoMyAccount} on:toggleAuth={() => isLogin = true} />
+        <RegisterForm {title} withoutShadow on:submitEvent={closeModal} on:toggleAuth={() => isLogin = true} />
     {/if}
 </ModalBox>

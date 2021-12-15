@@ -1,6 +1,6 @@
 <script>
-	import { t } from '$lib/i18n';
 	import {getContext} from "svelte";
+	import { t } from '$lib/i18n';
 
 	export let title,
 		description,
@@ -17,11 +17,11 @@
 			if (actionCallback) {
 				await actionCallback();
 			}
-			close();
 		} catch (error) {
 			console.log(error);
 		} finally {
 			loading = false;
+			close();
 		}
 	}
 </script>
