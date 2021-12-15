@@ -42,6 +42,7 @@ export const updateItemQuantity = async (cartId, id, quantity) => {
             cart.set(json.cart);
             cart.useLocalStorage();
         }
+        return { success: json.success };
     } catch (error) {
         console.log(error);
     }
@@ -53,6 +54,7 @@ export const deleteItem = async (cartId, itemId) => {
             method: "delete"
         });
         const json = await res.json();
+        console.log(json);
         if (json.cart) {
             cart.set(json.cart);
             cart.useLocalStorage();

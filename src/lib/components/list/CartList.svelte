@@ -1,5 +1,6 @@
 <script>
     import {createEventDispatcher, getContext} from 'svelte';
+    import {getNotificationsContext} from "svelte-notifications";
     import {t} from '$lib/i18n';
     import {cart, checkout} from '$lib/stores';
     import api from '$lib/api';
@@ -9,6 +10,7 @@
     export let items, loading;
     const dispatch = createEventDispatcher();
     const {open} = getContext("simple-modal");
+    const { addNotification } = getNotificationsContext();
 
     async function updateQuantity(item, quantity) {
         try {
@@ -16,7 +18,17 @@
             if ($checkout) {
                 await api.checkout.checkQuantity($checkout.id, item.id, quantity, item.variant.id)
             }
-            await api.cart.updateItemQuantity($cart.id, item.id, quantity);
+            const resUpdateQuantity = await api.cart.updateItemQuantity($cart.id, item.id, quantity);
+            if (resUpdateQuantity.success) {
+                addNotification({
+                    position: 'bottom-left',
+                    heading: $t('cart.notifications.heading'),
+                    text: $t('cart.notifications.description.update', { name: item.name }),
+                    description: $t('cart.notifications.description.update', { name: item.name }),
+                    type: 'success',
+                    removeAfter: 5000
+                });
+            }
         } catch (error) {
             console.log(error);
         } finally {

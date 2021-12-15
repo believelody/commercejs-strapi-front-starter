@@ -8,7 +8,9 @@
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
-	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
+	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
+	import Notification from "$lib/components/notifications/Notification.svelte";
+
 
 	$: {
 		if (!$cart) {
@@ -36,7 +38,7 @@
 	on:closing={() => console.log("closing")}
 	on:closed={() => console.log("closed")}
 >
-	<Notifications>
+	<Notifications item={Notification} withoutStyles>
 		<Sidebar />
 		{#if $page.path === '/checkout'}
 			<slot />

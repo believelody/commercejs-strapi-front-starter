@@ -11,7 +11,10 @@
         "validate": "Valider",
         "delete": "Supprimer",
         "remove": "Retirer",
-        "select": "Sélectionner"
+        "select": "Sélectionner",
+        "notifications": {
+            "note": "Cliquez / Touchez moi pour que je disparaisse"
+        }
     },
     "header": {
         "connexion": "Connexion",
@@ -95,6 +98,12 @@
             "delete-item": {
                 "title": "Retirer {{name}} ?",
                 "description": "Voulez-vous vraiment retirer cet article de votre panier ?"
+            }
+        },
+        "notifications": {
+            "heading": "Panier",
+            "description": {
+                "update": "La quantité de l'article {{name}} a été mis à jour"
             }
         },
         "subtotal": "Sous total",
