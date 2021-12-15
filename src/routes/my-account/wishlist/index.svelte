@@ -43,7 +43,7 @@ import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
     <MoonLoading />
 {:else}
     <HeaderTitle title={$t("wishlist.account.title")} />
-    <ul class="relative border w-full lg:w-4/5 bg-white mx-2 shadow-md rounded h-full flex flex-wrap">
+    <ul class="border w-full lg:w-4/5 bg-white shadow-md rounded h-full flex flex-wrap">
         {#each wishlists as wishlist}
             <li class="xl:w-1/3 lg:w-1/2 p-4 w-full">
                 <a href="/products/{wishlist.product.permalink}" class="block relative h-48 rounded overflow-hidden">
@@ -55,8 +55,8 @@ import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
                 </a>
                 <div class="mt-4">
                     <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                        <a href="/categories/{wishlist.product.categories.find((category) => true).name}">
-                            {wishlist.product.categories.find((category) => true).name}
+                        <a href="/categories/{wishlist.product.categories.find(() => true).name}">
+                            {wishlist.product.categories.find(() => true).name}
                         </a>
                     </h3>
                     <h2 class="text-gray-900 title-font text-lg font-medium">{wishlist.product.name}</h2>

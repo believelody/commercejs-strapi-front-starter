@@ -33,6 +33,7 @@
 		"svelte-carousel": "^1.0.16",
 		"svelte-check": "^2.2.10",
 		"svelte-loading-spinners": "^0.1.7",
+		"svelte-notifications": "^0.9.92",
 		"svelte-paginate": "0.0.1",
 		"svelte-preprocess": "^4.9.8",
 		"svelte-simple-modal": "^1.1.1",

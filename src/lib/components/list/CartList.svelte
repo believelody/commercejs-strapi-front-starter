@@ -46,8 +46,8 @@
                 {#each items as item}
                     <li class="py-6 flex">
                         <a
-                                href="/products/{item.permalink}"
-                                class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
+                            href="/products/{item.permalink}"
+                            class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
                         >
                             <img
                                     src={item.image.url}
@@ -58,8 +58,8 @@
 
                         <div class="ml-4 flex-1 flex flex-col">
                             <div>
-                                <div class="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
+                                <div class="flex justify-between">
+                                    <h3 class="text-base font-medium text-gray-900">
                                         <a href="/products/{item.permalink}">{item.name}</a>
                                     </h3>
                                     <p class="ml-4 text-indigo-500">{item.line_total.formatted_with_symbol}</p>
@@ -88,13 +88,9 @@
                                     </button>
                                 </p>
                                 <div>
-                                    <button
-                                            on:click={() => showRemoveItemModal(item)}
-                                            type="button"
-                                            class="font-medium text-indigo-600 hover:text-indigo-500 hover:bg-red-200 p-2 rounded"
-                                    >
-                                        <span class="sr-only">{$t("cart.cta.remove-item")}</span>
-                                        <TrashIcon size={6} color="red-400"/>
+                                    <button on:click={() => showRemoveItemModal(item)}>
+                                        <span class="sr-only font-medium text-red-600 hover:text-indigo-500 hover:bg-red-200 p-2 rounded">{$t("cart.cta.remove-item")}</span>
+                                        <TrashIcon size={6} color="red-500"/>
                                     </button>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@
 	import '../app.css';
 	// import "../styles/tailwind-output.css";
 	import Modal from 'svelte-simple-modal';
+	import Notifications from 'svelte-notifications';
 	import { navigating, page } from '$app/stores';
 	import { cart, sidebar, locale, user, jwt, profile } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
@@ -35,20 +36,22 @@
 	on:closing={() => console.log("closing")}
 	on:closed={() => console.log("closed")}
 >
-	<Sidebar />
-	{#if $page.path === '/checkout'}
-		<slot />
-	{:else}
-		<Header />
-		<main>
-			{#if $navigating && !$page.path.includes("/my-account")}
-				<MoonLoading />
-			{:else}
-				<slot />
-			{/if}
-		</main>
-		<Footer />
-	{/if}
+	<Notifications>
+		<Sidebar />
+		{#if $page.path === '/checkout'}
+			<slot />
+		{:else}
+			<Header />
+			<main>
+				{#if $navigating && !$page.path.includes("/my-account")}
+					<MoonLoading />
+				{:else}
+					<slot />
+				{/if}
+			</main>
+			<Footer />
+		{/if}
+	</Notifications>
 </Modal>
 
 <style>
