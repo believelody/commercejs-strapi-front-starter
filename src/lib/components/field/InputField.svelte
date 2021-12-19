@@ -18,25 +18,27 @@
 				*
 			{/if}
 		</span>
-		<input
+		<section class="border rounded flex flex-grow p-3">
+			<input
 				value={value ?? ""}
 				{name}
 				type={showPwd ? "text" : type}
 				id={name}
 				on:input
 				on:focus
-				class="border rounded flex-grow focus:outline-none p-3"
+				class="flex-grow focus:outline-none"
 				{placeholder}
-		/>
-		{#if type === "password"}
-			<span on:click={() => showPwd = !showPwd}>
-				{#if showPwd}
-					<HidePasswordIcon color="blue-500" />
-				{:else}
-					<ShowPasswordIcon />
-				{/if}
-			</span>
-		{/if}
+			/>
+			{#if type === "password"}
+				<span on:click={() => showPwd = !showPwd}>
+					{#if showPwd}
+						<HidePasswordIcon color="blue-500" />
+					{:else}
+						<ShowPasswordIcon />
+					{/if}
+				</span>
+			{/if}
+		</section>
 	</label>
 	{#if hint}
 		<span class="text-xs text-gray-400 italic">{hint}</span>

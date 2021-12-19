@@ -1,10 +1,9 @@
 <script>
-    import { goto } from '$app/navigation'
     import {getContext, onMount} from 'svelte';
     import {page} from '$app/stores';
     import {t} from '$lib/i18n';
     import api from '$lib/api'
-    import {profile, user, jwt} from '$lib/stores';
+    import {profile, user} from '$lib/stores';
     import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
     import ProtectedLayout from '../../lib/components/layout/ProtectedLayout.svelte';
     import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
@@ -13,10 +12,7 @@
     const {open} = getContext("simple-modal");
 
     function logout() {
-        $profile = null;
-        $user = {};
-        $jwt = null;
-        goto("/");
+        api.auth.logout();
     }
 
     onMount(async () => {

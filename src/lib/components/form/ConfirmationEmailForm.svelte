@@ -1,5 +1,5 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, getContext } from 'svelte';
     import { t } from '$lib/i18n';
     import { user } from '$lib/stores';
     import api from '$lib/api';
@@ -9,6 +9,7 @@
     export let withoutShadow = false;
     let code = "", loading = false, hasError = false, codeResent = false, errorCode = null;
     const dispatch = createEventDispatcher();
+    const { close } = getContext("simple-modal");
 
     async function submit() {
         loading = true;
@@ -32,6 +33,11 @@
         }
         loading = false;
     }
+
+    function logoutAndClose() {
+        api.auth.logout();
+        close();
+    }
 </script>
 
 <style>
@@ -41,7 +47,7 @@
 <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 text-center my-2">{$t("auth.code.title")}</h2>
 <form id="confirm-email-form" on:submit|preventDefault={submit}>
     <Fields {withoutShadow}>
-        <div class="w-full flex flex-col xl:flex-row xl:justify-between">
+        <div class="w-full flex flex-col xl:justify-between">
                 <InputField
                     name="code"
                     placeholder={$t('auth.code.placeholder')}
@@ -52,8 +58,15 @@
                 <button
                     disabled={!code || loading}
                     type="submit"
-                    class="text-center xl:w-1/3 px-6 py-3 rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
+                    class="text-center px-6 py-3 rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
                     {$t("common.validate")}
+                </button>
+                <button
+                    disabled={loading}
+                    type="button"
+                    on:click={logoutAndClose}
+                    class="text-center mt-3 px-6 py-3 rounded-md shadow-sm text-base font-medium text-gray-500 border border-gray-500 disabled:opacity-75 disabled:bg-gray-500 disabled:text-white disabled:cursor-not-allowed">
+                    {$t("account.logout")}
                 </button>
             </div>
     </Fields>

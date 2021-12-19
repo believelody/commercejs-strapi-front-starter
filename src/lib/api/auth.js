@@ -1,5 +1,6 @@
-import { user, jwt } from '$lib/stores';
 import { get } from 'svelte/store';
+import { goto } from '$app/navigation'
+import { user, jwt } from '$lib/stores';
 import { profile } from '../stores';
 import { authenticateHeaders, headers } from '../utils/header.util';
 import { baseUrl } from '../utils/url.util';
@@ -46,6 +47,13 @@ export const register = async (firstname, lastname, email, password) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+export const logout = () => {
+    profile.set(null);
+    user.set({});
+    jwt.set(null);
+    goto("/");
 }
 
 export const getMe = async () => {
