@@ -54,11 +54,12 @@ export const deleteItem = async (cartId, itemId) => {
             method: "delete"
         });
         const json = await res.json();
-        console.log(json);
         if (json.cart) {
             cart.set(json.cart);
             cart.useLocalStorage();
+            return { success: true };
         }
+        return { success: false };
     } catch (error) {
         console.log(error);
     }
@@ -73,7 +74,9 @@ export const emptyCart = async (cartId) => {
         if (json.success) {
             cart.set(null);
             cart.useLocalStorage();
+            return { success: true };
         }
+        return { success: false }
     } catch (error) {
         console.log(error);
     }

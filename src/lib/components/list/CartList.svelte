@@ -2,14 +2,14 @@
     import {createEventDispatcher, getContext} from 'svelte';
     import {getNotificationsContext} from "svelte-notifications";
     import {t} from '$lib/i18n';
-    import {cart, checkout} from '$lib/stores';
+    import {cart, checkout, sidebar} from '$lib/stores';
     import api from '$lib/api';
     import TrashIcon from '../svg/TrashIcon.svelte';
     import DangerModal from '../modal/DangerModal.svelte';
 
     export let items, loading;
     const dispatch = createEventDispatcher();
-    const {open} = getContext("simple-modal");
+    const { open } = getContext("simple-modal");
     const { addNotification } = getNotificationsContext();
 
     async function updateQuantity(item, quantity) {
@@ -22,9 +22,9 @@
             if (resUpdateQuantity.success) {
                 addNotification({
                     position: 'bottom-left',
-                    heading: $t('cart.notifications.heading'),
-                    text: $t('cart.notifications.description.update', { name: item.name }),
-                    description: $t('cart.notifications.description.update', { name: item.name }),
+                    heading: $t('notifications.cart.heading'),
+                    text: $t('notifications.cart.description.update', { name: item.name }),
+                    description: $t('notifications.cart.description.update', { name: item.name }),
                     type: 'success',
                     removeAfter: 5000
                 });
@@ -41,7 +41,20 @@
             title: $t("cart.modal.delete-item.title", {name: item.name}),
             description: $t('cart.modal.delete-item.description'),
             actionCallback: async () => {
-                await api.cart.deleteItem($cart.id, item.id);
+                const res = await api.cart.deleteItem($cart.id, item.id);
+                if (res.success) {
+                    addNotification({
+                        position: 'bottom-left',
+                        heading: $t('notifications.cart.heading'),
+                        text: $t('notifications.cart.description.remove', { name: item.name }),
+                        description: $t('notifications.cart.description.remove', { name: item.name }),
+                        type: 'success',
+                        removeAfter: 5000
+                    });
+                    if (!$cart.line_items.length) {
+                        $sidebar = null;
+                    }
+                }
             }
         });
     }

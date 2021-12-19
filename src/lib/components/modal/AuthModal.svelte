@@ -1,8 +1,8 @@
 <script>
-    import {getContext, onDestroy} from "svelte";
-    import { page } from '$app/stores';
-    import {goto} from '$app/navigation';
-    import {jwt} from '$lib/stores';
+    import {getContext} from "svelte";
+    import { getNotificationsContext } from "svelte-notifications";
+    import { t } from '$lib/i18n';
+    import { jwt, profile } from '$lib/stores';
     import LoginForm from '../form/LoginForm.svelte';
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
@@ -10,9 +10,19 @@
     export let title;
     let isLogin = true;
     const {close} = getContext("simple-modal");
+    const { addNotification } = getNotificationsContext();
 
-    function closeModal() {
-        if (jwt) {
+    function closeModal({ detail }) {
+        if ($jwt) {
+            const name = `${detail.user?.firstname} ${detail.user?.lastname}`;
+            addNotification({
+                position: 'top-left',
+                heading: $t('notifications.auth.heading'),
+                text: $t(`notifications.auth.description.${detail.authType}`, { name }),
+                description: $t(`notifications.auth.description.${detail.authType}`, { name }),
+                type: 'success',
+                removeAfter: 5000
+            });
             close();
         }
     }

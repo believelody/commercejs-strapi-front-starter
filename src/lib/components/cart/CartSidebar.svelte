@@ -7,9 +7,11 @@
 	import DangerModal from '../modal/DangerModal.svelte';
 	import CartList from '../list/CartList.svelte';
 	import SidebarWrapper from "../sidebar/SidebarWrapper.svelte";
+import { getNotificationsContext } from "svelte-notifications";
 
 	let loading = false;
 	const { open } = getContext("simple-modal");
+    const { addNotification } = getNotificationsContext();
 
 	onDestroy(() => {
 		$sidebar = null;
@@ -20,8 +22,18 @@
 			title: $t("cart.modal.empty.title"),
 			description: $t("modal.description.default"),
 			actionCallback: async () => {
-				await api.cart.emptyCart($cart.id);
-				$sidebar = null
+				const res = await api.cart.emptyCart($cart.id);
+				if (res.success) {
+					addNotification({
+						position: 'bottom-left',
+						heading: $t('notifications.cart.heading'),
+						text: $t('notifications.cart.description.empty'),
+						description: $t('notifications.cart.description.empty'),
+						type: 'success',
+						removeAfter: 5000
+					});
+					$sidebar = null;
+				}
 			}
 		});
 	}
@@ -38,7 +50,7 @@
 		<button
 			disabled={loading}
 			on:click={showEmptyCartModal}
-			class="py-2 w-full border border-transparent shadow-sm text-base font-medium text-white bg-gray-400 hover:bg-gray-500 disabled:opacity-75 disabled:cursor-wait"
+			class="py-2 w-full border-t-2 border-b-2 border-red-400 bg-red-100 shadow-sm text-base font-medium text-black bg-gray-400 hover:bg-gray-500 disabled:opacity-75 disabled:cursor-wait disabled:bg-gray-300"
 		>
 			{$t("cart.cta.empty")}
 		</button>

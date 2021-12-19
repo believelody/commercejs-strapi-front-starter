@@ -4,6 +4,7 @@
 	import Modal from 'svelte-simple-modal';
 	import Notifications from 'svelte-notifications';
 	import { navigating, page } from '$app/stores';
+	import api from '$lib/api';
 	import { cart, sidebar, locale, user, jwt, profile } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
@@ -27,18 +28,26 @@
 	$: !$locale && locale.useLocalStorage();
 	$: !Object.values($user).some(v => v) && user.useLocalStorage();
 	$: !$jwt && jwt.useLocalStorage();
-	$: !$profile && profile.useLocalStorage();
+	$: {
+		if (!$profile) {
+			if (!profile.useLocalStorage() && $user.confirmed) {
+				api.auth.getMe();
+			} else {
+				profile.useLocalStorage();
+			}
+		}
+	};
 </script>
 
-<Modal
-	on:open={() => console.log("open")}
-	on:opening={() => console.log("opening")}
-	on:opened={() => console.log("opened")}
-	on:close={() => console.log("close")}
-	on:closing={() => console.log("closing")}
-	on:closed={() => console.log("closed")}
->
-	<Notifications item={Notification} withoutStyles>
+<Notifications item={Notification} withoutStyles>
+	<Modal
+		on:open={() => console.log("open")}
+		on:opening={() => console.log("opening")}
+		on:opened={() => console.log("opened")}
+		on:close={() => console.log("close")}
+		on:closing={() => console.log("closing")}
+		on:closed={() => console.log("closed")}
+	>
 		<Sidebar />
 		{#if $page.path === '/checkout'}
 			<slot />
@@ -53,8 +62,8 @@
 			</main>
 			<Footer />
 		{/if}
-	</Notifications>
-</Modal>
+	</Modal>
+</Notifications>
 
 <style>
 	main {

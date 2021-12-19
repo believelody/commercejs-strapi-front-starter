@@ -77,6 +77,30 @@
             "link": "Commencez vos achats en cliquant ici !"
         }
     },
+    "notifications": {
+        "auth": {
+            "heading": "Authentification",
+            "description": {
+                "login": "Content de vous revoir.",
+                "register": "Bienvenue parmis nous {{name}}. Pour accéder à votre espace personnel, vous devez confirmer votre email (si ce n'est pas déjà fait ;) )"
+            }
+        },
+        "wishlist": {
+            "heading": "Produits favoris",
+            "description": {
+                "add": "L'article {{name}} a bien été ajouté dans vos produits favoris. Rendez-vous dans Mon Compte -> Mes produits favoris pour les consulter.",
+                "remove": "L'article {{name}} a bien été retiré de vos produits favoris"
+            }
+        },
+        "cart": {
+            "heading": "Panier",
+            "description": {
+                "update": "La quantité de l'article {{name}} a été mis à jour",
+                "remove": "L'article {{name}} a bien été retiré de votre panier",
+                "empty": "Votre panier a été vidé avec succès."
+            }
+        }
+    },
     "cart": {
         "title": "Votre panier",
         "items": {
@@ -98,12 +122,6 @@
             "delete-item": {
                 "title": "Retirer {{name}} ?",
                 "description": "Voulez-vous vraiment retirer cet article de votre panier ?"
-            }
-        },
-        "notifications": {
-            "heading": "Panier",
-            "description": {
-                "update": "La quantité de l'article {{name}} a été mis à jour"
             }
         },
         "subtotal": "Sous total",

@@ -23,18 +23,27 @@
     const checkPosition = position => {
         switch (position) {
             case "top-left":
-                return "top-0 left-0 ml-3 mt-3";
+                return "top-0 left-0 mx-3 mt-3";
             case "top-right":
-                return "top-0 right-0 mt-3 mr-3";
+                return "top-0 right-0 mt-3 mx-3";
+            case "top-center":
+                return "top-0 left-1/2 mt-3 transform-gpu -translate-x-1/2";
             case "bottom-left":
-                return "bottom-0 left-0 mb-3 ml-3";
+                return "bottom-0 left-0 mb-3 mx-3";
+            case "bottom-center":
+                return "bottom-0 left-1/2 mt-3 transform-gpu -translate-x-1/2";
+            case "full-center":
+                return "top-1/2 left-1/2 mt-3 transform-gpu -translate-x-1/2 -translate-y-1/2";
+            case "left-center":
+                return "top-1/2 left-0 mt-3 transform-gpu -translate-y-1/2";
+            case "right-center":
+                return "top-1/2 right-0 mt-3 transform-gpu -translate-y-1/2";
             case "bottom-right":
             default:
-                return "bottom-0 right-0 mb-3 mr-3";
+                return "bottom-0 right-0 mb-3 mx-3";
         }
     }
-
-    console.log(notification)
+    
 </script>
 
 <div

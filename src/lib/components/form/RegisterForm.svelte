@@ -17,7 +17,7 @@
         if (res.statusCode === 400) {
             hasError = true;
         } else if (res.statusCode === 200) {
-            dispatch("submitEvent", { success: true, data: { firstname, lastname } });
+            dispatch("submitEvent", { user: { firstname, lastname }, authType: "register" });
             firstname = lastname = email = password = "";
         }
         loading = false;

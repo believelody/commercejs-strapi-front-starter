@@ -1,22 +1,21 @@
 <script>
     import { getContext, onMount } from 'svelte';
+    import { getNotificationsContext } from 'svelte-notifications';
     import { t } from '$lib/i18n';
     import api from "$lib/api";
-    import { jwt, profile } from '$lib/stores';
+    import { jwt, profile, user } from '$lib/stores';
     import HeartCircleIcon from "../svg/HeartCircleIcon.svelte";
     import AuthModal from '../modal/AuthModal.svelte';
+    import ConfirmationEmailModal from '../modal/ConfirmationEmailModal.svelte';
     
     export let product;
-    let wishlist;
+    let wishlist, isInWishlist = false;
 
     const { open } = getContext("simple-modal");
-
-    function showLoginModal() {
-        open(AuthModal, { title: $t("wishlist.modal.auth.title")});
-    }
+    const { addNotification } = getNotificationsContext();
 
     async function putInWishlist() {
-        if ($jwt) {
+        if ($jwt && $user.confirmed) {
             if (!wishlist) {
                 const res = await api.wishlist.create(product);
                 if (res.success) {
@@ -28,19 +27,33 @@
                     wishlist = res.wishlist;
                 }
             }
+            checkIfIsInWishlist();
+            addNotification({
+                position: 'bottom-left',
+                heading: $t('notifications.wishlist.heading'),
+                text: $t(`notifications.wishlist.description.${isInWishlist ? "add" : "remove"}`, { name: wishlist?.product.name }),
+                description: $t(`notifications.wishlist.description.${isInWishlist ? "add" : "remove"}`, { name: wishlist?.product.name }),
+                type: 'success',
+                removeAfter: 5000
+            });
+        } else if ($jwt && !$user.confirmed) {
+            open(ConfirmationEmailModal);
         } else {
-            showLoginModal();
+            open(AuthModal, { title: $t("wishlist.modal.auth.title")});
         }
+    }
+
+    function checkIfIsInWishlist() {
+        isInWishlist = wishlist && wishlist.users.some(user => user.id === $profile?.id);
     }
     
     onMount(async () => {
         const res = await api.wishlist.getFromProductId(product.id);
         if (res.success && res.wishlists.length) {
             wishlist = res.wishlists[0];
+            checkIfIsInWishlist();
         }
     });
-
-    $: isInWishlist = wishlist?.users.some(user => user.id === $profile?.id);
 </script>
 
 <style>
