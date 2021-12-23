@@ -14,11 +14,11 @@
         loading = true;
         hasError = false;
         const res = await api.auth.register(firstname, lastname, email, password);
-        if (res.statusCode === 400) {
-            hasError = true;
-        } else if (res.statusCode === 200) {
+        if (res.success) {
             dispatch("submitEvent", { user: { firstname, lastname }, authType: "register" });
             firstname = lastname = email = password = "";
+        } else {
+            hasError = true;
         }
         loading = false;
     }

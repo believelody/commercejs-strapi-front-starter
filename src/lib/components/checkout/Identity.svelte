@@ -26,7 +26,7 @@
     {#if isGuest}
         <GuestForm bind:data={$profile} />
     {:else}
-        {#if $profile.customer}
+        {#if $profile?.customer}
             <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex flex-col items-center justify-center">
                 <span class="font-medium">{$t("identity.greetings.name", { name: `${$profile.customer.firstname} ${$profile.customer.lastname}`})}</span>
                 <span>{$t("identity.greetings.email", { email: `${$profile.customer.email}` })}</span>
@@ -35,10 +35,10 @@
                 {/if}
             </div>
         {:else}
-            <AuthForm on:registerEvent={e => showRegisterSuccessModal(e.detail)} />
+            <AuthForm on:submitEvent={e => showRegisterSuccessModal(e.detail)} />
         {/if}
     {/if}
-    {#if !$profile.customer}
+    {#if !$profile?.customer}
         <CheckboxField
                 bind:checked={isGuest}
                 name="guest"

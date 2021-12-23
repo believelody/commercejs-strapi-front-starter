@@ -1,5 +1,6 @@
 <script>
 	import {getContext} from "svelte";
+	import { getNotificationsContext } from "svelte-notifications";
 	import { t } from '$lib/i18n';
 
 	export let title,
@@ -7,21 +8,34 @@
 		actionText = $t('modal.cta.text.default'),
 		cancelText = $t('modal.cancel.text.default'),
 		loadingText = $t('modal.loading.text.deleting'),
+		notificationHeading = $t("notifications.default.heading"),
+		notificationText = $t("notifications.default.description"),
 		actionCallback = null;
 	let loading = false;
 	const { close } = getContext("simple-modal");
+    const { addNotification } = getNotificationsContext();
 
 	async function actionFn() {
 		try {
 			loading = true;
 			if (actionCallback) {
-				await actionCallback();
+				const res = await actionCallback();
+				if (res.success) {
+					addNotification({
+						position: 'bottom-left',
+						heading: notificationHeading,
+						text: notificationText,
+						description: notificationText,
+						type: 'success',
+						removeAfter: 5000
+					});
+					close();
+				}
 			}
 		} catch (error) {
 			console.log(error);
 		} finally {
 			loading = false;
-			close();
 		}
 	}
 </script>
@@ -40,7 +54,7 @@
 		</div>
 	</div>
 </div>
-<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+<div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 	<button
 		type="button"
 		on:click={actionFn}

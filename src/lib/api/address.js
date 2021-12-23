@@ -1,8 +1,20 @@
 import {get} from "svelte/store";
 import { baseUrl } from "../utils/url.util";
 import { authenticateHeaders, headers } from '$lib/utils/header.util';
-import {profile} from "../stores";
+import {billing, profile, shipping} from "../stores";
 
+const setAddressStores = data => {
+    switch (data.type) {
+        case "shipping":
+            shipping.set(data);
+            break;
+        case "billing":
+            billing.set(data);
+            break;
+        default:
+            throw new Error("An error has occured");
+    };
+}
 
 export const getAll = async (type = "") => {
     try {
@@ -73,7 +85,9 @@ export const create = async (data) => {
         if (json.error) {
             return { success: false }
         }
+        setAddressStores(data);
         profile.set(json.user);
+        await getAll();
         return { success: true };
     } catch (error) {
         console.log(error);
@@ -91,6 +105,7 @@ export const update = async (data) => {
         if (json.error) {
             return { success: false }
         }
+        setAddressStores(data);
         profile.set(json.user);
         return { success: true };
     } catch (error) {
@@ -117,6 +132,7 @@ export const choose = async (data) => {
         if (json.error) {
             return { success: false }
         }
+        setAddressStores(data);
         profile.set(json.user);
         profile.useLocalStorage();
         return { success: true };
@@ -127,7 +143,7 @@ export const choose = async (data) => {
 
 export const remove = async (id) => {
     try {
-        const profileStore = get(profile);
+        // const profileStore = get(profile);
         const res = await fetch(`${baseUrl}/addresses/${id}`, {
             method: "delete",
             headers: authenticateHeaders()
@@ -136,9 +152,11 @@ export const remove = async (id) => {
         if (json.error) {
             return { success: false }
         }
-        if (profileStore.customer.meta[json.address.type].id === id) {
-            profile.set(json.user);
-        }
+        await getAll();
+        // if (profileStore.customer.meta[json.address.type].id === id) {
+        //     profile.set(json.user);
+        // }
+        return { success: true }
     } catch (error) {
         console.log(error);
     }

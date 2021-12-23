@@ -3,8 +3,10 @@
     import { profile } from '$lib/stores'
     import AddressList from '../list/AddressList.svelte';
     import SidebarWrapper from "./SidebarWrapper.svelte";
+    import CreateAddressModalButton from '../button/CreateAddressModalButton.svelte';
 
-    export let type, addAddress;
+    export let type;
+    let loading = false;
 
     $: items = $profile?.addresses.filter(item => item.type === type) ?? [];
 </script>
@@ -18,7 +20,13 @@
         {$t(`account.addresses.sidebar.${type}.title`)}
     </h2>
     <div class="w-full border-b border-gray-300 flex items-center justify-center py-2">
-        <button on:click={addAddress} class="rounded p-2 bg-indigo-300">+ {$t("account.addresses.add")}</button>
+        <div class="mt-2">
+            <CreateAddressModalButton
+                {type}
+                withoutShadow
+                disabled={loading}
+            />
+        </div>
     </div>
-    <AddressList {items} {type} />
+    <AddressList {items} {type} on:loading={({ detail }) => loading = detail.loading} />
 </SidebarWrapper>

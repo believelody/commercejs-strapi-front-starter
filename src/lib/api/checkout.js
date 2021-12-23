@@ -68,7 +68,6 @@ export const checkQuantity = async (checkoutId, itemId, amount, variantId) => {
         path.searchParams.append("variant_id", variantId);
         const res = await fetch(path);
         const json = await res.json();
-        console.log(json);
         if (json.error) {
             console.log(json.error);
         }

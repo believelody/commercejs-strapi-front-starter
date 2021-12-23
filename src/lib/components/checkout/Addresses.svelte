@@ -3,11 +3,12 @@
     import { derived } from 'svelte/store';
     import api from '$lib/api';
     import { t } from '$lib/i18n';
-    import { shipping, billing, isBillingSameAsShipping, checkout } from '$lib/stores'
+    import { shipping, billing, isBillingSameAsShipping, checkout, jwt } from '$lib/stores';
     import AddressForm from "../form/AddressForm.svelte";
     import CheckboxField from '../field/CheckboxField.svelte';
+    import AddressSidebarButton from '../button/AddressSidebarButton.svelte';
 
-    let checkoutId, countriesAvailableForShipping, isCountryAvailableForShipping = true;
+    let checkoutId, countriesAvailableForShipping, isCountryAvailableForShipping = null;
     const dispatch = createEventDispatcher();
 
     onMount(async () => {
@@ -20,7 +21,7 @@
     });
 
     $: checkoutId = derived(checkout, $checkout => $checkout ? $checkout.id : checkoutId);
-    $: isCountryAvailableForShipping = countriesAvailableForShipping?.hasOwnProperty($shipping.country.key);
+    $: isCountryAvailableForShipping = countriesAvailableForShipping?.hasOwnProperty($shipping?.country?.key);
     $: dispatch("isCountryAvailable", {isCountryAvailableForShipping});
 </script>
 
@@ -36,7 +37,12 @@
         bind:information={$shipping}
         title={$t(`checkout.address.${$isBillingSameAsShipping ? "isBillingSameAsShipping" : "shipping"}`)}
     />
-    {#if !isCountryAvailableForShipping}
+    {#if $jwt}
+        <div class="flex align-center justify-end">
+            <AddressSidebarButton type="shipping" />
+        </div>
+    {/if}
+    {#if $shipping?.country && isCountryAvailableForShipping === false}
         <span class="text-red-400">{$t("checkout.address.country-not-available")}</span>
     {/if}
     <CheckboxField
@@ -52,5 +58,10 @@
             bind:information={$billing}
             title={$t("checkout.address.billing")}
         />
+        {#if $jwt}
+        <div class="flex align-center justify-end">
+            <AddressSidebarButton type="billing" />
+        </div>
+    {/if}
     {/if}
 </div>

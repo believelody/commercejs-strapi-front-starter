@@ -2,6 +2,7 @@ import { get } from 'svelte/store';
 import { goto } from '$app/navigation'
 import { user, jwt } from '$lib/stores';
 import { profile } from '../stores';
+import { getAll } from './address';
 import { authenticateHeaders, headers } from '../utils/header.util';
 import { baseUrl } from '../utils/url.util';
 
@@ -13,15 +14,15 @@ export const login = async (identifier, password) => {
             body: JSON.stringify({ identifier, password })
         });
         const json = await res.json();
-        if (json.user) {
-            const { user: { email, id, username, provider, confirmed, blocked }, jwt: token } = json;
-            jwt.set(token);
-            jwt.useLocalStorage();
-            user.set({ email, id, username, provider, confirmed, blocked });
-            user.useLocalStorage();
-            return { statusCode: 200 };
+        if (json.error) {
+            return { success: false, error: json.error };
         }
-        return json
+        const { user: { email, id, username, provider, confirmed, blocked }, jwt: token } = json;
+        jwt.set(token);
+        jwt.useLocalStorage();
+        user.set({ email, id, username, provider, confirmed, blocked });
+        user.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -35,15 +36,15 @@ export const register = async (firstname, lastname, email, password) => {
             body: JSON.stringify({ firstname, lastname, email, password })
         });
         const json = await res.json();
-        if (json.user) {
-            const { user: { email, id, username, provider, confirmed, blocked }, jwt: token } = json;
-            jwt.set(token);
-            jwt.useLocalStorage();
-            user.set({ email, id, username, provider, confirmed, blocked });
-            user.useLocalStorage();
-            return { statusCode: 200 };
+        if (json.error) {
+            return { success: false, error: json.error };
         }
-        return json;
+        const { user: { email, id, username, provider, confirmed, blocked }, jwt: token } = json;
+        jwt.set(token);
+        jwt.useLocalStorage();
+        user.set({ email, id, username, provider, confirmed, blocked });
+        user.useLocalStorage();
+        return { statusCode: 200 };
     } catch (error) {
         console.log(error);
     }
@@ -65,6 +66,7 @@ export const getMe = async () => {
         const json = await res.json();
         profile.set(json);
         profile.useLocalStorage();
+        await getAll();
     } catch (error) {
         console.log(error);
     }

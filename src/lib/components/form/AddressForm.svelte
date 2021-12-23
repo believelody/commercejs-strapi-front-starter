@@ -8,8 +8,8 @@
     import {requiredFieldsValidation} from "../../utils/form.util";
 
     export let information = {}, type, title, hideSubmitButton = false, submitLabel = "", withoutShadow = false,
-        hideTitleAddress = false;
-    let countries = [], subdivisions = [];
+        hideTitleAddress = false, action;
+    let countries = [], subdivisions = [], loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
     function onInput(e) {
@@ -17,12 +17,15 @@
     }
 
     async function submit() {
-        if ($$props.submit) {
-            const res = await $$props.submit({...information, type});
-            if (res.success) {
-                dispatch("submitEvent");
-            }
+        loading = true;
+        hasError = false;
+        const res = await api.address[action]({...information, type});
+        if (res.success) {
+            dispatch("submitEvent");
+        } else {
+            hasError = true;
         }
+        loading = false;
     }
 
     async function getCountries() {
@@ -32,18 +35,22 @@
         }
     }
 
-    async function getSubdivisions(countryCode) {
-        const res = await api.address.getSubdivisions(countryCode);
-        if (res.success) {
-            return res.subdivisions;
-        }
-    }
+    // async function getSubdivisions(countryCode) {
+    //     const res = await api.address.getSubdivisions(countryCode);
+    //     if (res.success) {
+    //         return res.subdivisions;
+    //     }
+    // }
 
     onMount(async () => {
         await getCountries();
+
+        return () => {
+            console.log("destroyed");
+        }
     });
 
-    $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
+    // $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
     $: isValid = requiredFieldsValidation(information, ["address1", "city", "zip", "country"]);
 </script>
 
@@ -116,7 +123,7 @@
         /> -->
         {#if !hideSubmitButton}
             <div class="flex justify-center flex-grow pt-3 pb-2">
-                <button disabled={!isValid} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
+                <button disabled={!isValid || loading} type="submit" class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
                     {#if submitLabel}
                         {submitLabel}
                     {:else}

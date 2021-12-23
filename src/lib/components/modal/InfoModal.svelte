@@ -13,8 +13,8 @@ import InfoCircleIcon from "../svg/InfoCircleIcon.svelte";
 
 <ModalBox>
 	<div class="sm:flex sm:items-start">
-		<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-			<h3 class="flex items-center border-b border-gray-200 pb-2" id="modal-title">
+		<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+			<h3 class="flex items-center border-b border-gray-200 pb-2 w-full" id="modal-title">
 				<span class="bg-{status === "success" ? "green" : status === "danger" ? "red" : "blue"}-100 rounded-full">
 					{#if status === "success"}
 						<CheckCircleIcon size={12} />

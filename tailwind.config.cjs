@@ -10,6 +10,8 @@ module.exports = {
       cursor: ['disabled'],
       backgroundColor: ['disabled', 'active'],
       backgroundOpacity: ['disabled', 'active'],
+      borderWidth: ['disabled', 'active'],
+      borderStyle: ['disabled', 'active'],
       borderColor: ['disabled', 'active'],
       borderOpacity: ['disabled', 'active'],
       boxShadow: ['disabled', 'active'],

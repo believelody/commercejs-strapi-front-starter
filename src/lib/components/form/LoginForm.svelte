@@ -14,10 +14,10 @@
         loading = true;
         hasError = false;
         const res = await api.auth.login(identifier, password);
-        if (res.statusCode === 400) {
-            hasError = true;
-        } else if (res.statusCode === 200) {
+        if (res.success) {
             dispatch("submitEvent", { authType: "login" });
+        } else {
+            hasError = true;
         }
         loading = false;
     }

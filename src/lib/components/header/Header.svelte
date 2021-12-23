@@ -1,19 +1,11 @@
 <script>
-  import {getContext} from "svelte";
   import { t } from "$lib/i18n";
   import { jwt } from '$lib/stores';
   // import { locale } from '$lib/stores';
   import Nav from "../nav/Nav.svelte";
   import CartNav from "../cart/CartNav.svelte";
   import UserCircleIcon from "../svg/UserCircleIcon.svelte";
-  import ShortRightArrowIcon from "../svg/ShortRightArrowIcon.svelte";
-  import AuthModal from "../modal/AuthModal.svelte";
-
-  const { open } = getContext("simple-modal");
-
-  function showLoginModal() {
-    open(AuthModal);
-  }
+import AuthHeaderButton from "../button/AuthHeaderButton.svelte";
 </script>
 
 <header class="bg-gray-100 text-gray-600 body-font">
@@ -36,12 +28,9 @@
         <a href="/my-account" class="inline-flex items-center lg:justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
           <UserCircleIcon color="gray-600" />
           <span>{$t("header.my-account")}</span>
-      </a>
+        </a>
       {:else}
-        <button on:click={showLoginModal} class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-          {$t("header.connexion")}
-          <ShortRightArrowIcon color="gray-600" size={4} />
-      </button>
+        <AuthHeaderButton />
       {/if}
     </div>
   </div>

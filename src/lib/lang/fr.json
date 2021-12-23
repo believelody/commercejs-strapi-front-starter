@@ -78,6 +78,10 @@
         }
     },
     "notifications": {
+        "default": {
+            "heading": "Notification",
+            "description": "Votre action a été réalisée avec succès"
+        },
         "auth": {
             "heading": "Authentification",
             "description": {
@@ -98,6 +102,18 @@
                 "update": "La quantité de l'article {{name}} a été mis à jour",
                 "remove": "L'article {{name}} a bien été retiré de votre panier",
                 "empty": "Votre panier a été vidé avec succès."
+            }
+        },
+        "address": {
+            "heading": {
+                "billing": "Adresse de facturation",
+                "shipping": "Adresse de livraison"
+            },
+            "description": {
+                "select": "Votre adresse a bien été sélectionnée",
+                "create": "Votre adresse a bien été enregistrée",
+                "update": "Votre adresse a bien été modifiée",
+                "remove": "Votre adresse a bien été suprrimée"
             }
         }
     },
@@ -219,6 +235,7 @@
             },
             "no-address": "Aucune adresse sélectionnée",
             "select": "Sélectionner une autre adresse",
+            "choose": "Sélectionner cette adresse",
             "add": "Ajouter une adresse",
             "update": "Modifier cette adresse",
             "sidebar": {
@@ -234,7 +251,8 @@
                     "title": "Supprimer cette adresse ?",
                     "description": "Souhaitez-vous réellement effectuer cette action ? Vous ne pourrez plus revenir en arrière."
                 }
-            }
+            },
+            "empty-list": "Vous n'avez aucune adresse"
         },
         "wishlist": {
             "link": "Mes produits favoris"

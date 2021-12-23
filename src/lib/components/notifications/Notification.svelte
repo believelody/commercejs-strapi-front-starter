@@ -49,7 +49,7 @@
 <div
     transition:fly
     on:click={() => handleButtonClick(notification.type)}
-    class="z-9999 absolute bg-white cursor-pointer rounded w-screen-md shadow-sm {checkPosition(notification.position)} {checkType(notification.type)}"
+    class="z-999 fixed bg-white cursor-pointer rounded w-screen-md shadow-sm {checkPosition(notification.position)} {checkType(notification.type)}"
 >
     <h4 class="text-lg font-medium my-3 px-2 border-b border-gray-300">{notification.heading}</h4>
     <p class="mx-2">{notification.description}</p>

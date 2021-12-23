@@ -9,7 +9,7 @@
 </style>
 
 {#if isLogin}
-    <LoginForm on:loginEvent on:toggleAuth={() => isLogin = false} />
+    <LoginForm on:toggleAuth={() => isLogin = false} />
 {:else}
-    <RegisterForm on:registerEvent on:toggleAuth={() => isLogin = true} />
+    <RegisterForm on:toggleAuth={() => isLogin = true} />
 {/if}

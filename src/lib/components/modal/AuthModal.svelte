@@ -2,14 +2,14 @@
     import {getContext} from "svelte";
     import { getNotificationsContext } from "svelte-notifications";
     import { t } from '$lib/i18n';
-    import { jwt, profile } from '$lib/stores';
+    import { jwt } from '$lib/stores';
     import LoginForm from '../form/LoginForm.svelte';
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
 
     export let title;
     let isLogin = true;
-    const {close} = getContext("simple-modal");
+    const {open, close} = getContext("simple-modal");
     const { addNotification } = getNotificationsContext();
 
     function closeModal({ detail }) {
@@ -23,7 +23,11 @@
                 type: 'success',
                 removeAfter: 5000
             });
-            close();
+            if (detail.authType === "register") {
+                open(ConfirmationEmailModal);
+            } else {
+                close();
+            }
         }
     }
 </script>
