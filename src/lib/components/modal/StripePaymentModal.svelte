@@ -4,7 +4,7 @@
     import { t } from '$lib/i18n';
     import { 
         stripe,
-        user,
+        guest,
         profile,
         checkout,
         shipping,
@@ -29,7 +29,7 @@
 
     onMount(async () => {
         paymentProcessing = true;
-        await pay($profile.customer ?? $user);
+        await pay($profile.customer ?? $guest);
         paymentProcessing = false;
     });
 
@@ -118,7 +118,7 @@
         <StripePaymentLoading />
     {:else if paymentSuccess}
         <DisplaySuccessPayment
-            user={$profile.customer ?? $user}
+            user={$profile.customer ?? $guest}
             shipping={shippingValue}
             billing={billingValue}
             isBillingSameAsShipping={isBillingSameAsShippingValue}

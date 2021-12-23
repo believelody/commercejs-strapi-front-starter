@@ -90,7 +90,7 @@
                 <p class="text-sm text-red-400">{$t("auth.register.failed")}</p>
             </div>
         {/if}
-        <div class="w-full my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
+        <div class="w-auto my-4 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
             <button type="submit" disabled={!isValid || loading} class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">{$t(`auth.register.${loading ? "loading" : "submit"}`)}</button>
             <span class="px-16 my-2">{$t("common.or")}</span>
             <button type="button" on:click={e => dispatch("toggleAuth")} class="w-1/2 xl:py-2 rounded xl:border xl:border-indigo-600 text-indigo-600 font-medium hover:underline hover:text-indigo-500 hover:border-indigo-500 ml-2">{$t("auth.login.submit")}</button>

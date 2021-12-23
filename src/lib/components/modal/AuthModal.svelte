@@ -7,7 +7,7 @@
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
 
-    export let title;
+    export let title = $t("auth.login.title");
     let isLogin = true;
     const {open, close} = getContext("simple-modal");
     const { addNotification } = getNotificationsContext();

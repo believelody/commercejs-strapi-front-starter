@@ -22,6 +22,7 @@ export const login = async (identifier, password) => {
         jwt.useLocalStorage();
         user.set({ email, id, username, provider, confirmed, blocked });
         user.useLocalStorage();
+        await getMe();
         return { success: true };
     } catch (error) {
         console.log(error);
@@ -39,12 +40,14 @@ export const register = async (firstname, lastname, email, password) => {
         if (json.error) {
             return { success: false, error: json.error };
         }
-        const { user: { email, id, username, provider, confirmed, blocked }, jwt: token } = json;
+        const { user: { email : userEmail, id, username, provider, confirmed, blocked }, jwt: token } = json;
         jwt.set(token);
         jwt.useLocalStorage();
-        user.set({ email, id, username, provider, confirmed, blocked });
+        user.set({ email: userEmail, id, username, provider, confirmed, blocked });
         user.useLocalStorage();
-        return { statusCode: 200 };
+        profile.set(json.user);
+        profile.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -64,9 +67,13 @@ export const getMe = async () => {
             headers: authenticateHeaders()
         });
         const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
         profile.set(json);
         profile.useLocalStorage();
         await getAll();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }

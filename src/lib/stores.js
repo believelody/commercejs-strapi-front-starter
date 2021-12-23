@@ -1,5 +1,5 @@
 import { browser } from "$app/env";
-import {get, writable} from "svelte/store";
+import {writable} from "svelte/store";
 
 export const createWritableStore = (key, startValue = null) => {
 	const { subscribe, set } = writable(startValue);
@@ -28,6 +28,7 @@ export const createWritableStore = (key, startValue = null) => {
 
 export const user = createWritableStore('user', {});
 export const profile = createWritableStore('profile');
+export const guest = createWritableStore('guest');
 export const jwt = createWritableStore('jwt');
 export const cart = createWritableStore('cart');
 export const locale = createWritableStore("lang", "fr");
@@ -43,10 +44,8 @@ export const checkoutLoading = writable(false);
 export const orders = writable([]);
 
 export const resetStores = () => {
-	if (!get(jwt)) {
-		user.set({});
-		user.useLocalStorage();
-	}
+	guest.set(null);
+	guest.useLocalStorage();
 	cart.set(null);
 	cart.useLocalStorage();
 	checkout.set(null);

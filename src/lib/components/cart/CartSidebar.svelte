@@ -50,7 +50,7 @@ import { getNotificationsContext } from "svelte-notifications";
 		<button
 			disabled={loading}
 			on:click={showEmptyCartModal}
-			class="py-2 w-full border-t-2 border-b-2 border-red-400 bg-red-100 shadow-sm text-base font-medium text-black bg-gray-400 hover:bg-gray-500 disabled:opacity-75 disabled:cursor-wait disabled:bg-gray-300"
+			class="py-2 w-full border-t-2 border-b-2 border-red-400 bg-red-100 shadow-sm text-base font-medium text-black bg-gray-400 hover:bg-red-300 disabled:opacity-75 disabled:cursor-wait disabled:bg-gray-300"
 		>
 			{$t("cart.cta.empty")}
 		</button>

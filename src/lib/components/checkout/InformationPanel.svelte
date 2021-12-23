@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import { sidebar, shipping, paymentMethod, user, profile, jwt, checkout, stripe } from '$lib/stores';
+    import { sidebar, shipping, paymentMethod, guest, profile, jwt, checkout, stripe } from '$lib/stores';
     import { requiredFieldsValidation, emailValidation } from "$lib/utils/form.util";
     import OrderSidebar from './OrderSidebar.svelte';
     import Addresses from './Addresses.svelte';
@@ -19,8 +19,8 @@
     }
 
     $: checkoutValid = !!(
-        requiredFieldsValidation($jwt ? $profile.customer : $user, ["firstname", "email"]) &&
-        emailValidation($user.email) &&
+        requiredFieldsValidation($jwt ? $profile?.customer : $guest, ["firstname", "email"]) &&
+        emailValidation($profile?.customer.email ?? $guest?.email) &&
         requiredFieldsValidation($shipping, ["address1", "city", "zip", "country"]) &&
         isCountryAvailable &&
         $checkout.live.shipping.id

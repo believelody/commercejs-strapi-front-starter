@@ -20,7 +20,7 @@
 		}
 		if ($cart && $cart.total_unique_items > 0) {
 			$checkoutLoading = true;
-			if ($jwt) {
+			if ($jwt && $profile?.customer?.meta) {
 				$shipping = $profile.customer.meta.shipping;
 				$billing = $profile.customer.meta.billing;
 			}

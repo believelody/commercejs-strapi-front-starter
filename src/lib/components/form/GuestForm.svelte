@@ -1,8 +1,9 @@
 <script>
 	import { t } from '$lib/i18n';
+	import { guest } from '$lib/stores';
 	import InputField from '../field/InputField.svelte';
 
-	export let data;
+	let data = {};
 
 	function onInput(e) {
 		data[e.target.name] = e.target.value;
@@ -17,6 +18,7 @@
             }
         }
     }
+	$: $guest = data;
 </script>
 
 <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">

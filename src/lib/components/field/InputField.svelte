@@ -31,10 +31,10 @@
 			/>
 			{#if type === "password"}
 				<span on:click={() => showPwd = !showPwd}>
-					{#if showPwd}
-						<HidePasswordIcon color="blue-500" />
+					{#if !showPwd}
+						<HidePasswordIcon />
 					{:else}
-						<ShowPasswordIcon />
+						<ShowPasswordIcon color="blue-500" />
 					{/if}
 				</span>
 			{/if}

@@ -5,6 +5,7 @@
     import {getContext} from "svelte";
 
     export let live, user, shipping, billing, isBillingSameAsShipping, reference;
+    let dataUser = user;
     const { close } = getContext("simple-modal");
 
     function hideModal() {
@@ -20,7 +21,7 @@
             <span class="ml-4 text-lg leading-6 font-medium text-gray-900">{$t('checkout.payment.success.title')}</span>
         </h3>
         <h3 class="mt-2 w-full text-lg leading-6 text-gray-800">
-            {$t("checkout.payment.success.order-reference", { name: `${user.firstname} ${user.lastname}`, reference })}
+            {$t("checkout.payment.success.order-reference", { name: `${dataUser.firstname} ${dataUser.lastname}`, reference })}
         </h3>
         <div class="mt-2">
             <p class="text-md text-gray-600">

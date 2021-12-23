@@ -323,7 +323,7 @@
         },
         "success": {
             "title": "Merci de faire partie de la communauté PetLovers, {{name}}",
-            "description": "Nous vous avons envoyé un email de confirmation avec un code. Celà ne vous empêche de faire vos achats sur notre site-web. Vous aurez cependant quelques restrictions. Alors ne tardez pas et confirmez votre email ! Cela vous prendra quelques secondes, promis ;)"
+            "description": "Nous vous avons envoyé un email de confirmation avec un code. Celà ne vous empêche pas de faire vos achats sur notre site-web. Vous aurez cependant quelques restrictions. Alors ne tardez pas et confirmez votre email ! Cela vous prendra quelques secondes, promis ;)"
         }
     },
     "identity": {

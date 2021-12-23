@@ -3,18 +3,9 @@
     import {profile} from '$lib/stores';
     import AuthForm from '../form/AuthForm.svelte';
     import GuestForm from '../form/GuestForm.svelte';
-    import RegisterSuccessModal from '../modal/RegisterSuccessModal.svelte';
-    import {getContext} from "svelte";
     import CheckboxField from "../field/CheckboxField.svelte";
 
     let isGuest = false;
-    const {open} = getContext("simple-modal");
-
-    function showRegisterSuccessModal({success, data}) {
-        if (success) {
-            open(RegisterSuccessModal, {fullname: `${data.firstname} ${data.lastname}`});
-        }
-    }
 </script>
 
 <style>
@@ -24,7 +15,7 @@
 <div class="mx-2 md:mx-12 rounded-md mb-8">
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("identity.title")}</h2>
     {#if isGuest}
-        <GuestForm bind:data={$profile} />
+        <GuestForm />
     {:else}
         {#if $profile?.customer}
             <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex flex-col items-center justify-center">
@@ -35,7 +26,7 @@
                 {/if}
             </div>
         {:else}
-            <AuthForm on:submitEvent={e => showRegisterSuccessModal(e.detail)} />
+            <AuthForm />
         {/if}
     {/if}
     {#if !$profile?.customer}
