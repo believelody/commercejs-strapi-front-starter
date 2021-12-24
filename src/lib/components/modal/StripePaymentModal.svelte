@@ -61,7 +61,7 @@
                     postal_zip_code: billingValue.zip,
                     country: billingValue.country.key,
                 };
-                if (billingValue.subdivision) {
+                if (billingValue?.subdivision) {
                     billingObj.county_state = shippingValue.subdivision.key;
                 }
                 if (customer.hasOwnProperty("phone") && !customer.phone) {

@@ -1,7 +1,11 @@
+<script>
+	export let size = 8, color = "black";
+</script>
 
+<style>
+</style>
 <svg
-	width="20"
-	height="20"
+	class="mr-4	w-{size} h-{size} text-{color} transition-transform duration-{$$props.duration} ease-in rotate-{$$props.isOpen ? 90 : 0} transform-gpu"
 	fill="none"
 	stroke-linecap="round"
 	stroke-linejoin="round"
