@@ -3,12 +3,13 @@
     import { resetStores } from '$lib/stores';
     import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
     import {getContext} from "svelte";
+import FullAddress from './FullAddress.svelte';
 
     export let live, user, shipping, billing, isBillingSameAsShipping, reference;
     let dataUser = user;
     const { close } = getContext("simple-modal");
 
-    function hideModal() {
+    function closeModal() {
         resetStores();
         close();
     }
@@ -39,36 +40,14 @@
         <div class="my-2 flex justify-start">
             <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.${isBillingSameAsShipping ? "shipping-billing" : "shipping"}.title`)} : </section>
             <section class="flex flex-col flex-grow text-md text-gray-600">
-                    <span>{shipping.address1}</span>
-                    {#if shipping.address2}
-                        <span>{shipping.address2}</span>
-                    {/if}
-                <div class="flex">
-                    <span class="mr-2">{shipping.city}</span>
-                    <span>{shipping.zip}</span>
-                </div>
-                {#if shipping.subdivision}
-                    <span>{shipping.subdivision.value}</span>
-                {/if}
-                <span>{$t(`country.${shipping.country.key.toLowerCase()}`)}</span>
+                <FullAddress information={$shipping} />
             </section>
         </div>
         {#if !isBillingSameAsShipping}
             <div class="mt-2 flex justify-start">
                 <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.billing.title`)} : </section>
                 <section class="flex flex-col flex-grow text-md text-gray-600">
-                        <span>{billing.address1}</span>
-                        {#if billing.address2}
-                            <span>{billing.address2}</span>
-                        {/if}
-                    <div class="flex">
-                        <span class="mr-2">{billing.city}</span>
-                        <span>{billing.zip}</span>
-                    </div>
-                    {#if billing.subdivision}
-                        <span>{billing.subdivision.value}</span>
-                    {/if}
-                    <span>{$t(`country.${billing.country.key.toLowerCase()}`)}</span>
+                    <FullAddress information={$billing} />
                 </section>
             </div>
         {/if}
@@ -88,7 +67,7 @@
     </div>
     <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center">
         <button
-            on:click={hideModal}
+            on:click={closeModal}
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
         >
             {$t("checkout.payment.success.modal.close")}

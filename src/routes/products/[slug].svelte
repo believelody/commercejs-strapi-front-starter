@@ -3,17 +3,23 @@
 
     export async function load({ page }) {
         const { slug } = page.params;            
-        const { product } = await api.product.getProductBySlug(slug);
+        const res = await api.product.getBySlug(slug);
+
+        if (res.error) {
+            return {
+                props: { error: res.error }
+            }
+        }
 
         return {
-            props: { product }
+            props: { product: res.product }
         }
     }
 </script>
 
 <script>
     import ProductDetail from "$lib/components/products/ProductDetail.svelte";
-    export let product;
+    export let product, error;
 </script>
 
 <ProductDetail {product} />

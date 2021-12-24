@@ -2,9 +2,15 @@
     import api from '$lib/api';
 
 	export async function load() {
-		const { products, meta } = await api.product.getProducts();
+		const res = await api.product.getAll();
+
+        if (res.error) {
+            return {
+                props: { error: res.error }
+            }
+        }
 		return {
-			props: { products, meta }
+			props: { products: res.products, meta: res.meta }
 		};
 	}
 </script>
@@ -12,7 +18,7 @@
 <script>
 	import ProductList from '$lib/components/products/ProductList.svelte';
 
-	export let products, meta;
+	export let products, meta, error;
 </script>
 
-<ProductList {products} />
+<ProductList {products} {meta} />

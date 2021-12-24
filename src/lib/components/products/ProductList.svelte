@@ -1,5 +1,5 @@
 <script>
-	export let products;
+	export let products, meta;
 </script>
 
 <section class="text-gray-600 body-font">

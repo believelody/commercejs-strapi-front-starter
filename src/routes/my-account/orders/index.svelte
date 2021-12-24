@@ -1,18 +1,19 @@
 <script>
     import { onMount } from 'svelte';
+    import { paginate, PaginationNav } from 'svelte-paginate';
     import { navigating, page } from '$app/stores';
     import { goto } from '$app/navigation';
-    import { paginate, PaginationNav } from 'svelte-paginate';
     import api from '$lib/api';
     import { t } from '$lib/i18n';
     import { orders } from '$lib/stores';
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
-    import FilePDFIcon from '../../../lib/components/svg/FilePDFIcon.svelte';
+    import ReOrderButton from '../../../lib/components/button/ReOrderButton.svelte';
+    import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
 
     let error = null, loading = false, currentPage = +$page.query.get("page"), pageSize = 6;
 
-    async function getAll() {
+    async function getOrders() {
         loading = true;
         const res = await api.order.getAll();
         if (res.success) {
@@ -30,7 +31,7 @@
 
     onMount(async () => {
         if (!$orders.length) {
-            await getAll();
+            await getOrders();
         }
     });
 
@@ -82,12 +83,9 @@
                             <td class="border w-3/16 text-center">{$t("order.account.table.body.not-fulfill")}</td>
                             <td class="p-1">
                                 <section class="flex flex-col items-center">
-                                    <button class="bg-green-400 rounded py-1 px-3">{$t("order.account.table.body.button.re-order")}</button>
+                                    <ReOrderButton />
                                     <a href={`orders/${order.customer_reference}`} class="underline font-medium">{$t("order.account.table.body.button.view")}</a>
-                                    <button class="border border-blue-500 rounded px-4 flex items-center">
-                                        <FilePDFIcon size={4} color="blue-500" />
-                                        <span class="ml-2">{$t("order.account.table.body.button.bill")}</span>
-                                    </button>
+                                    <InvoicePDFViewerButton />
                                 </section>
                             </td>
                         </tr>

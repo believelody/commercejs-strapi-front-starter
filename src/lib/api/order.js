@@ -27,7 +27,7 @@ export const getOne = async (reference) => {
         if (json.error) {
             return { success: false, error: json.error }
         }
-        return { success: true, order: json.data };
+        return { success: true, data: json.data };
     } catch (error) {
         console.log(error);
     }

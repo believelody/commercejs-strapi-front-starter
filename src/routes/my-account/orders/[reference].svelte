@@ -3,38 +3,53 @@
     import { navigating, page } from '$app/stores';
     import { t } from '$lib/i18n';
     import api from '$lib/api';
+    import { localDate } from '$lib/utils/date.util';
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
-import Accordion from '../../../lib/components/accordion/Accordion.svelte';
+    import ItemsOrderList from '../../../lib/components/order/ItemsOrderList.svelte';
+    import DeliveryOrder from '../../../lib/components/order/DeliveryOrder.svelte';
+    import ReOrderButton from '../../../lib/components/button/ReOrderButton.svelte';
+    import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
+import AddressesOrder from '../../../lib/components/order/AddressesOrder.svelte';
     
-    let order = null, error = null;
+    let data = null, error = null;
 
-    async function getOne() {
+    async function getOrder() {
         const res = await api.order.getOne($page.params.reference);
         if (res.success) {
-            order = res.order;
+            data = res.data;
         } else {
             error = res.error
         }
     }
 
     onMount(async () => {
-        if (!order) {
-            await getOne();
+        if (!data) {
+            await getOrder();
         }
     });
+
+    $: console.log(data);
 </script>
 
 <style>
     /* your styles go here */
 </style>
 
-{#if $navigating || !order}
+{#if $navigating || !data}
     <MoonLoading />
 {:else}
-    <HeaderTitle title={`${$t("order.account.table.header.reference")} ${order.customer_reference}`} />
-    <Accordion isOpen>
-        <h3 slot="header" class="text-xl">Shipping</h3>
-        <pre slot="content">{JSON.stringify(order.shipping, null, 2)}</pre>
-    </Accordion>
+    <HeaderTitle title={`${$t("order.detail.reference")} ${data.customer_reference}`} />
+    <div class="px-2 lg:px-4 w-full">
+        <h4 class="bg-white py-2 rounded shadow-md text-center">
+            {$t("order.detail.date")} : {localDate(data.created)}
+        </h4>
+        <div class="flex flex-wrap lg:justify-between my-6">
+            <div class="mb-2 lg:mb-0 flex justify-center w-full lg:w-auto"><ReOrderButton /></div>
+            <div class="flex justify-center w-full lg:w-auto"><InvoicePDFViewerButton /></div>
+        </div>
+        <ItemsOrderList items={data.order.line_items} subtotal={data.order.subtotal} />
+        <DeliveryOrder information={{...data.order.shipping, fulfillment: data.status_fulfillment}} />
+        <AddressesOrder shipping={data.shipping} billing={data.billing} />
+    </div>
 {/if}

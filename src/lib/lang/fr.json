@@ -14,7 +14,8 @@
         "select": "Sélectionner",
         "notifications": {
             "note": "Cliquez / Touchez moi pour que je disparaisse"
-        }
+        },
+        "no-translation": "Aucune traduction"
     },
     "header": {
         "connexion": "Connexion",
@@ -75,6 +76,36 @@
         "empty": {
             "text": "Vous n'avez aucune commande pour l'instant.",
             "link": "Commencez vos achats en cliquant ici !"
+        },
+        "detail": {
+            "reference": "N° Commande",
+            "date": "Date de la commande",
+            "items": {
+                "singular": "Article",
+                "plural": "Articles"
+            },
+            "delivery": {
+                "header": "Mode de livraison",
+                "content": {
+                    "method": "Méthode",
+                    "cost": "Coût",
+                    "fulfillment": "Statut de la commande",
+                    "delivery-time": "Délai de livraison",
+                    "tracking": "N° suivi",
+                    "no-tracking": "Information indisponible"
+                }
+            },
+            "addresses": {
+                "header": "Livraison & Facturation",
+                "content": {
+                    "shipping": {
+                        "label": "Livrer à :"
+                    },
+                    "billing": {
+                        "label": "Facturer à :"
+                    }
+                }
+            }
         }
     },
     "notifications": {
@@ -483,6 +514,18 @@
         "no-cart": {
             "title": "Checkout indisponible",
             "description": "Votre panier d'achat est vide. Vous ne pouvez pas accéder à cette page. Commencez votre shopping dès maintenant !"
+        }
+    },
+    "delivery": {
+        "method": {
+            "standard": {
+                "label": "Standard",
+                "description": "7-10 jours"
+            },
+            "express": {
+                "label": "Express",
+                "description": "2-3 jours"
+            }
         }
     }
 }

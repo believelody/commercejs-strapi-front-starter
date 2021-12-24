@@ -1,8 +1,8 @@
 <script>
     import { t } from '$lib/i18n';
-    import FullAddress from "./FullAddress.svelte";
     import AddressSidebarButton from '../button/AddressSidebarButton.svelte';
     import CreateAddressModalButton from '../button/CreateAddressModalButton.svelte';
+    import AddressItem from '../addresses/AddressItem.svelte';
 
     export let information, type, items;
 </script>
@@ -11,7 +11,7 @@
     <h3 class="border-b w-full py-2 text-center text-lg font-medium">{$t(`account.addresses.${type}.label`)}</h3>
     <div class="py-{information ? 4 : 12} flex flex-col justify-center items-center">
         {#if information}
-            <FullAddress
+            <AddressItem
                 {information}
                 {items}
                 primary="update"
