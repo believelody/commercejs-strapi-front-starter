@@ -12,7 +12,6 @@
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
 	import Notification from "$lib/components/notifications/Notification.svelte";
 
-
 	$: {
 		if (!$cart) {
 			cart.useLocalStorage();

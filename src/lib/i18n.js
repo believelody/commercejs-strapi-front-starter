@@ -16,9 +16,10 @@ function translate(locale, keys, vars) {
     if (!keys) throw new Error("no key provided to $t()");
     if (!locale) throw new Error(`no translation for key "${keys}"`);
     const translationObj = translations[locale];
-    let text = getTranslation(translationObj, keys)
-    if (!text) throw new Error(`no translation found for ${locale}.${keys}`);
-
+    let text = getTranslation(translationObj, keys);
+    if (!text) {
+        return getTranslation(translationObj, "common.no-translation");
+    }
     // Replace any passed in variables in the translation string.
     Object.keys(vars).map((k) => {
         const regex = new RegExp(`{{${k}}}`, "g");

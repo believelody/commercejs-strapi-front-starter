@@ -20,9 +20,7 @@
 </style>
 
 <OrderAccordion>
-    <h3 slot="header" class="text-xl w-full pr-4">
-        <span>{$t("order.detail.delivery.header")}</span>
-    </h3>
+    <span slot="header">{$t("order.detail.delivery.header")}</span>
     <section slot="content" class="block">
         <div class="flex flex-col items-center lg:flex-row flex-wrap pb-4">
             <span class="w-full lg:w-1/2">{$t("order.detail.delivery.content.method")} : {information.description}</span>
@@ -31,8 +29,8 @@
             <span class="w-full lg:w-1/2">{$t("order.detail.delivery.content.fulfillment")} : {$t(selectFulfillmentStatus())}</span>
         </div>
         <div class="border-t pt-2 flex justify-center text-lg">
-            <span>{$t("order.detail.delivery.content.tracking")} :</span><span></span>
-            <span class="ml-3 italic">{$t("order.detail.delivery.content.no-tracking")}</span><span></span>
+            <span>{$t("order.detail.delivery.content.tracking")} :</span>
+            <span class="ml-3 italic text-gray-500">{$t("order.detail.delivery.content.no-tracking")}</span>
         </div>
     </section>
 </OrderAccordion>

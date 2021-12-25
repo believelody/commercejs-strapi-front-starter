@@ -15,7 +15,8 @@
         "notifications": {
             "note": "Cliquez / Touchez moi pour que je disparaisse"
         },
-        "no-translation": "Aucune traduction"
+        "no-translation": "Aucune traduction",
+        "error-date": "Date Invalide"
     },
     "header": {
         "connexion": "Connexion",
@@ -105,7 +106,20 @@
                         "label": "Facturer à :"
                     }
                 }
-            }
+            },
+            "payment": {
+                "header": "Paiement",
+                "content": {
+                    "status-payment": "Etat du paiement",
+                    "paid": "Payé",
+                    "method": "Moyen de paiement",
+                    "stripe": "Par Carte Bancaire",
+                    "paypal": "Paypal",
+                    "card-type": "Type de Carte",
+                    "last-card-digit": "Information bancaire"
+                }
+            },
+            "contact": "Nous contactez à propos de cette commande ?"
         }
     },
     "notifications": {
