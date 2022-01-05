@@ -54,8 +54,8 @@ import ContactOrderButton from '../../../lib/components/button/ContactOrderButto
         <DeliveryOrder information={{...data.order.shipping, fulfillment: data.status_fulfillment}} />
         <AddressesOrder shipping={data.shipping} billing={data.billing} />
         <PaymentOrder information={data.transactions[0]} status={data.status_payment} />
-        <div class="w-full text-right absolute bottom-0 right-4">
-           <ContactOrderButton reference={data.customer_reference} />
+        <div class="w-full text-right relative bottom-0 right-4 mt-4">
+           <ContactOrderButton orderId={data.id} customer={data.customer} reference={data.customer_reference} />
         </div>
     </div>
 {/if}

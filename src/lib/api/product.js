@@ -16,11 +16,11 @@ export const getAll = async () => {
 export const getBySlug = async slug => {
     try {
         const res = await fetch(`${baseUrl}/products/${slug}?type=permalink`);
-        const json = res.json();
+        const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
         }
-        return { success: true, product: json };
+        return { success: true, product: json.product };
     } catch (error) {
         console.log(error);
     }
@@ -29,11 +29,11 @@ export const getBySlug = async slug => {
 export const getById = async id => {
     try {
         const res = await fetch(`${baseUrl}/products/${id}`);
-        const json = res.json();
+        const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
         }
-        return { success: true, product: json };
+        return { success: true, product: json.product };
     } catch (error) {
         console.log(error);
     }

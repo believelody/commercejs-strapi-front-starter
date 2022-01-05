@@ -15,8 +15,8 @@
 
 <div class="flex flex-col items-center py-3 px-2">
     <label
-            for={name}
-            class="flex items-center w-full"
+        for={name}
+        class="flex items-center w-full"
     >
 		<span class="sm:text-right mr-2">
 			{label}
@@ -25,13 +25,13 @@
 			{/if}
 		</span>
         <input
-                bind:value
-                {name}
-                type="text"
-                id={name}
-                list="list-{name}"
-                class="border rounded flex-grow focus:outline-none p-3"
-                {placeholder}
+            bind:value
+            {name}
+            type="text"
+            id={name}
+            list="list-{name}"
+            class="border rounded flex-grow focus:outline-none p-3"
+            {placeholder}
         />
         <datalist id="list-{name}">
             {#each items as {value}}

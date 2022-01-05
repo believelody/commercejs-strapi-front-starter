@@ -4,7 +4,6 @@
     export async function load({ page }) {
         const { slug } = page.params;            
         const res = await api.product.getBySlug(slug);
-
         if (res.error) {
             return {
                 props: { error: res.error }

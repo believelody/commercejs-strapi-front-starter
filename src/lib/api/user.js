@@ -17,3 +17,21 @@ export const updateUser = async (data) => {
         console.log(e);
     }
 }
+
+export const sendOrderEmail = async (data, id) => {
+    try {
+        const res = await fetch(`${baseUrl}/users/me/orders/${id}/contact`, {
+            method: "post",
+            headers: authenticateHeaders(),
+            body: JSON.stringify(data)
+        });
+        console.log(res);
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error }
+        }
+        return { success: json.sent };
+    } catch (error) {
+        console.log(error);
+    }
+}

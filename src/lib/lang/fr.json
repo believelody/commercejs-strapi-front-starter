@@ -16,7 +16,25 @@
             "note": "Cliquez / Touchez moi pour que je disparaisse"
         },
         "no-translation": "Aucune traduction",
-        "error-date": "Date Invalide"
+        "error-date": "Date Invalide",
+        "contact": {
+            "object": {
+                "label": "Objet",
+                "list": {
+                    "claim": "J'ai une réclamation à propos de la commande",
+                    "problem": "J'ai un problème avec le commande",
+                    "ask": "J'ai une question à propos de cette commande",
+                    "damaged": "J'ai reçu un ou plusieurs articles de la commande défectueux",
+                    "no-delivery": "Je n'ai pas reçu ma commande",
+                    "not-right-item": "L'un des articles de la commande n'est pas le bon"
+                }
+            },
+            "message": {
+                "label": "Votre message",
+                "placeholder": "Dites-nous en plus"
+            },
+            "send": "Envoyer"
+        }
     },
     "header": {
         "connexion": "Connexion",
@@ -120,6 +138,11 @@
                 }
             },
             "contact": "Nous contactez à propos de cette commande ?"
+        },
+        "modal": {
+            "contact": {
+                "title": "Votre message à propos de la commande {{reference}}"
+            }
         }
     },
     "notifications": {
@@ -159,6 +182,12 @@
                 "create": "Votre adresse a bien été enregistrée",
                 "update": "Votre adresse a bien été modifiée",
                 "remove": "Votre adresse a bien été suprrimée"
+            }
+        },
+        "order": {
+            "email": {
+                "heading": "Email",
+                "description": "Votre email a été envoyé avec succès. Nous reviendrons vers vous dans les plus brefs délais."
             }
         }
     },
@@ -217,9 +246,7 @@
             }
         },
         "cancel": {
-            "text": {
-                "default": "Annuler"
-            }
+            "text": "Annuler"
         },
         "loading": {
             "text": {
