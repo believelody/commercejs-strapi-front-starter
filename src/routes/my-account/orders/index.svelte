@@ -84,7 +84,7 @@
                             <td class="p-1">
                                 <section class="flex flex-col items-center">
                                     <ReOrderButton />
-                                    <a href={`orders/${order.customer_reference}`} class="underline font-medium">{$t("order.account.table.body.button.view")}</a>
+                                    <a href={`orders/${order.customer_reference}`} class="underline font-medium py-2">{$t("order.account.table.body.button.view")}</a>
                                     <InvoicePDFViewerButton />
                                 </section>
                             </td>

@@ -1,10 +1,10 @@
 <script>
-	import { sidebar } from '$lib/stores';
+	import {getContext} from "svelte";
 	import { t } from '$lib/i18n'
+	import { sidebar } from '$lib/stores';
+	import WithActionModal from './WithActionModal.svelte';
 	import CartSidebar from "../cart/CartSidebar.svelte";
 	import CheckCircleIcon from '../svg/CheckCircleIcon.svelte';
-	import {getContext} from "svelte";
-import WithActionModal from './WithActionModal.svelte';
 
 	export let product, selectedColor, selectedSize, quantity;
 	const { close } = getContext("simple-modal");

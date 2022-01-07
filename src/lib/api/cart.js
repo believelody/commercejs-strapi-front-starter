@@ -2,12 +2,31 @@ import { cart } from "../stores";
 import { baseUrl } from '../utils/url.util';
 import { headers } from "../utils/header.util";
 
+export const getById = async (id) => {
+    try {
+        const res = await fetch(`${baseUrl}/cart/${id}`);
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error }
+        }
+        cart.set(json.cart);
+        cart.useLocalStorage();
+        return json;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const createCart = async () => {
     try {
         const res = await fetch(`${baseUrl}/cart`);
         const json = await res.json();
-        cart.set(json.cart);
+        if (json.error) {
+            return { success: false, error: json.error }
+        }
+        cart.set(json);
         cart.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -21,10 +40,31 @@ export const addToCart = async (cartId, id, quantity, options = null) => {
             body: JSON.stringify({ quantity, id, options })
         });
         const json = await res.json();
-        if (json.cart) {
-            cart.set(json.cart);
-            cart.useLocalStorage();
+        if (json.error) {
+            return { success: false, error: json.error }
         }
+        cart.set(json.cart);
+        cart.useLocalStorage();
+        return { success: true };
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const addItems = async (cartId, items) => {
+    try {
+        const res = await fetch(`${baseUrl}/cart/${cartId}/add-items`, {
+            method: "post",
+            headers,
+            body: JSON.stringify(items)
+        });
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error }
+        }
+        cart.set(json.cart);
+        cart.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -38,11 +78,12 @@ export const updateItemQuantity = async (cartId, id, quantity) => {
             body: JSON.stringify({ quantity })
         });
         const json = await res.json();
-        if (json.cart) {
-            cart.set(json.cart);
-            cart.useLocalStorage();
+        if (json.error) {
+            return { success: false, error: json.error }
         }
-        return { success: json.success };
+        cart.set(json.cart);
+        cart.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -54,12 +95,12 @@ export const deleteItem = async (cartId, itemId) => {
             method: "delete"
         });
         const json = await res.json();
-        if (json.cart) {
-            cart.set(json.cart);
-            cart.useLocalStorage();
-            return { success: true };
+        if (json.error) {
+            return { success: false, error: json.error }
         }
-        return { success: false };
+        cart.set(json.cart);
+        cart.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -71,12 +112,12 @@ export const emptyCart = async (cartId) => {
             method: "delete"
         });
         const json = await res.json();
-        if (json.success) {
-            cart.set(null);
-            cart.useLocalStorage();
-            return { success: true };
+        if (json.error) {
+            return { success: false, error: json.error }
         }
-        return { success: false }
+        cart.set(null);
+        cart.useLocalStorage();
+        return { success: true };
     } catch (error) {
         console.log(error);
     }

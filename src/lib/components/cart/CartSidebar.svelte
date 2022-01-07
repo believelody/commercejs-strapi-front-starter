@@ -24,17 +24,12 @@ import { getNotificationsContext } from "svelte-notifications";
 			actionCallback: async () => {
 				const res = await api.cart.emptyCart($cart.id);
 				if (res.success) {
-					addNotification({
-						position: 'bottom-left',
-						heading: $t('notifications.cart.heading'),
-						text: $t('notifications.cart.description.empty'),
-						description: $t('notifications.cart.description.empty'),
-						type: 'success',
-						removeAfter: 5000
-					});
 					$sidebar = null;
 				}
-			}
+				return res;
+			},
+			notificationHeading: $t('notifications.cart.heading'),
+			notificationText: $t('notifications.cart.description.empty'),
 		});
 	}
 </script>

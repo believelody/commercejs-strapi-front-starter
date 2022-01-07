@@ -1,8 +1,10 @@
 <script>
 	import { Moon } from 'svelte-loading-spinners';
 	import CenterSection from '../center-section/CenterSection.svelte';
+
+	export let size = "260", color="#FF3E00", unit = "px";
 </script>
 
 <CenterSection>
-	<Moon size="260" color="#FF3E00" unit="px" />
+	<Moon {size} {color} {unit} />
 </CenterSection>

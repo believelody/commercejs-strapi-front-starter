@@ -167,9 +167,17 @@
         "cart": {
             "heading": "Panier",
             "description": {
+                "add" : {
+                    "one": "Le produit a bien été ajouté au panier",
+                    "many": "Le produits ont bien été ajoutés au panier"
+                },
                 "update": "La quantité de l'article {{name}} a été mis à jour",
                 "remove": "L'article {{name}} a bien été retiré de votre panier",
                 "empty": "Votre panier a été vidé avec succès."
+            },
+            "loading": {
+                "top": "Un instant svp,",
+                "bottom": "Nous mettons à jour le panier"
             }
         },
         "address": {

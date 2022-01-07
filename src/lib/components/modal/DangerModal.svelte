@@ -6,7 +6,7 @@
 	export let title,
 		description,
 		actionText = $t('modal.cta.text.default'),
-		cancelText = $t('modal.cancel.text.default'),
+		cancelText = $t('modal.cancel.text'),
 		loadingText = $t('modal.loading.text.deleting'),
 		notificationHeading = $t("notifications.default.heading"),
 		notificationText = $t("notifications.default.description"),
