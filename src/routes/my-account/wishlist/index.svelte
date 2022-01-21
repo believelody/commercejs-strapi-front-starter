@@ -59,7 +59,9 @@ import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
                             {wishlist.product.categories.find(() => true).name}
                         </a>
                     </h3>
-                    <h2 class="text-gray-900 title-font text-lg font-medium">{wishlist.product.name}</h2>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">
+                        <a href="/products/{wishlist.product.permalink}">{wishlist.product.name}</a>
+                    </h2>
                     <p class="mt-1">{wishlist.product.price.formatted_with_symbol}</p>
                 </div>
                 <div class="mt-2 mx-3 flex flex-col justify-center">

@@ -212,6 +212,14 @@
                 "heading": "Email",
                 "description": "Votre email a été envoyé avec succès. Nous reviendrons vers vous dans les plus brefs délais."
             }
+        },
+        "profile": {
+            "heading": "Informations personnelles",
+            "description": "Vos informations ont bien été mises à jour."
+        },
+        "password": {
+            "heading": "Mot de passe",
+            "description": "Votre de mot de passe a bien été modifié."
         }
     },
     "cart": {
@@ -317,6 +325,19 @@
                 "failed": "Nous avons rencontré une erreur. Veuillez nous en excuser.",
                 "submit": "Mettre à jour mes informations personnelles",
                 "loading": "Mise à jour"
+            },
+            "update-password": {
+                "failed": "La modification du mot de passe n'a pas abouti.",
+                "submit": "Changer de mot de passe",
+                "loading": "Mise à jour"
+            },
+            "password": {
+                "label": "Mot de passe actuel",
+                "placeholder": "Votre mot de passe actuel"
+            },
+            "new-password": {
+                "label": "Nouveau mot de passe",
+                "placeholder": "Saisissez votre nouveau mot de passe"
             }
         },
         "addresses": {

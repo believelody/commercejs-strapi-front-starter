@@ -1,9 +1,8 @@
 import {baseUrl} from "../utils/url.util";
 import {authenticateHeaders} from "../utils/header.util";
-import {user} from "../stores";
+import {profile} from "../stores";
 
-
-export const updateUser = async (data) => {
+export const update = async (data) => {
     try {
         const res = await fetch(`${baseUrl}/users/me`, {
             method: "put",
@@ -11,8 +10,12 @@ export const updateUser = async (data) => {
             body: JSON.stringify(data)
         });
         const json = await res.json();
-        user.set(json.user);
-        user.useLocalStorage();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        profile.set(json.customer);
+        profile.useLocalStorage();
+        return { success: true };
     } catch (e) {
         console.log(e);
     }
@@ -25,7 +28,6 @@ export const sendOrderEmail = async (data, id) => {
             headers: authenticateHeaders(),
             body: JSON.stringify(data)
         });
-        console.log(res);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error }
@@ -33,5 +35,23 @@ export const sendOrderEmail = async (data, id) => {
         return { success: json.sent };
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const updatePassword = async (password, newPassword) => {
+    try {
+        const res = await fetch(`${baseUrl}/users/me/update-password`, {
+            method: "put",
+            headers: authenticateHeaders(),
+            body: JSON.stringify({ password, newPassword })
+        });
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        console.log(json);
+        return { success: true };
+    } catch (e) {
+        console.log(e);
     }
 }
