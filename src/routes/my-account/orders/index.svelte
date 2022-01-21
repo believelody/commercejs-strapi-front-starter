@@ -10,6 +10,7 @@
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
     import ReOrderButton from '../../../lib/components/button/ReOrderButton.svelte';
     import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
+import { localDateFromSeconds } from '../../../lib/utils/date.util';
 
     let error = null, loading = false, currentPage = +$page.query.get("page"), pageSize = 6;
 
@@ -63,7 +64,7 @@
                                 <span class="flex justify-center">{order.customer_reference.split("-")[1]}</span>
                             </td>
                             <td class="border w-4/16 px-1 text-center">
-                                {new Date(order.transactions[0].charge_date).toLocaleDateString()}
+                                {localDateFromSeconds(order.transactions[0].charge_date)}
                             </td>
                             <td class="border w-2/16 text-center">{order.order_value.formatted_with_symbol}</td>
                             <!-- <td class="border w-4/16 px-1">
@@ -85,7 +86,7 @@
                                 <section class="flex flex-col items-center">
                                     <ReOrderButton />
                                     <a href={`orders/${order.customer_reference}`} class="underline font-medium py-2">{$t("order.account.table.body.button.view")}</a>
-                                    <InvoicePDFViewerButton />
+                                    <InvoicePDFViewerButton data={order} />
                                 </section>
                             </td>
                         </tr>

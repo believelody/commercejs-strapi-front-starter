@@ -9,6 +9,12 @@ export const localDateFromSeconds = date => {
     return DateTime.fromSeconds(date).setLocale(lang).toLocaleString(options);
 };
 
+export const numericLocalDateFromSeconds = date => {
+    const lang = get(locale);
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    return DateTime.fromSeconds(date).setLocale(lang).toLocaleString(options);
+};
+
 export const localDateFromObject = date => {
     const lang = get(locale);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };

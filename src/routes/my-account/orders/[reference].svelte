@@ -48,7 +48,7 @@ import ContactOrderButton from '../../../lib/components/button/ContactOrderButto
         </h4>
         <div class="flex flex-wrap lg:justify-between my-6">
             <div class="mb-2 lg:mb-0 flex justify-center w-full lg:w-auto"><ReOrderButton order={data.order} /></div>
-            <div class="flex justify-center w-full lg:w-auto"><InvoicePDFViewerButton /></div>
+            <div class="flex justify-center w-full lg:w-auto"><InvoicePDFViewerButton {data} /></div>
         </div>
         <ItemsOrderList items={data.order.line_items} subtotal={data.order.subtotal} />
         <DeliveryOrder information={{...data.order.shipping, fulfillment: data.status_fulfillment}} />

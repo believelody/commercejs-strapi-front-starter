@@ -143,6 +143,21 @@
             "contact": {
                 "title": "Votre message à propos de la commande {{reference}}"
             }
+        },
+        "invoice": {
+            "header": "Facture",
+            "number": "N° facture",
+            "date": "Date",
+            "shipping": "Livrer à",
+            "billing": "Facturer à",
+            "description": "Description",
+            "units": "Quantité",
+            "price": "Prix",
+            "tax": "(Tax incluse)",
+            "item-total": "Montant total",
+            "items-total": "Total articles",
+            "shipping-method":"Méthode de livraison",
+            "total": "Total"
         }
     },
     "notifications": {
