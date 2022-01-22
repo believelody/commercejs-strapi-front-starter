@@ -27,7 +27,7 @@ export const getFromProductId = async (id) => {
         });
         const json = await res.json();
         if (json.error) {
-            return null;
+            return { success: false, error: json.error };
         }
         return { success: true, reviews: json };
     } catch (error) {

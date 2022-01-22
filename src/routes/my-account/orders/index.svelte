@@ -52,7 +52,7 @@ import { localDateFromSeconds } from '../../../lib/utils/date.util';
                         <th class="w-4/16">{$t("order.account.table.header.date")}</th>
                         <th class="w-2/16">{$t("order.account.table.header.price")}</th>
                         <!-- <th class="w-4/16">{$t("order.account.table.header.shipping")}</th> -->
-                        <th class="w-4/16">{$t("order.account.table.header.tracking")}</th>
+                        <!-- <th class="w-4/16">{$t("order.account.table.header.tracking")}</th> -->
                         <th class="w-3/16">{$t("order.account.table.header.fulfillment")}</th>
                         <th>{$t("order.account.table.header.details")}</th>
                     </tr>
@@ -80,7 +80,7 @@ import { localDateFromSeconds } from '../../../lib/utils/date.util';
                                     <span>{$t(`country.${order.shipping.country.toLowerCase()}`)}</span>
                                 </section>
                             </td> -->
-                            <td></td>
+                            <!-- <td></td> -->
                             <td class="border w-3/16 text-center">{$t("order.account.table.body.not-fulfill")}</td>
                             <td class="p-1">
                                 <section class="flex flex-col items-center">

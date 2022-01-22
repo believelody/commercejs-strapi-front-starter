@@ -408,7 +408,10 @@
         },
         "empty": {
             "text": "Vous n'avez pas encore laissé un avis sur un article",
-            "link": "Rendez-vous sur Mes commandes et laissez-nous un petit commentaire ;) !"
+            "link": "Faites votre shopping sur notre site web et laissez-nous un petit commentaire ;) !"
+        },
+        "button": {
+            "add": "Ajouter un avis"
         }
     },
     "auth": {

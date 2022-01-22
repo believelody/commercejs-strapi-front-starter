@@ -49,7 +49,6 @@ export const updatePassword = async (password, newPassword) => {
         if (json.error) {
             return { success: false, error: json.error };
         }
-        console.log(json);
         return { success: true };
     } catch (e) {
         console.log(e);
