@@ -9,6 +9,7 @@
         "total": "Total",
         "update": "mise à jour ...",
         "validate": "Valider",
+        "confirm": "Confirmer",
         "delete": "Supprimer",
         "remove": "Retirer",
         "select": "Sélectionner",
@@ -34,6 +35,13 @@
                 "placeholder": "Dites-nous en plus"
             },
             "send": "Envoyer"
+        },
+        "description": {
+            "label": "Description",
+            "placeholder": "Décrivez-nous votre expérience"
+        },
+        "star": {
+            "placeholder": "Choisissez une valeur"
         }
     },
     "header": {
@@ -407,12 +415,23 @@
             "title": "Liste de vos avis sur les articles"
         },
         "empty": {
-            "text": "Vous n'avez pas encore laissé un avis sur un article",
+            "text": "Vous n'avez pas encore laissé d'avis sur un article",
             "link": "Faites votre shopping sur notre site web et laissez-nous un petit commentaire ;) !"
         },
         "button": {
             "add": "Ajouter un avis"
-        }
+        },
+        "tabs": {
+            "pending": "Articles en attente d'avis",
+            "done": "Mes avis déposés"
+        },
+        "modal": {
+            "add": {
+                "title": "Ajouter un avis"
+            },
+            "images": "Des photos ?"
+        },
+        "ratings": "Score"
     },
     "auth": {
         "login": {

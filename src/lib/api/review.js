@@ -13,7 +13,7 @@ export const getFromUser = async () => {
         if (json.error) {
             return { success: false };
         }
-        return { reviews: json, success: true };
+        return { reviews: json.reviews, success: true };
     } catch (error) {
         console.log(error);
     }

@@ -1,23 +1,19 @@
 <script>
-import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher } from "svelte";
 
-
-	export let name, hint, label = "", placeholder, required;
+	export let name, hint, label = "", placeholder, required, multiple = false, accept = "";
 	let input;
     const dispatch = createEventDispatcher();
-    function onInput(params) {
-        const file = input.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.addEventListener("load", function () {
-                dispatch("download", {image: reader.result});
-            });
-            reader.readAsDataURL(file);                    
-        }
+
+    function onInput() {
+        const files = input.files;
+        if (files.length) {
+			dispatch("load", {files});
+		}
     }
 </script>
 
-<div class="flex flex-col xl:w-1/2 items-center py-3 px-2 border-b border-gray-300 xl:border-none">
+<div class="flex flex-col items-center py-3 px-2">
 	<label
 		for={name}
 		class="flex items-center w-full"
@@ -33,7 +29,9 @@ import { createEventDispatcher } from "svelte";
 			type="file"
             bind:this={input}
 			id={name}
+			{multiple}
 			on:input={onInput}
+			{accept}
 			class="flex-grow focus:outline-none px-3 xl:px-0"
 			{placeholder}
 		/>
