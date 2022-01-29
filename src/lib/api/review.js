@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
 import { user } from "../stores";
-import { authenticateHeaders, headers } from "../utils/header.util";
+import { authenticateHeaders, authorizationHeaders, headers } from "../utils/header.util";
 import { baseUrl } from "../utils/url.util"
 
 export const getFromUser = async () => {
@@ -35,21 +35,45 @@ export const getFromProductId = async (id) => {
     }
 }
 
-export const create = async (product) => {
+export const create = async (productId, description, ratings, images) => {
     try {
+        let userId = get(user).id;        
         const res = await fetch(`${baseUrl}/reviews`, {
             method: "post",
             headers: authenticateHeaders(),
-            body: JSON.stringify({ productId: product.id, product, users: get(user).id })
-
+            body: JSON.stringify({
+                productId,
+                user: userId,
+                description,
+                ratings
+            })
         });
         const json = await res.json();
         if (json.error) {
-            return { success: false }
+            return { success: false, error: json.error };
         }
-        return { success: true, wishlist: json };
+        if (images.length) {
+            const formData = new FormData();
+            formData.append("ref", "review");
+            formData.append("refId", json.id);
+            formData.append("field", "images");
+            formData.append("path", "review/images");
+            for (let image of images) {
+                formData.append("files", image, image.name);
+            }
+            const formRes = await fetch(`${baseUrl}/upload`, {
+                method: "post",
+                headers: authorizationHeaders(),
+                body: formData
+            });
+            if (!formRes.ok) {
+                return { success: false };
+            }
+        }
+        return { success: true };
     } catch (error) {
         console.log(error);
+        return { success: false };
     }
 }
 

@@ -4,10 +4,10 @@
     import { navigating } from '$app/stores';
     import { t } from '$lib/i18n';
     import api from '$lib/api';
-    import { orders } from '$lib/stores';
+    import { orders, user } from '$lib/stores';
     import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
     import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
-import AddReviewModal from "../../../lib/components/modal/AddReviewModal.svelte";
+    import AddReviewModal from "../../../lib/components/modal/AddReviewModal.svelte";
 
     let reviews = [], orderItems = [], userOrders = [], loading = true;
     const { open } = getContext("simple-modal");
@@ -38,7 +38,7 @@ import AddReviewModal from "../../../lib/components/modal/AddReviewModal.svelte"
     }
 
     function openReviewModal(item) {
-        open(AddReviewModal, { item });
+        open(AddReviewModal, { item, userId: $user.id });
     }
 
     onMount(async () => {

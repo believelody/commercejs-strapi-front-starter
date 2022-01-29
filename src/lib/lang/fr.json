@@ -228,6 +228,13 @@
         "password": {
             "heading": "Mot de passe",
             "description": "Votre de mot de passe a bien été modifié."
+        },
+        "review": {
+            "heading": "Avis",
+            "description": {
+                "success": "Votre avis a bien été enregistré, nous vous en remercions.",
+                "failure": "Un problème a été rencontré lors de l'enregistrement de votre avis."
+            }
         }
     },
     "cart": {

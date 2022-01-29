@@ -13,6 +13,15 @@ export const authenticateHeaders = () => {
     };
 };
 
+export const authorizationHeaders = () => {
+    if (get(jwt) && window) {
+        return {
+            "Authorization": `Bearer ${get(jwt)}`
+        }
+    }
+    return {};
+};
+
 export const headers = {
     "Content-Type": "application/json",
 }

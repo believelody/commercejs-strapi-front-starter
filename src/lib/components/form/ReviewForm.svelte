@@ -1,23 +1,45 @@
 <script>
-    import { t } from '$lib/i18n';    
+    import { createEventDispatcher } from 'svelte';
+    import { getNotificationsContext } from 'svelte-notifications';
+    import api from "$lib/api";
+    import { t } from '$lib/i18n';
+    import { user } from '$lib/stores';
     import Fields from "../field/Fields.svelte";
-import FileField from '../field/FileField.svelte';
+    import FileField from '../field/FileField.svelte';
     import TextareaField from "../field/TextareaField.svelte";
-import SelectStar from '../star/SelectStar.svelte';
-import Star from '../star/Star.svelte';
+    import SelectStar from '../star/SelectStar.svelte';
     
     export let item, review, withoutShadow = false;
     let description = review?.description ?? "",
         images = review?.images ?? [],
         ratings = review?.ratings ?? 0,
-        loading = false;
+        loading = false,
+        error = "";
+    const { addNotification } = getNotificationsContext();
+    const dispatch = createEventDispatcher();
 
     function removeImg(index) {
         images = images.filter((_, i) => i !== index);
     }
 
-    async function submit() {}
-
+    async function submit() {
+        loading = true;
+        const res = await api.review.create(item.product_id, description, ratings, images);
+        if (res.success) {
+            dispatch("submitEvent");
+            addNotification({
+                position: 'bottom-left',
+                heading: $t(`notifications.review.heading`),
+                text: $t(`notifications.review.description.success`),
+                description: $t(`notifications.review.description.success`),
+                type: 'success',
+                removeAfter: 5000
+            });
+        } else {
+            error = $t(`notifications.review.description.failure`);
+        }
+        loading = false;
+    }
     $: isValid = !!(description && ratings);
 </script>
 
@@ -37,6 +59,7 @@ import Star from '../star/Star.svelte';
             <span class="mr-4">{$t("review.ratings")} *</span>
             <SelectStar bind:value={ratings} class="border p-2 rounded" />
         </section>
+        <input type="hidden" name="ratings" value={ratings} />
         <TextareaField
             label={$t("common.description.label")}
             name="description"
@@ -45,6 +68,7 @@ import Star from '../star/Star.svelte';
             bind:value={description}
             required
         />
+        <input type="hidden" name="user" value={$user.id} />
         <section>
             <FileField
                 label={$t("review.modal.images")}
@@ -65,7 +89,10 @@ import Star from '../star/Star.svelte';
             </ul>
         {/if}
         <div class="w-auto my-2 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
-            <button disabled={!isValid} class="bg-indigo-600 text-white hover:bg-indigo-700 px-6 py-2 rounded disabled:opacity-75 disabled:bg-gray-400 disabled:text-black disabled:cursor-not-allowed">{$t("common.confirm")}</button>
+            <button disabled={!isValid || loading} class="bg-indigo-600 text-white hover:bg-indigo-700 px-6 py-2 rounded disabled:opacity-75 disabled:bg-gray-400 disabled:text-black disabled:cursor-not-allowed">{$t("common.confirm")}</button>
         </div>
+        {#if error}
+            <span class="text-red-500">{error}</span>
+        {/if}
     </Fields>
 </form>

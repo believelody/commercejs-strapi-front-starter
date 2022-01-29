@@ -1,10 +1,11 @@
 <script>
-    import { t } from '$lib/i18n';    
+    import { getContext } from 'svelte'; 
     import ModalBox from "../box/ModalBox.svelte";
     import ReviewForm from "../form/ReviewForm.svelte";
-    import HeaderTitle from "../header/HeaderTitle.svelte";
 
     export let item, review;
+
+    const { close } = getContext("simple-modal");
 </script>
 
 <style>
@@ -12,5 +13,5 @@
 </style>
 
 <ModalBox>
-    <ReviewForm {item} {review} withoutShadow />
+    <ReviewForm on:submitEvent={close} {item} {review} withoutShadow />
 </ModalBox>
