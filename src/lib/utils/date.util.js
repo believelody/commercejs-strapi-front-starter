@@ -3,16 +3,16 @@ import { locale } from '$lib/stores';
 import { t } from '$lib/i18n';
 import { DateTime } from "luxon";
 
-export const localDateFromSeconds = date => {
+export const localDateFromSeconds = (date, isNumeric) => {
     const lang = get(locale);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: 'numeric', month: isNumeric ? 'numeric' : 'long', day: 'numeric' };
     return DateTime.fromSeconds(date).setLocale(lang).toLocaleString(options);
 };
 
-export const numericLocalDateFromSeconds = date => {
+export const localDateFromString = (date, isNumeric) => {
     const lang = get(locale);
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
-    return DateTime.fromSeconds(date).setLocale(lang).toLocaleString(options);
+    const options = { year: 'numeric', month: isNumeric ? 'numeric' : 'long', day: 'numeric' };
+    return DateTime.fromISO(date).setLocale(lang).toLocaleString(options);
 };
 
 export const localDateFromObject = date => {

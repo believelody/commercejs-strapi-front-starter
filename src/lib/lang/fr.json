@@ -426,7 +426,8 @@
             "link": "Faites votre shopping sur notre site web et laissez-nous un petit commentaire ;) !"
         },
         "button": {
-            "add": "Ajouter un avis"
+            "add": "Ajouter un avis",
+            "more": "Voir l'article"
         },
         "tabs": {
             "pending": "Articles en attente d'avis",
@@ -438,7 +439,21 @@
             },
             "images": "Des photos ?"
         },
-        "ratings": "Score"
+        "ratings": {
+            "form": {
+                "label": "Score"
+            },
+            "list": {
+                "label": "Note"
+            }
+        },
+        "pending": {
+            "text": "Il n'y a pas d'avis en attente."
+        },
+        "list": {
+            "description": "Votre commentaire",
+            "images": "Images"
+        }
     },
     "auth": {
         "login": {

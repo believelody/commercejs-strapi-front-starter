@@ -40,7 +40,7 @@
         }
         loading = false;
     }
-    $: isValid = !!(description && ratings);
+    $: isValid = !!ratings;
 </script>
 
 <style>
@@ -56,10 +56,9 @@
 <form on:submit|preventDefault={submit}>
     <Fields class="flex flex-col" {withoutShadow}>
         <section class="flex items-center my-2">
-            <span class="mr-4">{$t("review.ratings")} *</span>
+            <span class="mr-4">{$t("review.ratings.form.label")} *</span>
             <SelectStar bind:value={ratings} class="border p-2 rounded" />
         </section>
-        <input type="hidden" name="ratings" value={ratings} />
         <TextareaField
             label={$t("common.description.label")}
             name="description"
@@ -68,7 +67,6 @@
             bind:value={description}
             required
         />
-        <input type="hidden" name="user" value={$user.id} />
         <section>
             <FileField
                 label={$t("review.modal.images")}

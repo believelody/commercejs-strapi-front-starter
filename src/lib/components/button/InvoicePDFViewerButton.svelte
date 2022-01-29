@@ -1,6 +1,6 @@
 <script>
 	import { t } from '$lib/i18n';
-    import { numericLocalDateFromSeconds } from '../../utils/date.util';
+    import { numericLocalDateFromSeconds as localDateFromSeconds } from '../../utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
 	import FilePDFIcon from '../svg/FilePDFIcon.svelte';
 
@@ -18,7 +18,7 @@
                 pagebreak: {
                     mode: ['css', 'legacy']
                 },
-                filename: `my-pet-lover-${data.customer_reference}-${numericLocalDateFromSeconds(data.created)}.pdf`,
+                filename: `my-pet-lover-${data.customer_reference}-${localDateFromSeconds(data.created, true)}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, width: 600 },
                 jsPDF: { unit: 'px', format: 'a4', orientation: 'p', hotfixes: ["px_scaling"] }
