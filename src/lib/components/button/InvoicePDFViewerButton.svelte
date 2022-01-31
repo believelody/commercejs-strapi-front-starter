@@ -1,6 +1,6 @@
 <script>
 	import { t } from '$lib/i18n';
-    import { numericLocalDateFromSeconds as localDateFromSeconds } from '../../utils/date.util';
+    import { localDateFromSeconds } from '../../utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
 	import FilePDFIcon from '../svg/FilePDFIcon.svelte';
 

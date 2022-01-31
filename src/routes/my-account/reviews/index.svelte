@@ -43,10 +43,9 @@ import { localDateFromString } from "../../../lib/utils/date.util";
 
     async function goToProductPage(productId) {
         loading = true;
-        const res = await api.product.getById(productId);
+        const res = await api.product.getSlug(productId);
         if (res.success) {
-            console.log(res.product);
-            goto(`/products/${res.product.permalink}`);
+            goto(`/products/${res.slug}`);
         }
         loading = false;
     }
@@ -67,6 +66,7 @@ import { localDateFromString } from "../../../lib/utils/date.util";
     $: if ($reviews.length) {
         getIdProductsFromOrders();
     }
+    $: filteredOrderItems = orderItems.filter(item => !$reviews.find(review => review.productId === item.product_id)) || orderItems;
 </script>
 
 <style>
@@ -94,13 +94,23 @@ import { localDateFromString } from "../../../lib/utils/date.util";
         {#if userOrders.length}
             <Tabs>
                 <TabList>
-                    <Tab>{$t("review.tabs.pending")}</Tab>
-                    <Tab>{$t("review.tabs.done")}</Tab>
+                    <Tab>
+                        <span>{$t("review.tabs.pending")}</span>
+                        {#if filteredOrderItems.length}
+                            <span class="ml-4 bg-gray-500 text-white px-2 py-1 round">{filteredOrderItems.length}</span>
+                        {/if}
+                    </Tab>
+                    <Tab>
+                        <span>{$t("review.tabs.done")}</span>
+                        {#if $reviews.length}
+                            <span class="ml-4 bg-gray-500 text-white px-2 py-1 rounded-full">{$reviews.length}</span>
+                        {/if}
+                    </Tab>
                 </TabList>
 
                 <TabPanel>
                     <ul>
-                        {#each orderItems.filter(item => !$reviews.find(review => review.productId === item.product_id)) as item}
+                        {#each filteredOrderItems as item}
                             <li class="w-full border flex items-center px-4">
                                 <section class="w-1/2 flex flex-col">
                                     <span class="text-lg text-gray-800">{item.product_name}</span>
