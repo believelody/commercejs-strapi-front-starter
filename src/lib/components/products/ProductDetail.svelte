@@ -1,5 +1,7 @@
 <script>
-	import { t } from '$lib/i18n'
+	import { onMount } from 'svelte';
+	import api from "$lib/api";
+	import { t } from '$lib/i18n';
 	import Gallery from '../gallery/Gallery.svelte';
 	import Star from '../star/Star.svelte';
 	import FacebookIcon from '../svg/FacebookIcon.svelte';
@@ -14,7 +16,18 @@
 	export let product;
 	const sizes = product?.variants[0];
 	const colors = product?.variants[1];
-	let selectedColor = colors?.options[0], selectedSize, qty = 1;
+	let selectedColor = colors?.options[0], selectedSize, qty = 1, reviews = [];
+
+	async function getProductReviews(productId) {
+		const res = await api.review.getFromProductId(productId);
+		reviews = res.success ? res.reviews : [];
+	}
+
+	onMount(async () => {
+		await getProductReviews(product.id);
+	});
+
+	$: score = reviews.length ? (reviews.reduce((acc, cur) => acc + cur.ratings, 0) / reviews.length) : 0;
 </script>
 
 <section class="text-gray-600 body-font">
@@ -32,15 +45,19 @@
 					</div>
 					<WishlistButton {product} />
 				</section>
-				<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{product.name}</h1>
-				<div class="flex mb-4">
-					<div class="flex items-center">
-						<Star nb={3.5} />
-						<span class="text-gray-600 ml-3">4 {$t("product.detail.reviews")}</span>
-					</div>
-					<span class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+				<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
+				<div class="flex my-2">
+					<a href={`/reviews/${product.permalink}`} class="flex items-center hover:underline">
+						{#if reviews.length}
+							<Star nb={score} />
+							<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
+						{:else}
+							<span class="text-gray-600 ml-3">{$t("common.update")}</span>
+						{/if}
+					</a>
+					<!-- <span class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
 						{$t("product.detail.characteristics")}
-					</span>
+					</span> -->
 				</div>
 				<p class="leading-relaxed mb-2">{@html product.description}</p>
 				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-200">

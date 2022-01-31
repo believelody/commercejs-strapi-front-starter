@@ -29,7 +29,7 @@ export const getFromProductId = async (id) => {
         if (json.error) {
             return { success: false, error: json.error };
         }
-        return { success: true, reviews: json };
+        return { success: true, reviews: json.reviews };
     } catch (error) {
         console.log(error);
     }
