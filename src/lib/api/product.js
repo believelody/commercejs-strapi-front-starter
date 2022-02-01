@@ -51,3 +51,16 @@ export const getSlug = async id => {
         console.log(error);
     }
 }
+
+export const getIdBySlug = async slug => {
+    try {
+        const res = await fetch(`${baseUrl}/products/${slug}/get-id`);
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        return { success: true, product_id: json.product_id };
+    } catch (error) {
+        console.log(error);
+    }
+}

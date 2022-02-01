@@ -5,7 +5,7 @@
 <label class="flex items-center {$$props.class}" for={name}>
     {#if labelBeforeCheckbox}
         <span class="px-2 text-gray-600">
-            {label}
+            {label ?? ""}
             {#if required}
                 *
             {/if}
@@ -14,7 +14,7 @@
     <input id={name} {name} type="checkbox" bind:checked />
     {#if !labelBeforeCheckbox}
         <span class="px-2 text-gray-600">
-            {label}
+            {label ?? ""}
             {#if required}
                 *
             {/if}

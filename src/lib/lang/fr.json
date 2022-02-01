@@ -453,6 +453,18 @@
         "list": {
             "description": "Votre commentaire",
             "images": "Images"
+        },
+        "product": {
+            "header": "Les avis sur l'article : {{name}}",
+            "filter": {
+                "header": "Filtrer par score ou par images",
+                "with-images": "Avec images",
+                "select-all": "Tout sélectionner",
+                "unselect-all": "Tout dé-sélectionner"
+            },
+            "list": {
+                "empty": "Aucun avis n'a été trouvé"
+            }
         }
     },
     "auth": {

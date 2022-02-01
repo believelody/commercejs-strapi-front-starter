@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { page } from "$app/stores";
 	import api from "$lib/api";
 	import { t } from '$lib/i18n';
 	import Gallery from '../gallery/Gallery.svelte';
@@ -26,7 +27,7 @@
 	onMount(async () => {
 		await getProductReviews(product.id);
 	});
-
+	
 	$: score = reviews.length ? (reviews.reduce((acc, cur) => acc + cur.ratings, 0) / reviews.length) : 0;
 </script>
 
@@ -47,7 +48,7 @@
 				</section>
 				<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
 				<div class="flex my-2">
-					<a href={`/reviews/${product.permalink}`} class="flex items-center hover:underline">
+					<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
 						{#if reviews.length}
 							<Star nb={score} />
 							<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
