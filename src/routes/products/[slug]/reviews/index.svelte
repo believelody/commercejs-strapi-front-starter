@@ -15,7 +15,6 @@
                 props: { error: res.error }
             }
         }
-        console.log(res);
         return {
             props: { reviews: res.reviews, product: productRes.product }
         }
@@ -39,16 +38,14 @@
             return review.ratings === f;
         })) : reviews;
     }
-
-    $: console.log(filteredReviews);
 </script>
 
 <HeaderTitle title={$t("review.product.header", { name: product.name })} />
 <div class="bg-indigo-300 py-4 h-full flex flex-col lg:flex-row flex-grow border-t">
-    <section class="bg-white ml-4 w-1/4 rounded">
+    <section class="bg-white lg:ml-4 w-full lg:w-1/4 rounded">
         <ReviewFilter reviews={filteredReviews} on:filter={ filterReviews } />
     </section>
-    <section class="bg-white mx-4 w-3/4 rounded">
+    <section class="bg-white mt-2 lg:mt-0 lg:mx-4 w-full lg:w-3/4 rounded">
         <ReviewList reviews={filteredReviews} />
     </section>
 </div>

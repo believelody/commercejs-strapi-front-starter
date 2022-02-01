@@ -17,11 +17,13 @@
 	export let product;
 	const sizes = product?.variants[0];
 	const colors = product?.variants[1];
-	let selectedColor = colors?.options[0], selectedSize, qty = 1, reviews = [];
+	let selectedColor = colors?.options[0], selectedSize, qty = 1, reviews = [], loading = false;
 
 	async function getProductReviews(productId) {
+		loading = true;
 		const res = await api.review.getFromProductId(productId);
 		reviews = res.success ? res.reviews : [];
+		loading = false;
 	}
 
 	onMount(async () => {
@@ -49,7 +51,7 @@
 				<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
 				<div class="flex my-2">
 					<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
-						{#if reviews.length}
+						{#if !loading}
 							<Star nb={score} />
 							<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
 						{:else}
