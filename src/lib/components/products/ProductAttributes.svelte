@@ -6,7 +6,7 @@
     export let attributes;
 </script>
 
-<ModalBox class="border">
+<ModalBox class="border rounded">
     <HeaderTitle textSize="2xl" title={$t("product.detail.characteristics")} />
     <ul class="flex flex-col lg:flex-row lg:justify-between lg:flex-wrap">
         {#each attributes as attribute}

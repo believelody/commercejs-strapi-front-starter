@@ -14,6 +14,7 @@
 	import Quantity from '../quantity/Quantity.svelte';
 	import WishlistButton from '../button/WishlistButton.svelte';
 	import ProductAttributes from "./ProductAttributes.svelte";
+	import RelatedProducts from "./RelatedProducts.svelte";
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -36,7 +37,7 @@
 	onMount(async () => {
 		await getProductReviews(product.id);
 	});
-	
+
 	$: score = reviews.length ? (reviews.reduce((acc, cur) => acc + cur.ratings, 0) / reviews.length) : 0;
 </script>
 
@@ -87,6 +88,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="w-4/5 mx-auto">
+		<RelatedProducts items={product.related_products} />
 	</div>
 </section>
 

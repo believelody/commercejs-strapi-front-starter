@@ -34,7 +34,7 @@ import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	{#each images as image}
 		<img
 			alt={image.filename}
-			class="object-contain object-center w-full h/4/5"
+			class="object-contain object-center w-full h-4/5"
 			src={image.url}
 		/>
 	{/each}

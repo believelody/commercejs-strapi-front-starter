@@ -59,7 +59,8 @@
         "detail": {
             "reviews": "avis",
             "characteristics": "Caractéristiques",
-            "quantity": "Quantité"
+            "quantity": "Quantité",
+            "related": "Vous pouvez aussi consulter ces articles"
         },
         "cart": {
             "add": "Ajouter au panier",
