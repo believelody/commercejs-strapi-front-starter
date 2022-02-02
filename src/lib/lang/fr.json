@@ -461,7 +461,10 @@
                 "header": "Filtrer par score ou par images",
                 "with-images": "Avec images",
                 "select-all": "Tout sélectionner",
-                "unselect-all": "Tout dé-sélectionner"
+                "unselect-all": "Tout dé-sélectionner",
+                "rating": {
+                    "label": "Note globale"
+                }
             },
             "list": {
                 "empty": "Aucun avis n'a été trouvé"

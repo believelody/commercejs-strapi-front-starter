@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from 'svelte';
-import ArrowLeft from '../svg/ArrowLeftIcon.svelte';
-import ArrowRight from '../svg/ArrowRightIcon.svelte';
-import Thumbnail from '../thumbnail/Thumbnail.svelte';
+	import ArrowLeft from '../svg/ArrowLeftIcon.svelte';
+	import ArrowRight from '../svg/ArrowRightIcon.svelte';
+	import Thumbnail from '../thumbnail/Thumbnail.svelte';
 
-	export let images;
+	export let images, selectedIndex = 0;
 	let Carousel; // for saving Carousel component class
 	let carousel; // for calling methods of the carousel instance
 	onMount(async () => {
@@ -20,6 +20,7 @@ import Thumbnail from '../thumbnail/Thumbnail.svelte';
 	let:showPage
 	let:showPrevPage
 	let:showNextPage
+	initialPageIndex={selectedIndex}
 >
 	<div
 		slot="prev"

@@ -60,7 +60,7 @@
 				<div class="flex my-2">
 					<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
 						{#if !loading}
-							<Star nb={score} />
+							<Star nb={score} /> {score}/5
 							<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
 						{:else}
 							<span class="text-gray-600 ml-3">{$t("common.update")}</span>
