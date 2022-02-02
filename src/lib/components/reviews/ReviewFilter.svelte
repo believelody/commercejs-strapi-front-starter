@@ -23,43 +23,43 @@
 <!-- Desktop layout -->
 <div class="hidden lg:block">
     <h3 class="py-2 text-lg font:semibold text-center">{$t("review.product.filter.header")}</h3>
-    <div class="w-full m-1 border flex flex-col lg:flex-col rounded shadow-md divide-y lg:divide-x-0 lg:divide-x">
-        <button on:click={() => filterReview(5)} class="p-2 rounded hover:bg-gray-200 flex items-center">
+    <div class="m-1 lg:m-0 border-t border-b flex flex-col lg:flex-col divide-y lg:divide-x-0 lg:divide-x">
+        <button on:click={() => filterReview(5)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === 5)}
                 name="filters"
             />
             <Star nb={5} />
         </button>
-        <button on:click={() => filterReview(4)} class="p-2 rounded hover:bg-gray-200 flex items-center">
+        <button on:click={() => filterReview(4)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === 4)}
                 name="filters"
             />
             <Star nb={4} />
         </button>
-        <button on:click={() => filterReview(3)} class="p-2 rounded hover:bg-gray-200 flex items-center">
+        <button on:click={() => filterReview(3)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === 3)}
                 name="filters"
             />
             <Star nb={3} />
         </button>
-        <button on:click={() => filterReview(2)} class="p-2 rounded hover:bg-gray-200 flex items-center">
+        <button on:click={() => filterReview(2)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === 2)}
                 name="filters"
             />
             <Star nb={2} />
         </button>
-        <button on:click={() => filterReview(1)} class="p-2 rounded hover:bg-gray-200 flex items-center">
+        <button on:click={() => filterReview(1)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === 1)}
                 name="filters"
             />
             <Star nb={1} />
         </button>
-        <button on:click={() => filterReview("images")} class="p-2 rounded hover:bg-gray-200 flex items-center">
+        <button on:click={() => filterReview("images")} class="w-auto p-2 hover:bg-gray-200 flex items-center">
             <CheckboxField
                 checked={filters.some(filter => filter === "images")}
                 name="filters"

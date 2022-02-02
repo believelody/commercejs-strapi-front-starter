@@ -41,11 +41,11 @@
 </script>
 
 <HeaderTitle title={$t("review.product.header", { name: product.name })} />
-<div class="bg-indigo-300 py-4 h-full flex flex-col lg:flex-row flex-grow border-t">
-    <section class="bg-white lg:ml-4 w-full lg:w-1/4 rounded">
+<div class="container mx-auto flex flex-col items-start lg:flex-row lg:justify-between">
+    <aside class="sticky top-0 bg-gray-100 lg:ml-4 w-full lg:w-1/4 shadow-md border rounded">
         <ReviewFilter reviews={filteredReviews} on:filter={ filterReviews } />
-    </section>
-    <section class="bg-white mt-2 lg:mt-0 lg:mx-4 w-full lg:w-3/4 rounded">
+    </aside>
+    <article class="relative mt-2 lg:mt-0 lg:mx-4 w-full lg:w-3/4 rounded">
         <ReviewList reviews={filteredReviews} />
-    </section>
+    </article>
 </div>
