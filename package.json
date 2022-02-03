@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@paypal/paypal-js": "^4.2.1",
 		"@stripe/stripe-js": "^1.21.1",
+		"@sveltejs/gestures": "^0.0.1",
 		"@sveltejs/kit": "next",
 		"autoprefixer": "^10.3.7",
 		"concurrently": "^6.4.0",

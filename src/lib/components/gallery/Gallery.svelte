@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import ArrowLeft from '../svg/ArrowLeftIcon.svelte';
 	import ArrowRight from '../svg/ArrowRightIcon.svelte';
-	import Thumbnail from '../thumbnail/Thumbnail.svelte';
+	import Thumbnails from '../thumbnail/Thumbnails.svelte';
 
 	export let images, selectedIndex = 0;
 	let Carousel; // for saving Carousel component class
@@ -50,7 +50,7 @@
 		<ArrowRight />
 	</div>
 	<div slot="dots" class="flex w-full h-1/5">
-		<Thumbnail
+		<Thumbnails
 			thumbnails={images}
 			{currentPageIndex}
 			on:showPage={({ detail }) => showPage(detail)}

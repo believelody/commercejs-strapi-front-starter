@@ -9,6 +9,16 @@ import ReviewImageViewerModal from "../modal/ReviewImageViewerModal.svelte";
 
     export let reviews;
     const { open } = getContext("simple-modal");
+
+    function openReviewViewerModal(index, review) {
+        open(ReviewImageViewerModal, {
+            images: review.images.map(image => ({
+                ...image,
+                url: `${baseUrl}${image.url}`
+            })),
+            selectedIndex: index
+        })
+    }
 </script>
 
 <style>
@@ -35,7 +45,7 @@ import ReviewImageViewerModal from "../modal/ReviewImageViewerModal.svelte";
                             class="w-24 h-24 object-cover cursor-pointer"
                             src={`${baseUrl}${image.url}`}
                             alt={image.name}
-                            on:click={() => open(ReviewImageViewerModal, { images: review.images, selectedIndex: index})}
+                            on:click={() => openReviewViewerModal(index, review)}
                         />
                     </li>
                 {/each}

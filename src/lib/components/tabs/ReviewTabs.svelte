@@ -5,11 +5,12 @@
     import api from "$lib/api";
     import { t } from "$lib/i18n";
     import Star from '../star/Star.svelte';
+	import AddReviewModal from "../modal/AddReviewModal.svelte";
     import { localDateFromString } from '../../utils/date.util';
     import { baseUrl } from '../../utils/url.util';
 
     export let pendingReviews, reviews, orderItems;
-    let loading = false;
+	let loading = false;
     const { open } = getContext("simple-modal");
 
     async function goToProductPage(productId) {

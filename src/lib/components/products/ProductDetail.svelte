@@ -58,14 +58,25 @@
 				</section>
 				<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
 				<div class="flex my-2">
-					<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
-						{#if !loading}
-							<Star nb={score} /> {score}/5
-							<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
-						{:else}
-							<span class="text-gray-600 ml-3">{$t("common.update")}</span>
-						{/if}
-					</a>
+					{#if score > 0}
+						<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
+							{#if !loading}
+								<Star nb={score} /> {score}/5
+								<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
+							{:else}
+								<span class="text-gray-600 ml-3">{$t("common.update")}</span>
+							{/if}
+						</a>
+					{:else}
+						<span class="flex items-center">
+							{#if !loading}
+								<Star nb={score} /> {score}/5
+								<span class="text-gray-600 ml-3">{reviews.length} {$t("product.detail.reviews")}</span>
+							{:else}
+								<span class="text-gray-600 ml-3">{$t("common.update")}</span>
+							{/if}
+						</span>
+					{/if}
 					{#if (product.attributes.length)}
 						<button on:click={ showAttributesModal } class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
 							{$t("product.detail.characteristics")}
