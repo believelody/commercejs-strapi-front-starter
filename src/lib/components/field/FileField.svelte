@@ -32,7 +32,7 @@
 			{multiple}
 			on:input={onInput}
 			{accept}
-			class="flex-grow focus:outline-none px-3 xl:px-0"
+			class="grow focus:outline-none px-3 xl:px-0"
 			{placeholder}
 		/>
 	</label>

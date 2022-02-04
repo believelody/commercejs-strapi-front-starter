@@ -1,5 +1,5 @@
 <script>
-	export let size = 8, color = "green-500";
+	export let size = 8, color = "emerald-500";
 </script>
 <svg
 	class="h-{size} w-{size} text-{color}"

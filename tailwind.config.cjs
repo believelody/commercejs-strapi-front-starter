@@ -1,38 +1,10 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue,svelte}',
+  ],
   theme: {
     extend: {},
-  },
-  variants: {
-    extend: {
-      opacity: ['disabled'],
-      cursor: ['disabled'],
-      backgroundColor: ['disabled', 'active'],
-      backgroundOpacity: ['disabled', 'active'],
-      borderWidth: ['disabled', 'active'],
-      borderStyle: ['disabled', 'active'],
-      borderColor: ['disabled', 'active'],
-      borderOpacity: ['disabled', 'active'],
-      boxShadow: ['disabled', 'active'],
-      gradientColorStops: ['disabled', 'active'],
-      opacity: ['disabled', 'active'],
-      outline: ['disabled', 'active'],
-      placeholderColor: ['disabled', 'active'],
-      placeholderOpacity: ['disabled', 'active'],
-      ringColor: ['disabled', 'active'],
-      ringOffsetColor: ['disabled', 'active'],
-      ringOffsetWidth: ['disabled', 'active'],
-      ringOpacity: ['disabled', 'active'],
-      ringWidth: ['disabled', 'active'],
-      rotate: ['disabled', 'active'],
-      scale: ['disabled', 'active'],
-      skew: ['disabled', 'active'],
-      textColor: ['disabled', 'active'],
-      textDecoration: ['disabled', 'active'],
-      textOpacity: ['disabled', 'active'],
-      translate: ['disabled', 'active'],
-    },
   },
   plugins: [],
 }

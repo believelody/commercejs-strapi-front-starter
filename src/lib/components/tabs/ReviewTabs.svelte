@@ -34,7 +34,7 @@
 		<Tab>
 			<span>{$t('review.tabs.pending')}</span>
 			{#if pendingReviews.length}
-				<span class="ml-4 bg-gray-500 text-white px-2 py-1 round">{pendingReviews.length}</span>
+				<span class="ml-4 bg-gray-500 text-white px-2 py-1 rounded-full">{pendingReviews.length}</span>
 			{/if}
 		</Tab>
 		<Tab>
@@ -100,9 +100,9 @@
 						</section>
 					</div>
 					{#if review.description}
-						<div class="px-4 flex">
+						<div class="px-4">
 							<h4 class="text-md font-medium mr-2">{$t('review.list.description')} :</h4>
-							<p>{review.description}</p>
+							<p class="pl-4 border-l-2 border-gray-400">{review.description}</p>
 						</div>
 					{/if}
 					{#if review.images.length}
@@ -113,7 +113,7 @@
 									<li class="flex flex-col">
 										<img
 											class="w-24 h-24 object-cover"
-											src={`${baseUrl}${image.url}`}
+											src={`${image.url}`}
 											alt={image.name}
 										/>
 									</li>

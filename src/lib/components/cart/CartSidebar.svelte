@@ -60,7 +60,7 @@ import { getNotificationsContext } from "svelte-notifications";
 				<a
 					id="cart-id-goto-checkout"
 					href="/checkout"
-					class="flex flex-grow justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:cursor-wait"
+					class="flex grow justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:cursor-wait"
 				>
 					{#if loading}
 						{$t("cart.cta.loading")}

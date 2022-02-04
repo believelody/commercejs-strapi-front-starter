@@ -24,7 +24,7 @@
 <ModalBox>
     {#if success}
         <h3 class="text-lg text-gray-600 font-medium border-b pb-3 mb-3 flex items-center">
-            <span class="bg-green-100 rounded-full p-1">
+            <span class="bg-emerald-100 rounded-full p-1">
                 <CheckCircleIcon />
             </span>
             <span class="ml-8">{$t(`auth.code.success.title`)}</span>

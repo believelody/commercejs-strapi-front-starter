@@ -25,7 +25,7 @@
     /* your styles go here */
 </style>
 
-<div class="flex-grow mt-1 overflow-y-hidden">
+<div class="grow mt-1 overflow-y-hidden">
     <div class="h-full px-2 overflow-y-auto">
         <div class="flow-root">
             <ul role="list" class="h-full divide-y divide-gray-200">

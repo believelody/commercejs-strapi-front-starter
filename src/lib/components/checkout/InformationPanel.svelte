@@ -39,7 +39,7 @@
             <ArrowRightIcon color="indigo-400" size={5} />
         </button>
     </div>
-    <div class="flex flex-col flex-grow overflow-y-hidden">
+    <div class="flex flex-col grow overflow-y-hidden">
         <div class="h-full overflow-y-auto">
             <Identity />
             <Discount />

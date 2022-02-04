@@ -1,11 +1,13 @@
 <script>
-    import Gallery from "../gallery/Gallery.svelte";
+	import ModalBox from '../box/ModalBox.svelte';
 
-    export let images, selectedIndex;
+	import Gallery from '../gallery/Gallery.svelte';
+
+	export let images, selectedIndex;
 </script>
 
-<style>
-    /* your styles go here */
-</style>
-
 <Gallery {images} {selectedIndex} />
+
+<style>
+	/* your styles go here */
+</style>

@@ -24,10 +24,7 @@
 >
 	<div
 		slot="prev"
-		class="absolute h-full z-20
-				hover:bg-gray-800 hover:bg-opacity-50
-				transition duration-500
-				flex items-center"
+		class="absolute z-20 flex items-center h-full transition duration-500 hover:bg-gray-800 hover:bg-opacity-50"
 		on:click={showPrevPage}
 	>
 		<ArrowLeft />
@@ -41,10 +38,7 @@
 	{/each}
 	<div
 		slot="next"
-		class="absolute right-0 h-full z-20
-				hover:bg-gray-800 hover:bg-opacity-50
-				transition duration-500
-				flex items-center"
+		class="absolute right-0 z-20 flex items-center h-full transition duration-500 hover:bg-gray-800 hover:bg-opacity-50"
 		on:click={showNextPage}
 	>
 		<ArrowRight />

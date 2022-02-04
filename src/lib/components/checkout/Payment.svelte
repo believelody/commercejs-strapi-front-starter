@@ -43,7 +43,7 @@
 				<div class="w-full flex justify-space-between items-center ml-4">
 					<span class="w-1/2">{$t("checkout.payment.method.stripe")}</span>
 					{#if $paymentMethod === "stripe"}
-						<div class="flex-grow">
+						<div class="grow">
 							<Container stripe={$stripe}>
 								<Card on:change={e => dispatch("isCardComplete", e.detail)} {style} hidePostalCode bind:element={cardElement} />
 							</Container>

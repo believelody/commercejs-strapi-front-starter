@@ -1,5 +1,6 @@
 import { browser } from "$app/env";
-import {writable} from "svelte/store";
+import { writable } from "svelte/store";
+import watchMedia from "svelte-media";
 
 export const createWritableStore = (key, startValue = null) => {
 	const { subscribe, set } = writable(startValue);
@@ -26,6 +27,17 @@ export const createWritableStore = (key, startValue = null) => {
 	};
 };
 
+const mediaqueries = {
+	mobile: "(min-width: 0px)",
+	tablet: "(min-width: 768px)",
+	desktop: "(min-width: 1024px)",
+	landscape: "(orientation: landscape) and (max-height: 499px)",
+	tiny: "(orientation: portrait) and (max-height: 599px)",
+	dark: "(prefers-color-scheme: dark)",
+	noanimations: "(prefers-reduced-motion: reduce)"
+};
+
+export const media = watchMedia(mediaqueries);
 export const user = createWritableStore('user', {});
 export const profile = createWritableStore('profile');
 export const guest = createWritableStore('guest');

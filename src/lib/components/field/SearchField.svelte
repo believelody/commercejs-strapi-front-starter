@@ -30,7 +30,7 @@
             type="text"
             id={name}
             list="list-{name}"
-            class="border rounded flex-grow focus:outline-none p-3"
+            class="border rounded grow focus:outline-none p-3"
             {placeholder}
         />
         <datalist id="list-{name}">

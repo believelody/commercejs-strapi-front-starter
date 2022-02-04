@@ -65,7 +65,7 @@ import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
                     <p class="mt-1">{wishlist.product.price.formatted_with_symbol}</p>
                 </div>
                 <div class="mt-2 mx-3 flex flex-col justify-center">
-                    <!-- <button class="p-2 mb-2 rounded bg-green-500 text-white font-medium">{$t("wishlist.account.cart.add")}</button> -->
+                    <!-- <button class="p-2 mb-2 rounded bg-emerald-500 text-white font-medium">{$t("wishlist.account.cart.add")}</button> -->
                     <button on:click={() => showRemoveWishlisModal(wishlist)} class="p-2 rounded text-blue-800 border-2 border-red-400 box-border">
                         {$t("wishlist.account.remove.button")}
                     </button>

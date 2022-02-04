@@ -7,7 +7,7 @@
     function selectPaymentStatusColor() {
         switch (status) {
             case "paid":
-                return "green-500";
+                return "emerald-500";
         
             default:
                 return "black";

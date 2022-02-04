@@ -40,7 +40,6 @@
 
 <Notifications item={Notification} withoutStyles>
 	<Modal
-		on:open={() => console.log("open")}
 		on:opening={() => console.log("opening")}
 		on:opened={() => console.log("opened")}
 		on:close={() => console.log("close")}

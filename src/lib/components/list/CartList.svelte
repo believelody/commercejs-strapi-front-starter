@@ -64,7 +64,7 @@
     /* your styles go here */
 </style>
 
-<div class="border-b border-gray-200 flex-grow mt-1 overflow-y-hidden">
+<div class="border-b border-gray-200 grow mt-1 overflow-y-hidden">
     <div class="h-full px-2 overflow-y-auto">
         <div class="h-full flow-root">
             <ul role="list" class="h-full divide-y divide-gray-200">
@@ -72,7 +72,7 @@
                     <li class="py-6 flex">
                         <a
                             href="/products/{item.permalink}"
-                            class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
+                            class="shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
                         >
                             <img
                                     src={item.image.url}
