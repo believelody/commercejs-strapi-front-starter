@@ -15,6 +15,8 @@
 	import WishlistButton from '../button/WishlistButton.svelte';
 	import ProductAttributes from "./ProductAttributes.svelte";
 	import RelatedProducts from "./RelatedProducts.svelte";
+	import ShippingBadge from '../badges/ShippingBadge.svelte';
+	import SecurityBadge from '../badges/SecurityBadge.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -41,8 +43,8 @@
 	$: score = reviews.length ? (reviews.reduce((acc, cur) => acc + cur.ratings, 0) / reviews.length) : 0;
 </script>
 
-<section class="text-gray-600 body-font">
-	<div class="px-5 py-24 mx-auto">
+<section class="text-gray-700 body-font">
+	<div class="px-5 py-4 lg:py-24 mx-auto">
 		<div class="lg:w-4/5 mx-auto flex flex-wrap">
 			<div class="lg:w-1/2 w-full h-auto">
                 <Gallery images={product.assets} />
@@ -84,7 +86,7 @@
 						{/if}
 				</div>
 				<p class="leading-relaxed mb-2">{@html product.description}</p>
-				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-200">
+				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-300">
 					{#if colors}
 						<Colors {colors} bind:selectedColor />
 					{/if}
@@ -97,10 +99,14 @@
 					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
 					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
 				</div>
+				<section class="mt-4 flex flex-col md:flex-row justify-between items-stretch">
+					<div class="mx-2 mb-4 md:mb-0 w-full md:w-1/2 box-border"><ShippingBadge /></div>
+					<div class="mx-2 w-full md:w-1/2 box-border"><SecurityBadge /></div>
+				</section>
 			</div>
 		</div>
 	</div>
-	<div class="w-4/5 mx-auto">
+	<div class="w-4/5 mx-auto block">
 		<RelatedProducts items={product.related_products} />
 	</div>
 </section>

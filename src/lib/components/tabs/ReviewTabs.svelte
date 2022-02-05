@@ -4,10 +4,10 @@
 	import { goto } from "$app/navigation";
     import api from "$lib/api";
     import { t } from "$lib/i18n";
+	import { media } from "$lib/stores";
     import Star from '../star/Star.svelte';
 	import AddReviewModal from "../modal/AddReviewModal.svelte";
     import { localDateFromString } from '../../utils/date.util';
-    import { baseUrl } from '../../utils/url.util';
 
     export let pendingReviews, reviews, orderItems;
 	let loading = false;
@@ -23,7 +23,15 @@
     }
 
     function openReviewModal(item) {
-        open(AddReviewModal, { item });
+        open(AddReviewModal, { item }, {
+            styleBg: {
+                backgroundColor: "rgba(0, 0, 0, .9)",
+            },
+            styleWindow: {
+                width: $media.mobile ? "100%" : "80%",
+                margin: "0 auto"
+            }
+        });
     }
 
     $: extractProductInfo = (productId) => orderItems.find((item) => item.product_id === productId);
@@ -34,13 +42,13 @@
 		<Tab>
 			<span>{$t('review.tabs.pending')}</span>
 			{#if pendingReviews.length}
-				<span class="ml-4 bg-gray-500 text-white px-2 py-1 rounded-full">{pendingReviews.length}</span>
+				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full">{pendingReviews.length}</span>
 			{/if}
 		</Tab>
 		<Tab>
 			<span>{$t('review.tabs.done')}</span>
 			{#if reviews.length}
-				<span class="ml-4 bg-gray-500 text-white px-2 py-1 rounded-full">{reviews.length}</span>
+				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full">{reviews.length}</span>
 			{/if}
 		</Tab>
 	</TabList>
@@ -48,8 +56,8 @@
 	<TabPanel>
 		<ul>
 			{#each pendingReviews as item}
-				<li class="w-full border flex items-center px-4">
-					<section class="w-1/2 flex flex-col">
+				<li class="flex items-center w-full px-4 border">
+					<section class="flex flex-col w-1/2">
 						<span class="text-lg text-gray-800">{item.product_name}</span>
 						{#each item.variants as variant}
 							<span class="text-sm text-gray-600"
@@ -60,14 +68,14 @@
 					<section class="w-1/2">
 						<button
 							on:click={() => openReviewModal(item)}
-							class="w-full py-2 px-auto text-indigo-700 border border-indigo-500 rounded hover:text-white hover:bg-indigo-500 hover:border-none"
+							class="w-full py-2 text-indigo-700 border border-indigo-500 rounded px-auto hover:text-white hover:bg-indigo-500 hover:border-none"
 						>
 							{$t('review.button.add')}
 						</button>
 					</section>
 				</li>
 			{:else}
-				<section class="rounded mt-6 flex justify-center">
+				<section class="flex justify-center mt-6 rounded">
 					<span>{$t('review.pending.text')}</span>
 				</section>
 			{/each}
@@ -76,14 +84,14 @@
 	<TabPanel>
 		<ul>
 			{#each reviews as review}
-				<li class="w-full flex flex-col border py-2">
-					<div class="w-full flex items-stretch px-4">
-						<section class="flex flex-col  w-full">
+				<li class="flex flex-col w-full py-2 border">
+					<div class="flex items-stretch w-full px-4">
+						<section class="flex flex-col w-full">
 							<div class="flex justify-between">
 								<div class="flex items-center text-lg text-gray-800">
 									<button
 										on:click={() => goToProductPage(review.productId)}
-										class="mr-4 border-none font-medium underline"
+										class="mr-4 font-medium underline border-none"
 										>{extractProductInfo(review.productId).name}</button
 									>
 									<Star nb={review.ratings} />
@@ -101,18 +109,18 @@
 					</div>
 					{#if review.description}
 						<div class="px-4">
-							<h4 class="text-md font-medium mr-2">{$t('review.list.description')} :</h4>
+							<h4 class="mr-2 font-medium text-md">{$t('review.list.description')} :</h4>
 							<p class="pl-4 border-l-2 border-gray-400">{review.description}</p>
 						</div>
 					{/if}
 					{#if review.images.length}
-						<div class="mt-2 flex flex-col px-4 w-full">
-							<h4 class="text-md font-medium">{$t('review.list.images')} :</h4>
+						<div class="flex flex-col w-full px-4 mt-2">
+							<h4 class="font-medium text-md">{$t('review.list.images')} :</h4>
 							<ul class="flex flex-wrap">
 								{#each review.images as image}
 									<li class="flex flex-col">
 										<img
-											class="w-24 h-24 object-cover"
+											class="object-cover w-24 h-24"
 											src={`${image.url}`}
 											alt={image.name}
 										/>
@@ -123,7 +131,7 @@
 					{/if}
 				</li>
 			{:else}
-				<section class="rounded mt-6 flex justify-center">
+				<section class="flex justify-center mt-6 rounded">
 					<span>{$t('review.empty.text')}</span>
 				</section>
 			{/each}

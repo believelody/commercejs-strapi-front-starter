@@ -1,6 +1,7 @@
 <script>
     import {goto} from "$app/navigation";
     import { t } from "$lib/i18n";
+    import { media } from "$lib/stores";
     import HeaderTitle from "../header/HeaderTitle.svelte";
     import Thumbnails from "../thumbnail/Thumbnails.svelte";
 
@@ -9,6 +10,18 @@
     function goToRelatedProduct(index) {
         goto(`/products/${items[index].permalink}`);
     }
+
+    function responsiveParticlesToShow() {
+        if ($media.desktop) {
+            return 3;
+        } else if ($media.tablet) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    $: console.log($media);
 </script>
 
 <div class="w-full h-auto">
@@ -19,7 +32,7 @@
         height={250}
         noSelectedItemBorder
         infinite
-        particlesToShow={3}
+        particlesToShow={responsiveParticlesToShow()}
         on:showPage={ ({detail}) => goToRelatedProduct(detail) }
     >
         <h4 slot="extra">
