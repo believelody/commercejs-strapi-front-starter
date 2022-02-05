@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { user } from "../stores";
+import { reviewsProduct, reviewsUser, user } from "../stores";
 import { authenticateHeaders, authorizationHeaders, headers } from "../utils/header.util";
 import { baseUrl } from "../utils/url.util"
 
@@ -13,6 +13,7 @@ export const getFromUser = async () => {
         if (json.error) {
             return { success: false };
         }
+        reviewsUser.set(json.reviews);
         return { reviews: json.reviews, success: true };
     } catch (error) {
         console.log(error);
@@ -29,6 +30,7 @@ export const getFromProductId = async (id) => {
         if (json.error) {
             return { success: false, error: json.error };
         }
+        reviewsProduct.set(json.reviews);
         return { success: true, reviews: json.reviews };
     } catch (error) {
         console.log(error);

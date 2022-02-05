@@ -80,7 +80,7 @@
         "trust": {
             "shipping": "Livraison à domicile et en point Relais (2 à 5 jours ouvrés)",
             "security": "Paiement sécurisé en SSL",
-            "payment": "Payer par carte bancaire ou par paypal"
+            "payment": "Payer par carte bancaire et par paypal"
         }
     },
     "order": {

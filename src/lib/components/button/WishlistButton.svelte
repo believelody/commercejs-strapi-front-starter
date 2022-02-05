@@ -62,9 +62,9 @@
 
 <div class="flex items-center">
     {#if wishlist?.users.length}
-        <span class="mr-2 text-center text-md font-medium w-full">{wishlist.users.length}</span>
+        <span class="mr-2 text-center text-2xl w-full">{wishlist.users.length}</span>
     {/if}
-    <button on:click={putInWishlist} class="rounded-full w-10 h-10 p-2 bg-gray-200 flex items-center justify-center">
-        <HeartCircleIcon color={isInWishlist ? "red-500" : ""} />
+    <button on:click={putInWishlist} class="rounded-full w-16 h-16 px-3 bg-gray-200 flex items-center justify-center">
+        <HeartCircleIcon size={10} color={isInWishlist ? "red-500" : ""} />
     </button>
 </div>

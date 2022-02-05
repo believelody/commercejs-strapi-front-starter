@@ -54,7 +54,8 @@ export const stripe = writable(null);
 export const paypal = writable(null);
 export const checkoutLoading = writable(false);
 export const orders = writable([]);
-export const reviews = writable([]);
+export const reviewsUser = writable([]);
+export const reviewsProduct = writable([]);
 
 export const resetStores = () => {
 	guest.set(null);

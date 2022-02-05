@@ -1,64 +1,112 @@
 <script>
-    import { getContext } from "svelte";
-    import { t } from "$lib/i18n";
-    import { media } from "$lib/stores";
-    import Star from "../star/Star.svelte";
-    import ReviewImageViewerModal from "../modal/ReviewImageViewerModal.svelte";
-    import { fullName } from "../../utils/user.util";
-    import { localDateFromString } from "../../utils/date.util";
+	import { getContext } from 'svelte';
+	import { paginate, PaginationNav } from 'svelte-paginate';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { t } from '$lib/i18n';
+	import { media } from '$lib/stores';
+	import Star from '../star/Star.svelte';
+	import ReviewImageViewerModal from '../modal/ReviewImageViewerModal.svelte';
+	import { fullName } from '../../utils/user.util';
+	import { localDateFromString } from '../../utils/date.util';
+	import Card from '../card/Card.svelte';
 
-    export let reviews;
-    const { open } = getContext("simple-modal");
+	export let reviews,
+		currentPage = +$page.query.get('page') || 1,
+		pageSize = 6;
+	const { open } = getContext('simple-modal');
 
-    function openReviewViewerModal(index, review) {
-        open(ReviewImageViewerModal, {
-            images: review.images,
-            selectedIndex: index
-        }, {
-            styleBg: {
-                backgroundColor: "rgba(0, 0, 0, .9)",
-            },
-            styleWindow: {
-                width: $media.mobile ? "100%" : "80%",
-                margin: "0 auto"
-            }
-        })
-    }
+	function openReviewViewerModal(index, review) {
+		open(
+			ReviewImageViewerModal,
+			{
+				images: review.images,
+				selectedIndex: index
+			},
+			{
+				styleBg: {
+					backgroundColor: 'rgba(0, 0, 0, .9)'
+				},
+				styleWindow: {
+					width: $media.mobile ? '100%' : '80%',
+					margin: '0 auto'
+				}
+			}
+		);
+	}
+
+	function goToPage({ detail }) {
+		currentPage = detail.page;
+		goto(`reviews?page=${detail.page}`);
+	}
+
+	$: paginatedReviews = reviews.length && paginate({ items: reviews, pageSize, currentPage });
 </script>
 
-<style>
-    /* your styles go here */
-</style>
+<div class="flex flex-col justify-between h-full">
+	<ul class="w-full grid grid-cols-1 gap-y-4">
+		{#each paginatedReviews as review}
+			<li>
+				<Card class="bg-gray-100 border">
+					<h3 slot="header" class="flex items-center justify-between p-2 border-b border-gray-300">
+						<div class="flex items-center">
+							<span class="mr-8 text-lg font-medium">{fullName(review.user.customer)}</span>
+							<Star nb={review.ratings} />
+						</div>
+						<div>
+							<span>{localDateFromString(review.created_at)}</span>
+						</div>
+					</h3>
+					<p slot="content" class="p-2 italic">&lt;&lt; {review.description} &gt;&gt;</p>
+					<ul
+						slot="extra"
+						class:hidden={!review.images.length}
+						class="flex flex-wrap justify-start py-2 border-t border-gray-300"
+					>
+						{#each review.images as image, index}
+							<li class="flex flex-col m-1">
+								<img
+									class="object-cover w-24 h-24 cursor-pointer"
+									src={`${image.url}`}
+									alt={image.name}
+									on:click={() => openReviewViewerModal(index, review)}
+								/>
+							</li>
+						{/each}
+					</ul>
+				</Card>
+			</li>
+		{:else}
+			<section>{$t('review.product.list.empty')}</section>
+		{/each}
+	</ul>
+	<section class="relative bottom-0 w-full flex justify-center mt-8">
+		<PaginationNav
+			totalItems={reviews.length}
+			{pageSize}
+			{currentPage}
+			limit={1}
+			showStepOptions
+			on:setPage={goToPage}
+		/>
+	</section>
+</div>
 
-<ul class="w-full p-1 divide-y">
-    {#each reviews as review}
-        <li class="bg-gray-100 border rounded shadow-md">
-            <h3 class="flex items-center justify-between p-2 border-b border-gray-300">
-                <div class="flex items-center">
-                    <span class="mr-8 text-lg font-medium">{fullName(review.user.customer)}</span>
-                    <Star nb={review.ratings} />
-                </div>
-                <div>
-                    <span>{localDateFromString(review.created_at)}</span>
-                </div>
-            </h3>
-            <p class="p-2 italic">&lt;&lt; {review.description} &gt;&gt;</p>
-            {#if review.images.length}
-                <ul class="flex flex-wrap justify-start py-2 border-t border-gray-300">
-                    {#each review.images as image, index}
-                        <li class="flex flex-col m-1">
-                            <img
-                                class="object-cover w-24 h-24 cursor-pointer"
-                                src={`${image.url}`}
-                                alt={image.name}
-                                on:click={() => openReviewViewerModal(index, review)}
-                            />
-                        </li>
-                    {/each}
-                </ul>
-            {/if}
-        </li>
-    {:else}
-        <section>{$t("review.product.list.empty")}</section>
-    {/each}
-</ul>
+<style>
+	:global(.pagination-nav) {
+		display: flex;
+		justify-content: space-between;
+	}
+	:global(.number) {
+		margin: 0 8px;
+		cursor: pointer;
+	}
+	:global(.prev),
+	:global(.next) {
+		cursor: pointer;
+	}
+	:global(.active) {
+		text-decoration: underline;
+		font-weight: bold;
+	}
+</style>

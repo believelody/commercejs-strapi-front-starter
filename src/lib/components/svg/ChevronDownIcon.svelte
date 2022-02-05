@@ -5,7 +5,7 @@
 <style>
 </style>
 <svg
-	class="mr-4	w-{size} h-{size} text-{color} transition-transform duration-{$$props.duration} ease-in rotate-{$$props.isOpen ? 90 : 0} transform-gpu"
+	class="mr-4	w-{size} h-{size} text-{color}"
 	fill="none"
 	stroke-linecap="round"
 	stroke-linejoin="round"

@@ -12,6 +12,8 @@
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
 	import Notification from "$lib/components/notifications/Notification.svelte";
 
+	const exceptRoute = [/\/my-account/];
+
 	$: {
 		if (!$cart) {
 			cart.useLocalStorage();
@@ -52,7 +54,7 @@
 		{:else}
 			<Header />
 			<main>
-				{#if ($navigating && !$page.path.includes("/my-account")) || !jwt}
+				{#if ($navigating && !exceptRoute.some(route => $page.path.match(route)) || !jwt)}
 					<MoonLoading />
 				{:else}
 					<slot />

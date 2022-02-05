@@ -25,7 +25,7 @@ import { localDateFromSeconds } from '../../../lib/utils/date.util';
         loading = false;
     }
 
-    function setPage({ detail }) {
+    function goToPage({ detail }) {
         currentPage = detail.page;
         goto(`orders?page=${detail.page}`);
     }
@@ -100,7 +100,7 @@ import { localDateFromSeconds } from '../../../lib/utils/date.util';
                     {currentPage}
                     limit={1}
                     showStepOptions
-                    on:setPage={setPage}
+                    on:setPage={goToPage}
                 />
             </section>
         </div>

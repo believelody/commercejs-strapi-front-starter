@@ -1,10 +1,14 @@
+<script>
+	export let size = 8, color = "black", strokeWidth = 1;
+</script>
+
 <svg
 	fill="none"
 	stroke="currentColor"
 	stroke-linecap="round"
 	stroke-linejoin="round"
-	stroke-width="2"
-	class="w-5 h-5"
+	stroke-width={strokeWidth}
+	class="w-{size} h-{size} text-{color}"
 	viewBox="0 0 24 24"
 >
 	<rect width="20" height="20" x="2" y="2" rx="5" ry="5" />

@@ -3,7 +3,7 @@
     import { navigating } from '$app/stores';
     import { t } from '$lib/i18n';
     import api from '$lib/api';
-    import { orders, reviews } from '$lib/stores';
+    import { orders, reviews as reviewsUser } from '$lib/stores';
     import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
     import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
     import ReviewTabs from "../../../lib/components/tabs/ReviewTabs.svelte";
@@ -13,7 +13,7 @@
     async function getReviewsFromUser() {
         loading = true;
         const res = await api.review.getFromUser();
-        $reviews = res.success ? res.reviews : [];
+        $reviewsUser = res.success ? res.reviews : [];
         loading = false;
     }
 
@@ -39,15 +39,15 @@
         if (!orderItems.length) {
             await getIdProductsFromOrders();
         }
-        if (!$reviews.length) {
+        if (!$reviewsUser.length) {
             await getReviewsFromUser();
         }
     });
 
-    $: if ($reviews.length) {
+    $: if ($reviewsUser.length) {
         getIdProductsFromOrders();
     }
-    $: pendingReviews = orderItems.filter(item => !$reviews.find(review => review.productId === item.product_id)) || orderItems;
+    $: pendingReviews = orderItems.filter(item => !$reviewsUser.find(review => review.productId === item.product_id)) || orderItems;
 </script>
 
 <style>
@@ -59,7 +59,7 @@
     <HeaderTitle title={$t("review.account.title")} />
     <div class="relative border w-full bg-white mx-2 shadow-md rounded h-full">
         {#if userOrders.length}
-            <ReviewTabs {pendingReviews} reviews={$reviews} {orderItems} />
+            <ReviewTabs {pendingReviews} reviews={$reviewsUser} {orderItems} />
         {:else}
             <section class="rounded p-6 my-2 mx-auto h-24 bg-indigo-200 flex flex-col justify-center">
                 <span>{$t("review.empty.text")}</span>

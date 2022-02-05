@@ -20,8 +20,6 @@
             return 1;
         }
     }
-
-    $: console.log($media);
 </script>
 
 <div class="w-full h-auto">

@@ -19,8 +19,8 @@
 	$: dispatch('filter', { filters });
 </script>
 
-<div class="flex flex-row lg:flex-col">
-	<section class="w-1/2 lg:w-full flex flex-col lg:flex-reverse items-center justify-center border-r lg:border-b lg:border-r-0 pb-2">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-0 divide-y md:divide-x lg:divide-y">
+	<section class="flex flex-col lg:flex-reverse items-center justify-center pb-2">
         <h4 class="py-2 text-md font:semibold text-center">{$t("review.product.filter.rating.label")}</h4>
         <div>
             <span class="text-3xl">{score}</span>
@@ -28,7 +28,7 @@
         </div>
         <Star nb={score} />
     </section>
-	<section class="w-1/2 lg:w-full">
+	<section>
 		<button on:click={() => filterReview(5)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
 			<CheckboxField checked={filters.some((filter) => filter === 5)} name="filters" />
 			<Star nb={5} />

@@ -1,51 +1,57 @@
 <script context="module">
     import api from '$lib/api';
+    import { reviewsProduct } from "$lib/stores";
 
     export async function load({ page }) {
-        const { slug } = page.params;            
+        const { slug } = page.params;
+        const storedReviews = get(reviewsProduct);
         const productRes = await api.product.getBySlug(slug);
         if (productRes.error) {
             return {
                 props: { error: productRes.error }
             }
         }
-        const res = await api.review.getFromProductId(productRes.product.id);
-        if (res.error) {
-            return {
-                props: { error: res.error }
+
+        if (!storedReviews.length) {
+            const res = await api.review.getFromProductId(productRes.product.id);
+            if (res.error) {
+                return {
+                    props: { error: res.error }
+                }
             }
         }
         return {
-            props: { reviews: res.reviews, product: productRes.product }
+            props: { product: productRes.product }
         }
     }
 </script>
 
 <script>
+    import { get } from 'svelte/store';
     import { t } from "$lib/i18n";
-    import ReviewList from '../../../../lib/components/reviews/ReviewList.svelte';
+    import ReviewList from '../../../../lib/components/list/ReviewList.svelte';
     import ReviewFilter from '../../../../lib/components/reviews/ReviewFilter.svelte';
     import HeaderTitle from "../../../../lib/components/header/HeaderTitle.svelte";
 
-    export let reviews, product, error;
-    let filteredReviews = reviews || [];
+    export let product, error;
+    let filteredReviews = $reviewsProduct || [];
 
     function filterReviews({ detail }) {
-        filteredReviews = detail.filters.length ? reviews.filter(review => detail.filters.some(f => {
+        filteredReviews = detail.filters.length ? $reviewsProduct.filter(review => detail.filters.some(f => {
             if (f === "images") {
                 return review["images"].length;
             }
             return review.ratings === f;
-        })) : reviews;
+        })) : $reviewsProduct;
     }
 </script>
 
 <HeaderTitle title={$t("review.product.header", { name: product.name })} />
-<div class="container mx-auto flex flex-col items-start lg:flex-row lg:justify-between">
-    <aside class="sticky top-0 bg-gray-100 lg:ml-4 w-full lg:w-1/4 shadow-md border rounded">
-        <ReviewFilter {reviews} on:filter={ filterReviews } />
+<div class="relative container mx-auto items-start grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
+    <aside class="lg:sticky lg:col-span-1 top-0">
+        <ReviewFilter reviews={$reviewsProduct} on:filter={ filterReviews } />
     </aside>
-    <article class="relative mt-2 lg:mt-0 lg:mx-4 w-full lg:w-3/4 rounded">
+    <article class="relative lg:col-span-2 mb-2 lg:mb-0 rounded">
         <ReviewList reviews={filteredReviews} />
     </article>
 </div>

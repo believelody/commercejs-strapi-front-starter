@@ -55,7 +55,7 @@
             </button>
         </nav>
     </aside>
-    <article class="relative bg-indigo-100 grow flex flex-col pb-2 items-center md:w-2/3 xl:w-3/4 xl:ml-6 border rounded shadow-lg">
+    <article class="relative bg-indigo-100 grow flex flex-col items-center md:w-2/3 xl:w-3/4 xl:ml-6 border rounded shadow-lg">
         <ProtectedLayout>
             <slot />
         </ProtectedLayout>

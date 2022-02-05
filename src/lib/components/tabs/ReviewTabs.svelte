@@ -82,9 +82,9 @@
 		</ul>
 	</TabPanel>
 	<TabPanel>
-		<ul>
+		<ul class="divide-y-4">
 			{#each reviews as review}
-				<li class="flex flex-col w-full py-2 border">
+				<li class="flex flex-col w-full py-2">
 					<div class="flex items-stretch w-full px-4">
 						<section class="flex flex-col w-full">
 							<div class="flex justify-between">
