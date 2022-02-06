@@ -19,6 +19,7 @@
 	import ShippingBadge from '../badges/ShippingBadge.svelte';
 	import SecurityBadge from '../badges/SecurityBadge.svelte';
 	import PaymentBadge from '../badges/PaymentBadge.svelte';
+import Card from '../card/Card.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -45,66 +46,72 @@
 	$: score = $reviewsProduct.length ? ($reviewsProduct.reduce((acc, cur) => acc + cur.ratings, 0) / $reviewsProduct.length) : 0;
 </script>
 
-<section class="text-gray-800 body-font">
-	<div class="px-5 py-4 lg:py-24 mx-auto">
-		<div class="lg:w-4/5 mx-auto flex flex-wrap items-stretch">
-			<div class="lg:w-1/2 w-full h-auto">
+<section class="container mx-auto text-gray-800 body-font">
+	<div class="py-4 lg:py-16">
+		<div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-4">
+			<div>
                 <Gallery images={product.assets} />
             </div>
-			<div class="lg:w-1/2 w-full h-auto lg:pl-4 xl:pl-10 xl:py-6 mt-6 lg:mt-0">
-				<section class="flex items-center justify-between">
-					<div class="flex py-2">
-						<a href="/"><FacebookIcon /></a>
-						<a href="/" class="mx-2"><TwitterIcon /></a>
-						<a href="/"><InstagramIcon /></a>
+			<Card class="flex flex-col px-2 lg:px-0" shadow="none">
+				<svelte:fragment slot="header">
+					<section class="flex items-center justify-between">
+						<div class="flex py-2">
+							<a href="/"><FacebookIcon /></a>
+							<a href="/" class="mx-2"><TwitterIcon /></a>
+							<a href="/"><InstagramIcon strokeWidth={2} /></a>
+						</div>
+						<WishlistButton {product} />
+					</section>
+					<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
+				</svelte:fragment>
+				<svelte:fragment slot="content">
+					<div class="flex my-2">
+						{#if score > 0}
+							<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
+								{#if !loading}
+									<Star nb={score} /> {score}/5
+									<span class="ml-4">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
+								{:else}
+									<span>{$t("common.update")}</span>
+								{/if}
+							</a>
+						{:else}
+							<span class="flex items-center">
+								{#if !loading}
+									<Star nb={score} /> {score}/5
+									<span class="text-gray-600 ml-3">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
+								{:else}
+									<span class="text-gray-600 ml-3">{$t("common.update")}</span>
+								{/if}
+							</span>
+						{/if}
+						{#if (product.attributes.length)}
+							<button on:click={ showAttributesModal } class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+								{$t("product.detail.characteristics")}
+							</button>
+						{/if}
 					</div>
-					<WishlistButton {product} />
-				</section>
-				<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
-				<div class="flex my-2">
-					{#if score > 0}
-						<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
-							{#if !loading}
-								<Star nb={score} /> {score}/5
-								<span class="ml-4">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
-							{:else}
-								<span>{$t("common.update")}</span>
-							{/if}
-						</a>
-					{:else}
-						<span class="flex items-center">
-							{#if !loading}
-								<Star nb={score} /> {score}/5
-								<span class="text-gray-600 ml-3">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
-							{:else}
-								<span class="text-gray-600 ml-3">{$t("common.update")}</span>
-							{/if}
-						</span>
-					{/if}
-					{#if (product.attributes.length)}
-						<button on:click={ showAttributesModal } class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-							{$t("product.detail.characteristics")}
-						</button>
-					{/if}
-				</div>
-				<p class="leading-relaxed mb-2 self-stretch">{@html product.description}</p>
-				<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-300">
-					{#if colors}
-						<Colors {colors} bind:selectedColor />
-					{/if}
-					{#if sizes}
-						<Sizes {sizes} bind:value={selectedSize} />
-					{/if}
-					<Quantity bind:value={qty} />
-				</div>
-				<div class="flex items-center mt-4">
-					<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
-					<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
-				</div>
-			</div>
+					<p class="flex-grow leading-relaxed">{@html product.description}</p>
+					<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-300">
+						{#if colors}
+							<Colors {colors} bind:selectedColor />
+						{/if}
+						{#if sizes}
+							<Sizes {sizes} bind:value={selectedSize} />
+						{/if}
+						<Quantity bind:value={qty} />
+					</div>
+				</svelte:fragment>
+				<svelte:fragment slot="extra">
+					<div class="flex items-center justify-between py-2">
+						<span class="title-font font-medium text-2xl text-gray-900">{product.price.formatted_with_symbol}</span>
+						<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
+					</div>
+				</svelte:fragment>
+			</Card>
 		</div>
 	</div>
-	<div class="w-4/5 mx-auto block">
+	<div>
 		<section class="mt-4 grid grid-cols-1 md:w-4/5 lg:w-auto md:mx-auto lg:grid-cols-3 gap-y-4 gap-x-4">
 			<ShippingBadge />
 			<SecurityBadge />

@@ -47,11 +47,11 @@
 </script>
 
 <HeaderTitle title={$t("review.product.header", { name: product.name })} />
-<div class="relative container mx-auto items-start grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
+<div class="relative container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-y-4 lg:gap-x-4">
     <aside class="lg:sticky lg:col-span-1 top-0">
         <ReviewFilter reviews={$reviewsProduct} on:filter={ filterReviews } />
     </aside>
-    <article class="relative lg:col-span-2 mb-2 lg:mb-0 rounded">
+    <article class="relative lg:col-span-2">
         <ReviewList reviews={filteredReviews} />
     </article>
 </div>

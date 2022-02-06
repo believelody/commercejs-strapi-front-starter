@@ -40,11 +40,11 @@
 		goto(`reviews?page=${detail.page}`);
 	}
 
-	$: paginatedReviews = reviews.length && paginate({ items: reviews, pageSize, currentPage });
+	$: paginatedReviews = reviews.length ? paginate({ items: reviews, pageSize, currentPage }) : [];
 </script>
 
 <div class="flex flex-col justify-between h-full">
-	<ul class="w-full grid grid-cols-1 gap-y-4">
+	<ul class="w-full grid grid-cols-1 gap-y-4 grow">
 		{#each paginatedReviews as review}
 			<li>
 				<Card class="bg-gray-100 border">
@@ -80,16 +80,18 @@
 			<section>{$t('review.product.list.empty')}</section>
 		{/each}
 	</ul>
-	<section class="relative bottom-0 w-full flex justify-center mt-8">
-		<PaginationNav
-			totalItems={reviews.length}
-			{pageSize}
-			{currentPage}
-			limit={1}
-			showStepOptions
-			on:setPage={goToPage}
-		/>
-	</section>
+	{#if reviews.length}
+		<section class="relative bottom-0 w-full flex justify-center mt-8">
+			<PaginationNav
+				totalItems={reviews.length}
+				{pageSize}
+				{currentPage}
+				limit={1}
+				showStepOptions
+				on:setPage={goToPage}
+			/>
+		</section>
+	{/if}
 </div>
 
 <style>

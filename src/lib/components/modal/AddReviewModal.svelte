@@ -1,7 +1,7 @@
 <script>
     import { getContext } from 'svelte';
     import api from '$lib/api';
-    import { reviews } from "$lib/stores";
+    import { reviewsUser } from "$lib/stores";
     import ModalBox from "../box/ModalBox.svelte";
     import ReviewForm from "../form/ReviewForm.svelte";
 
@@ -11,7 +11,7 @@
 
     async function closeModal() {
         const res = await api.review.getFromUser();
-        $reviews = res.success ? res.reviews : [];
+        $reviewsUser = res.success ? res.reviews : [];
         close();
     }
 </script>

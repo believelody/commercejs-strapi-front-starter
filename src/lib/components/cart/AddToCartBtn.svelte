@@ -32,7 +32,7 @@
 </script>
 
 <button
-	class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded disabled:opacity-75 disabled:cursor-wait"
+	class="flex text-white text-lg bg-indigo-500 py-4 px-6 focus:outline-none hover:bg-indigo-600 rounded disabled:opacity-75 disabled:cursor-not-allowed"
     on:click={addItem}
     disabled={loading}
 >

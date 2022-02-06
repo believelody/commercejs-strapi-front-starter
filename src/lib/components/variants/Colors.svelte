@@ -2,6 +2,16 @@
 	import { t } from '$lib/i18n'
 
 	export let colors, selectedColor;
+
+	function selectColor(color) {
+		switch (color) {
+			case "black":
+			case "white":
+				return `bg-${color}`;
+			default:
+				return `bg-${color}-600`;
+		}
+	}
 </script>
 
 <div class="flex items-center">
@@ -9,11 +19,7 @@
 	{#each colors.options as color}
 		<button
 			on:click={() => selectedColor = color}
-			class="{selectedColor.name === color.name ? "border-2 border-gray-600 w-8 h-8" : "border-none w-6 h-6"} ml-1
-                {color.name === 'black' || color.name === 'white'
-				? `bg-${color.name}`
-				: `bg-${color.name}-500`}
-                rounded-full"
+			class="{selectedColor.name === color.name ? "border-2 border-gray-600 w-8 h-8" : "border-none w-6 h-6"} ml-1 {selectColor(color.name)} rounded-full"
 		/>
 	{/each}
 </div>
