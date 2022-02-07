@@ -2,10 +2,8 @@
 	export let size = 8, color = "black";
 </script>
 
-<style>
-</style>
 <svg
-	class="mr-4	w-{size} h-{size} text-{color}"
+	class="w-{size} h-{size} text-{color}"
 	fill="none"
 	stroke-linecap="round"
 	stroke-linejoin="round"

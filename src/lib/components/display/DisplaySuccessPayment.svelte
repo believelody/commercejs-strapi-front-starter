@@ -18,7 +18,7 @@ import FullAddress from './FullAddress.svelte';
 <div>
     <div class="flex flex-col justify-center">
         <h3 class="flex items-center border-b border-gray-200 pb-2" id="modal-title">
-            <span class="bg-emerald-100 rounded-full"><CheckCircleIcon size={12} /></span>
+            <span class="bg-green-100 rounded-full"><CheckCircleIcon size={12} /></span>
             <span class="ml-4 text-lg leading-6 font-medium text-gray-900">{$t('checkout.payment.success.title')}</span>
         </h3>
         <h3 class="mt-2 w-full text-lg leading-6 text-gray-800">
@@ -39,14 +39,14 @@ import FullAddress from './FullAddress.svelte';
         </div>
         <div class="my-2 flex justify-start">
             <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.${isBillingSameAsShipping ? "shipping-billing" : "shipping"}.title`)} : </section>
-            <section class="flex flex-col grow text-md text-gray-600">
+            <section class="flex flex-col flex-grow text-md text-gray-600">
                 <FullAddress information={$shipping} />
             </section>
         </div>
         {#if !isBillingSameAsShipping}
             <div class="mt-2 flex justify-start">
                 <section class="text-gray-600 mr-4">{$t(`checkout.payment.success.billing.title`)} : </section>
-                <section class="flex flex-col grow text-md text-gray-600">
+                <section class="flex flex-col flex-grow text-md text-gray-600">
                     <FullAddress information={$billing} />
                 </section>
             </div>

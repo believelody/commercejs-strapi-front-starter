@@ -17,7 +17,7 @@
 				*
 			{/if}
 		</span>
-		<section class="border rounded flex grow p-3">
+		<section class="border rounded flex flex-grow p-3">
 			<input
 				value={value ?? ""}
 				{name}
@@ -25,7 +25,7 @@
 				id={name}
 				on:input
 				on:focus
-				class="grow focus:outline-none"
+				class="flex-grow focus:outline-none"
 				{placeholder}
 			/>
 			{#if type === "password"}

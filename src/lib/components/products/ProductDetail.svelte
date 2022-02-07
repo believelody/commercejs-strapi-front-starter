@@ -91,7 +91,7 @@ import Card from '../card/Card.svelte';
 							</button>
 						{/if}
 					</div>
-					<p class="flex-grow leading-relaxed">{@html product.description}</p>
+					<p class="flex-flex-grow leading-relaxed">{@html product.description}</p>
 					<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-300">
 						{#if colors}
 							<Colors {colors} bind:selectedColor />

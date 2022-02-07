@@ -14,7 +14,7 @@
 <div class="xl:hidden mx-2 md:mx-12 rounded-md">
     <div class="mb-3 bg-white shadow-lg rounded text-gray-600">
         <Accordion>
-            <h1 slot="header" class="grow py-2 text-xl text-center text-gray-600 px-8">{$t("checkout.summary")}</h1>
+            <h1 slot="header" class="flex-grow py-2 text-xl text-center text-gray-600 px-8">{$t("checkout.summary")}</h1>
             <section slot="content" class="overflow-y-auto">
                 <CartList items={$cart.line_items} />
                 <div class="px-8 border-b">

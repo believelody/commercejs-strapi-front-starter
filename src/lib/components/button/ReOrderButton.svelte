@@ -54,6 +54,6 @@
     /* your styles go here */
 </style>
 
-<button on:click={reOrder} class="bg-emerald-500 hover:bg-emerald-600 rounded py-1 px-3">
+<button on:click={reOrder} class="bg-green-500 hover:bg-green-600 rounded py-1 px-3">
     {$t("order.account.table.body.button.re-order")}
 </button>

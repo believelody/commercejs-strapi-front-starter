@@ -16,7 +16,7 @@
         <h3 class="flex items-center text-lg leading-6 font-medium text-gray-900" id="modal-title">
             {#if $$slots.icon}
                 <div
-                    class="mr-4 shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-emerald-100"
+                    class="mr-4 flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-green-100"
                 >
                     <!-- Heroicon name: outline/exclamation -->
                     <slot name="icon" />
@@ -24,7 +24,7 @@
             {/if}
             <slot name="header" />
         </h3>
-		<div class="mt-4 grow">
+		<div class="mt-4 flex-grow">
 			<slot name="content" />
 		</div>
 	</div>

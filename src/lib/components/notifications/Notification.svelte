@@ -12,7 +12,7 @@
     const checkType = type => {
         switch (type) {
             case "success":
-                return "border border-emerald-500 text-emerald-700";
+                return "border border-green-500 text-green-700";
             case "error":
                 return "text-red-500";
             default:

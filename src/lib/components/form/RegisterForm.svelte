@@ -34,7 +34,7 @@
     <Fields {withoutShadow} class="flex-col">
         <!-- <div class="w-full flex justify-between border-b border-gray-300 py-3 px-2">
             <span class="sm:text-right xl:mr-2">{$t("identity.civility.title")}</span>
-            <div class="flex justify-around grow">
+            <div class="flex justify-around flex-grow">
                 <RadioField
                     label={$t("identity.civility.m")}
                     name="gender"

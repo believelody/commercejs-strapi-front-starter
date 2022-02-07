@@ -25,7 +25,7 @@
 			},
 			{
 				styleBg: {
-					backgroundColor: 'rgba(0, 0, 0, .9)'
+					backgroundColor: 'rgba(32, 32, 32, 1)'
 				},
 				styleWindow: {
 					width: $media.mobile ? '100%' : '80%',
@@ -44,7 +44,7 @@
 </script>
 
 <div class="flex flex-col justify-between h-full">
-	<ul class="w-full grid grid-cols-1 gap-y-4 grow">
+	<ul class="w-full grid grid-cols-1 gap-y-4 flex-grow">
 		{#each paginatedReviews as review}
 			<li>
 				<Card class="bg-gray-100 border">
