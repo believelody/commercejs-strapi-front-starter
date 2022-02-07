@@ -5,7 +5,7 @@
     import api from '$lib/api'
     import {profile, user} from '$lib/stores';
     import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
-    import ProtectedLayout from '../../lib/components/layout/ProtectedLayout.svelte';
+    import PrivateRoute from '../../lib/components/private/PrivateRoute.svelte';
     import LogoutIcon from '../../lib/components/svg/LogoutIcon.svelte';
     import ImageUploadField from "../../lib/components/field/ImageUploadField.svelte";
 
@@ -56,8 +56,8 @@
         </nav>
     </aside>
     <article class="relative bg-indigo-100 flex-grow flex flex-col items-center md:w-2/3 xl:w-3/4 xl:ml-6 border rounded shadow-lg">
-        <ProtectedLayout>
+        <PrivateRoute>
             <slot />
-        </ProtectedLayout>
+        </PrivateRoute>
     </article>
 </div>

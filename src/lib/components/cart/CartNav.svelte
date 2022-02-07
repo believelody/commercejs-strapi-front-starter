@@ -8,7 +8,7 @@
     }
 </script>
 
-<nav on:click={toggleCart} class="flex cursor-pointer items-center px-4 py-2 bg-indigo-500 rounded">
+<button on:click={toggleCart} class="flex cursor-pointer items-center justify-center px-4 py-2 bg-indigo-500 rounded">
     <CartIcon />
-    <span class="text-gray-900 title-font text-lg font-medium ml-4 bg-white rounded-full px-2">{$cart?.total_unique_items ?? 0}</span>
-</nav>
+    <span class="hidden md:inline text-gray-900 title-font text-lg font-medium ml-4 bg-white rounded-full px-2">{$cart?.total_unique_items ?? 0}</span>
+</button>

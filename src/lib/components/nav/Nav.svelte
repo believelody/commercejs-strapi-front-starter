@@ -1,18 +1,41 @@
 <script>
 	import { t } from '$lib/i18n';
+import Accordion from '../accordion/Accordion.svelte';
+	import Dropdown from '../dropdown/Dropdown.svelte';
+	import MenuIcon from '../svg/MenuIcon.svelte';
+
+	const links = [
+		{ url: "/categories/transport", text: $t('menu.categories.transport.label') },
+		{ url: "/categories/jeu", text: $t('menu.categories.game.label') },
+		{ url: "/categories/soin-esthetique",  text: $t('menu.categories.caring.label') },
+		{ url: "/categories", text: $t('menu.categories.all.label') }
+	];
 </script>
 
-<nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-	<a
-		href="/categories/transport"
-		class="mr-5 hover:border-b hover:border-gray-900 hover:text-gray-900 cursor-pointer"
-	>
-		{$t('menu.transport')}
-	</a>
-	<a href="/categories/jeu" class="mr-5 hover:text-gray-900 cursor-pointer">{$t('menu.game')}</a>
-	<a href="/categories/soin-esthetique" class="mr-5 hover:text-gray-900 cursor-pointer">
-		{$t('menu.caring')}
-	</a>
-	<a href="/about" class="mr-5 hover:text-gray-900 cursor-pointer">{$t('menu.about')}</a>
-	<a href="/contact" class="mr-5 hover:text-gray-900 cursor-pointer">{$t('menu.contact')}</a>
-</nav>
+<Dropdown class="hidden md:inline mr-4">
+	<h4 slot="header" class="relative">{$t("menu.categories.label")}</h4>
+	<nav slot="content" class="w-36 border-2 rounded bg-gray-100 grid grid-rows-4 divide-y">
+		{#each links as item}
+			<a
+				href={item.url}
+				class="px-2 py-auto flex flex-grow items-center hover:text-gray-900 cursor-pointer"
+			>
+				{item.text}
+			</a>
+			{/each}
+	</nav>
+</Dropdown>
+
+<Accordion class="hidden md:inline mr-4">
+	<h4 slot="header" class="relative">{$t("menu.categories.label")}</h4>
+	<nav slot="content" class="w-36 border-2 rounded bg-gray-100 grid grid-rows-4 divide-y">
+		{#each links as item}
+			<a
+				href={item.url}
+				class="px-2 py-auto flex flex-grow items-center hover:text-gray-900 cursor-pointer"
+			>
+				{item.text}
+			</a>
+			{/each}
+	</nav>
+</Accordion>

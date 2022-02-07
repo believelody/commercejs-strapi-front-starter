@@ -2,7 +2,7 @@
     import { slide } from 'svelte/transition';
     import ChevronDownIcon from '../svg/ChevronDownIcon.svelte';
     
-    export let isOpen = false, headerTextSize = "xl", noContentBorderTop = false;
+    export let isOpen = false, headerTextSize = "xl", iconSize = 8, iconColor, noContentBorderTop = false;
     let duration = 300;
     
     function toggle() {
@@ -13,11 +13,11 @@
 <div class="{$$props.class}">
     <button on:click={toggle} aria-expanded={isOpen} class="w-full flex items-center cursor-pointer py-2 bg-none">
         <div class="transition-transform duration-{duration} ease-in rotate-{isOpen ? 90 : 0} transform-gpu">
-            <ChevronDownIcon />
+            <ChevronDownIcon size={iconSize} color={iconColor} />
         </div>
-        <h3 class="text-{headerTextSize} text-left w-full pr-4">
+        <div class="w-full pr-4">
             <slot name="header" />
-        </h3>
+        </div>
     </button>
 
     {#if isOpen}

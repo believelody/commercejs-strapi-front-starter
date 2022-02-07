@@ -5,7 +5,7 @@ import InstagramIcon from '../svg/InstagramIcon.svelte';
 import LinkedinIcon from '../svg/LinkedinIcon.svelte';
 import TwitterIcon from '../svg/TwitterIcon.svelte';
 </script>
-<footer class="text-gray-600 body-font">
+<footer class="hidden md:inline text-gray-600 body-font">
 	<div class="container px-5 py-4 mx-auto">
         <!-- <div class="flex flex-wrap md:text-left text-center order-first">
         <div class="lg:w-1/4 md:w-1/2 w-full px-4">

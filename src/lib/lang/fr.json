@@ -49,11 +49,21 @@
         "my-account": "Mon Compte"
     },
     "menu": {
-        "transport": "Transport",
-        "game": "Jeu",
-        "caring": "Soin & Esthétique",
-        "about": "A propos de nous",
-        "contact": "Nous contactez"
+        "categories" : {
+            "label": "Catégories",
+            "transport": {
+                "label": "Transport"
+            },
+            "game": {
+                "label": "Jeu"
+            },
+            "caring": {
+                "label": "Soin & Esthétique"
+            },
+            "all": {
+                "label": "Tous les articles"
+            }
+        }
     },
     "product": {
         "detail": {
@@ -81,6 +91,9 @@
             "shipping": "Livraison à domicile et en point Relais (2 à 5 jours ouvrés)",
             "security": "Paiement sécurisé en SSL",
             "payment": "Paiement par carte bancaire et par paypal"
+        },
+        "search": {
+            "placeholder": "Entrez un mot clé (Ex: chemise)"
         }
     },
     "order": {

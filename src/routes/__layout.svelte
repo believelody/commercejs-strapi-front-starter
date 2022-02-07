@@ -11,6 +11,7 @@
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
 	import Notification from "$lib/components/notifications/Notification.svelte";
+import MobileNav from '../lib/components/nav/MobileNav.svelte';
 
 	const exceptRoute = [/\/my-account/];
 
@@ -53,21 +54,15 @@
 			<slot />
 		{:else}
 			<Header />
-			<main>
+			<main class="overflow-y-auto md:overflow-y-hidden h-full md:flex md:flex-grow relative">
 				{#if ($navigating && !exceptRoute.some(route => $page.path.match(route)) || !jwt)}
 					<MoonLoading />
 				{:else}
 					<slot />
 				{/if}
 			</main>
+			<MobileNav />
 			<Footer />
 		{/if}
 	</Modal>
 </Notifications>
-
-<style>
-	main {
-		flex: 1 0 auto;
-		position: relative;
-	}
-</style>
