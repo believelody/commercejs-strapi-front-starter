@@ -28,8 +28,8 @@ export const createWritableStore = (key, startValue = null) => {
 };
 
 const mediaqueries = {
-	mobile: "(min-width: 0px)",
-	tablet: "(min-width: 768px)",
+	mobile: "(min-width: 0px) and (max-width: 767px)",
+	tablet: "(min-width: 768px) and (max-width: 1023px)",
 	desktop: "(min-width: 1024px)",
 	landscape: "(orientation: landscape) and (max-height: 499px)",
 	tiny: "(orientation: portrait) and (max-height: 599px)",

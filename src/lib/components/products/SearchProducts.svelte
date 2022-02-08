@@ -8,11 +8,9 @@
     function openSearchBar() {
         
     }
-
-    $: console.log(search);
 </script>
 
-<div class="hidden md:flex items-center lg:mx-2 flex-grow">
+<div class="hidden md:flex md:items-center md:justify-center flex-grow">
     <InputField
         search
         transparent

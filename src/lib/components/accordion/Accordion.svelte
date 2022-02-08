@@ -2,7 +2,7 @@
     import { slide } from 'svelte/transition';
     import ChevronDownIcon from '../svg/ChevronDownIcon.svelte';
     
-    export let isOpen = false, headerTextSize = "xl", iconSize = 8, iconColor, noContentBorderTop = false;
+    export let isOpen = false, iconSize = 8, iconColor, noContentBorderTop = false;
     let duration = 300;
     
     function toggle() {
@@ -21,7 +21,7 @@
     </button>
 
     {#if isOpen}
-        <div class={!noContentBorderTop ? "border-t-2 p-2" : ""} transition:slide={{ duration }}>
+        <div class={!noContentBorderTop ? "border-t-2" : ""} transition:slide={{ duration }}>
             <slot name="content" />
         </div>
     {/if}

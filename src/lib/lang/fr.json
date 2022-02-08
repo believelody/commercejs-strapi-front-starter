@@ -49,6 +49,7 @@
         "my-account": "Mon Compte"
     },
     "menu": {
+        "label": "menu",
         "categories" : {
             "label": "Catégories",
             "transport": {
@@ -63,6 +64,12 @@
             "all": {
                 "label": "Tous les articles"
             }
+        },
+        "about": {
+            "label": "Notre histoire"
+        },
+        "blog": {
+            "label": "Blog"
         }
     },
     "product": {
@@ -290,6 +297,13 @@
             "description": "Abonnez-vous et soyez averti des bons plans, des actus du blog et des réductions.",
             "cta": "M'inscrire",
             "placeholder": "Entrez votre email ici"
+        },
+        "links": {
+            "faq": "FAQ",
+            "gts": "Conditions Générales de Vente",
+            "legal-notice": "Mentions légales",
+            "contact": "Nous contacter",
+            "rgpd": "Protection des données"
         }
     },
     "variants": {

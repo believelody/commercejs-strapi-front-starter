@@ -5,13 +5,13 @@
 	import Notifications from 'svelte-notifications';
 	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
-	import { cart, sidebar, locale, user, jwt, profile } from '$lib/stores';
+	import { cart, sidebar, locale, user, jwt, profile, media } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
 	import Notification from "$lib/components/notifications/Notification.svelte";
-import MobileNav from '../lib/components/nav/MobileNav.svelte';
+	import Toolbar from '../lib/components/toolbar/Toolbar.svelte';
 
 	const exceptRoute = [/\/my-account/];
 
@@ -61,8 +61,10 @@ import MobileNav from '../lib/components/nav/MobileNav.svelte';
 					<slot />
 				{/if}
 			</main>
-			<MobileNav />
-			<Footer />
+			<Toolbar />
+			{#if !$media.mobile}
+				<Footer />
+			{/if}
 		{/if}
 	</Modal>
 </Notifications>

@@ -11,7 +11,7 @@
         <slot name="header" />
     </div>
     {#if collapse}
-        <div class="absolute">
+        <div class="absolute z-50">
             <slot name="content" />
         </div>
     {/if}

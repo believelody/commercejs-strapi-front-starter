@@ -8,9 +8,9 @@
 {#if $jwt}
 	<a
 		href="/my-account"
-		class="inline-flex items-center justify-center text-base"
+		class="inline-flex items-center justify-center text-base md:px-2"
 	>
-		<UserCircleIcon color={$media.desktop ? "gray-600" : "black"} />
+		<UserCircleIcon size={$media.mobile ? 10 : 8} color={$media.tablet || $media.desktop ? "gray-600" : "black"} />
 		<span class="hidden lg:inline">{$t('header.my-account')}</span>
 	</a>
 {:else}
