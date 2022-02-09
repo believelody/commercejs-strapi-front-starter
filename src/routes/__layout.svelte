@@ -54,17 +54,19 @@
 			<slot />
 		{:else}
 			<Header />
-			<main class="overflow-y-auto md:overflow-y-hidden h-full md:flex md:flex-grow relative">
-				{#if ($navigating && !exceptRoute.some(route => $page.path.match(route)) || !jwt)}
-					<MoonLoading />
-				{:else}
-					<slot />
-				{/if}
-			</main>
-			<Toolbar />
-			{#if !$media.mobile}
+			<div class="overflow-y-auto flex flex-col h-full">
+				<main class="flex flex-col flex-grow relative">
+					{#if ($navigating && !exceptRoute.some(route => $page.path.match(route)) || !jwt)}
+						<MoonLoading />
+					{:else}
+						<slot />
+					{/if}
+				</main>
+				{#if !$media.mobile}
 				<Footer />
-			{/if}
+				{/if}
+			</div>
+			<Toolbar />
 		{/if}
 	</Modal>
 </Notifications>

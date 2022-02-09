@@ -8,7 +8,7 @@
     import CloseIcon from '../svg/CloseIcon.svelte';
 </script>
 
-<div class="w-72 flex flex-col h-screen overflow-y-hidden">
+<div class="flex flex-col h-screen overflow-y-hidden">
 	<h3 class="flex justify-around text-center text-lg py-4">
 		<Brand />
 		<button

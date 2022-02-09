@@ -1,7 +1,4 @@
 <script>
-import Brand from '../brand/Brand.svelte';
-	
-	import Logo from '../brand/Brand.svelte';
     import SubscriptionForm from '../form/SubscriptionForm.svelte';
 	import Links from '../links/Links.svelte';
 	import FacebookIcon from '../svg/FacebookIcon.svelte';
