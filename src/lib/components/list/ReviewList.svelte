@@ -4,36 +4,16 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
-	import { media } from '$lib/stores';
 	import Star from '../star/Star.svelte';
-	import ReviewImageViewerModal from '../modal/ReviewImageViewerModal.svelte';
 	import { fullName } from '../../utils/user.util';
 	import { localDateFromString } from '../../utils/date.util';
 	import Card from '../card/Card.svelte';
+	import { openReviewViewerModal } from '../../context/review';
 
 	export let reviews,
 		currentPage = +$page.query.get('page') || 1,
 		pageSize = 6;
 	const { open } = getContext('simple-modal');
-
-	function openReviewViewerModal(index, review) {
-		open(
-			ReviewImageViewerModal,
-			{
-				images: review.images,
-				selectedIndex: index
-			},
-			{
-				styleBg: {
-					backgroundColor: 'rgba(32, 32, 32, 1)'
-				},
-				styleWindow: {
-					width: $media.mobile ? '100%' : '80%',
-					margin: '0 auto'
-				}
-			}
-		);
-	}
 
 	function goToPage({ detail }) {
 		currentPage = detail.page;
@@ -69,7 +49,7 @@
 									class="object-cover w-24 h-24 cursor-pointer"
 									src={`${image.url}`}
 									alt={image.name}
-									on:click={() => openReviewViewerModal(index, review)}
+									on:click={() => openReviewViewerModal(open, index, review)}
 								/>
 							</li>
 						{/each}

@@ -4,10 +4,9 @@
 	import { goto } from "$app/navigation";
     import api from "$lib/api";
     import { t } from "$lib/i18n";
-	import { media } from "$lib/stores";
     import Star from '../star/Star.svelte';
-	import AddReviewModal from "../modal/AddReviewModal.svelte";
     import { localDateFromString } from '../../utils/date.util';
+	import { openReviewViewerModal, openReviewModal } from "$lib/context/review";
 
     export let pendingReviews, reviews, orderItems;
 	let loading = false;
@@ -20,18 +19,6 @@
             goto(`/products/${res.slug}`);
         }
         loading = false;
-    }
-
-    function openReviewModal(item) {
-        open(AddReviewModal, { item }, {
-            styleBg: {
-                backgroundColor: "rgba(0, 0, 0, .9)",
-            },
-            styleWindow: {
-                width: $media.mobile ? "100%" : "80%",
-                margin: "0 auto"
-            }
-        });
     }
 
     $: extractProductInfo = (productId) => orderItems.find((item) => item.product_id === productId);
@@ -67,7 +54,7 @@
 					</section>
 					<section class="w-1/2">
 						<button
-							on:click={() => openReviewModal(item)}
+							on:click={() => openReviewModal(open, item)}
 							class="w-full py-2 text-indigo-700 border border-indigo-500 rounded px-auto hover:text-white hover:bg-indigo-500 hover:border-none"
 						>
 							{$t('review.button.add')}
@@ -117,12 +104,13 @@
 						<div class="flex flex-col w-full px-4 mt-2">
 							<h4 class="font-medium text-md">{$t('review.list.images')} :</h4>
 							<ul class="flex flex-wrap">
-								{#each review.images as image}
+								{#each review.images as image, index}
 									<li class="flex flex-col">
 										<img
-											class="object-cover w-24 h-24"
+											class="object-cover w-24 h-24 cursor-pointer"
 											src={`${image.url}`}
 											alt={image.name}
+											on:click={() => openReviewViewerModal(open, index, review)}
 										/>
 									</li>
 								{/each}
