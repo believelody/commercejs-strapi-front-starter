@@ -5,8 +5,7 @@
     import api from "$lib/api";
     import { jwt, profile, user } from '$lib/stores';
     import HeartCircleIcon from "../svg/HeartCircleIcon.svelte";
-    import AuthModal from '../modal/AuthModal.svelte';
-    import ConfirmationEmailModal from '../modal/ConfirmationEmailModal.svelte';
+    import { openAuthModal, openConfirmationEMailModal } from '../../context/modal';
     
     export let product;
     let wishlist, isInWishlist = false;
@@ -37,9 +36,9 @@
                 removeAfter: 5000
             });
         } else if ($jwt && !$user.confirmed) {
-            open(ConfirmationEmailModal);
+            openConfirmationEMailModal(open);
         } else {
-            open(AuthModal, { title: $t("wishlist.modal.auth.title")});
+            openAuthModal(open, { title: $t("wishlist.modal.auth.title") })
         }
     }
 

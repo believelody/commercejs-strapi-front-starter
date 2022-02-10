@@ -4,6 +4,7 @@
     import {profile} from "$lib/stores";
     import ImageModal from "../modal/ImageModal.svelte";
     import CloseIcon from "../svg/CloseIcon.svelte";
+import { openImageModal } from "../../context/modal";
 
     export let name, image = "";
     let field, formElement;
@@ -26,7 +27,7 @@
 
     function showModal() {
         if (image) {
-            open(ImageModal, {
+            openImageModal(open, {
                 image,
                 alt: $t("account.profile.image.alt", {name: `${$profile?.customer.firstname} ${$profile?.customer.lastname}`})
             });

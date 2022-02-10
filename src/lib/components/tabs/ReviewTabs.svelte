@@ -6,7 +6,7 @@
     import { t } from "$lib/i18n";
     import Star from '../star/Star.svelte';
     import { localDateFromString } from '../../utils/date.util';
-	import { openReviewViewerModal, openReviewModal } from "$lib/context/review";
+	import { openReviewViewerModal, openAddReviewModal } from "$lib/context/modal";
 
     export let pendingReviews, reviews, orderItems;
 	let loading = false;
@@ -54,7 +54,7 @@
 					</section>
 					<section class="w-1/2">
 						<button
-							on:click={() => openReviewModal(open, item)}
+							on:click={() => openAddReviewModal(open, item)}
 							class="w-full py-2 text-indigo-700 border border-indigo-500 rounded px-auto hover:text-white hover:bg-indigo-500 hover:border-none"
 						>
 							{$t('review.button.add')}

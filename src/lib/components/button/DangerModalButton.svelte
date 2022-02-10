@@ -1,13 +1,13 @@
 <script>
     import { getContext } from 'svelte';
     import { t } from '$lib/i18n';
-    import DangerModal from '../modal/DangerModal.svelte';
+    import { openDangerModal } from '../../context/modal';
     
     export let title, description, actionCallback, type;
 	const { open } = getContext("simple-modal");
 
     async function showRemoveModal() {
-        open(DangerModal, {
+        openDangerModal(open, {
             title,
             description,
             actionCallback,

@@ -5,7 +5,7 @@
     import {cart, checkout, sidebar} from '$lib/stores';
     import api from '$lib/api';
     import TrashIcon from '../svg/TrashIcon.svelte';
-    import DangerModal from '../modal/DangerModal.svelte';
+    import { openDangerModal } from '../../context/modal';
 
     export let items, loading;
     const dispatch = createEventDispatcher();
@@ -37,7 +37,7 @@
     }
 
     function showRemoveItemModal(item) {
-        open(DangerModal, {
+        openDangerModal(open, {
             title: $t("cart.modal.delete-item.title", {name: item.name}),
             description: $t('cart.modal.delete-item.description'),
             actionCallback: async () => {

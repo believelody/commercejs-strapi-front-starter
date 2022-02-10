@@ -6,6 +6,7 @@
     import { cart, sidebar } from '$lib/stores';
     import LoadingModal from '../modal/LoadingModal.svelte';
     import CartSidebar from '../cart/CartSidebar.svelte';
+import { openLoadingModal } from '../../context/modal';
 
     export let order;
     let loading = false, error;
@@ -43,7 +44,7 @@
     };
 
     $: loading ?
-        open(LoadingModal, {
+        openLoadingModal(open, {
             topText: $t("notifications.cart.loading.top"),
             bottomText: $t("notifications.cart.loading.bottom")
         }) :

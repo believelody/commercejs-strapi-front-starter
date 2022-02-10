@@ -6,6 +6,7 @@
     import LoginForm from '../form/LoginForm.svelte';
     import RegisterForm from '../form/RegisterForm.svelte';
     import ModalBox from "../box/ModalBox.svelte";
+import { openConfirmationEMailModal } from "../../context/modal";
 
     export let title = $t("auth.login.title");
     let isLogin = true;
@@ -24,7 +25,7 @@
                 removeAfter: 5000
             });
             if (detail.authType === "register") {
-                open(ConfirmationEmailModal);
+                openConfirmationEMailModal(open);
             } else {
                 close();
             }

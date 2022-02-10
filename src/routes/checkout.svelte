@@ -9,7 +9,7 @@
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
 	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
-	import InfoModal from '../lib/components/modal/InfoModal.svelte';
+	import { openInfoModal } from '../lib/context/modal';
 
 	const { open } = getContext("simple-modal");
 
@@ -28,7 +28,7 @@
 			if (!res.success) {}
 			$checkoutLoading = false;
 		} else if (window) {
-			open(InfoModal, { title: $t("checkout.no-cart.title"), description: $t("checkout.no-cart.description") })
+			openInfoModal(open, { title: $t("checkout.no-cart.title"), description: $t("checkout.no-cart.description") })
 			goto("/");
 		}
 	});

@@ -2,9 +2,9 @@
     import {getContext, onMount} from 'svelte';
     import api from '$lib/api'
     import {profile, user} from '$lib/stores';
-    import ConfirmationEmailModal from '../../lib/components/modal/ConfirmationEmailModal.svelte';
     import PrivateRoute from '../../lib/components/private/PrivateRoute.svelte';
     import MenuProfile from '../../lib/components/profile/MenuProfile.svelte';
+    import { openConfirmationEMailModal } from '../../lib/context/modal';
 
     const {open} = getContext("simple-modal");
 
@@ -17,8 +17,9 @@
                 await api.address.getAll();
             }
         } else {
-            open(ConfirmationEmailModal);
+            
             if (window) {
+                openConfirmationEMailModal(open);
                 window.history.back();
             }
         }

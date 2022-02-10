@@ -4,10 +4,10 @@
 	import { sidebar, cart } from '$lib/stores';
 	import { t } from '$lib/i18n'
 	import api from '$lib/api';
-	import DangerModal from '../modal/DangerModal.svelte';
 	import CartList from '../list/CartList.svelte';
 	import SidebarWrapper from "../sidebar/SidebarWrapper.svelte";
-import { getNotificationsContext } from "svelte-notifications";
+	import { getNotificationsContext } from "svelte-notifications";
+	import { openDangerModal } from "../../context/modal";
 
 	let loading = false;
 	const { open } = getContext("simple-modal");
@@ -18,7 +18,7 @@ import { getNotificationsContext } from "svelte-notifications";
 	});
 
 	function showEmptyCartModal() {
-		open(DangerModal, {
+		openDangerModal(open, {
 			title: $t("cart.modal.empty.title"),
 			description: $t("modal.description.default"),
 			actionCallback: async () => {

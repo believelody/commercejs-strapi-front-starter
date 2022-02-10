@@ -4,15 +4,14 @@
     import { t } from '$lib/i18n';
     import api from '$lib/api';
     import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
-    import DangerModal from "$lib/components/modal/DangerModal.svelte";
-import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
-import CenterSection from "../../../lib/components/center-section/CenterSection.svelte";
+    import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
+    import { openDangerModal } from "../../../lib/context/modal";
 
     let wishlists = [], loading = true;
     const { open } = getContext("simple-modal");
 
     async function showRemoveWishlisModal(item) {
-        open(DangerModal, {
+        openDangerModal(open, {
             title: $t("wishlist.account.remove.modal.title"),
             description: $t("wishlist.account.remove.modal.description"),
             actionCallback: async () => {

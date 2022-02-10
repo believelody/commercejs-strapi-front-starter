@@ -1,17 +1,17 @@
 <script>
+    import {getContext} from "svelte";
     import { t } from '$lib/i18n';
     import {
         checkout,
         checkoutLoading,
     } from '$lib/stores';
-    import StripePaymentModal from '../modal/StripePaymentModal.svelte';
-    import {getContext} from "svelte";
+    import { openStripePaymentModal } from '../../context/modal';
 
     export let cardElement, isValid;
     const { open } = getContext("simple-modal");
 
     function showModal() {
-        open(StripePaymentModal, {
+        openStripePaymentModal(open, {
             cardElement
         }, {
             closeButton: false,

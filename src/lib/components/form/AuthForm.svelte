@@ -5,15 +5,11 @@
     import { jwt } from '$lib/stores';
     import LoginForm from "./LoginForm.svelte";
     import RegisterForm from "./RegisterForm.svelte";
-    import RegisterSuccessModal from '../modal/RegisterSuccessModal.svelte';
+import { openRegisterSuccessModal } from '../../context/modal';
 
     let isLogin = true;
     const { addNotification } = getNotificationsContext();
     const {open} = getContext("simple-modal");
-
-    function showRegisterSuccessModal({ detail: {user} }) {
-        open(RegisterSuccessModal, {fullname: `${user.firstname} ${user.lastname}`});
-    }
 
     function closeModal({ detail }) {
         if ($jwt) {
@@ -36,5 +32,8 @@
 {#if isLogin}
     <LoginForm on:submitEvent={closeModal} on:toggleAuth={() => isLogin = false} />
 {:else}
-    <RegisterForm on:submitEvent={showRegisterSuccessModal} on:toggleAuth={() => isLogin = true} />
+    <RegisterForm
+        on:submitEvent={({ detail: {user} }) => openRegisterSuccessModal(open, {fullname: `${user.firstname} ${user.lastname}`})}
+        on:toggleAuth={() => isLogin = true}
+    />
 {/if}

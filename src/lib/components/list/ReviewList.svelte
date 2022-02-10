@@ -8,7 +8,7 @@
 	import { fullName } from '../../utils/user.util';
 	import { localDateFromString } from '../../utils/date.util';
 	import Card from '../card/Card.svelte';
-	import { openReviewViewerModal } from '../../context/review';
+	import { openReviewViewerModal } from '../../context/modal';
 
 	export let reviews,
 		currentPage = +$page.query.get('page') || 1,

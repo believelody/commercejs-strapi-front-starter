@@ -1,9 +1,9 @@
 <script>
+    import {getContext} from "svelte";
     import { cart } from "$lib/stores";
     import api from "$lib/api";
     import { t } from '$lib/i18n'
-    import ItemToCartSuccessModal from "../modal/ItemToCartSuccessModal.svelte";
-    import {getContext} from "svelte";
+    import { openItemToCartSuccessModal } from "../../context/modal";
 
     export let product, quantity, selectedColor, selectedSize;
     let loading = false;
@@ -27,7 +27,7 @@
         }
         await api.cart.addToCart($cart.id, product.id, quantity, options);
         loading = false;
-        open(ItemToCartSuccessModal, { product, selectedColor, selectedSize, quantity });
+        openItemToCartSuccessModal(open, { product, selectedColor, selectedSize, quantity });
     }
 </script>
 

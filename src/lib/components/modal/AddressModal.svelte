@@ -3,13 +3,13 @@
     import { t } from '$lib/i18n';
     import AddressForm from "../form/AddressForm.svelte";
     import ModalBox from "../box/ModalBox.svelte";
-    import InfoModal from "./InfoModal.svelte";
+    import { openInfoModal } from "../../context/modal";
 
     export let title, information, type, action;
     const {open} = getContext("simple-modal");
 
     function closeModal() {
-        open(InfoModal, {
+        openInfoModal(open, {
             title: $t(`notifications.address.heading.${type}`),
             description: $t(`notifications.address.description.${action}`),
             status: "success"
