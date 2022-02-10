@@ -9,7 +9,9 @@
 <section class="bg-indigo-500 grid grid-cols-5 md:hidden justify-center h-20">
     <MenuButton />
     <SearchProducts />
-    <Logo />
+    <a href="/">
+        <Logo />
+    </a>
     <CartNav />
     <AuthNav />
 </section>

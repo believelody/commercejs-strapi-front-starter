@@ -87,8 +87,8 @@
 				<li class="flex flex-col w-full py-2">
 					<div class="flex items-stretch w-full px-4">
 						<section class="flex flex-col w-full">
-							<div class="flex justify-between">
-								<div class="flex items-center text-lg text-gray-800">
+							<div class="flex justify-between mb-2">
+								<div class="flex flex-col md:flex-row items-start md:items-center text-lg text-gray-800">
 									<button
 										on:click={() => goToProductPage(review.productId)}
 										class="mr-4 font-medium underline border-none"

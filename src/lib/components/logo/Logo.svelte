@@ -2,7 +2,7 @@
 	// your script goes here
 </script>
 
-<div class="flex justify-center items-center rounded-full bg-white md:rounded-none md:bg-transparent md:p-0">
+<div class="h-full flex justify-center items-center rounded-full bg-white md:rounded-none md:bg-transparent md:p-0">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"

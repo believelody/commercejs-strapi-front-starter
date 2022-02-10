@@ -6,6 +6,7 @@
     import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
     import DangerModal from "$lib/components/modal/DangerModal.svelte";
 import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
+import CenterSection from "../../../lib/components/center-section/CenterSection.svelte";
 
     let wishlists = [], loading = true;
     const { open } = getContext("simple-modal");
@@ -40,7 +41,9 @@ import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
 </style>
 
 {#if loading || $navigating}
-    <MoonLoading />
+    <CenterSection>
+        <MoonLoading />
+    </CenterSection>
 {:else}
     <HeaderTitle title={$t("wishlist.account.title")} />
     <ul class="border w-full lg:w-4/5 bg-white shadow-md rounded h-full flex flex-wrap">

@@ -335,6 +335,9 @@
         }
     },
     "account": {
+        "sidebar": {
+            "title": "Mon Compte"
+        },
         "image": {
             "no-image": {
                 "text1": "Pas de photos",

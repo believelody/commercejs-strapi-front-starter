@@ -18,7 +18,7 @@
 		transition:fade={{ duration: 150 }}
 	>
 		<nav
-			class="w-auto h-screen fixed top-0 {$sidebar.openFrom ??
+			class="w-auto h-screen fixed top-0 {$sidebar.openFrom ||
 				'right'}-0 bg-white border-l border-gray-300"
 			bind:clientWidth={width}
 			transition:fly={{ x: $sidebar.openFrom === "left" ? -width : width, opacity: 1 }}

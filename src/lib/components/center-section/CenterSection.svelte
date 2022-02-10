@@ -1,13 +1,3 @@
-<section class={$$props.class}>
+<section class="h-full flex items-center justify-center">
     <slot />
 </section>
-
-<style>
-	section {
-		position: absolute;
-		display: flex;
-		top: 50%;
-		left: 50%;
-		transform: translate3d(-50%, -50%, 0);
-	}
-</style>
