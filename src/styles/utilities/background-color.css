@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	/* Background layout style */
+	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
+		.bg-primary {
+			@apply bg-indigo-500;
+		}
+		.bg-primary-light-1 {
+			@apply bg-indigo-300;
+		}
+		.bg-primary-light-2 {
+			@apply bg-indigo-100;
+		}
+		.bg-primary-dark-1 {
+			@apply bg-indigo-700;
+		}
+		.bg-primary-dark-2 {
+			@apply bg-indigo-900;
+		}
+		.bg-secondary {
+			@apply bg-black;
+		}
+		.bg-neutral {
+			@apply bg-gray-400;
+		}
+		.bg-neutral-light {
+			@apply bg-gray-100;
+		}
+		.bg-neutral-dark {
+			@apply bg-gray-700;
+		}
+		.bg-success {
+			@apply bg-green-600;
+		}
+		.bg-success-light {
+			@apply bg-green-400;
+		}
+		.bg-success-dark {
+			@apply bg-green-800;
+		}
+		.bg-danger {
+			@apply bg-red-500;
+		}
+		.bg-danger-light {
+			@apply bg-red-400;
+		}
+		.bg-danger-dark {
+			@apply bg-red-700;
+		}
+		.bg-info {
+			@apply bg-blue-600;
+		}
+		.bg-info-light {
+			@apply bg-blue-400;
+		}
+		.bg-info-dark {
+			@apply bg-blue-800;
+		}
+		.bg-warning {
+			@apply bg-yellow-500;
+		}
+		.bg-warning-light {
+			@apply bg-yellow-400;
+		}
+		.bg-warning-dark {
+			@apply bg-yellow-700;
+		}
+	}
+}

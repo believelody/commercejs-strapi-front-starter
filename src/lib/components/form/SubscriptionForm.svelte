@@ -22,7 +22,7 @@
 		/>
 	</div>
 	<button
-		class="mt-2 sm:mt-0 w-full sm:w-auto text-center text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+		class="mt-2 sm:mt-0 w-full sm:w-auto btn btn-primary"
 		>{$t('footer.subscription.cta')}</button
 	>
 </form>

@@ -89,9 +89,3 @@
 		</section>
 	{/if}
 </SidebarWrapper>
-
-<style>
-	.list {
-		overflow-y: auto;
-	}
-</style>

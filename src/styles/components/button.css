@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	/* Button layout style */
+	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
+		.btn {
+			@apply flex items-center justify-center text-white py-2 px-4 outline-none rounded disabled:bg-neutral disabled:opacity-75 disabled:cursor-not-allowed;
+		}
+		.btn-primary {
+			@apply bg-primary hover:bg-primary-dark-1;
+		}
+		.btn-secondary {
+			@apply bg-secondary hover:bg-neutral-light hover:text-neutral-light;
+		}
+		.btn-success {
+			@apply bg-success hover:bg-success-dark;
+		}
+		.btn-danger {
+			@apply bg-danger hover:bg-danger-dark;
+		}
+		.btn-info {
+			@apply bg-info hover:bg-info-dark;
+		}
+		.btn-warning {
+			@apply bg-warning hover:bg-warning-dark;
+		}
+		.btn-outlined {
+			@apply border border-neutral bg-neutral-light text-neutral hover:bg-neutral-dark hover:text-neutral-light;
+		}
+		.btn-outlined-primary {
+			@apply border border-primary bg-neutral-light text-primary hover:bg-primary-dark-1 hover:text-neutral-light hover:border-transparent;
+		}
+		.btn-outlined-secondary {
+			@apply border border-secondary bg-neutral-light text-secondary hover:bg-secondary hover:text-neutral-light hover:border-transparent;
+		}
+		.btn-outlined-success {
+			@apply border border-success bg-neutral-light text-success hover:bg-success-dark hover:text-neutral-light hover:border-transparent;
+		}
+		.btn-outlined-danger {
+			@apply border border-danger bg-neutral-light text-danger hover:bg-danger-dark hover:text-neutral-light hover:border-transparent;
+		}
+		.btn-outlined-info {
+			@apply border border-info bg-neutral-light text-info hover:bg-info-dark hover:text-neutral-light hover:border-transparent;
+		}
+		.btn-outlined-warning {
+			@apply border border-warning bg-neutral-light text-warning hover:bg-warning-dark hover:text-neutral-light hover:border-transparent;
+		}
+	}
+}

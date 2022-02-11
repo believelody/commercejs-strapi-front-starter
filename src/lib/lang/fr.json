@@ -300,10 +300,12 @@
         },
         "links": {
             "faq": "FAQ",
-            "gts": "Conditions Générales de Vente",
+            "tou": "Conditions Générales de Vente",
             "legal-notice": "Mentions légales",
             "contact": "Nous contacter",
-            "rgpd": "Protection des données"
+            "rgpd": "Protection des données",
+            "pp": "Politique de confidentialité",
+            "cp": "Politique relative aux cookies"
         }
     },
     "variants": {
