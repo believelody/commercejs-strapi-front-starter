@@ -15,7 +15,7 @@
 	<div class="w-full">
 		<!-- Desktop and tablet -->
 		<Dropdown class="hidden md:inline">
-			<h4 slot="header" class="w-full text-center">{$t("menu.categories.label")}</h4>
+			<p slot="header" class="w-full text-center">{$t("menu.categories.label")}</p>
 			<nav slot="content" class="w-36 border-2 rounded bg-gray-100 grid grid-rows-4 divide-y">
 				{#each links as item}
 					<a
@@ -29,7 +29,7 @@
 		</Dropdown>
 		<!-- Mobile -->
 		<Accordion class="w-full md:hidden" iconSize={6}>
-			<h4 slot="header">{$t("menu.categories.label")}</h4>
+			<p slot="header">{$t("menu.categories.label")}</p>
 			<nav slot="content" class="w-full grid grid-cols-1 divide-y">
 				{#each links as item}
 					<a

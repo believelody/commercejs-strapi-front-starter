@@ -5,7 +5,7 @@
     import Fields from '../field/Fields.svelte';
     import InputField from '../field/InputField.svelte';
 
-    let password = "", newPassword = "", hasError = false, loading;
+    let password = "", newPassword = "", hasError = false, loading = false, isValid = false;
     const { addNotification } = getNotificationsContext();
 
     async function submit() {

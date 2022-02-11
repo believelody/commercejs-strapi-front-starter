@@ -15,6 +15,7 @@
 
     async function submit() {
         loading = true;
+        let isValid = false;
         let username = "";
         let customerData = {};
         let userData = {};

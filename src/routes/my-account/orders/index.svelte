@@ -12,7 +12,7 @@
     import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
 import { localDateFromSeconds } from '../../../lib/utils/date.util';
 
-    let error = null, loading = false, currentPage = +$page.query.get("page"), pageSize = 6;
+    let error = null, loading = false, currentPage = +$page.url.searchParams.get("page"), pageSize = 6;
 
     async function getOrders() {
         loading = true;

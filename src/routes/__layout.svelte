@@ -50,13 +50,13 @@
 		on:closed={() => console.log("closed")}
 	>
 		<Sidebar />
-		{#if $page.path === '/checkout'}
+		{#if $page.url.pathname === '/checkout'}
 			<slot />
 		{:else}
 			<Header />
 			<div class="overflow-y-auto flex flex-col h-full">
 				<main class="flex flex-col flex-grow relative">
-					{#if ($navigating && !exceptRoute.some(route => $page.path.match(route)) || !jwt)}
+					{#if ($navigating && !exceptRoute.some(route => $page.url.pathname.match(route)) || !jwt)}
 						<MoonLoading />
 					{:else}
 						<slot />

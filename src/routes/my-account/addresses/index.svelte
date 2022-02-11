@@ -10,5 +10,5 @@
 </script>
 
 <HeaderTitle title={$t("account.addresses.title")} />
-<DisplayAddress items={shippings} type="shipping" information={$profile?.customer.meta.shipping} />
-<DisplayAddress items={billings} type="billing" information={$profile?.customer.meta.billing} />
+<DisplayAddress items={shippings} type="shipping" information={$profile?.customer.meta?.shipping} />
+<DisplayAddress items={billings} type="billing" information={$profile?.customer.meta?.billing} />
