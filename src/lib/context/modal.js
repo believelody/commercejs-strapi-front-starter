@@ -1,18 +1,18 @@
 import { get } from "svelte/store";
 import { media } from "$lib/stores";
-import AuthModal__SVelteComponent_ from "../components/modal/AuthModal.svelte";
-import AddressModal__SvelteComponent_ from "../components/modal/AddressModal.svelte";
-import ReviewImageViewerModal__SvelteComponent_ from "../components/modal/ReviewImageViewerModal.svelte";
-import AddReviewModal__SvelteComponent_ from "../components/modal/AddReviewModal.svelte";
-import ConfirmationEmailModal__SvelteComponent_ from "../components/modal/ConfirmationEmailModal.svelte";
-import DangerModal__SvelteComponent_ from "../components/modal/DangerModal.svelte";
-import ImageModal__SvelteComponent_ from "../components/modal/ImageModal.svelte";
-import InfoModal__SvelteComponent_ from "../components/modal/InfoModal.svelte";
-import ItemToCartSuccessModal__SvelteComponent_ from "../components/modal/ItemToCartSuccessModal.svelte";
-import LoadingModal__SvelteComponent_ from "../components/modal/ItemToCartSuccessModal.svelte";
-import OrderContactModal__SvelteComponent_ from "../components/modal/ItemToCartSuccessModal.svelte";
-import RegisterSuccessModal__SvelteComponent_ from "../components/modal/RegisterSuccessModal.svelte";
-import StripePaymentModal__SvelteComponent_ from "../components/modal/RegisterSuccessModal.svelte";
+import AuthModal__SVelteComponent_ from "../components/modals/AuthModal.svelte";
+import AddressModal__SvelteComponent_ from "../components/modals/AddressModal.svelte";
+import ReviewImageViewerModal__SvelteComponent_ from "../components/modals/ReviewImageViewerModal.svelte";
+import AddReviewModal__SvelteComponent_ from "../components/modals/AddReviewModal.svelte";
+import ConfirmationEmailModal__SvelteComponent_ from "../components/modals/ConfirmationEmailModal.svelte";
+import DangerModal__SvelteComponent_ from "../elements/modal/DangerModal.svelte";
+import ImageModal__SvelteComponent_ from "../components/modals/ImageModal.svelte";
+import InfoModal__SvelteComponent_ from "../elements/modal/InfoModal.svelte";
+import ItemToCartSuccessModal__SvelteComponent_ from "../components/modals/ItemToCartSuccessModal.svelte";
+import LoadingModal__SvelteComponent_ from "../components/modals/ItemToCartSuccessModal.svelte";
+import OrderContactModal__SvelteComponent_ from "../components/modals/ItemToCartSuccessModal.svelte";
+import RegisterSuccessModal__SvelteComponent_ from "../components/modals/RegisterSuccessModal.svelte";
+import StripePaymentModal__SvelteComponent_ from "../components/modals/RegisterSuccessModal.svelte";
 
 const $media = get(media);
 

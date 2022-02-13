@@ -47,7 +47,7 @@
 					<section class="flex flex-col w-1/2">
 						<span class="text-lg text-gray-800">{item.product_name}</span>
 						{#each item.variants as variant}
-							<span class="text-sm text-gray-600"
+							<span class="text-sm text-neutral-dark"
 								>{variant.variant_name} : {variant.option_name}</span
 							>
 						{/each}
@@ -88,7 +88,7 @@
 								</div>
 							</div>
 							{#each extractProductInfo(review.productId).variants as variant}
-								<div class="text-sm text-gray-600">
+								<div class="text-sm text-neutral-dark">
 									{variant.variant_name} : {variant.option_name}
 								</div>
 							{/each}

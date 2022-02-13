@@ -4,9 +4,9 @@
     import api from '$lib/api';
     import { t } from '$lib/i18n';
     import { shipping, billing, isBillingSameAsShipping, checkout, jwt } from '$lib/stores';
-    import AddressForm from "../form/AddressForm.svelte";
-    import CheckboxField from '../field/CheckboxField.svelte';
-    import AddressSidebarButton from '../button/AddressSidebarButton.svelte';
+    import AddressForm from "../forms/AddressForm.svelte";
+    import Checkbox from '../field/Checkbox.svelte';
+    import AddressSidebarButton from '../buttons/AddressSidebarButton.svelte';
 
     let checkoutId, countriesAvailableForShipping, isCountryAvailableForShipping = null;
     const dispatch = createEventDispatcher();
@@ -45,7 +45,7 @@
     {#if $shipping?.country && isCountryAvailableForShipping === false}
         <span class="text-red-400">{$t("checkout.address.country-not-available")}</span>
     {/if}
-    <CheckboxField
+    <Checkbox
         bind:checked={$isBillingSameAsShipping}
         name="isBillingSameAsShipping"
         label={$t("checkout.address.checkbox")}

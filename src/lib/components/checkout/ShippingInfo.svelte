@@ -4,7 +4,7 @@
 	export let shippingMethod, loading;
 </script>
 
-<div class="flex justify-between py-4 text-gray-600">
+<div class="flex justify-between py-4 text-neutral-dark">
 	<span>{$t("checkout.shipping.method")}</span>
 	{#if loading}
 		<span class="font-semibold text-indigo-500">

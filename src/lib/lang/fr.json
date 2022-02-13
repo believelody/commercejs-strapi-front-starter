@@ -516,6 +516,7 @@
             "failed": "Email ou mot de passe incorrect"
         },
         "register": {
+            "title": "Inscription",
             "submit": "Créer un compte",
             "loading": "Création du compte en cours...",
             "failed": "Cet email est déjà utilisé"
@@ -531,7 +532,7 @@
             "success": {
                 "title": "Email vérifié",
                 "link": "Aller à la page Mon compte",
-                "text": "<p class='text-md text-gray-600'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-gray-600 list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-center text-gray-600'>Vous pouvez fermer cette boite de dialogue</p>"
+                "text": "<p class='text-md text-neutral-dark'>Félicitations, votre email a bien été vérifié. Vous pouvez maintenant:</p><ul class='text-md text-neutral-dark list-disc list-inside m-1'><li>Accéder à votre profil ;</li><li>Visualiser vos commandes et les informations relatives à leur expédition ;</li><li>Nous contacter plus facilement sur un article commandé ;</li><li>Mettre à jour votre profil ;</li><li>Accéder à nos offres exclusives ;</li><li>Et bien plus encore ...</li></ul><p class='text-md text-center text-neutral-dark'>Vous pouvez fermer cette boite de dialogue</p>"
             }
         },
         "success": {
@@ -670,7 +671,7 @@
             "failed": {
                 "title": "Votre paiement n'a pas abouti",
                 "subtitle": "Nous sommes désolé, une erreur a été rencontré lors de votre paiement.",
-                "html-description": "<p class='text-md text-gray-600'>L'une des raisons ci-dessous peut en être la cause:<ol class='text-gray-600 list-disc list-inside pl-1'><li>Votre établissement bancaire a refusé le paiement à cause de fonds insuffisants;</li><li>La carte utilisée présente un haut risque de sécurité;</li><li>Le système de paiement n'est pas fonctionnel;</li><li>Les informations bancaires entrées sont incorrectes.</li></ol></p>",
+                "html-description": "<p class='text-md text-neutral-dark'>L'une des raisons ci-dessous peut en être la cause:<ol class='text-neutral-dark list-disc list-inside pl-1'><li>Votre établissement bancaire a refusé le paiement à cause de fonds insuffisants;</li><li>La carte utilisée présente un haut risque de sécurité;</li><li>Le système de paiement n'est pas fonctionnel;</li><li>Les informations bancaires entrées sont incorrectes.</li></ol></p>",
                 "action": {
                     "back-to-checkout": "Revenir au checkout"
                 }

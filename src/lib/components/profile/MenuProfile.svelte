@@ -3,8 +3,8 @@
     import api from "$lib/api";
     import { t } from "$lib/i18n";
     import { profile } from "$lib/stores";
-    import ImageUploadField from "../field/ImageUploadField.svelte";
-    import LogoutIcon from "../svg/LogoutIcon.svelte";
+    import ImageUpload from "../../elements/inputs/ImageUpload.svelte";
+    import LogoutIcon from "../../elements/icon/LogoutIcon.svelte";
 
     function logout() {
         api.auth.logout();
@@ -16,7 +16,7 @@
 </style>
 
 
-<ImageUploadField name="image" on:upload={e => console.log(e.detail)} class="w-full rounded-tl rounded-tr bg-gray-300 h-96" />
+<ImageUpload name="image" on:upload={e => console.log(e.detail)} class="w-full rounded-tl rounded-tr bg-gray-300 h-96" />
 <p class="font-medium text-md text-center py-4 border-b border-t border-gray-300">
     {#if $profile}
         {$profile.customer.firstname} {$profile.customer.lastname}

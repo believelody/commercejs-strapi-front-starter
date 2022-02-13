@@ -15,7 +15,7 @@
 			{/each}
 		</select>
 		<span
-			class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center"
+			class="absolute right-0 top-0 h-full w-10 text-center text-neutral-dark pointer-events-none flex items-center justify-center"
 		>
 			<svg
 				fill="none"

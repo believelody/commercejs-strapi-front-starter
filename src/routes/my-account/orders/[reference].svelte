@@ -8,16 +8,16 @@
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
     import ItemsOrderList from '../../../lib/components/order/ItemsOrderList.svelte';
     import DeliveryOrder from '../../../lib/components/order/DeliveryOrder.svelte';
-    import ReOrderButton from '../../../lib/components/button/ReOrderButton.svelte';
-    import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
+    import ReOrderButton from '../../../lib/components/buttons/ReOrderButton.svelte';
+    import InvoicePDFViewerButton from '../../../lib/components/buttons/InvoicePDFViewerButton.svelte';
     import AddressesOrder from '../../../lib/components/order/AddressesOrder.svelte';
-import PaymentOrder from '../../../lib/components/order/PaymentOrder.svelte';
-import ContactOrderButton from '../../../lib/components/button/ContactOrderButton.svelte';
+    import PaymentOrder from '../../../lib/components/order/PaymentOrder.svelte';
+    import ContactOrderButton from '../../../lib/components/buttons/ContactOrderButton.svelte';
     
     let data = null, error = null;
 
     async function getOrder() {
-        const res = await api.order.getOne($page.params.reference);
+        const res = await api.order.getOne($page.url.params.reference);
         if (res.success) {
             data = res.data;
         } else {

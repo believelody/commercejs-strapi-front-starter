@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	// import "../styles/tailwind-output.css";
+	import "../styles/tailwind-output.css";
 	import Modal from 'svelte-simple-modal';
 	import Notifications from 'svelte-notifications';
 	import { navigating, page } from '$app/stores';
@@ -8,9 +8,9 @@
 	import { cart, sidebar, locale, user, jwt, profile, media } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
-	import Sidebar from '$lib/components/sidebar/Sidebar.svelte';
+	import Sidebar from '$lib/elements/sidebar/Sidebar.svelte';
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
-	import Notification from "$lib/components/notifications/Notification.svelte";
+	import Notification from "$lib/elements/notification/Notification.svelte";
 	import Toolbar from '../lib/components/toolbar/Toolbar.svelte';
 
 	const exceptRoute = [/\/my-account/];

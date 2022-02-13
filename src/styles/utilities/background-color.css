@@ -26,46 +26,76 @@
 		.bg-neutral {
 			@apply bg-gray-400;
 		}
-		.bg-neutral-light {
+		.bg-neutral-light-2 {
 			@apply bg-gray-100;
 		}
-		.bg-neutral-dark {
+		.bg-neutral-light-1 {
+			@apply bg-gray-300;
+		}
+		.bg-neutral-dark-1 {
+			@apply bg-gray-500;
+		}
+		.bg-neutral-dark-2 {
 			@apply bg-gray-700;
 		}
 		.bg-success {
 			@apply bg-green-600;
 		}
-		.bg-success-light {
+		.bg-success-light-1 {
 			@apply bg-green-400;
 		}
-		.bg-success-dark {
+		.bg-success-light-2 {
+			@apply bg-green-200;
+		}
+		.bg-success-dark-1 {
+			@apply bg-green-700;
+		}
+		.bg-success-dark-2 {
 			@apply bg-green-800;
 		}
 		.bg-danger {
 			@apply bg-red-500;
 		}
-		.bg-danger-light {
+		.bg-danger-light-1 {
 			@apply bg-red-400;
 		}
-		.bg-danger-dark {
-			@apply bg-red-700;
+		.bg-danger-light-2 {
+			@apply bg-red-200;
+		}
+		.bg-danger-dark-1 {
+			@apply bg-red-600;
+		}
+		.bg-danger-dark-2 {
+			@apply bg-red-800;
 		}
 		.bg-info {
 			@apply bg-blue-600;
 		}
-		.bg-info-light {
+		.bg-info-light-1 {
 			@apply bg-blue-400;
 		}
-		.bg-info-dark {
+		.bg-info-light-2 {
+			@apply bg-blue-200;
+		}
+		.bg-info-dark-1 {
+			@apply bg-blue-700;
+		}
+		.bg-info-dark-2 {
 			@apply bg-blue-800;
 		}
 		.bg-warning {
 			@apply bg-yellow-500;
 		}
-		.bg-warning-light {
+		.bg-warning-light-1 {
+			@apply bg-yellow-200;
+		}
+		.bg-warning-light-2 {
 			@apply bg-yellow-400;
 		}
-		.bg-warning-dark {
+		.bg-warning-dark-1 {
+			@apply bg-yellow-600;
+		}
+		.bg-warning-dark-2 {
 			@apply bg-yellow-700;
 		}
 	}

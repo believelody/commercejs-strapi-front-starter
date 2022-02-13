@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import FullAddress from "../display/FullAddress.svelte";
+    import FullAddress from "../addresses/FullAddress.svelte";
     import { localDateFromSeconds } from '../../utils/date.util';
 
     export let data;
@@ -76,23 +76,23 @@
 
     <div class="flex flex-wrap -mx-1 border-b py-2 items-start">
         <div class="flex-1 px-1">
-            <p class="text-gray-600 uppercase tracking-wide text-xs font-bold">{$t("order.invoice.description")}</p>
+            <p class="text-neutral-dark uppercase tracking-wide text-xs font-bold">{$t("order.invoice.description")}</p>
         </div>
 
         <div class="px-1 w-32 text-right">
-            <p class="text-gray-600 uppercase tracking-wide text-xs font-bold">{$t("order.invoice.units")}</p>
+            <p class="text-neutral-dark uppercase tracking-wide text-xs font-bold">{$t("order.invoice.units")}</p>
         </div>
 
         <div class="px-1 w-32 text-right">
             <p class="leading-none">
-                <span class="block uppercase tracking-wide text-xs font-bold text-gray-600">{$t("order.invoice.price")}</span>
+                <span class="block uppercase tracking-wide text-xs font-bold text-neutral-dark">{$t("order.invoice.price")}</span>
                 <span class="font-medium text-xs text-gray-500">{$t("order.invoice.tax")}</span>
             </p>
         </div>
 
         <div class="px-1 w-32 text-right">
             <p class="leading-none">
-                <span class="block uppercase tracking-wide text-xs font-bold text-gray-600">{$t("order.invoice.item-total")}</span>
+                <span class="block uppercase tracking-wide text-xs font-bold text-neutral-dark">{$t("order.invoice.item-total")}</span>
                 <span class="font-medium text-xs text-gray-500">{$t("order.invoice.tax")}</span>
             </p>
         </div>
@@ -103,7 +103,7 @@
                 <div class="flex flex-wrap -mx-1 py-2 border-b">
                     <div class="flex-1 px-1">
                         <p class="text-gray-800">{item.name}</p>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-neutral-dark">
                             {#each item.variants as variant}
                                 <span>{variant.variant_name} :</span>
                                 <span class="font_medium mr-4">{variant.option_name}</span>
@@ -135,21 +135,21 @@
             </div>
         </div>
         <div class="flex justify-between mb-4">
-            <div class="text-sm text-gray-600 text-right flex-1">{$t("order.invoice.shipping-method")}</div>
+            <div class="text-sm text-neutral-dark text-right flex-1">{$t("order.invoice.shipping-method")}</div>
             <div class="text-right w-40">
-                <div class="text-sm text-gray-600">{data.order.shipping.description}</div>
+                <div class="text-sm text-neutral-dark">{data.order.shipping.description}</div>
             </div>
         </div>
         <div class="flex justify-between mb-4">
-            <div class="text-sm text-gray-600 text-right flex-1">{$t("order.invoice.price")}</div>
+            <div class="text-sm text-neutral-dark text-right flex-1">{$t("order.invoice.price")}</div>
             <div class="text-right w-40">
-                <div class="text-sm text-gray-600">{data.order.shipping.price.formatted_with_symbol}</div>
+                <div class="text-sm text-neutral-dark">{data.order.shipping.price.formatted_with_symbol}</div>
             </div>
         </div>
     
         <div class="py-2 border-t border-b">
             <div class="flex justify-between">
-                <div class="text-xl text-gray-600 text-right flex-1">{$t("order.invoice.total")}</div>
+                <div class="text-xl text-neutral-dark text-right flex-1">{$t("order.invoice.total")}</div>
                 <div class="text-right w-40">
                     <div class="text-xl text-gray-800 font-bold">{data.order.total_with_tax.formatted_with_symbol}</div>
                 </div>

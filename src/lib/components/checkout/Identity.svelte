@@ -1,9 +1,9 @@
 <script>
     import {t} from '$lib/i18n';
     import {profile} from '$lib/stores';
-    import AuthForm from '../form/AuthForm.svelte';
-    import GuestForm from '../form/GuestForm.svelte';
-    import CheckboxField from "../field/CheckboxField.svelte";
+    import AuthForm from '../forms/AuthForm.svelte';
+    import GuestForm from '../forms/GuestForm.svelte';
+    import Checkbox from "../field/Checkbox.svelte";
 
     let isGuest = false;
 </script>
@@ -18,7 +18,7 @@
         <GuestForm />
     {:else}
         {#if $profile?.customer}
-            <div class="mb-3 py-4 bg-white shadow-lg rounded text-gray-600 flex flex-col items-center justify-center">
+            <div class="mb-3 py-4 bg-white shadow-lg rounded text-neutral-dark flex flex-col items-center justify-center">
                 <span class="font-medium">{$t("identity.greetings.name", { name: `${$profile.customer.firstname} ${$profile.customer.lastname}`})}</span>
                 <span>{$t("identity.greetings.email", { email: `${$profile.customer.email}` })}</span>
                 {#if $profile.customer.phone}
@@ -30,7 +30,7 @@
         {/if}
     {/if}
     {#if !$profile?.customer}
-        <CheckboxField
+        <Checkbox
                 bind:checked={isGuest}
                 name="guest"
                 label={$t("identity.guest.checkbox")}

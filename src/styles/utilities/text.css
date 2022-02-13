@@ -24,7 +24,7 @@
 			@apply text-black;
 		}
 		.text-neutral {
-			@apply text-gray-400;
+			@apply text-gray-500;
 		}
 		.text-neutral-light {
 			@apply text-gray-100;

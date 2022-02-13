@@ -8,9 +8,9 @@
     import { orders } from '$lib/stores';
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
-    import ReOrderButton from '../../../lib/components/button/ReOrderButton.svelte';
-    import InvoicePDFViewerButton from '../../../lib/components/button/InvoicePDFViewerButton.svelte';
-import { localDateFromSeconds } from '../../../lib/utils/date.util';
+    import ReOrderButton from '../../../lib/components/buttons/ReOrderButton.svelte';
+    import InvoicePDFViewerButton from '../../../lib/components/buttons/InvoicePDFViewerButton.svelte';
+    import { localDateFromSeconds } from '../../../lib/utils/date.util';
 
     let error = null, loading = false, currentPage = +$page.url.searchParams.get("page"), pageSize = 6;
 

@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { t } from '$lib/i18n';
     import api from '$lib/api';
-    import DisplayVariantsList from '../display/DisplayVariantsList.svelte';
+    import VariantListDisplay from '../displays/VariantsListDisplay.svelte';
 
     export let item;
     let product, error;
@@ -29,5 +29,5 @@
 
 <a href={`/products/${product?.permalink}`} class="underline font-medium text-lg hover:text-blue-600">{item.name}</a>
 <div>{item.quantity} x {item.price.formatted_with_symbol}</div>
-<DisplayVariantsList variants={item.variants} style="disc" />
+<VariantListDisplay variants={item.variants} style="disc" />
 <div>{$t("common.subtotal")} : {item.line_total.formatted_with_symbol}</div>

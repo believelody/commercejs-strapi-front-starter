@@ -1,8 +1,8 @@
 <script>
     import { t } from "$lib/i18n";
     import { profile } from "$lib/stores";
-    import DisplayAddress from "$lib/components/display/DisplayAddress.svelte";
-    import HeaderTitle from "$lib/components/header/HeaderTitle.svelte";
+    import AddressDisplay from "../../../lib/components/displays/AddressDisplay.svelte";
+    import HeaderTitle from "../../../lib/components/header/HeaderTitle.svelte";
 
     $: addresses = $profile && $profile.addresses;
     $: shippings = addresses ? addresses.filter(address => address.type === "shipping") : [];
@@ -10,5 +10,5 @@
 </script>
 
 <HeaderTitle title={$t("account.addresses.title")} />
-<DisplayAddress items={shippings} type="shipping" information={$profile?.customer.meta?.shipping} />
-<DisplayAddress items={billings} type="billing" information={$profile?.customer.meta?.billing} />
+<AddressDisplay items={shippings} type="shipping" information={$profile?.customer.meta?.shipping} />
+<AddressDisplay items={billings} type="billing" information={$profile?.customer.meta?.billing} />

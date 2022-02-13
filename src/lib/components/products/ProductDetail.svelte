@@ -6,20 +6,20 @@
 	import { reviewsProduct } from "$lib/stores";
 	import Gallery from '../gallery/Gallery.svelte';
 	import Star from '../star/Star.svelte';
-	import FacebookIcon from '../svg/FacebookIcon.svelte';
-	import InstagramIcon from '../svg/InstagramIcon.svelte';
-	import TwitterIcon from '../svg/TwitterIcon.svelte';
+	import FacebookIcon from '../../elementscon/FacebookIcon.svelte';
+	import InstagramIcon from '../../elementscon/InstagramIcon.svelte';
+	import TwitterIcon from '../../elementscon/TwitterIcon.svelte';
 	import Colors from '../variants/Colors.svelte';
 	import Sizes from '../variants/Sizes.svelte';
-	import AddToCartBtn from '../cart/AddToCartBtn.svelte';
+	import AddToCartBtn from '../buttons/AddToCartBtn.svelte';
 	import Quantity from '../quantity/Quantity.svelte';
-	import WishlistButton from '../button/WishlistButton.svelte';
+	import WishlistButton from '../buttons/WishlistButton.svelte';
 	import ProductAttributes from "./ProductAttributes.svelte";
 	import RelatedProducts from "./RelatedProducts.svelte";
 	import ShippingBadge from '../badges/ShippingBadge.svelte';
 	import SecurityBadge from '../badges/SecurityBadge.svelte';
 	import PaymentBadge from '../badges/PaymentBadge.svelte';
-import Card from '../card/Card.svelte';
+	import Card from '../card/Card.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -67,7 +67,7 @@ import Card from '../card/Card.svelte';
 				<svelte:fragment slot="content">
 					<div class="flex my-2">
 						{#if score > 0}
-							<a href={`${$page.path}/reviews`} class="flex items-center hover:underline">
+							<a href={`${$page.url.pathname}/reviews`} class="flex items-center hover:underline">
 								{#if !loading}
 									<Star nb={score} /> {score}/5
 									<span class="ml-4">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
@@ -79,9 +79,9 @@ import Card from '../card/Card.svelte';
 							<span class="flex items-center">
 								{#if !loading}
 									<Star nb={score} /> {score}/5
-									<span class="text-gray-600 ml-3">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
+									<span class="text-neutral-dark ml-3">{$reviewsProduct.length} {$t("product.detail.reviews")}</span>
 								{:else}
-									<span class="text-gray-600 ml-3">{$t("common.update")}</span>
+									<span class="text-neutral-dark ml-3">{$t("common.update")}</span>
 								{/if}
 							</span>
 						{/if}

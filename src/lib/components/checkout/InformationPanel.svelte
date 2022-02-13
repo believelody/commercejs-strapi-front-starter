@@ -6,11 +6,11 @@
     import Addresses from './Addresses.svelte';
     import Identity from './Identity.svelte';
     import Payment from './Payment.svelte';
-    import ArrowRightIcon from '../svg/ArrowRightIcon.svelte';
+    import ArrowRightIcon from '../../elements/icon/ArrowRightIcon.svelte';
     import ShippingMethods from './ShippingMethods.svelte';
-    import StripePaymentButton from '../button/StripePaymentButton.svelte';
-    import PaypalPaymentButton from '../button/PaypalPaymentButton.svelte';
-    import Discount from '../discount/Discount.svelte';
+    import StripePaymentButton from '../buttons/StripePaymentButton.svelte';
+    import PaypalPaymentButton from '../buttons/PaypalPaymentButton.svelte';
+    import DiscountForm from '../forms/DiscountForm.svelte';
 
 	let cardElement, isCountryAvailable = true, isCardComplete = false;
 
@@ -42,7 +42,7 @@
     <div class="flex flex-col flex-grow overflow-y-hidden">
         <div class="h-full overflow-y-auto">
             <Identity />
-            <Discount />
+            <DiscountForm />
             <Addresses on:isCountryAvailable={({ detail }) => isCountryAvailable = detail.isCountryAvailableForShipping} />
             {#if $shipping?.country}
                 <ShippingMethods />

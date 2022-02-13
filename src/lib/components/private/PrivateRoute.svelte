@@ -3,7 +3,7 @@
     import { navigating } from '$app/stores';
     import { jwt, orders } from '$lib/stores';
     import MoonLoading from "../loading/MoonLoading.svelte";
-    import CenterSection from "../center-section/CenterSection.svelte";
+    import CenterSection from "../../elements/center-section/CenterSection.svelte";
 
     let isAuth = false;
 

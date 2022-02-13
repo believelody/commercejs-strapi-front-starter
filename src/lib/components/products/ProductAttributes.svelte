@@ -1,12 +1,12 @@
 <script>
     import { t } from "$lib/i18n";
     import HeaderTitle from "../header/HeaderTitle.svelte";
-    import ModalBox from "../box/ModalBox.svelte";
+    import Box from "../box/Box.svelte";
 
     export let attributes;
 </script>
 
-<ModalBox class="border rounded">
+<Box class="border rounded">
     <HeaderTitle textSize="2xl" title={$t("product.detail.characteristics")} />
     <ul class="flex flex-col lg:flex-row lg:justify-between lg:flex-wrap">
         {#each attributes as attribute}
@@ -20,4 +20,4 @@
             </li>
         {/each}
     </ul>
-</ModalBox>
+</Box>

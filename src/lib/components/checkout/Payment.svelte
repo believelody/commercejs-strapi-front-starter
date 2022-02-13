@@ -3,8 +3,8 @@
 	import { t } from '$lib/i18n';
 	import { stripe, checkout, paymentMethod } from '$lib/stores';
 	import { Card, Container } from 'svelte-stripe-js';
-	import RadioField from '../field/RadioField.svelte';
-	import PaypalIcon from '../svg/PaypalIcon.svelte';
+	import Radio from '../field/Radio.svelte';
+	import PaypalIcon from '../../elements/icon/PaypalIcon.svelte';
 
 	export let cardElement;
 
@@ -32,9 +32,9 @@
 	<h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
 		{$t("checkout.payment.title")}
 	</h2>
-	<fieldset class="mb-3 py-2 pl-2 bg-white shadow-lg rounded text-gray-600">
+	<fieldset class="mb-3 py-2 pl-2 bg-white shadow-lg rounded text-neutral-dark">
 		{#if gateways.stripe && $stripe}
-			<RadioField
+			<Radio
 				name="paymentMethod"
 				value="stripe"
 				className="flex items-center pb-2 border-b border-gray-300"
@@ -50,9 +50,9 @@
 						</div>
 					{/if}
 				</div>
-			</RadioField>
+			</Radio>
 		{/if}
-		<RadioField
+		<Radio
 			name="paymentMethod"
 			value="paypal"
 			className="flex items-center pt-2"
@@ -62,7 +62,7 @@
 				<span class="mr-2">{$t("checkout.payment.method.paypal", { amount: $checkout.live.total.formatted_with_code })}</span>
 				<PaypalIcon />
 			</div>
-		</RadioField>
+		</Radio>
 	</fieldset>
 </div>
 

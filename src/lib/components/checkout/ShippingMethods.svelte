@@ -2,7 +2,7 @@
     import { t } from '$lib/i18n';
     import { shipping, checkout, checkoutLoading } from '$lib/stores'
     import api from '$lib/api';
-    import RadioField from "../field/RadioField.svelte";
+    import Radio from "../field/Radio.svelte";
 
     async function selectShippingMethod(id) {
         $checkoutLoading = true;
@@ -19,9 +19,9 @@
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
 		{$t("checkout.shipping-methods.title")}
 	</h2>
-    <fieldset class="mb-3 px-4 bg-white shadow-lg rounded text-gray-600 flex justify-around">
+    <fieldset class="mb-3 px-4 bg-white shadow-lg rounded text-neutral-dark flex justify-around">
         {#each $checkout.shipping_methods as method}
-            <RadioField
+            <Radio
                 label={`${method.description} - ${method.price.formatted_with_symbol}`}
                 name="shippingMethod"
                 value={method}

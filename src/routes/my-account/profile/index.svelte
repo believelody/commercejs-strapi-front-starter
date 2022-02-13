@@ -1,12 +1,12 @@
 <script>
     import { t } from '$lib/i18n';
-    import PasswordForm from '../../../lib/components/form/PasswordForm.svelte';
-    import ProfileForm from "../../../lib/components/form/ProfileForm.svelte";
+    import PasswordForm from '../../../lib/components/forms/PasswordForm.svelte';
+    import ProfileForm from "../../../lib/components/forms/ProfileForm.svelte";
     import HeaderTitle from "../../../lib/components/header/HeaderTitle.svelte";
 </script>
 
 <HeaderTitle title={$t("account.profile.title")} />
-<div class="w-full lg:w-4/5">
+<div class="grid grid-cols-1 gap-4 mb-4">
     <ProfileForm />
     <PasswordForm />
 </div>

@@ -4,7 +4,7 @@
     import {t} from '$lib/i18n';
     import {cart, checkout, sidebar} from '$lib/stores';
     import api from '$lib/api';
-    import TrashIcon from '../svg/TrashIcon.svelte';
+    import TrashIcon from '../../elements/icon/TrashIcon.svelte';
     import { openDangerModal } from '../../context/modal';
 
     export let items, loading;

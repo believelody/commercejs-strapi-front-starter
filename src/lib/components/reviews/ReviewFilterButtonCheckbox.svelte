@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
 	import { t } from '$lib/i18n';
-	import CheckboxField from '../field/CheckboxField.svelte';
+	import Checkbox from '../field/Checkbox.svelte';
 	import Star from '../star/Star.svelte';
 
 	export let reviews;
@@ -30,7 +30,7 @@
     </section>
 	<section>
 		<button on:click={() => filterReview(5)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<CheckboxField checked={filters.some((filter) => filter === 5)} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 5)} name="filters" />
 			<Star nb={5} />
 			<span class="ml-4"
 				>{reviews.filter((review) => review.ratings === 5).length}
@@ -38,7 +38,7 @@
 			>
 		</button>
 		<button on:click={() => filterReview(4)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<CheckboxField checked={filters.some((filter) => filter === 4)} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 4)} name="filters" />
 			<Star nb={4} />
 			<span class="ml-4"
 				>{reviews.filter((review) => review.ratings === 4).length}
@@ -46,7 +46,7 @@
 			>
 		</button>
 		<button on:click={() => filterReview(3)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<CheckboxField checked={filters.some((filter) => filter === 3)} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 3)} name="filters" />
 			<Star nb={3} />
 			<span class="ml-4"
 				>{reviews.filter((review) => review.ratings === 3).length}
@@ -54,7 +54,7 @@
 			>
 		</button>
 		<button on:click={() => filterReview(2)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<CheckboxField checked={filters.some((filter) => filter === 2)} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 2)} name="filters" />
 			<Star nb={2} />
 			<span class="ml-4"
 				>{reviews.filter((review) => review.ratings === 2).length}
@@ -62,7 +62,7 @@
 			>
 		</button>
 		<button on:click={() => filterReview(1)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<CheckboxField checked={filters.some((filter) => filter === 1)} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 1)} name="filters" />
 			<Star nb={1} />
 			<span class="ml-4"
 				>{reviews.filter((review) => review.ratings === 1).length}
@@ -73,7 +73,7 @@
 			on:click={() => filterReview('images')}
 			class="w-auto p-2 hover:bg-gray-200 flex items-center"
 		>
-			<CheckboxField checked={filters.some((filter) => filter === 'images')} name="filters" />
+			<Checkbox checked={filters.some((filter) => filter === 'images')} name="filters" />
 			{$t('review.product.filter.with-images')}
 			<span class="ml-4"
 				>{reviews.filter((review) => review.images.length).length}

@@ -1,7 +1,7 @@
 <script>
     import { t } from "$lib/i18n";
-    import InputField from "../field/InputField.svelte";
-    import SearchIcon from "../svg/SearchIcon.svelte";
+    import TextInput from "../../elements/inputs/TextInput.svelte";
+    import SearchIcon from "../../elements/icon/SearchIcon.svelte";
 
     let search = "";
 
@@ -11,7 +11,7 @@
 </script>
 
 <div class="hidden md:flex md:items-center md:justify-center flex-grow">
-    <InputField
+    <TextInput
         search
         transparent
         on:input={({ target }) => search = target.value}

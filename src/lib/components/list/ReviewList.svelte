@@ -11,7 +11,7 @@
 	import { openReviewViewerModal } from '../../context/modal';
 
 	export let reviews,
-		currentPage = +$page.query.get('page') || 1,
+		currentPage = +$page.url.searchParams.get('page') || 1,
 		pageSize = 6;
 	const { open } = getContext('simple-modal');
 

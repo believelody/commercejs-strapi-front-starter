@@ -22,7 +22,7 @@ const config = {
 			}
 		},
 		files: {
-			lib: ["src/lib"]
+			lib: "src/lib"
 		}
 	}
 };

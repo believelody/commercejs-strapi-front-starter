@@ -1,9 +1,9 @@
 <script>
     import { t } from "$lib/i18n";
-    import TrustBadge from "./TrustBadge.svelte";
-    import PlusIcon from "../svg/PlusIcon.svelte";
-    import BankCardIcon from "../svg/BankCardIcon.svelte";
-    import PaypalIcon from "../svg/PaypalIcon.svelte";
+    import TrustBadge from "../../elements/badge/TrustBadge.svelte";
+    import PlusIcon from "../../elements/icon/PlusIcon.svelte";
+    import BankCardIcon from "../../elements/icon/BankCardIcon.svelte";
+    import PaypalIcon from "../../elements/icon/PaypalIcon.svelte";
 </script>
 
 <style>

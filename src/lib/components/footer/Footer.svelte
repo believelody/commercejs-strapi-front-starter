@@ -1,20 +1,20 @@
 <script>
-    import SubscriptionForm from '../form/SubscriptionForm.svelte';
-	import Links from '../links/Links.svelte';
-	import FacebookIcon from '../svg/FacebookIcon.svelte';
-	import InstagramIcon from '../svg/InstagramIcon.svelte';
-	import LinkedinIcon from '../svg/LinkedinIcon.svelte';
-	import TwitterIcon from '../svg/TwitterIcon.svelte';
+    import SubscriptionForm from '../forms/SubscriptionForm.svelte';
+	import ExtraLinks from '../links/ExtraLinks.svelte';
+	import FacebookIcon from '../../elements/icon/FacebookIcon.svelte';
+	import InstagramIcon from '../../elements/icon/InstagramIcon.svelte';
+	import LinkedinIcon from '../../elements/icon/LinkedinIcon.svelte';
+	import TwitterIcon from '../../elements/icon/TwitterIcon.svelte';
 </script>
 
-<footer class="text-gray-600 body-font">
+<footer class="text-neutral-dark body-font">
 	<div class="container flex md:px-5 md:py-4 mx-auto">
 		<div class="md:w-1/2 w-full px-4 py-2 md:py-0 border-t md:border-t-0">
 			<SubscriptionForm />
 		</div>
         <div class="hidden md:inline md:w-1/2 md:px-4">
             <!-- <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2> -->
-            <Links />
+            <ExtraLinks />
         </div>
 	</div>
 	<div class="bg-gray-100">
@@ -39,7 +39,7 @@
 					<a
 						href="https://twitter.com/knyttneve"
 						rel="noopener noreferrer"
-						class="text-gray-600 ml-1"
+						class="text-neutral-dark ml-1"
 						target="_blank"
 					>
 						@knyttneve

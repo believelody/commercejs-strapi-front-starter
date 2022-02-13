@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import OrderAccordion from "../accordion/OrderAccordion.svelte";
-    import FullAddress from '../display/FullAddress.svelte';
+    import FullAddress from '../addresses/FullAddress.svelte';
 
     export let shipping, billing;
 </script>

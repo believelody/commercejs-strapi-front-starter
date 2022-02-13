@@ -26,11 +26,13 @@
     });
 </script>
 
-<div class="container flex h-full lg:justify-between mx-auto lg:mt-4">
-    <aside class="sticky top-0 inset-x-0 hidden md:w-1/3 xl:w-1/4 h-full border shadow-lg rounded lg:flex lg:flex-col md:mr-2 xl:mr-6">
-        <MenuProfile />
+<div class="relative container mx-auto grid grid-rows-1 gap-4 lg:mt-4">
+    <aside class="hidden lg:flex lg:flex-col">
+        <div class="sticky top-0 inset-x-0 border shadow-lg rounded">
+            <MenuProfile />
+        </div>
     </aside>
-    <article class="relative bg-indigo-100 flex flex-col items-center h-full w-full md:w-2/3 xl:w-3/4 xl:ml-6 rounded lg:shadow-lg">
+    <article class="relative bg-primary-light-2 lg:col-start-2 lg:col-span-3 flex flex-col items-center h-full rounded lg:shadow-lg">
         <PrivateRoute>
             <slot />
         </PrivateRoute>
