@@ -1,7 +1,7 @@
 <script>
     import Button from "./Button.svelte";
 
-    export let variant = "default";
+    export let outlined = false;
 
     let className;
 
@@ -12,6 +12,6 @@
     /* your styles go here */
 </style>
 
-<Button on:click class="btn-primary {className || ''}" {...$$restProps}>
+<Button on:click class="{outlined ? 'btn-outlined-primary' : 'btn-primary'} {className || ''}" {...$$restProps}>
     <slot />
 </Button>

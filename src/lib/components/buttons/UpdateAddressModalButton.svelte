@@ -1,6 +1,7 @@
 <script>
     import { getContext } from "svelte";
     import { t } from '$lib/i18n';
+    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
     import { openAddressModal } from "../../context/modal";
 
     export let information;
@@ -11,6 +12,6 @@
     /* your styles go here */
 </style>
 
-<button on:click={() => openAddressModal(open, { title: $t(`account.addresses.${information.type}.label`), type: information.type, information, action: "update" })} class="bg-indigo-300 py-1 px-3 rounded disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed" {...$$restProps}>
+<PrimaryButton outlined on:click={() => openAddressModal(open, { title: $t(`account.addresses.${information.type}.label`), type: information.type, information, action: "update" })} {...$$restProps}>
     {$t("account.addresses.update")}
-</button>
+</PrimaryButton>
