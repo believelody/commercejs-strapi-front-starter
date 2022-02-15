@@ -1,8 +1,8 @@
 <script>
-	import CheckCircleIcon from "../../elements/icon/CheckCircleIcon.svelte";
-	import DangerIcon from "../../elements/icon/DangerIcon.svelte";
+	import CheckCircleIcon from "$lib/elements/icon/CheckCircleIcon.svelte";
+	import DangerIcon from "$lib/elements/icon/DangerIcon.svelte";
 	import Box from "../box/Box.svelte";
-import InfoCircleIcon from "../../elements/icon/InfoCircleIcon.svelte";
+import InfoCircleIcon from "$lib/elements/icon/InfoCircleIcon.svelte";
 
 	export let title, description, status = "info";
 </script>

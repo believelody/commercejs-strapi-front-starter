@@ -32,7 +32,7 @@
             <MenuProfile />
         </div>
     </aside>
-    <article class="relative bg-primary-light-2 lg:col-start-2 lg:col-span-3 flex flex-col items-center h-full rounded lg:shadow-lg">
+    <article class="relative bg-primary-light-2 lg:col-start-2 lg:col-span-3 flex flex-col items-center h-full rounded lg:shadow-lg pb-0 lg:pb-4">
         <PrivateRoute>
             <slot />
         </PrivateRoute>

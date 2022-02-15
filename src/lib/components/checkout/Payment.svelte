@@ -4,7 +4,7 @@
 	import { stripe, checkout, paymentMethod } from '$lib/stores';
 	import { Card, Container } from 'svelte-stripe-js';
 	import Radio from '../field/Radio.svelte';
-	import PaypalIcon from '../../elements/icon/PaypalIcon.svelte';
+	import PaypalIcon from '$lib/elements/icon/PaypalIcon.svelte';
 
 	export let cardElement;
 

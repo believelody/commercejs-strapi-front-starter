@@ -4,8 +4,9 @@
     import { t } from '$lib/i18n';
     import api from "$lib/api";
     import { jwt, profile, user } from '$lib/stores';
-    import HeartCircleIcon from "../../elements/icon/HeartCircleIcon.svelte";
+    import HeartCircleIcon from "$lib/elements/icon/HeartCircleIcon.svelte";
     import { openAuthModal, openConfirmationEMailModal } from '../../context/modal';
+import IconButton from '../../elements/button/IconButton.svelte';
     
     export let product;
     let wishlist, isInWishlist = false;
@@ -63,7 +64,12 @@
     {#if wishlist?.users.length}
         <span class="mr-2 text-center text-2xl w-full">{wishlist.users.length}</span>
     {/if}
-    <button on:click={putInWishlist} class="rounded-full w-16 h-16 px-3 bg-gray-200 flex items-center justify-center">
-        <HeartCircleIcon size={10} color={isInWishlist ? "red-500" : ""} />
-    </button>
+    <IconButton
+        on:click={putInWishlist}
+        shape="circle"
+        class="w-16 h-16 px-3"
+        icon={HeartCircleIcon}
+        size={10}
+        color={isInWishlist ? "red-500" : ""}
+    />
 </div>

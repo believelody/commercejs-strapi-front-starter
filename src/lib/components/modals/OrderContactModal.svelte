@@ -5,7 +5,7 @@
     import api from "$lib/api";
     import { requiredFieldsValidation } from "../../utils/form.util";
     import ContactForm from "../forms/ContactForm.svelte";
-    import WithActionModal from "../../elements/WithActionModal.svelte";
+    import WithActionModal from "$lib/elements/WithActionModal.svelte";
 
     export let reference, customer, orderId;
     let information = { email: customer.email }, loading = false, error;

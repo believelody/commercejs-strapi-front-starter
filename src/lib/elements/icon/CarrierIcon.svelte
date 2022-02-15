@@ -1,6 +1,7 @@
 <script>
 	export let size = 8,
-		color = 'black';
+		color = 'black',
+		strokeWidth = 1;
 </script>
 
 <svg
@@ -8,7 +9,7 @@
 	width="24"
 	height="24"
 	viewBox="0 0 24 24"
-	stroke-width="1"
+	stroke-width={strokeWidth}
 	stroke="currentColor"
 	fill="none"
 	stroke-linecap="round"

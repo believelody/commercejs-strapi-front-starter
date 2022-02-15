@@ -1,7 +1,7 @@
 <script>
     import { t } from "$lib/i18n";
-    import CarrierIcon from "../../elements/icon/CarrierIcon.svelte";
-    import TrustBadge from "../../elements/badge/TrustBadge.svelte";
+    import CarrierIcon from "$lib/elements/icon/CarrierIcon.svelte";
+    import TrustBadge from "$lib/elements/badge/TrustBadge.svelte";
 </script>
 
 <style>

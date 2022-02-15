@@ -1,5 +1,5 @@
 <script>
-	import Gallery from '../../elements/gallery/Gallery.svelte';
+	import Gallery from '$lib/elements/gallery/Gallery.svelte';
 
 	export let images, selectedIndex;
 </script>

@@ -1,13 +1,13 @@
 <script>
     import SubscriptionForm from '../forms/SubscriptionForm.svelte';
 	import ExtraLinks from '../links/ExtraLinks.svelte';
-	import FacebookIcon from '../../elements/icon/FacebookIcon.svelte';
-	import InstagramIcon from '../../elements/icon/InstagramIcon.svelte';
-	import LinkedinIcon from '../../elements/icon/LinkedinIcon.svelte';
-	import TwitterIcon from '../../elements/icon/TwitterIcon.svelte';
+	import FacebookIcon from '$lib/elements/icon/FacebookIcon.svelte';
+	import InstagramIcon from '$lib/elements/icon/InstagramIcon.svelte';
+	import LinkedinIcon from '$lib/elements/icon/LinkedinIcon.svelte';
+	import TwitterIcon from '$lib/elements/icon/TwitterIcon.svelte';
 </script>
 
-<footer class="text-neutral-dark body-font">
+<footer class="text-neutral-dark body-font border-t mt-4">
 	<div class="container flex md:px-5 md:py-4 mx-auto">
 		<div class="md:w-1/2 w-full px-4 py-2 md:py-0 border-t md:border-t-0">
 			<SubscriptionForm />

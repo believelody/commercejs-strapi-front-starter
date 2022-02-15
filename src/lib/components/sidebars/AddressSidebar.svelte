@@ -2,7 +2,7 @@
     import { t } from '$lib/i18n';
     import { profile } from '$lib/stores'
     import AddressList from '../list/AddressList.svelte';
-    import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
+    import SidebarWrapper from "$lib/elements/sidebar/SidebarWrapper.svelte";
     import CreateAddressModalButton from '../buttons/CreateAddressModalButton.svelte';
 
     export let type;

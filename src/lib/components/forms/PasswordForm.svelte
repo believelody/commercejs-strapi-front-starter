@@ -2,9 +2,9 @@
     import { getNotificationsContext } from 'svelte-notifications';
     import api from '$lib/api';
     import { t } from '$lib/i18n';
-    import TextInput from '../../elements/inputs/TextInput.svelte';
-    import Form from '../../elements/form/Form.svelte';
-import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+    import TextInput from '$lib/elements/inputs/TextInput.svelte';
+    import Form from '$lib/elements/form/Form.svelte';
+import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
 
     let password = "", newPassword = "", hasError = false, loading = false, isValid = false;
     const { addNotification } = getNotificationsContext();

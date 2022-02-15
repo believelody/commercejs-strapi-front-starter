@@ -5,6 +5,7 @@
 	import WithActionModal from '../../elements/modal/WithActionModal.svelte';
 	import CartSidebar from "../sidebars/CartSidebar.svelte";
 	import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
+	import SuccessButton from "../../elements/button/SuccessButton.svelte";
 
 	export let product, selectedColor, selectedSize, quantity;
 	const { close } = getContext("simple-modal");
@@ -17,9 +18,9 @@
 
 <WithActionModal cancelText={$t("product.modal.cta.continue-shopping")}>
 	<span slot="header">{$t("product.modal.title", {article: product.name})}</span>
-	<CheckCircleIcon slot="icon" />
+	<CheckCircleIcon color="success" slot="icon" />
 	<svelte:fragment slot="content">
-		<p class="text-md text-neutral-dark">
+		<p class="text-lg text-neutral-dark">
 			{$t("product.modal.description")}
 		</p>
 		<ul class="text-md mt-3 text-neutral-dark list-disc list-inside">
@@ -33,12 +34,11 @@
 			<li>{$t("product.detail.quantity")}: {quantity}</li>
 		</ul>
 	</svelte:fragment>
-	<button
-		type="button"
+	<SuccessButton
 		on:click={showCart}
 		slot="action"
-		class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
+		class="w-full"
 	>
 		{$t("product.modal.cta.check-cart")}
-	</button>
+	</SuccessButton>
 </WithActionModal>

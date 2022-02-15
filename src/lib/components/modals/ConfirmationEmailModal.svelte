@@ -3,8 +3,8 @@
     import {t} from '$lib/i18n';
     import api from '$lib/api';
     import ConfirmationEmailForm from "../forms/ConfirmationEmailForm.svelte";
-    import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
-    import Box from "../../elements/box/Box.svelte";
+    import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
+    import Box from "$lib/elements/box/Box.svelte";
 
     let success = false;
     const { close } = getContext("simple-modal");

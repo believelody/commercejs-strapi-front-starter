@@ -4,6 +4,7 @@
     import api from "$lib/api";
     import { t } from '$lib/i18n'
     import { openItemToCartSuccessModal } from "../../context/modal";
+    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
 
     export let product, quantity, selectedColor, selectedSize;
     let loading = false;
@@ -31,14 +32,14 @@
     }
 </script>
 
-<button
-	class="flex text-white text-lg bg-indigo-500 py-4 px-6 focus:outline-none hover:bg-indigo-600 rounded disabled:opacity-75 disabled:cursor-not-allowed"
+<PrimaryButton
     on:click={addItem}
     disabled={loading}
+    big
 >
 	{#if loading}
         {$t("product.cart.adding")}
     {:else}
         {$t("product.cart.add")}
     {/if}
-</button>
+</PrimaryButton>

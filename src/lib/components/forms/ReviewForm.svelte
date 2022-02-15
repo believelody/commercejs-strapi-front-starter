@@ -3,11 +3,11 @@
     import { getNotificationsContext } from 'svelte-notifications';
     import api from "$lib/api";
     import { t } from '$lib/i18n';
-    import Fields from "../../elements/form/Form.svelte";
-    import File from '../../elements/inputs/File.svelte';
-    import Textarea from "../../elements/inputs/Textarea.svelte";
+    import Fields from "$lib/elements/form/Form.svelte";
+    import File from '$lib/elements/inputs/File.svelte';
+    import Textarea from "$lib/elements/inputs/Textarea.svelte";
     import SelectStar from '../stars/SelectStar.svelte';
-import Form from '../../elements/form/Form.svelte';
+import Form from '$lib/elements/form/Form.svelte';
     
     export let item, review, withoutShadow = false;
     let description = review?.description ?? "",

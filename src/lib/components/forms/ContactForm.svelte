@@ -1,8 +1,8 @@
 <script>
     import { t } from '$lib/i18n';
     import { createEventDispatcher } from 'svelte';
-import Form from '../../elements/form/Form.svelte';
-    import Fields from "../../elements/form/Form.svelte";
+import Form from '$lib/elements/form/Form.svelte';
+    import Fields from "$lib/elements/form/Form.svelte";
     import Select from "../field/Select.svelte";
     import Textarea from "../field/Textarea.svelte";
 

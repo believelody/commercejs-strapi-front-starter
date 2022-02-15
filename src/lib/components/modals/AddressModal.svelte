@@ -2,7 +2,7 @@
     import { getContext } from "svelte";
     import { t } from '$lib/i18n';
     import AddressForm from "../forms/AddressForm.svelte";
-    import Box from "../../elements/box/Box.svelte";
+    import Box from "$lib/elements/box/Box.svelte";
     import { openInfoModal } from "../../context/modal";
 
     export let title, information, type, action;

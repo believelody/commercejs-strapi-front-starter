@@ -3,9 +3,9 @@
     import { t } from '$lib/i18n';
     import api from '$lib/api';
     import { emailValidation } from '../../utils/form.util';
-    import TextInput from '../../elements/inputs/TextInput.svelte';
-    import Fields from '../../elements/form/Form.svelte';
-import Form from '../../elements/form/Form.svelte';
+    import TextInput from '$lib/elements/inputs/TextInput.svelte';
+    import Fields from '$lib/elements/form/Form.svelte';
+import Form from '$lib/elements/form/Form.svelte';
 
     export let withoutShadow = false, title;
     let identifier, password, loading = false, hasError = false;

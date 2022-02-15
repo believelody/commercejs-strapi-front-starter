@@ -2,7 +2,7 @@
 	import { t } from '$lib/i18n';
     import { localDateFromSeconds } from '../../utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
-	import FilePDFIcon from '../../elements/icon/FilePDFIcon.svelte';
+	import FilePDFIcon from '$lib/elements/icon/FilePDFIcon.svelte';
 
 	export let data;
 	let printContent,

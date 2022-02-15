@@ -2,10 +2,10 @@
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
     import api from '$lib/api';
-    import TextInput from '../../elements/inputs/TextInput.svelte';
+    import TextInput from '$lib/elements/inputs/TextInput.svelte';
     import { emailValidation } from '../../utils/form.util';
-    import Fields from '../../elements/form/Form.svelte';
-import Form from '../../elements/form/Form.svelte';
+    import Fields from '$lib/elements/form/Form.svelte';
+import Form from '$lib/elements/form/Form.svelte';
 
     export let withoutShadow = false, title;
     let firstname, lastname, email, password, loading = false, hasError = false;

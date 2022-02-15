@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import InfoModal from '../../elements/modal/InfoModal.svelte';
+    import InfoModal from '$lib/elements/modal/InfoModal.svelte';
 
     export let fullname;
 </script>

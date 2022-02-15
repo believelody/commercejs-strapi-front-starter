@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import DangerIcon from '../../elements/icon/DangerIcon.svelte';
+    import DangerIcon from '$lib/elements/icon/DangerIcon.svelte';
     import {getContext} from "svelte";
 
     const { close } = getContext("simple-modal");

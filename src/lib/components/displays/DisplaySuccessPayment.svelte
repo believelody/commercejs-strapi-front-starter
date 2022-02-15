@@ -2,7 +2,7 @@
     import {getContext} from "svelte";
 	import { t } from '$lib/i18n';
     import { resetStores } from '$lib/stores';
-    import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
+    import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
     import FullAddress from '../addresses/FullAddress.svelte';
 
     export let live, user, shipping, billing, isBillingSameAsShipping, reference;

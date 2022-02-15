@@ -2,7 +2,7 @@
     import { getContext } from 'svelte';
     import api from '$lib/api';
     import { reviewsUser } from "$lib/stores";
-    import Box from "../../elements/box/Box.svelte";
+    import Box from "$lib/elements/box/Box.svelte";
     import ReviewForm from "../forms/ReviewForm.svelte";
 
     export let item, review;

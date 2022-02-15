@@ -5,7 +5,7 @@
     import { jwt } from '$lib/stores';
     import LoginForm from '../forms/LoginForm.svelte';
     import RegisterForm from '../forms/RegisterForm.svelte';
-    import Box from "../../elements/box/Box.svelte";
+    import Box from "$lib/elements/box/Box.svelte";
     import { openConfirmationEMailModal } from "../../context/modal";
 
     let isLogin = true;

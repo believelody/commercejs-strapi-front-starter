@@ -1,20 +1,21 @@
 <script>
 	import { t } from '$lib/i18n';
+import LinkButton from '../../elements/button/LinkButton.svelte';
 </script>
 
 <nav class="list-none divide-y md:divide-y-0 border-b md:border-b-0">
-	<li class="text-center md:text-left p-2 md:p-0">
+	<LinkButton underlinedOnHover class="hover:font-medium">
 		<a href="/faq" class="text-neutral-dark hover:text-gray-800">{$t('footer.links.faq')}</a>
-	</li>
-	<li class="text-center md:text-left p-2 md:p-0">
+	</LinkButton>
+	<LinkButton underlinedOnHover class="hover:font-medium">
 		<a href="/contact" class="text-neutral-dark hover:text-gray-800">{$t('footer.links.contact')}</a>
-	</li>
-	<li class="text-center md:text-left p-2 md:p-0">
-		<a href="/gts" class="text-neutral-dark hover:text-gray-800">{$t('footer.links.gts')}</a>
-	</li>
-	<li class="text-center md:text-left p-2 md:p-0">
+	</LinkButton>
+	<LinkButton underlinedOnHover class="hover:font-medium">
+		<a href="/tou" class="text-neutral-dark hover:text-gray-800">{$t('footer.links.tou')}</a>
+	</LinkButton>
+	<LinkButton underlinedOnHover class="hover:font-medium">
 		<a href="/legal-notice" class="text-neutral-dark hover:text-gray-800">{$t('footer.links.legal-notice')}</a>
-	</li>
+	</LinkButton>
 </nav>
 
 <style>

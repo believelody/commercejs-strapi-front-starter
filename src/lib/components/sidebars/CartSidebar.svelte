@@ -4,7 +4,7 @@
 	import { t } from '$lib/i18n'
 	import api from '$lib/api';
 	import CartList from '../list/CartList.svelte';
-	import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
+	import SidebarWrapper from "$lib/elements/sidebar/SidebarWrapper.svelte";
 	import { openDangerModal } from "../../context/modal";
 
 	let loading = false;

@@ -4,11 +4,11 @@
 	import api from "$lib/api";
 	import { t } from '$lib/i18n';
 	import { reviewsProduct } from "$lib/stores";
-	import Gallery from '../gallery/Gallery.svelte';
-	import Star from '../star/Star.svelte';
-	import FacebookIcon from '../../elementscon/FacebookIcon.svelte';
-	import InstagramIcon from '../../elementscon/InstagramIcon.svelte';
-	import TwitterIcon from '../../elementscon/TwitterIcon.svelte';
+	import Gallery from '$lib/elements/gallery/Gallery.svelte';
+	import Star from '$lib/elements/star/Star.svelte';
+	import FacebookIcon from '$lib/elements/icon/FacebookIcon.svelte';
+	import InstagramIcon from '$lib/elements/icon/InstagramIcon.svelte';
+	import TwitterIcon from '$lib/elements/icon/TwitterIcon.svelte';
 	import Colors from '../variants/Colors.svelte';
 	import Sizes from '../variants/Sizes.svelte';
 	import AddToCartBtn from '../buttons/AddToCartBtn.svelte';
@@ -19,7 +19,7 @@
 	import ShippingBadge from '../badges/ShippingBadge.svelte';
 	import SecurityBadge from '../badges/SecurityBadge.svelte';
 	import PaymentBadge from '../badges/PaymentBadge.svelte';
-	import Card from '../card/Card.svelte';
+	import Card from '$lib/elements/card/Card.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -62,7 +62,7 @@
 						</div>
 						<WishlistButton {product} />
 					</section>
-					<h1 class="text-gray-900 text-3xl title-font font-medium">{product.name}</h1>
+					<h2 class="text-gray-900 title-font font-medium">{product.name}</h2>
 				</svelte:fragment>
 				<svelte:fragment slot="content">
 					<div class="flex my-2">
@@ -92,7 +92,7 @@
 						{/if}
 					</div>
 					<p class="flex-flex-grow leading-relaxed">{@html product.description}</p>
-					<div class="flex flex-wrap justify-between items-center md:py-2 py-6 border-b border-gray-300">
+					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
 						{#if colors}
 							<Colors {colors} bind:selectedColor />
 						{/if}

@@ -2,7 +2,7 @@
     import CartNav from "../nav/CartNav.svelte";
     import SearchProducts from "../products/SearchProducts.svelte";
     import MenuButton from "../buttons/MenuButton.svelte";
-    import Logo from "../../elements/logo/Logo.svelte";
+    import Logo from "$lib/elements/logo/Logo.svelte";
     import AuthNav from "../nav/AuthNav.svelte";
 </script>
 

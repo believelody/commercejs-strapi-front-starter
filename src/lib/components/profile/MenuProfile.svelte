@@ -3,8 +3,8 @@
     import api from "$lib/api";
     import { t } from "$lib/i18n";
     import { profile } from "$lib/stores";
-    import ImageUpload from "../../elements/inputs/ImageUpload.svelte";
-    import LogoutIcon from "../../elements/icon/LogoutIcon.svelte";
+    import ImageUpload from "$lib/elements/inputs/ImageUpload.svelte";
+    import LogoutIcon from "$lib/elements/icon/LogoutIcon.svelte";
 
     function logout() {
         api.auth.logout();

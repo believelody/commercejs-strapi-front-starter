@@ -1,8 +1,8 @@
 <script>
     import {createEventDispatcher, onMount} from 'svelte';
     import { tap } from "@sveltejs/gestures";
-    import ArrowLeftCircle from '../../elements/icon/ArrowLeftCircleIcon.svelte';
-    import ArrowRightCircle from '../../elements/icon/ArrowRightCircleIcon.svelte';
+    import ArrowLeftCircle from '$lib/elements/icon/ArrowLeftCircleIcon.svelte';
+    import ArrowRightCircle from '$lib/elements/icon/ArrowRightCircleIcon.svelte';
 
     export let thumbnails, currentPageIndex = 0, infinite = false, particlesToShow = 5, particlesToScroll = 1, height = 100, noSelectedItemBorder = false;
     let Carousel; // for saving Carousel component class

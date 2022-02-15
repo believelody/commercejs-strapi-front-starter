@@ -4,13 +4,13 @@
     import api from '$lib/api';
     import {t} from '$lib/i18n';
     import {profile} from '$lib/stores';
-    import Fields from '../../elements/form/Form.svelte';
-    import TextInput from '../../elements/inputs/TextInput.svelte';
+    import Fields from '$lib/elements/form/Form.svelte';
+    import TextInput from '$lib/elements/inputs/TextInput.svelte';
     import {clickLinkOutside} from "../../actions/clickOutside";
-    import Checkbox from "../../elements/inputs/Checkbox.svelte";
+    import Checkbox from "$lib/elements/inputs/Checkbox.svelte";
     import {emailValidation} from "../../utils/form.util";
-import Form from "../../elements/form/Form.svelte";
-import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
+import Form from "$lib/elements/form/Form.svelte";
+import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
 
     let firstname, lastname, birthday, email, subscribed, hasError = false, loading, isDraft = false;
     const { addNotification } = getNotificationsContext();

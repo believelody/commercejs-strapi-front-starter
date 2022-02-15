@@ -1,6 +1,6 @@
 <script>
     import { slide } from 'svelte/transition';
-    import ChevronDownIcon from '../../elements/icon/ChevronDownIcon.svelte';
+    import ChevronDownIcon from '$lib/elements/icon/ChevronDownIcon.svelte';
     
     export let isOpen = false, iconSize = 8, iconColor, noContentBorderTop = false;
     let duration = 300;

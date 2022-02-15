@@ -2,9 +2,9 @@
     import {createEventDispatcher, onMount} from "svelte";
     import { t } from '$lib/i18n';
     import api from '$lib/api';
-    import TextInput from '../../elements/inputs/TextInput.svelte';
-    import Search from "../../elements/inputs/Search.svelte";
-    import Form from "../../elements/form/Form.svelte";
+    import TextInput from '$lib/elements/inputs/TextInput.svelte';
+    import Search from "$lib/elements/inputs/Search.svelte";
+    import Form from "$lib/elements/form/Form.svelte";
     import {requiredFieldsValidation} from "../../utils/form.util";
 
     export let information = {}, type, title, hideSubmitButton = false, submitLabel = "", withoutShadow = false,

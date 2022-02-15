@@ -4,7 +4,7 @@
     import { t } from '$lib/i18n';
     import api from '$lib/api';
     import { sidebar } from '$lib/stores';
-import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
 
     export let item;
     let loading = false;

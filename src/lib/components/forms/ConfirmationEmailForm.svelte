@@ -3,9 +3,9 @@
     import { t } from '$lib/i18n';
     import { user } from '$lib/stores';
     import api from '$lib/api';
-    import Fields from '../../elements/form/Form.svelte';
-    import TextInput from "../../elements/inputs/TextInput.svelte";
-import Form from '../../elements/form/Form.svelte';
+    import Fields from '$lib/elements/form/Form.svelte';
+    import TextInput from "$lib/elements/inputs/TextInput.svelte";
+import Form from '$lib/elements/form/Form.svelte';
 
     export let withoutShadow = false;
     let code = "", loading = false, hasError = false, codeResent = false, errorCode = null;

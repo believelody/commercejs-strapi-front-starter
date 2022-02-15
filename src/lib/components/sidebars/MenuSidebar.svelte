@@ -1,11 +1,11 @@
 <script>
 	import { t } from '$lib/i18n';
     import { sidebar } from "$lib/stores";
-	import Brand from '../../elements/brand/Brand.svelte';
+	import Brand from '$lib/elements/brand/Brand.svelte';
     import Footer from '../footer/Footer.svelte';
 	import ExtraLinks from '../links/ExtraLinks.svelte';
 	import MenuNav from '../nav/MenuNav.svelte';
-    import CloseIcon from '../../elements/icon/CloseIcon.svelte';
+    import CloseIcon from '$lib/elements/icon/CloseIcon.svelte';
 </script>
 
 <div class="flex flex-col h-screen overflow-y-hidden">

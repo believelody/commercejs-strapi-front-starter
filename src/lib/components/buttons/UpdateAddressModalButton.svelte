@@ -1,7 +1,7 @@
 <script>
     import { getContext } from "svelte";
     import { t } from '$lib/i18n';
-    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
+    import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
     import { openAddressModal } from "../../context/modal";
 
     export let information;

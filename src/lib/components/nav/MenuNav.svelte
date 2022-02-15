@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
-	import Accordion from '../../elements/accordion/Accordion.svelte';
-	import Dropdown from '../../elements/dropdown/Dropdown.svelte';
+	import Accordion from '$lib/elements/accordion/Accordion.svelte';
+	import Dropdown from '$lib/elements/dropdown/Dropdown.svelte';
 
 	const links = [
 		{ url: "/categories/transport", text: $t('menu.categories.transport.label') },

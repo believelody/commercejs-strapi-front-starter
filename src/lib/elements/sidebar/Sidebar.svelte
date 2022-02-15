@@ -2,7 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { sidebar } from '$lib/stores';
 	import { t } from '$lib/i18n';
-	import CloseIcon from '../../elements/icon/CloseIcon.svelte';
+	import CloseIcon from '$lib/elements/icon/CloseIcon.svelte';
 
 	let width;
 	function overlay_click(e) {

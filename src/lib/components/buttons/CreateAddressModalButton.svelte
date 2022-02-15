@@ -2,7 +2,7 @@
     import { getContext } from "svelte";
     import { t } from '$lib/i18n';
     import { openAddressModal } from "../../context/modal";
-    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
+    import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
 
     export let type, withoutShadow = false;
     const { open } = getContext("simple-modal");

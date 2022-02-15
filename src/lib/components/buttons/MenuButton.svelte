@@ -1,7 +1,8 @@
 <script>
     import { sidebar } from "$lib/stores";
-    import MenuIcon from "../../elements/icon/MenuIcon.svelte";
+    import MenuIcon from "$lib/elements/icon/MenuIcon.svelte";
     import MenuSidebar from "../sidebars/MenuSidebar.svelte";
+    import IconButton from "../../elements/button/IconButton.svelte";
 
     function openSidebarMenu() {
         $sidebar = {
@@ -12,6 +13,9 @@
     }
 </script>
 
-<button class="flex justify-center items-center w-full" on:click={openSidebarMenu}>
-    <MenuIcon strokeWidth={2} />
-</button>
+<IconButton
+    on:click={openSidebarMenu}
+    class="bg-transparent"
+    icon={MenuIcon}
+    strokeWidth={2}
+/>

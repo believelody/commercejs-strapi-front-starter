@@ -3,7 +3,7 @@
     import { t } from "$lib/i18n";
     import { media } from "$lib/stores";
     import HeaderTitle from "../header/HeaderTitle.svelte";
-    import Thumbnails from "../thumbnail/Thumbnails.svelte";
+    import Thumbnails from "$lib/elements/thumbnail/Thumbnails.svelte";
 
     export let items;
 
@@ -33,10 +33,10 @@
         particlesToShow={responsiveParticlesToShow()}
         on:showPage={ ({detail}) => goToRelatedProduct(detail) }
     >
-        <h4 slot="extra">
+        <p slot="extra">
             <a href={`/products/${items[index].permalink}`} class="w-full text-center">
                 {items[index].name}
             </a>
-        </h4>
+        </p>
     </Thumbnails>
 </div>

@@ -4,18 +4,18 @@
   import MenuNav from "../nav/MenuNav.svelte";
   import CartNav from "../nav/CartNav.svelte";
   import SearchProducts from "../products/SearchProducts.svelte";
-  import Brand from "../../elements/brand/Brand.svelte";
+  import Brand from "$lib/elements/brand/Brand.svelte";
   import AuthNav from "../nav/AuthNav.svelte";
-  import Logo from "../../elements/logo/Logo.svelte";
+  import Logo from "$lib/elements/logo/Logo.svelte";
 </script>
 
-<header class="hidden md:inline bg-neutral-light text-neutral-dark body-font">
-  <div class="container mx-auto flex-center-middle py-5">
+<header class="hidden md:border-b md:inline bg-neutral-light text-neutral-dark body-font">
+  <div class="container mx-auto flex-center-middle md:py-2 lg:py-5">
     <a href="/">
       {#if $media.tablet}
-        <span class="px-2">
+        <div class="px-2">
           <Logo />
-        </span>
+        </div>
       {:else}
         <Brand />
       {/if}

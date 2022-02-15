@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
 	import { guest } from '$lib/stores';
-	import TextInput from '../../elements/inputs/TextInput.svelte';
+	import TextInput from '$lib/elements/inputs/TextInput.svelte';
 
 	let data = {};
 

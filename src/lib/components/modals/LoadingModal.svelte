@@ -1,6 +1,6 @@
 <script>
     import Moon from "svelte-loading-spinners/dist/ts/Moon.svelte";
-    import Box from "../../elements/box/Box.svelte";
+    import Box from "$lib/elements/box/Box.svelte";
 
     export let topText, bottomText;
 </script>

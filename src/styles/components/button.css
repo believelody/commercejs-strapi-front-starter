@@ -6,7 +6,7 @@
 	/* Button layout style */
 	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
 		.btn {
-			@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none rounded hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral disabled:opacity-75 disabled:cursor-not-allowed;
+			@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral disabled:opacity-75 disabled:cursor-not-allowed;
 		}
 		.btn-primary {
 			@apply text-white bg-primary hover:bg-primary-dark-1 disabled:bg-neutral-dark-1;
@@ -18,16 +18,16 @@
 			@apply text-neutral-dark bg-transparent hover:bg-gray-400 hover:text-neutral hover:bg-opacity-25 disabled:bg-neutral-dark-1;
 		}
 		.btn-success {
-			@apply bg-success hover:bg-success-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-success hover:bg-success-dark-1 disabled:bg-neutral-dark-1;
 		}
 		.btn-danger {
-			@apply bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-dark-1;
 		}
 		.btn-info {
-			@apply bg-info hover:bg-info-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-info hover:bg-info-dark-1 disabled:bg-neutral-dark-1;
 		}
 		.btn-warning {
-			@apply bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-dark-1;
 		}
 		.btn-outlined {
 			@apply border border-neutral bg-neutral-light-2 text-neutral hover:bg-neutral-dark-1 hover:text-neutral-light disabled:bg-neutral-dark-1;

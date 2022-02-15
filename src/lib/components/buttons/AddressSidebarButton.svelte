@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import { sidebar } from '$lib/stores';
-    import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+    import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
     import AddressSidebar from '../sidebars/AddressSidebar.svelte';
 
     export let type;
