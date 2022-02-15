@@ -1,18 +1,18 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-	import { t } from '$lib/i18n';
-	import Checkbox from '../field/Checkbox.svelte';
-	import Star from '../star/Star.svelte';
+    import {createEventDispatcher} from 'svelte';
+    import {t} from '$lib/i18n';
+    import CheckboxInput from '../../elements/input/CheckboxInput.svelte';
+    import Star from '../../elements/star/Star.svelte';
 
-	export let reviews;
-	const INIT_VALUES = [5, 4, 3, 2, 1, 'images'];
+    export let reviews;
+    const INIT_VALUES = [5, 4, 3, 2, 1, 'images'];
     const score = reviews.length ? (reviews.reduce((acc, cur) => acc + cur.ratings, 0) / reviews.length) : 0;
-	let filters = INIT_VALUES;
-	const dispatch = createEventDispatcher();
+    let filters = INIT_VALUES;
+    const dispatch = createEventDispatcher();
 
-	function filterReview(value) {
-		filters = filters.some((filter) => filter === value)
-			? filters.filter((f) => f !== value)
+    function filterReview(value) {
+        filters = filters.some((filter) => filter === value)
+            ? filters.filter((f) => f !== value)
 			: [...filters, value];
 	}
 

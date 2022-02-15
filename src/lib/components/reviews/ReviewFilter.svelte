@@ -1,7 +1,7 @@
 <script>
-    import { t } from "$lib/i18n";
-    import ReviewFilterAccordion from "../accordion/ReviewFilterAccordion.svelte";
-import Card from "../card/Card.svelte";
+    import {t} from "$lib/i18n";
+    import ReviewFilterAccordion from "../accordions/ReviewFilterAccordion.svelte";
+    import Card from "../../elements/card/Card.svelte";
     import ReviewFilterButtonCheckbox from "./ReviewFilterButtonCheckbox.svelte";
 
     export let reviews;

@@ -4,6 +4,7 @@
     import { media, sidebar } from "$lib/stores";
     import LinkButton from "../../elements/button/LinkButton.svelte";
     import UserCircleIcon from "../../elements/icon/UserCircleIcon.svelte";
+    import ProfileSidebar from "../sidebars/ProfileSidebar.svelte";
 
 	function onClick() {
 		if ($media.mobile) {

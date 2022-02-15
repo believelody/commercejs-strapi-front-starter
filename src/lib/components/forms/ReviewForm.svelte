@@ -1,21 +1,20 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    import { getNotificationsContext } from 'svelte-notifications';
+    import {createEventDispatcher} from 'svelte';
+    import {getNotificationsContext} from 'svelte-notifications';
     import api from "$lib/api";
-    import { t } from '$lib/i18n';
-    import Fields from "$lib/elements/form/Form.svelte";
-    import File from '$lib/elements/inputs/File.svelte';
-    import Textarea from "$lib/elements/inputs/Textarea.svelte";
+    import {t} from '$lib/i18n';
+    import File from '$lib/elements/input/FileInput.svelte';
+    import TextareaInput from "$lib/elements/input/TextareaInput.svelte";
     import SelectStar from '../stars/SelectStar.svelte';
-import Form from '$lib/elements/form/Form.svelte';
-    
+    import Form from '$lib/elements/form/Form.svelte';
+
     export let item, review, withoutShadow = false;
     let description = review?.description ?? "",
         images = review?.images ?? [],
         ratings = review?.ratings ?? 0,
         loading = false,
         error = "";
-    const { addNotification } = getNotificationsContext();
+    const {addNotification} = getNotificationsContext();
     const dispatch = createEventDispatcher();
 
     function removeImg(index) {
@@ -59,13 +58,13 @@ import Form from '$lib/elements/form/Form.svelte';
             <span class="mr-4">{$t("review.ratings.form.label")} *</span>
             <SelectStar bind:value={ratings} class="border p-2 rounded" />
         </section>
-        <Textarea
-            label={$t("common.description.label")}
-            name="description"
-            class="w-full"
-            placeholder={$t("common.description.placeholder")}
-            bind:value={description}
-            required
+        <TextareaInput
+                label={$t("common.description.label")}
+                name="description"
+                class="w-full"
+                placeholder={$t("common.description.placeholder")}
+                bind:value={description}
+                required
         />
         <section>
             <File

@@ -3,9 +3,9 @@
 	import { Tab, TabList, TabPanel, Tabs } from 'svelte-tabs';
 	import { goto } from "$app/navigation";
     import api from "$lib/api";
-    import { t } from "$lib/i18n";
-    import Star from '../star/Star.svelte';
-    import { localDateFromString } from '../../utils/date.util';
+    import {t} from "$lib/i18n";
+    import Star from '../../elements/star/Star.svelte';
+    import {localDateFromString} from '../../utils/date.util';
 	import { openReviewViewerModal, openAddReviewModal } from "$lib/context/modal";
 
     export let pendingReviews, reviews, orderItems;

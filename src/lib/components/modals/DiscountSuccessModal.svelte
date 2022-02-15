@@ -1,6 +1,6 @@
 <script>
-    import { t } from '$lib/i18n';
-    import InfoModal from "../modal/InfoModal.svelte";
+    import {t} from '$lib/i18n';
+    import InfoModal from "../../elements/modal/InfoModal.svelte";
 </script>
 
 <style>

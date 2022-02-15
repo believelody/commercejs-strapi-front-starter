@@ -1,6 +1,6 @@
 <script>
-    import { t } from '$lib/i18n';
-    import OrderAccordion from "../accordion/OrderAccordion.svelte";
+    import {t} from '$lib/i18n';
+    import OrderAccordion from "../accordions/OrderAccordion.svelte";
     import InfoOrder from './InfoOrder.svelte';
 
     export let items, subtotal;

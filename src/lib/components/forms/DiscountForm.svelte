@@ -3,7 +3,7 @@
     import { checkout, checkoutLoading } from '$lib/stores';
     import api from '$lib/api';
     import Form from '$lib/elements/form/Form.svelte';
-    import TextInput from "$lib/elements/inputs/TextInput.svelte";
+    import TextInput from "$lib/elements/input/TextInput.svelte";
     import DiscountFailedModal from '../modals/DiscountFailedModal.svelte';
     import DiscountSuccessModal from '../modals/DiscountSuccessModal.svelte';
     import {getContext} from "svelte";

@@ -2,7 +2,7 @@
 	import { t } from "$lib/i18n";
 	import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
 	import Form from "$lib/elements/form/Form.svelte";
-	import TextInput from "$lib/elements/inputs/TextInput.svelte";
+    import TextInput from "$lib/elements/input/TextInput.svelte";
 
 	let email, loading = false;
 

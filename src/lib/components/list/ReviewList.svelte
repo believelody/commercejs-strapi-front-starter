@@ -3,12 +3,12 @@
 	import { paginate, PaginationNav } from 'svelte-paginate';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { t } from '$lib/i18n';
-	import Star from '../star/Star.svelte';
-	import { fullName } from '../../utils/user.util';
-	import { localDateFromString } from '../../utils/date.util';
-	import Card from '../card/Card.svelte';
-	import { openReviewViewerModal } from '../../context/modal';
+	import {t} from '$lib/i18n';
+    import Star from '../../elements/star/Star.svelte';
+    import {fullName} from '../../utils/user.util';
+    import {localDateFromString} from '../../utils/date.util';
+    import Card from '../../elements/card/Card.svelte';
+    import {openReviewViewerModal} from '../../context/modal';
 
 	export let reviews,
 		currentPage = +$page.url.searchParams.get('page') || 1,

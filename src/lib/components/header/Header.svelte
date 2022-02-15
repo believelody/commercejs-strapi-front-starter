@@ -10,21 +10,21 @@
 </script>
 
 <header class="hidden md:border-b md:inline bg-neutral-light text-neutral-dark body-font">
-  <div class="container mx-auto flex-center-middle md:py-2 lg:py-5">
-    <a href="/">
-      {#if $media.tablet}
-        <div class="px-2">
-          <Logo />
-        </div>
-      {:else}
-        <Brand />
-      {/if}
-    </a>
-    <!-- <select bind:value={$locale}>
-    {#each locales as l}
-      <option value={l}>{l}</option>
-    {/each}
-    </select> -->
+  <div class="lg:container mx-auto flex-center-middle md:py-2 lg:py-5">
+      <a href="/">
+          {#if $media.tablet}
+              <div class="px-2">
+                  <Logo/>
+              </div>
+          {:else}
+              <Brand/>
+          {/if}
+      </a>
+      <!-- <select bind:value={$locale}>
+      {#each locales as l}
+        <option value={l}>{l}</option>
+      {/each}
+      </select> -->
     <SearchProducts />
     <MenuNav />
     <CartNav />

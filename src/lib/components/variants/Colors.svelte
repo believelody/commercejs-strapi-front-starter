@@ -7,10 +7,8 @@
 		switch (color) {
 			case "black":
 			case "white":
-				console.log(color);
 				return `bg-${color}`;
 			default:
-				console.log(color);
 				return `bg-${color}-600`;
 		}
 	}

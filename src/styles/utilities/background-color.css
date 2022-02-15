@@ -88,15 +88,22 @@
 		}
 		.bg-warning-light-1 {
 			@apply bg-yellow-200;
-		}
-		.bg-warning-light-2 {
-			@apply bg-yellow-400;
-		}
-		.bg-warning-dark-1 {
-			@apply bg-yellow-600;
-		}
-		.bg-warning-dark-2 {
-			@apply bg-yellow-700;
-		}
-	}
+        }
+
+        .bg-warning-light-2 {
+            @apply bg-yellow-400;
+        }
+
+        .bg-warning-dark-1 {
+            @apply bg-yellow-600;
+        }
+
+        .bg-warning-dark-2 {
+            @apply bg-yellow-700;
+        }
+
+        .glass {
+            @apply bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 <script>
-    import { t } from "$lib/i18n";
-    import TextInput from "$lib/elements/inputs/TextInput.svelte";
+    import {t} from "$lib/i18n";
+    import TextInput from "$lib/elements/input/TextInput.svelte";
     import SearchIcon from "$lib/elements/icon/SearchIcon.svelte";
 import IconButton from "../../elements/button/IconButton.svelte";
 

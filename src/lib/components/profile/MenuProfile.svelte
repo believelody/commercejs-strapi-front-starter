@@ -2,8 +2,8 @@
     import { page } from "$app/stores";
     import api from "$lib/api";
     import { t } from "$lib/i18n";
-    import { profile } from "$lib/stores";
-    import ImageUpload from "$lib/elements/inputs/ImageUpload.svelte";
+    import {profile} from "$lib/stores";
+    import ImageUpload from "$lib/elements/input/ImageUploadInput.svelte";
     import LogoutIcon from "$lib/elements/icon/LogoutIcon.svelte";
 
     function logout() {

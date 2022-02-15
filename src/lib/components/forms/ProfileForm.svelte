@@ -5,9 +5,9 @@
     import {t} from '$lib/i18n';
     import {profile} from '$lib/stores';
     import Fields from '$lib/elements/form/Form.svelte';
-    import TextInput from '$lib/elements/inputs/TextInput.svelte';
+    import TextInput from '$lib/elements/input/TextInput.svelte';
     import {clickLinkOutside} from "../../actions/clickOutside";
-    import Checkbox from "$lib/elements/inputs/Checkbox.svelte";
+    import CheckboxInput from "$lib/elements/input/CheckboxInput.svelte";
     import {emailValidation} from "../../utils/form.util";
 import Form from "$lib/elements/form/Form.svelte";
 import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";

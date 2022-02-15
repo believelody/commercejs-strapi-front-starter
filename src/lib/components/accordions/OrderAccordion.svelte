@@ -1,5 +1,5 @@
 <script>
-    import Accordion from "./Accordion.svelte";
+    import Accordion from "../../elements/accordion/Accordion.svelte";
 
     export let isOpen;
 </script>

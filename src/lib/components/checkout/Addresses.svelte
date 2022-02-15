@@ -5,7 +5,7 @@
     import { t } from '$lib/i18n';
     import { shipping, billing, isBillingSameAsShipping, checkout, jwt } from '$lib/stores';
     import AddressForm from "../forms/AddressForm.svelte";
-    import Checkbox from '../field/Checkbox.svelte';
+    import CheckboxInput from '../../elements/input/CheckboxInput.svelte';
     import AddressSidebarButton from '../buttons/AddressSidebarButton.svelte';
 
     let checkoutId, countriesAvailableForShipping, isCountryAvailableForShipping = null;
@@ -45,10 +45,10 @@
     {#if $shipping?.country && isCountryAvailableForShipping === false}
         <span class="text-red-400">{$t("checkout.address.country-not-available")}</span>
     {/if}
-    <Checkbox
-        bind:checked={$isBillingSameAsShipping}
-        name="isBillingSameAsShipping"
-        label={$t("checkout.address.checkbox")}
+    <CheckboxInput
+            bind:checked={$isBillingSameAsShipping}
+            name="isBillingSameAsShipping"
+            label={$t("checkout.address.checkbox")}
     />
     {#if !$isBillingSameAsShipping}
         <AddressForm

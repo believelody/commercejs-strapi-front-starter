@@ -4,8 +4,8 @@
     import { user } from '$lib/stores';
     import api from '$lib/api';
     import Fields from '$lib/elements/form/Form.svelte';
-    import TextInput from "$lib/elements/inputs/TextInput.svelte";
-import Form from '$lib/elements/form/Form.svelte';
+    import TextInput from "$lib/elements/input/TextInput.svelte";
+    import Form from '$lib/elements/form/Form.svelte';
 
     export let withoutShadow = false;
     let code = "", loading = false, hasError = false, codeResent = false, errorCode = null;
