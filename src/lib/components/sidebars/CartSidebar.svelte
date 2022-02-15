@@ -6,6 +6,8 @@
 	import CartList from '../list/CartList.svelte';
 	import SidebarWrapper from "$lib/elements/sidebar/SidebarWrapper.svelte";
 	import { openDangerModal } from "../../context/modal";
+	import DangerButton from "../../elements/button/DangerButton.svelte";
+	import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
 
 	let loading = false;
 	const { open } = getContext("simple-modal");
@@ -33,19 +35,20 @@
 
 <SidebarWrapper>
 	{#if $cart && $cart.total_unique_items > 0}
-		<h2 class="ml-2 mt-2 text-lg font-medium text-gray-900" id="slide-over-title">
+		<h2 class="ml-2 mt-2 text-lg font-medium text-neutral-dark" id="slide-over-title">
 			{$t("cart.title")} : {$cart.total_unique_items} {$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
 		</h2>
 
 		<CartList items={$cart.line_items} {loading} on:loading={e => loading = e.detail} />
 
-		<button
+		<DangerButton
 			disabled={loading}
 			on:click={showEmptyCartModal}
-			class="py-2 w-full border-t-2 border-b-2 border-red-400 bg-red-100 shadow-sm text-base font-medium text-black bg-gray-400 hover:bg-red-300 disabled:opacity-75 disabled:cursor-wait disabled:bg-gray-300"
+			outlined
+			block
 		>
 			{$t("cart.cta.empty")}
-		</button>
+		</DangerButton>
 
 		<div class="actions py-2 px-4 w-full">
 			<div class="flex justify-between text-base font-medium text-gray-900">
@@ -54,17 +57,15 @@
 			</div>
 			<p class="mt-0.5 text-sm text-gray-500">{$t("cart.shipping-taxes")}</p>
 			<div class="mt-6">
-				<a
-					id="cart-id-goto-checkout"
-					href="/checkout"
-					class="flex flex-grow justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:cursor-wait"
-				>
-					{#if loading}
-						{$t("cart.cta.loading")}
-					{:else}
-						{$t("cart.cta.checkout")}
-					{/if}
-				</a>
+				<PrimaryButton block>
+					<a id="cart-id-goto-checkout" href="/checkout">
+						{#if loading}
+							{$t("cart.cta.loading")}
+						{:else}
+							{$t("cart.cta.checkout")}
+						{/if}
+					</a>
+				</PrimaryButton>
 			</div>
 			<div class="mt-6 flex justify-center text-sm text-center text-gray-500">
 				<p>

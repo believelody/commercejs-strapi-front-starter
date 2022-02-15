@@ -52,7 +52,7 @@
 			<div>
                 <Gallery images={product.assets} />
             </div>
-			<Card class="flex flex-col px-2 lg:px-0" shadow="none">
+			<Card class="p-2 border" shape="rounded-xl" shadow="lg">
 				<svelte:fragment slot="header">
 					<section class="flex items-center justify-between">
 						<div class="flex py-2">

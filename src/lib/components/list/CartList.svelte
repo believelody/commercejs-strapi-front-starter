@@ -6,6 +6,8 @@
     import api from '$lib/api';
     import TrashIcon from '$lib/elements/icon/TrashIcon.svelte';
     import { openDangerModal } from '../../context/modal';
+    import Button from "../../elements/button/Button.svelte";
+    import IconButton from "../../elements/button/IconButton.svelte";
 
     export let items, loading;
     const dispatch = createEventDispatcher();
@@ -96,27 +98,30 @@
                                 {/each}
                             </div>
                             <div class="flex items-center justify-between text-sm">
-                                <p class="text-gray-500">
-                                    <button
+                                <p class="text-neutral-dark flex-center-middle">
+                                    <Button
                                             disabled={item.quantity <= 1 || loading}
                                             on:click={() => updateQuantity(item, item.quantity - 1)}
-                                            class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
+                                            class="text-xl font-medium w-12 h-10"
                                         >-
-                                    </button>
-                                    <span class="mx-4 text-lg">{item.quantity}
+                                    </Button>
+                                    <span class="mx-4 text-lg font-medium">{item.quantity}
                                         x {item.price.formatted_with_symbol}</span>
-                                    <button
+                                    <Button
                                             disabled={item.quantity >= 5 || loading}
                                             on:click={() => updateQuantity(item, item.quantity + 1)}
-                                            class="text-lg py-1 px-4 text-white rounded bg-gray-600 disabled:opacity-75 disabled:cursor-{loading ? "wait" : "not-allowed"}"
+                                            class="text-xl font-medium w-12 h-10"
                                         >+
-                                    </button>
+                                    </Button>
                                 </p>
                                 <div>
-                                    <button on:click={() => showRemoveItemModal(item)}>
-                                        <span class="sr-only font-medium text-red-600 hover:text-indigo-500 hover:bg-red-200 p-2 rounded">{$t("cart.cta.remove-item")}</span>
-                                        <TrashIcon size={6} color="red-500"/>
-                                    </button>
+                                    <IconButton
+                                        on:click={() => showRemoveItemModal(item)}
+                                        class="btn-link"
+                                        icon={TrashIcon}
+                                        size={6}
+                                        color="red-500"
+                                    />
                                 </div>
                             </div>
                         </div>

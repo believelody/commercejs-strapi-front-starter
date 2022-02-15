@@ -10,6 +10,6 @@
     /* your styles go here */
 </style>
 
-<Button {shape} class="{className}" on:click>
+<Button {shape} class={className} on:click>
     <svelte:component this={icon} {...$$restProps}/>
 </Button>

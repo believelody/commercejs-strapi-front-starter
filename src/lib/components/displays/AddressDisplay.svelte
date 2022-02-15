@@ -7,9 +7,9 @@
     export let information, type, items;
 </script>
 
-<section class="flex flex-col bg-white rounded my-4 justify-center border shadow-md w-full xl:w-3/5 items-center">
+<section class="flex-center-middle flex-col bg-white rounded my-4 border shadow-md w-full xl:w-3/5 py-2">
     <h3 class="border-b w-full py-2 text-center text-lg font-medium">{$t(`account.addresses.${type}.label`)}</h3>
-    <div class="py-{information ? 4 : 12} flex flex-col justify-center items-center">
+    <div class="py-{information ? 4 : 12} flex-center-middle flex-col">
         {#if information}
             <ItemAddress
                 {information}

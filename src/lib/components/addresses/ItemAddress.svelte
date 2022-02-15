@@ -16,8 +16,8 @@
 </style>
 
 <FullAddress {information} />
-<div class="pt-3 flex flex-col lg:flex-row items-center justify-center">
-    <div class="mr-0 {isSelected ? "" : "lg:mr-6"} mb-4 lg:mb-0">
+<div class="pt-3 flex-center-middle flex-col lg:flex-row">
+    <div class="mr-0 {isSelected ? '' : 'lg:mr-6'} mb-4 lg:mb-0">
         {#if primary === "update"}
             <UpdateAddressModalButton {information} disabled={loading} />
         {:else if primary === "remove"}
