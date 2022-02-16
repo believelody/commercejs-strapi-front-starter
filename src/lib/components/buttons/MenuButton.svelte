@@ -5,12 +5,10 @@
     import IconButton from "../../elements/button/IconButton.svelte";
 
     function openSidebarMenu() {
-        console.log("opening")
         $sidebar = {
             component: MenuSidebar,
             openFrom: "left",
             noCloseBtn: true,
-            glass: true
         };
     }
 </script>

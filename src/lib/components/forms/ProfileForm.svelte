@@ -82,7 +82,7 @@ import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
 </script>
 
 <div use:clickLinkOutside={{ isDraft, text: $t("account.profile.draft.confirm") }} on:clicklinkoutside={() => isDraft = false}>
-    <Form id="profile-form" {submit}>
+    <Form id="profile-form" on:submt={submit}>
         <div slot="content" class="p-2 grid gid-cols-1 gap-4">
             <TextInput
                     name="firstname"

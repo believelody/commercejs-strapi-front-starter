@@ -29,39 +29,44 @@
     /* your styles go here */
 </style>
 
-<div class="mx-2 md:mx-12 rounded-md mb-8">
+<div class="mx-2 md:mx-12">
     <AddressForm
         hideSubmitButton
-        checkoutId={$checkoutId}
         hideTitleAddress
+        contentClass="md:text-lg"
+        {checkoutId}
         bind:information={$shipping}
         title={$t(`checkout.address.${$isBillingSameAsShipping ? "isBillingSameAsShipping" : "shipping"}`)}
     />
-    {#if $jwt}
-        <div class="flex align-center justify-end">
-            <AddressSidebarButton type="shipping" />
-        </div>
-    {/if}
     {#if $shipping?.country && isCountryAvailableForShipping === false}
         <span class="text-red-400">{$t("checkout.address.country-not-available")}</span>
     {/if}
-    <CheckboxInput
+    <div class="flex flex-col md:flex-row-reverse md:justify-between md:items-center">
+        {#if $jwt}
+            <div class="flex align-center justify-end mt-2">
+                <AddressSidebarButton type="shipping" />
+            </div>
+        {/if}
+        <CheckboxInput
             bind:checked={$isBillingSameAsShipping}
             name="isBillingSameAsShipping"
             label={$t("checkout.address.checkbox")}
-    />
+        />
+    </div>
     {#if !$isBillingSameAsShipping}
         <AddressForm
             hideSubmitButton
             hideTitleAddress
+            headerClass="mt-4"
+            contentClass="md:text-lg"
             {checkoutId}
             bind:information={$billing}
             title={$t("checkout.address.billing")}
         />
         {#if $jwt}
-        <div class="flex align-center justify-end">
-            <AddressSidebarButton type="billing" />
-        </div>
-    {/if}
+            <div class="flex align-center justify-end mt-2">
+                <AddressSidebarButton type="billing" />
+            </div>
+        {/if}
     {/if}
 </div>

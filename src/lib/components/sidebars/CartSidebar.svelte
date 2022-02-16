@@ -35,9 +35,9 @@
 
 <SidebarWrapper>
 	{#if $cart && $cart.total_unique_items > 0}
-		<h2 class="ml-2 mt-2 text-lg font-medium text-neutral-dark" id="slide-over-title">
+		<h3 class="px-2 py-4 border-b font-medium text-neutral-dark" id="slide-over-title">
 			{$t("cart.title")} : {$cart.total_unique_items} {$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
-		</h2>
+		</h3>
 
 		<CartList items={$cart.line_items} {loading} on:loading={e => loading = e.detail} />
 

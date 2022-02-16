@@ -12,13 +12,13 @@
     /* your styles go here */
 </style>
 
-<div class="mx-2 md:mx-12 rounded-md mb-8">
-    <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("identity.title")}</h2>
+<div class="mx-2 md:mx-12">
+    <h3 class="uppercase tracking-wide text-md font-semibold text-neutral-dark my-2">{$t("identity.title")}</h3>
     {#if isGuest}
         <GuestForm />
     {:else}
         {#if $profile?.customer}
-            <div class="mb-3 py-4 bg-white shadow-lg rounded text-neutral-dark flex flex-col items-center justify-center">
+            <div class="py-4 text-lg bg-white shadow-md rounded text-neutral-dark flex flex-col items-center justify-center">
                 <span class="font-medium">{$t("identity.greetings.name", { name: `${$profile.customer.firstname} ${$profile.customer.lastname}`})}</span>
                 <span>{$t("identity.greetings.email", { email: `${$profile.customer.email}` })}</span>
                 {#if $profile.customer.phone}
@@ -30,7 +30,7 @@
         {/if}
     {/if}
     {#if !$profile?.customer}
-        <Checkbox
+        <CheckboxInput
                 bind:checked={isGuest}
                 name="guest"
                 label={$t("identity.guest.checkbox")}

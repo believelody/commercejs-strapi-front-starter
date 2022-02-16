@@ -46,7 +46,7 @@
 </style>
 
 <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 text-center my-2">{$t("auth.code.title")}</h2>
-<Form id="confirm-email-form" on:submit {withoutShadow} class="w-full flex-col xl:justify-between">
+<Form id="confirm-email-form" on:submit={submit} {withoutShadow} class="w-full flex-col xl:justify-between">
     <svelte:fragment slot="content">
         <TextInput
             name="code"

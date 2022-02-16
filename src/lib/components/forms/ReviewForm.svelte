@@ -52,7 +52,7 @@
         <span class="text-md text-neutral-dark">{variant.variant_name} : {variant.option_name}</span>
     {/each}
 </section>
-<Form {submit} {withoutShadow}>
+<Form on:submit{submit} {withoutShadow}>
     <svelte:fragment slot="content">
         <section class="flex items-center my-2">
             <span class="mr-4">{$t("review.ratings.form.label")} *</span>

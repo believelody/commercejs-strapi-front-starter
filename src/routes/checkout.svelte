@@ -35,7 +35,7 @@
 </script>
 
 {#if $cart && $checkout}
-	<div class="flex relative">
+	<div class="w-full grid grid-cols-1 lg:grid-cols-3 relative">
 		<InformationPanel />
 		<OrderPanel />
 	</div>

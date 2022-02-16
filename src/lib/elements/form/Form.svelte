@@ -1,8 +1,11 @@
 <script>
-    export let submit, withoutShadow = false;
+    import { createEventDispatcher } from "svelte";
+
+    export let withoutShadow = false;
+    const dispatch = createEventDispatcher();
 </script>
 
-<form on:submit|preventDefault={submit} {...$$restProps}>
+<form on:submit|preventDefault={() => dispatch("submit")} {...$$restProps}>
     <slot name="header" />
     <div class="bg-white {withoutShadow ? "" : "shadow-xl"} rounded grid grid-cols-1 gap-4">
         <slot name="content" />

@@ -30,7 +30,7 @@ import Form from '$lib/elements/form/Form.svelte';
     /* your styles go here */
 </style>
 
-<Form id="identity-form" {submit} {withoutShadow}>
+<Form id="identity-form" on:submit{submit} {withoutShadow}>
     <h4 slot="header" class="tracking-wide font-semibold text-neutral-dark mb-4 text-center">{title}</h4>
     <svelte:fragment slot="content">
         <TextInput

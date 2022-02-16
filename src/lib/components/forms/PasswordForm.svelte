@@ -41,7 +41,7 @@ import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
     /* your styles go here */
 </style>
 
-<Form {submit}>
+<Form on:submit={submit}>
     <div slot="content" class="grid grid-cols-1 gap-4 bg-danger-light-1 p-2">
         <TextInput
             name="password"

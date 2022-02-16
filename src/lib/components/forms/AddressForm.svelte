@@ -8,7 +8,7 @@
     import {requiredFieldsValidation} from "../../utils/form.util";
 
     export let information = {}, type, title, hideSubmitButton = false, submitLabel = "", withoutShadow = false,
-        hideTitleAddress = false, action;
+        hideTitleAddress = false, action, headerClass, contentClass;
     let countries = [], subdivisions = [], loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
@@ -60,9 +60,9 @@
     }
 </style>
 
-<Form id="address-form" on:submit {withoutShadow}>
-    <h2 slot="header" class="uppercase tracking-wide text-xl font-semibold text-gray-700 my-2">{title}</h2>
-    <svelte:fragment slot="content">
+<Form id="address-form" on:submit={submit} {withoutShadow}>
+    <h3 slot="header" class="uppercase tracking-wide font-semibold text-neutral-dark my-2 {headerClass}">{title}</h3>
+    <div slot="content" class="p-2 grid grid-cols-1 gap-2 {contentClass}">
         {#if !hideTitleAddress}
             <TextInput
                 name="title"
@@ -132,5 +132,5 @@
                 </button>
             </div>
         {/if}
-    </svelte:fragment>
+    </div>
 </Form>

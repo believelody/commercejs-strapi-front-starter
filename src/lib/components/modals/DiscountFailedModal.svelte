@@ -11,4 +11,5 @@
     title={$t("discount.failed.title")}
     description={$t("discount.failed.description")}
     status="danger"
+    iconBgShade="light"
 />

@@ -12,7 +12,7 @@
 </script>
 
 <div class="flex flex-wrap sm:flex-no-wrap justify-center items-center md:justify-start">
-	<Form on:submit class="w-full" withoutShadow>
+	<Form on:submit={submit} class="w-full" withoutShadow>
 		<h2 slot="header" class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 uppercase">
 			{$t('footer.subscription.title')}
 		</h2>

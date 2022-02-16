@@ -13,6 +13,8 @@ import LoadingModal__SvelteComponent_ from "../components/modals/ItemToCartSucce
 import OrderContactModal__SvelteComponent_ from "../components/modals/ItemToCartSuccessModal.svelte";
 import RegisterSuccessModal__SvelteComponent_ from "../components/modals/RegisterSuccessModal.svelte";
 import StripePaymentModal__SvelteComponent_ from "../components/modals/RegisterSuccessModal.svelte";
+import DiscountSuccessModal__SvelteComponent_ from "../components/modals/DiscountSuccessModal.svelte";
+import DiscountFailedModal__SvelteComponent_ from "../components/modals/DiscountFailedModal.svelte";
 
 const $media = get(media);
 
@@ -89,4 +91,8 @@ export function openRegisterSuccessModal(open, props, style) {
 
 export function openStripePaymentModal(open, props, style) {
     open(StripePaymentModal__SvelteComponent_, props, style);
+}
+
+export function openDiscountModal(open, isCodeValid, props, style) {
+    open(isCodeValid ? DiscountSuccessModal__SvelteComponent_ : DiscountFailedModal__SvelteComponent_, props, style);
 }

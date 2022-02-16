@@ -1,5 +1,5 @@
 <script>
-	export let size = 8, color = "red-600";
+	export let size = 8, color = "black", strokeWidth = 2;
 </script>
 
 <style>
@@ -12,6 +12,7 @@
 	fill="none"
 	viewBox="0 0 24 24"
 	stroke="currentColor"
+	stroke-width={strokeWidth}
 	aria-hidden="true"
 >
 	<path

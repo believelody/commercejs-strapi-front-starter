@@ -1,9 +1,15 @@
 <script>
 	export let size = 8,
-		color = 'black';
+		color = 'black',
+		strokeWidth = 2;
 </script>
 
-<svg class="h-{size} w-{size} text-{color}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<svg
+	class="h-{size} w-{size} text-{color}"
+	fill="none"
+	viewBox="0 0 24 24" stroke="currentColor"
+	stroke-width={strokeWidth}
+>
 	<path
 		stroke-linecap="round"
 		stroke-linejoin="round"

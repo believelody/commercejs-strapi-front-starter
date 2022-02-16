@@ -16,7 +16,7 @@
             case "danger":
                 bgColor = "bg-danger";
                 break;
-                case "info":
+            case "info":
                 bgColor = "bg-info";
                 break;
             case "warning":

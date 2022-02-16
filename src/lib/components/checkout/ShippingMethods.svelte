@@ -15,19 +15,19 @@
     /* your styles go here */
 </style>
 
-<div class="mx-2 md:mx-12 rounded-md mb-8">
+<div class="mx-2 md:mx-12">
     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
 		{$t("checkout.shipping-methods.title")}
 	</h2>
-    <fieldset class="mb-3 px-4 bg-white shadow-lg rounded text-neutral-dark flex justify-around">
+    <section class="bg-white shadow-md rounded text-neutral-dark md:text-lg grid grid-cols-2 gap-4">
         {#each $checkout.shipping_methods as method}
             <Radio
                 label={`${method.description} - ${method.price.formatted_with_symbol}`}
                 name="shippingMethod"
                 value={method}
                 on:change={() => selectShippingMethod(method.id)}
-                className="flex xl:w-1/2 items-center py-3 px-0 xl:px-2"
+                className="flex-center-middle py-3"
             />
         {/each}
-    </fieldset>
+    </section>
 </div>

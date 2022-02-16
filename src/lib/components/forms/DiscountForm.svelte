@@ -1,12 +1,12 @@
 <script>
+    import {getContext} from "svelte";
     import { t } from '$lib/i18n';
     import { checkout, checkoutLoading } from '$lib/stores';
     import api from '$lib/api';
     import Form from '$lib/elements/form/Form.svelte';
     import TextInput from "$lib/elements/input/TextInput.svelte";
-    import DiscountFailedModal from '../modals/DiscountFailedModal.svelte';
-    import DiscountSuccessModal from '../modals/DiscountSuccessModal.svelte';
-    import {getContext} from "svelte";
+    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
+    import { openDiscountModal } from '../../context/modal';
 
     export let withoutShadow = false;
     let code, isCodeValid, loading = false;
@@ -15,9 +15,9 @@
     async function submit() {
         loading = true;
         isCodeValid = await api.checkout.checkDiscount($checkout.id, code);
+        openDiscountModal(open, isCodeValid);
         loading = false;
         code = "";
-        open(isCodeValid ? DiscountSuccessModal : DiscountFailedModal);
     }
 </script>
 
@@ -25,22 +25,23 @@
     /* your styles go here */
 </style>
 
-<div class="mx-2 md:mx-12 rounded-md mb-8">
-    <Form on:submit class="w-full flex-col xl:flex-row xl:justify-between">
-        <h3 slot="header" class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("discount.title")}</h2>
-        <svelte:fragment {withoutShadow}>
+<div class="box-border max-w-md mx-2 md:mx-auto">
+    <Form on:submit={submit} {withoutShadow}>
+        <h3 slot="header" class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">{$t("discount.title")}</h3>
+        <div class="p-2 grid grid-cols-3 gap-x-2 md:gap-x-4" slot="content">
             <TextInput
                 name="code"
                 placeholder={$t('discount.placeholder')}
                 value={code}
+                class="col-span-2"
                 on:input={e => code = e.target.value}
             />
-            <button
+            <PrimaryButton
                 disabled={!code || $checkoutLoading || loading}
                 type="submit"
-                class="text-center xl:w-1/3 px-6 py-3 rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
-                {$t("common.validate")}
-            </button>
-        </svelte:fragment>
+            >
+                {$checkoutLoading || loading ? $t("common.update") : $t("common.validate")}
+            </PrimaryButton>
+        </div>
     </Form>
 </div>

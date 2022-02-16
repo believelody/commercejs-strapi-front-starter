@@ -1,15 +1,22 @@
 <script>
-	import { checkout, checkoutLoading } from '$lib/stores';
+	import { checkout, checkoutLoading, sidebar } from '$lib/stores';
     import { t } from '$lib/i18n'
     import CartList from '../list/CartList.svelte';
     import ShippingInfo from './ShippingInfo.svelte';
 	import DiscountDisplay from '../displays/DiscountDisplay.svelte';
     import TotalCheckout from './TotalCheckout.svelte';
+	import CloseButton from '../buttons/CloseButton.svelte';
 
 	let cartLoading = false;
 </script>
 
-<h1 class="py-6 border-b-2 text-xl text-neutral-dark px-8">{$t('checkout.summary')}</h1>
+<h3 class="flex items-center justify-between py-4 text-neutral-dark px-8 border-b">
+	<span>{$t('checkout.summary')}</span>
+	<CloseButton
+		on:click={() => ($sidebar = null)}
+		class="bg-transparent"
+	/>
+</h3>
 <CartList
 	on:loading={(e) => cartLoading = e.detail}
 	items={$checkout.live.line_items}

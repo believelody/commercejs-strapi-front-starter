@@ -28,20 +28,20 @@
 	})
 </script>
 
-<div class="mx-2 md:mx-12 rounded-md">
-	<h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
+<div class="mx-2 md:mx-12">
+	<h3 class="uppercase tracking-wide font-semibold text-neutral-dark my-2">
 		{$t("checkout.payment.title")}
-	</h2>
-	<fieldset class="mb-3 py-2 pl-2 bg-white shadow-lg rounded text-neutral-dark">
+	</h3>
+	<section class="bg-white shadow-md rounded text-neutral-dark md:text-lg gird grid-cols-1 divide-y">
 		{#if gateways.stripe && $stripe}
 			<Radio
 				name="paymentMethod"
 				value="stripe"
-				className="flex items-center pb-2 border-b border-gray-300"
+				className="flex items-center px-2 py-3"
 				bind:group={$paymentMethod}
 			>
 				<div class="w-full flex justify-space-between items-center ml-4">
-					<span class="w-1/2">{$t("checkout.payment.method.stripe")}</span>
+					<span class="w-1/3 md:w-1/2">{$t("checkout.payment.method.stripe")}</span>
 					{#if $paymentMethod === "stripe"}
 						<div class="flex-grow">
 							<Container stripe={$stripe}>
@@ -55,7 +55,7 @@
 		<Radio
 			name="paymentMethod"
 			value="paypal"
-			className="flex items-center pt-2"
+			className="flex items-center p-2"
 			bind:group={$paymentMethod}
 		>
 			<div class="w-full flex items-center ml-4">
@@ -63,7 +63,7 @@
 				<PaypalIcon />
 			</div>
 		</Radio>
-	</fieldset>
+	</section>
 </div>
 
 <style>

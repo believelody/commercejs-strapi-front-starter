@@ -1,8 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import { sidebar } from '$lib/stores';
-	import { t } from '$lib/i18n';
-	import CloseIcon from '$lib/elements/icon/CloseIcon.svelte';
+	import CloseButton from '../../components/buttons/CloseButton.svelte';
 
 	let width;
 	function overlay_click(e) {
@@ -18,23 +17,18 @@
             transition:fade={{ duration: 150 }}
 	>
         <nav
-                class="w-auto h-screen fixed top-0
-				{$sidebar.openFrom || 'right'}-0
-				{$sidebar.glass ? 'glass' : ''}
-				bg-white border-l border-gray-300"
-                bind:clientWidth={width}
-                transition:fly={{ x: $sidebar.openFrom === "left" ? -width : width, opacity: 1 }}
+			class="w-auto h-screen fixed top-0
+			{$sidebar.openFrom || 'right'}-0
+			{$sidebar.glass ? 'glass' : ''}
+			bg-white border-l border-gray-300"
+			bind:clientWidth={width}
+			transition:fly={{ x: $sidebar.openFrom === "left" ? -width : width, opacity: 1 }}
         >
             {#if !$sidebar.noCloseBtn}
-                <button
-                        on:click={() => ($sidebar = null)}
-                        type="button"
-                        class="rm-2 mt-2 text-gray-400 right-0 hover:text-gray-500 absolute"
-                >
-                    <span class="sr-only">{$t('modal.close')}</span>
-					<!-- Heroicon name: outline/x -->
-					<CloseIcon />
-				</button>
+                <CloseButton
+					on:click={() => ($sidebar = null)}
+					class="absolute border top-0 right-0 bg-transparent"
+                />
 			{/if}
 			<svelte:component this={$sidebar.component ?? $sidebar} {...$sidebar.props} />
 		</nav>

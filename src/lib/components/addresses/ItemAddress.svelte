@@ -26,7 +26,7 @@
     </div>
     {#if isSelected}
         <span class="absolute bottom-0 right-0 rounded-full p-2">
-            <CheckCircleIcon size={6} />
+            <CheckCircleIcon size={6} color="success" />
         </span>
     {:else}
         <div class="ml-0 lg:ml-6">
