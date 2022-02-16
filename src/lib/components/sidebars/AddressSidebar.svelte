@@ -16,10 +16,10 @@
 </style>
 
 <SidebarWrapper>
-    <h2 class="pl-2 py-2 text-center text-lg font-medium text-gray-900" id="slide-over-title">
+    <h3 slot="header" class="py-2 text-center font-medium text-neutral-dark">
         {$t(`account.addresses.sidebar.${type}.title`)}
-    </h2>
-    <div class="w-full border-b border-gray-300 flex items-center justify-center py-2">
+    </h3>
+    <div slot="extra" class="w-full border-b order-last border-gray-300 flex items-center justify-center py-2">
         <div class="mt-2">
             <CreateAddressModalButton
                 {type}
@@ -28,5 +28,5 @@
             />
         </div>
     </div>
-    <AddressList {items} {type} on:loading={({ detail }) => loading = detail.loading} />
+    <AddressList slot="content" {items} {type} on:loading={({ detail }) => loading = detail.loading} />
 </SidebarWrapper>

@@ -11,7 +11,7 @@
 	];
 </script>
 
-<section class="border-box border-b md:border-b-0 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0">
+<section class="border-box border-b md:border-b-0 grid grid-cols-1 md:grid-cols-4 xl:grid-cols-3 items-center divide-y md:divide-y-0">
     <div>
         <!-- Desktop and tablet -->
         <Dropdown class="hidden md:inline">
@@ -42,6 +42,6 @@
             </nav>
         </Accordion>
     </div>
-    <a href="/about" class="btn btn-link px-2 py-2 md:py-4">{$t('menu.about.label')}</a>
+    <a href="/about" class="btn btn-link px-2 py-2 md:py-4 md:col-span-2 xl:col-span-1">{$t('menu.about.label')}</a>
     <a href="/blog" class="btn btn-link py-2 md:py-4">{$t('menu.blog.label')}</a>
 </section>

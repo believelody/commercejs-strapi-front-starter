@@ -1,14 +1,15 @@
 <script>
 	import { goto } from "$app/navigation";
     import { t } from "$lib/i18n";
-    import { media, sidebar } from "$lib/stores";
+    import { media } from "$lib/stores";
+    import { openSidebar } from "../../context/sidebar";
     import LinkButton from "../../elements/button/LinkButton.svelte";
     import UserCircleIcon from "../../elements/icon/UserCircleIcon.svelte";
     import ProfileSidebar from "../sidebars/ProfileSidebar.svelte";
 
 	function onClick() {
 		if ($media.mobile) {
-			$sidebar = ProfileSidebar;
+			openSidebar({ component: ProfileSidebar });
 		} else {
 			goto("/my-account");
 		}

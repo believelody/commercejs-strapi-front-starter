@@ -1,7 +1,6 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import { sidebar } from '$lib/stores';
-	import CloseButton from '../../components/buttons/CloseButton.svelte';
 
 	let width;
 	function overlay_click(e) {
@@ -24,23 +23,13 @@
 			bind:clientWidth={width}
 			transition:fly={{ x: $sidebar.openFrom === "left" ? -width : width, opacity: 1 }}
         >
-            {#if !$sidebar.noCloseBtn}
-                <CloseButton
-					on:click={() => ($sidebar = null)}
-					class="absolute border top-0 right-0 bg-transparent"
-                />
-			{/if}
-			<svelte:component this={$sidebar.component ?? $sidebar} {...$sidebar.props} />
+			<svelte:component this={$sidebar.component} {...$sidebar.props} />
 		</nav>
 	</div>
 {/if}
 
 <style>
 	nav {
-		z-index: 999;
-	}
-
-	button {
 		z-index: 999;
 	}
 </style>

@@ -1,11 +1,12 @@
 <script>
-    import { cart, sidebar, media } from "$lib/stores";
+    import { cart, media } from "$lib/stores";
     import CartSidebar from "../sidebars/CartSidebar.svelte";
     import CartIcon from "$lib/elements/icon/CartIcon.svelte";
     import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
+    import { openSidebar } from "$lib/context/sidebar";
 
     function toggleCart() {
-        $sidebar = !$sidebar ? CartSidebar : null
+        openSidebar({ component: CartSidebar });
     }
 </script>
 

@@ -8,25 +8,9 @@
 	const { close } = getContext("simple-modal");
 
     function applyStatusStyle() {
-        let bgColor = "";
-        switch (status) {
-            case "success":
-                bgColor = "bg-success";
-                break;
-            case "danger":
-                bgColor = "bg-danger";
-                break;
-            case "info":
-                bgColor = "bg-info";
-                break;
-            case "warning":
-                bgColor = "bg-warning";
-                break;
-            default:
-                bgColor = "bg-transparent";
-                break;
-        }
+        let bgColor = "bg-transparent";
         if (status) {
+            bgColor = `bg-${status}`
             if (iconBgShade === "light") {
                 bgColor += "-light-1";
             } else if (iconBgShade === "dark") {
@@ -55,7 +39,7 @@
 	</div>
 	<div class="px-4 py-3 grid grid-cols-1 md:grid-cols-2 gap-2">
 		<slot name="action" />
-		<LinkButton on:click={close} class="w-full border">
+		<LinkButton on:click={close} class="w-full border md:order-first">
 			{cancelText}
 		</LinkButton>
 	</div>

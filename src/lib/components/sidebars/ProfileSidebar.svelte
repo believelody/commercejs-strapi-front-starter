@@ -1,5 +1,6 @@
 <script>
     import { t } from "$lib/i18n";
+    import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
     import MenuProfile from "../profile/MenuProfile.svelte";
 </script>
 
@@ -7,7 +8,7 @@
     /* your styles go here */
 </style>
 
-<div class="w-80">
-    <h3 class="py-2 font-medium text-lg text-center">{$t("account.sidebar.title")}</h3>
-    <MenuProfile />
-</div>
+<SidebarWrapper class="w-80">
+    <h3 slot="header" class="py-2 font-medium text-center">{$t("account.sidebar.title")}</h3>
+    <MenuProfile slot="content" />
+</SidebarWrapper>

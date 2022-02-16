@@ -6,12 +6,13 @@
 	import CartSidebar from "../sidebars/CartSidebar.svelte";
 	import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
 	import SuccessButton from "../../elements/button/SuccessButton.svelte";
+	import { openSidebar } from "../../context/sidebar";
 
 	export let product, selectedColor, selectedSize, quantity;
 	const { close } = getContext("simple-modal");
 
 	function showCart() {
-		$sidebar = CartSidebar;
+		openSidebar(CartSidebar);
 		close();
 	}
 </script>

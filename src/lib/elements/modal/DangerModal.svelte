@@ -1,6 +1,5 @@
 <script>
 	import {getContext} from "svelte";
-	import { getNotificationsContext } from "svelte-notifications";
 	import { t } from '$lib/i18n';
 	import DangerButton from "../button/DangerButton.svelte";
 	import LinkButton from "../button/LinkButton.svelte";
@@ -10,12 +9,9 @@
 		actionText = $t('modal.cta.text.default'),
 		cancelText = $t('modal.cancel.text'),
 		loadingText = $t('modal.loading.text.deleting'),
-		notificationHeading = $t("notifications.default.heading"),
-		notificationText = $t("notifications.default.description"),
 		actionCallback = null;
 	let loading = false;
 	const { close } = getContext("simple-modal");
-    const { addNotification } = getNotificationsContext();
 
 	async function actionFn() {
 		try {
@@ -34,7 +30,7 @@
 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 	<div class="sm:flex sm:items-start">
 		<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-			<h3 class="text-lg leading-6 font-medium text-gray-900 disabled:opacity-75" id="modal-title">
+			<h3 class="leading-6 font-medium text-neutral-dark" id="modal-title">
 				{title}
 			</h3>
 			<div class="mt-2">
@@ -59,6 +55,7 @@
 	</DangerButton>
 	<LinkButton
 		on:click={close}
+		class=" md:order-first"
 	>
 		{cancelText}
 	</LinkButton>
