@@ -17,7 +17,7 @@
             <ExtraLinks />
         </div>
 	</div>
-	<div class="bg-gray-100">
+	<div class="bg-neutral-light-2">
 		<div class="container md:px-5 md:py-6 mx-auto flex flex-col md:flex-row-reverse items-center md:justify-between">
 			<div class="grid grid-cols-4 items-center justify-around py-1 md:py-0 w-full md:w-auto">
 				<a href="/" class="md:px-4 flex justify-center text-gray-500">

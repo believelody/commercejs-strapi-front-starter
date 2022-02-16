@@ -6,12 +6,12 @@
     import api from '$lib/api';
     import TrashIcon from '$lib/elements/icon/TrashIcon.svelte';
     import { openDangerModal } from '../../context/modal';
-    import Button from "../../elements/button/Button.svelte";
+    import SecondaryButton from "../../elements/button/SecondaryButton.svelte";
     import IconButton from "../../elements/button/IconButton.svelte";
 
     export let items, loading;
     const dispatch = createEventDispatcher();
-    const { open } = getContext("simple-modal");
+    const { open, close } = getContext("simple-modal");
     const { addNotification } = getNotificationsContext();
 
     async function updateQuantity(item, quantity) {
@@ -53,6 +53,7 @@
                         type: 'success',
                         removeAfter: 5000
                     });
+                    close();
                     if (!$cart.line_items.length) {
                         $sidebar = null;
                     }
@@ -99,20 +100,20 @@
                             </div>
                             <div class="flex items-center justify-between text-sm">
                                 <p class="text-neutral-dark flex-center-middle">
-                                    <Button
+                                    <SecondaryButton
                                             disabled={item.quantity <= 1 || loading}
                                             on:click={() => updateQuantity(item, item.quantity - 1)}
                                             class="text-xl font-medium w-12 h-10"
                                         >-
-                                    </Button>
+                                    </SecondaryButton>
                                     <span class="mx-4 text-lg font-medium">{item.quantity}
                                         x {item.price.formatted_with_symbol}</span>
-                                    <Button
+                                    <SecondaryButton
                                             disabled={item.quantity >= 5 || loading}
                                             on:click={() => updateQuantity(item, item.quantity + 1)}
                                             class="text-xl font-medium w-12 h-10"
                                         >+
-                                    </Button>
+                                    </SecondaryButton>
                                 </p>
                                 <div>
                                     <IconButton

@@ -10,7 +10,7 @@
 	import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
 
 	let loading = false;
-	const { open } = getContext("simple-modal");
+	const { open, close } = getContext("simple-modal");
 
 	onDestroy(() => {
 		$sidebar = null;
@@ -24,8 +24,8 @@
 				const res = await api.cart.emptyCart($cart.id);
 				if (res.success) {
 					$sidebar = null;
+					close();
 				}
-				return res;
 			},
 			notificationHeading: $t('notifications.cart.heading'),
 			notificationText: $t('notifications.cart.description.empty'),

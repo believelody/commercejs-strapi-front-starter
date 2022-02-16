@@ -21,18 +21,7 @@
 		try {
 			loading = true;
 			if (actionCallback) {
-				const res = await actionCallback();
-				if (res.success) {
-					addNotification({
-						position: 'bottom-left',
-						heading: notificationHeading,
-						text: notificationText,
-						description: notificationText,
-						type: 'success',
-						removeAfter: 5000
-					});
-					close();
-				}
+				await actionCallback();
 			}
 		} catch (error) {
 			console.log(error);

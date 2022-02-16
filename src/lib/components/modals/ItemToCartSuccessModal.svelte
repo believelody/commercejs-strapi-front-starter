@@ -16,7 +16,7 @@
 	}
 </script>
 
-<WithActionModal cancelText={$t("product.modal.cta.continue-shopping")} status="success">
+<WithActionModal cancelText={$t("product.modal.cta.continue-shopping")} status="success" iconBgShade="light">
 	<CheckCircleIcon color="success" slot="icon" />
 	<span slot="header">{$t("product.modal.title", {article: product.name})}</span>
 	<svelte:fragment slot="content">
