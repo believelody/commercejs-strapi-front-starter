@@ -1,34 +1,39 @@
 <script>
-    import {getContext} from "svelte";
-    import { t } from '$lib/i18n';
-    import {
-        checkout,
-        checkoutLoading,
-    } from '$lib/stores';
-    import { openStripePaymentModal } from '../../context/modal';
+	import { t } from '$lib/i18n';
+	import { checkout, checkoutLoading } from '$lib/stores';
+import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import { openModal } from '../../elements/modal/Modal.svelte';
+	import StripePaymentModal from '../modals/StripePaymentModal.svelte';
 
-    export let cardElement, isValid;
-    const { open } = getContext("simple-modal");
+	export let cardElement, isValid;
 
-    function showModal() {
-        openStripePaymentModal(open, {
-            cardElement
-        }, {
-            closeButton: false,
-            closeOnEsc: false,
-            closeOnOuterClick: false,
-        });
-    }
+	function showModal() {
+		openModal({
+			component: StripePaymentModal,
+			props: {
+				cardElement
+			},
+			options: {
+				closeButton: false,
+				closeOnEsc: false,
+				closeOnOuterClick: false
+			}
+		});
+	}
 </script>
 
-<style>
-    /* your styles go here */
-</style>
+<PrimaryButton
+	on:click={showModal}
+	disabled={!isValid}
+    block
+>
+	{#if $checkoutLoading}
+		{$t('common.update')}
+	{:else}
+		{$t('checkout.submit-stripe', { amount: $checkout.live.total.formatted_with_symbol })}
+	{/if}
+</PrimaryButton>
 
-<button on:click={showModal} disabled={!isValid} class="px-4 py-4 bg-indigo-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed">
-    {#if $checkoutLoading}
-        {$t("common.update")}
-    {:else}
-        {$t("checkout.submit-stripe", { amount: $checkout.live.total.formatted_with_symbol })}
-    {/if}
-</button>
+<style>
+	/* your styles go here */
+</style>

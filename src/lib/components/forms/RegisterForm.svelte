@@ -33,7 +33,7 @@ import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
 </style>
 
 <Form id="register-form" on:submit={submit} {withoutShadow} class="flex-col">
-    <h4 slot="header" class="tracking-wide font-semibold text-neutral-dark mb-4 text-center">{title}</h4>
+    <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark m-2 text-center">{title}</h3>
     <svelte:fragment slot="content">
         <!-- <div class="w-full flex justify-between border-b border-gray-300 py-3 px-2">
             <span class="sm:text-right xl:mr-2">{$t("identity.civility.title")}</span>

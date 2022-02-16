@@ -1,27 +1,44 @@
 <script>
-    import { getContext } from 'svelte';
 	import { Tab, TabList, TabPanel, Tabs } from 'svelte-tabs';
-	import { goto } from "$app/navigation";
-    import api from "$lib/api";
-    import {t} from "$lib/i18n";
-    import Star from '../../elements/star/Star.svelte';
-    import {localDateFromString} from '../../utils/date.util';
-	import { openReviewViewerModal, openAddReviewModal } from "$lib/context/modal";
+	import { goto } from '$app/navigation';
+	import api from '$lib/api';
+	import { t } from '$lib/i18n';
+	import Star from '../../elements/star/Star.svelte';
+	import { localDateFromString } from '../../utils/date.util';
+	import { openModal } from '../../elements/modal/Modal.svelte';
+	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
+	import { fullOpacityBackground } from '$lib/utils/modal.util';
+	import AddReviewModal from '../modals/AddReviewModal.svelte';
 
-    export let pendingReviews, reviews, orderItems;
+	export let pendingReviews, reviews, orderItems;
 	let loading = false;
-    const { open } = getContext("simple-modal");
 
-    async function goToProductPage(productId) {
-        loading = true;
-        const res = await api.product.getSlug(productId);
-        if (res.success) {
-            goto(`/products/${res.slug}`);
-        }
-        loading = false;
-    }
+	async function goToProductPage(productId) {
+		loading = true;
+		const res = await api.product.getSlug(productId);
+		if (res.success) {
+			goto(`/products/${res.slug}`);
+		}
+		loading = false;
+	}
 
-    $: extractProductInfo = (productId) => orderItems.find((item) => item.product_id === productId);
+	function showReviewViewerModal(index, review) {
+		openModal({
+			component: ReviewImageViewerModal,
+			props: { images: review.images, selectedIndex: index },
+			options: { ...fullOpacityBackground }
+		});
+	}
+
+	function showAddReviewModal(item) {
+		openModal({
+			component: AddReviewModal,
+			props: { item },
+			options: { ...fullOpacityBackground }
+		});
+	}
+
+	$: extractProductInfo = (productId) => orderItems.find((item) => item.product_id === productId);
 </script>
 
 <Tabs>
@@ -29,7 +46,9 @@
 		<Tab>
 			<span>{$t('review.tabs.pending')}</span>
 			{#if pendingReviews.length}
-				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full">{pendingReviews.length}</span>
+				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full"
+					>{pendingReviews.length}</span
+				>
 			{/if}
 		</Tab>
 		<Tab>
@@ -47,14 +66,12 @@
 					<section class="flex flex-col w-1/2">
 						<span class="text-lg text-gray-800">{item.product_name}</span>
 						{#each item.variants as variant}
-							<span class="text-sm text-neutral-dark"
-								>{variant.variant_name} : {variant.option_name}</span
-							>
+							<span class="text-sm text-neutral-dark">{variant.variant_name} : {variant.option_name}</span>
 						{/each}
 					</section>
 					<section class="w-1/2">
 						<button
-							on:click={() => openAddReviewModal(open, item)}
+							on:click={() => showAddReviewModal(item)}
 							class="w-full py-2 text-indigo-700 border border-indigo-500 rounded px-auto hover:text-white hover:bg-indigo-500 hover:border-none"
 						>
 							{$t('review.button.add')}
@@ -79,8 +96,9 @@
 									<button
 										on:click={() => goToProductPage(review.productId)}
 										class="mr-4 font-medium underline border-none"
-										>{extractProductInfo(review.productId).name}</button
 									>
+										{extractProductInfo(review.productId).name}
+									</button>
 									<Star nb={review.ratings} />
 								</div>
 								<div class="text-lg italic text-gray-500">
@@ -110,7 +128,7 @@
 											class="object-cover w-24 h-24 cursor-pointer"
 											src={`${image.url}`}
 											alt={image.name}
-											on:click={() => openReviewViewerModal(open, index, review)}
+											on:click={() => showReviewViewerModal(index, review)}
 										/>
 									</li>
 								{/each}
@@ -127,19 +145,19 @@
 	</TabPanel>
 </Tabs>
 
-<style>	
-    :global(.svelte-tabs) {
-        width: 100%;
-    }
-    :global(.svelte-tabs .svelte-tabs__tab-list) {
-        display: flex;
-        box-sizing: border-box;
-    }
-    :global(.svelte-tabs li.svelte-tabs__tab) {
-        flex: 1 0 0;
-    }
-    :global(.svelte-tabs li.svelte-tabs__selected) {
+<style>
+	:global(.svelte-tabs) {
+		width: 100%;
+	}
+	:global(.svelte-tabs .svelte-tabs__tab-list) {
+		display: flex;
+		box-sizing: border-box;
+	}
+	:global(.svelte-tabs li.svelte-tabs__tab) {
+		flex: 1 0 0;
+	}
+	:global(.svelte-tabs li.svelte-tabs__selected) {
 		border-bottom: 2px solid #4338ca;
-        color: #4338ca;
-    }
+		color: #4338ca;
+	}
 </style>

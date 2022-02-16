@@ -1,27 +1,29 @@
 <script>
-    import { getContext } from 'svelte';
-    import { t } from '$lib/i18n';
-    import { openDangerModal } from '../../context/modal';
-    import DangerButton from '$lib/elements/button/DangerButton.svelte';
-    
-    export let title, description, actionCallback, type;
-	const { open } = getContext("simple-modal");
+	import { t } from '$lib/i18n';
+	import DangerButton from '$lib/elements/button/DangerButton.svelte';
+	import DangerModal from '../../elements/modal/DangerModal.svelte';
+	import { openModal } from '../../elements/modal/Modal.svelte';
 
-    async function showRemoveModal() {
-        openDangerModal(open, {
-            title,
-            description,
-            actionCallback,
-            notificationHeading: $t(`notifications.address.heading.${type}`),
-            notificationText: $t("notifications.address.description.remove"),
-        });
-    }
+	export let title, description, actionCallback, type;
+
+	async function showRemoveModal() {
+		openModal({
+			component: DangerModal,
+			props: {
+				title,
+				description,
+				actionCallback,
+				notificationHeading: $t(`notifications.address.heading.${type}`),
+				notificationText: $t('notifications.address.description.remove')
+			}
+		});
+	}
 </script>
 
-<style>
-    /* your styles go here */
-</style>
-
 <DangerButton outlined on:click={showRemoveModal} {...$$restProps}>
-    {$t("common.delete")}
+	{$t('common.delete')}
 </DangerButton>
+
+<style>
+	/* your styles go here */
+</style>

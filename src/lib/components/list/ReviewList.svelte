@@ -1,26 +1,34 @@
 <script>
-	import { getContext } from 'svelte';
 	import { paginate, PaginationNav } from 'svelte-paginate';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import {t} from '$lib/i18n';
-    import Star from '../../elements/star/Star.svelte';
-    import {fullName} from '../../utils/user.util';
-    import {localDateFromString} from '../../utils/date.util';
-    import Card from '../../elements/card/Card.svelte';
-    import {openReviewViewerModal} from '../../context/modal';
+	import { t } from '$lib/i18n';
+	import Star from '../../elements/star/Star.svelte';
+	import { fullName } from '../../utils/user.util';
+	import { localDateFromString } from '../../utils/date.util';
+	import Card from '../../elements/card/Card.svelte';
+	import { openModal } from '../../elements/modal/Modal.svelte';
+	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
+	import { fullOpacityBackground } from "$lib/utils/modal.util";
 
 	export let reviews,
 		currentPage = +$page.url.searchParams.get('page') || 1,
 		pageSize = 6;
-	const { open } = getContext('simple-modal');
+
+	$: paginatedReviews = reviews.length ? paginate({ items: reviews, pageSize, currentPage }) : [];
 
 	function goToPage({ detail }) {
 		currentPage = detail.page;
 		goto(`reviews?page=${detail.page}`);
 	}
 
-	$: paginatedReviews = reviews.length ? paginate({ items: reviews, pageSize, currentPage }) : [];
+	function showModal(index, review) {
+		openModal({
+			component: ReviewImageViewerModal,
+			props: { images: review.images, selectedIndex: index },
+			options: { ...fullOpacityBackground }
+		});
+	}
 </script>
 
 <div class="flex flex-col justify-between h-full">
@@ -49,7 +57,7 @@
 									class="object-cover w-24 h-24 cursor-pointer"
 									src={`${image.url}`}
 									alt={image.name}
-									on:click={() => openReviewViewerModal(open, index, review)}
+									on:click={() => showModal(index, review)}
 								/>
 							</li>
 						{/each}

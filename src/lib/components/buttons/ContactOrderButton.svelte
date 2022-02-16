@@ -1,14 +1,20 @@
 <script>
-    import { getContext } from 'svelte';
-    import { t } from '$lib/i18n';
-    import { openOrderContactModal } from '../../context/modal';
+	import { t } from '$lib/i18n';
+	import LinkButton from '../../elements/button/LinkButton.svelte';
+	import { openModal } from '../../elements/modal/Modal.svelte';
+	import OrderContactModal from '../modals/OrderContactModal.svelte';
 
-    export let reference, customer, orderId;
-    const { open } = getContext("simple-modal");
+	export let reference, customer, orderId;
 </script>
 
-<style>
-    /* your styles go here */
-</style>
+<LinkButton
+	on:click={() =>
+		openModal({ component: OrderContactModal, props: { reference, customer, orderId } })}
+	class="underline"
+>
+	{$t('order.detail.contact')}
+</LinkButton>
 
-<button on:click={() => openOrderContactModal(open, { reference, customer, orderId })} class="underline">{$t("order.detail.contact")}</button>
+<style>
+	/* your styles go here */
+</style>

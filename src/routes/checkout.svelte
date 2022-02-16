@@ -1,22 +1,29 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { loadStripe } from '@stripe/stripe-js';
 	import { isServer } from 'svelte-stripe-js';
 	import { t } from '$lib/i18n';
-	import { cart, checkout, checkoutLoading, stripe, jwt, profile, shipping, billing } from '$lib/stores';
+	import {
+		cart,
+		checkout,
+		checkoutLoading,
+		stripe,
+		jwt,
+		profile,
+		shipping,
+		billing
+	} from '$lib/stores';
 	import api from '$lib/api';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
 	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
-	import { openInfoModal } from '../lib/context/modal';
-
-	const { open } = getContext("simple-modal");
+	import InfoModal from '../lib/elements/modal/InfoModal.svelte';
+	import { openModal } from '../lib/elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if (!isServer) {
-			$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
-			
+			$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 		}
 		if ($cart && $cart.total_unique_items > 0) {
 			$checkoutLoading = true;
@@ -25,11 +32,18 @@
 				$billing = $profile.customer.meta.billing;
 			}
 			const res = await api.checkout.getCheckoutByCart($cart.id);
-			if (!res.success) {}
+			if (!res.success) {
+			}
 			$checkoutLoading = false;
 		} else if (window) {
-			openInfoModal(open, { title: $t("checkout.no-cart.title"), description: $t("checkout.no-cart.description") })
-			goto("/");
+			openModal({
+				component: InfoModal,
+				props: {
+					title: $t('checkout.no-cart.title'),
+					description: $t('checkout.no-cart.description')
+				}
+			});
+			goto('/');
 		}
 	});
 </script>

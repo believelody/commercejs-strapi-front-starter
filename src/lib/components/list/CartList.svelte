@@ -1,17 +1,17 @@
 <script>
-    import {createEventDispatcher, getContext} from 'svelte';
-    import {getNotificationsContext} from "svelte-notifications";
+    import { createEventDispatcher } from 'svelte';
+    import { getNotificationsContext } from "svelte-notifications";
     import {t} from '$lib/i18n';
     import {cart, checkout, sidebar} from '$lib/stores';
     import api from '$lib/api';
     import TrashIcon from '$lib/elements/icon/TrashIcon.svelte';
-    import { openDangerModal } from '../../context/modal';
     import SecondaryButton from "../../elements/button/SecondaryButton.svelte";
     import IconButton from "../../elements/button/IconButton.svelte";
+    import DangerModal from '../../elements/modal/DangerModal.svelte';
+    import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
 
     export let items, loading;
     const dispatch = createEventDispatcher();
-    const { open, close } = getContext("simple-modal");
     const { addNotification } = getNotificationsContext();
 
     async function updateQuantity(item, quantity) {
@@ -39,23 +39,26 @@
     }
 
     function showRemoveItemModal(item) {
-        openDangerModal(open, {
-            title: $t("cart.modal.delete-item.title", {name: item.name}),
-            description: $t('cart.modal.delete-item.description'),
-            actionCallback: async () => {
-                const res = await api.cart.deleteItem($cart.id, item.id);
-                if (res.success) {
-                    addNotification({
-                        position: 'bottom-left',
-                        heading: $t('notifications.cart.heading'),
-                        text: $t('notifications.cart.description.remove', { name: item.name }),
-                        description: $t('notifications.cart.description.remove', { name: item.name }),
-                        type: 'success',
-                        removeAfter: 5000
-                    });
-                    close();
-                    if (!$cart.line_items.length) {
-                        $sidebar = null;
+        openModal({
+            component: DangerModal,
+            props: {
+                title: $t("cart.modal.delete-item.title", {name: item.name}),
+                description: $t('cart.modal.delete-item.description'),
+                actionCallback: async () => {
+                    const res = await api.cart.deleteItem($cart.id, item.id);
+                    if (res.success) {
+                        addNotification({
+                            position: 'bottom-left',
+                            heading: $t('notifications.cart.heading'),
+                            text: $t('notifications.cart.description.remove', { name: item.name }),
+                            description: $t('notifications.cart.description.remove', { name: item.name }),
+                            type: 'success',
+                            removeAfter: 5000
+                        });
+                        closeModal();
+                        if (!$cart.line_items.length) {
+                            $sidebar = null;
+                        }
                     }
                 }
             }
@@ -103,15 +106,15 @@
                                     <SecondaryButton
                                             disabled={item.quantity <= 1 || loading}
                                             on:click={() => updateQuantity(item, item.quantity - 1)}
-                                            class="text-xl font-medium w-12 h-10"
+                                            class="xl:text-xl font-medium w-12 h-10"
                                         >-
                                     </SecondaryButton>
-                                    <span class="mx-4 text-lg font-medium">{item.quantity}
+                                    <span class="mx-4 xl:text-lg font-medium">{item.quantity}
                                         x {item.price.formatted_with_symbol}</span>
                                     <SecondaryButton
                                             disabled={item.quantity >= 5 || loading}
                                             on:click={() => updateQuantity(item, item.quantity + 1)}
-                                            class="text-xl font-medium w-12 h-10"
+                                            class="xl:text-xl font-medium w-12 h-10"
                                         >+
                                     </SecondaryButton>
                                 </p>

@@ -32,7 +32,7 @@
 </style>
 
 <Form id="identity-form" on:submit={submit} {withoutShadow}>
-    <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark mb-4 text-center">{title}</h3>
+    <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark my-2 text-center">{title}</h3>
     <svelte:fragment slot="content">
         <TextInput
             name="identifier"

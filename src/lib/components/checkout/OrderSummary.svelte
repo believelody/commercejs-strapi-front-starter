@@ -14,7 +14,7 @@
 	<span>{$t('checkout.summary')}</span>
 	<CloseButton
 		on:click={() => ($sidebar = null)}
-		class="bg-transparent"
+		class="bg-transparent lg:hidden"
 	/>
 </h3>
 <CartList

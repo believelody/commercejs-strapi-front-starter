@@ -1,18 +1,16 @@
 <script>
-    import { getContext } from 'svelte';
     import api from '$lib/api';
     import { reviewsUser } from "$lib/stores";
-    import Box from "$lib/elements/box/Box.svelte";
     import ReviewForm from "../forms/ReviewForm.svelte";
+    import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
+    import { closeModal } from '../../elements/modal/Modal.svelte';
 
     export let item, review;
     
-    const { close } = getContext("simple-modal");
-
-    async function closeModal() {
+    async function close() {
         const res = await api.review.getFromUser();
         $reviewsUser = res.success ? res.reviews : [];
-        close();
+        closeModal();
     }
 </script>
 
@@ -20,6 +18,6 @@
     /* your styles go here */
 </style>
 
-<Box>
-    <ReviewForm on:submitEvent={closeModal} {item} {review} withoutShadow />
-</Box>
+<ModalWrapper>
+    <ReviewForm on:submitEvent={close} {item} {review} withoutShadow />
+</ModalWrapper>

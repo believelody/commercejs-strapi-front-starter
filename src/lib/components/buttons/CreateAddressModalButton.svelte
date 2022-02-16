@@ -1,20 +1,24 @@
 <script>
-    import { getContext } from "svelte";
-    import { t } from '$lib/i18n';
-    import { openAddressModal } from "../../context/modal";
-    import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
+	import { t } from '$lib/i18n';
+	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
+	import AddressModal from '../modals/AddressModal.svelte';
+	import { openModal } from '../../elements/modal/Modal.svelte';
 
-    export let type, withoutShadow = false;
-    const { open } = getContext("simple-modal");
+	export let type,
+		withoutShadow = false;
 </script>
 
-<style>
-    /* your styles go here */
-</style>
-
 <PrimaryButton
-    on:click={() => openAddressModal(open, { title: $t(`account.addresses.${type}.label`), type, withoutShadow, action: "create" })}
-    {...$$restProps}
+	on:click={() =>
+		openModal({
+			component: AddressModal,
+			props: { title: $t(`account.addresses.${type}.label`), type, withoutShadow, action: 'create' }
+		})}
+	{...$$restProps}
 >
-    + {$t(`account.addresses.${type}.label`)}
+	+ {$t(`account.addresses.${type}.label`)}
 </PrimaryButton>
+
+<style>
+	/* your styles go here */
+</style>

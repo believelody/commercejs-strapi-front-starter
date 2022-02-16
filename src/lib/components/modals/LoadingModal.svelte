@@ -1,6 +1,6 @@
 <script>
     import Moon from "svelte-loading-spinners/dist/ts/Moon.svelte";
-    import Box from "$lib/elements/box/Box.svelte";
+import ModalWrapper from "../../elements/modal/ModalWrapper.svelte";
 
     export let topText, bottomText;
 </script>
@@ -9,7 +9,7 @@
     /* your styles go here */
 </style>
 
-<Box class="flex flex-col justify-center items-center">
+<ModalWrapper>
     {#if topText}
         <span class="mb-4 font-medium text-lg">{topText}</span>    
     {/if}
@@ -17,4 +17,4 @@
     {#if bottomText}
         <span class="mt-4 font-medium text-lg">{bottomText}</span>
     {/if}
-</Box>
+</ModalWrapper>

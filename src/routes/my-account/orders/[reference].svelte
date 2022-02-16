@@ -17,7 +17,7 @@
     let data = null, error = null;
 
     async function getOrder() {
-        const res = await api.order.getOne($page.url.params.reference);
+        const res = await api.order.getOne($page.params.reference);
         if (res.success) {
             data = res.data;
         } else {
@@ -30,8 +30,6 @@
             await getOrder();
         }
     });
-
-    $: console.log(data);
 </script>
 
 <style>

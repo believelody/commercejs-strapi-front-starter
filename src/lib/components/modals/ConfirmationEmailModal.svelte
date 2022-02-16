@@ -1,40 +1,42 @@
 <script>
-    import { getContext } from 'svelte';
-    import {t} from '$lib/i18n';
-    import api from '$lib/api';
-    import ConfirmationEmailForm from "../forms/ConfirmationEmailForm.svelte";
-    import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
-    import Box from "$lib/elements/box/Box.svelte";
+	import { t } from '$lib/i18n';
+	import api from '$lib/api';
+	import ConfirmationEmailForm from '../forms/ConfirmationEmailForm.svelte';
+	import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
+	import { closeModal } from '../../elements/modal/Modal.svelte';
+	import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
+	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
 
-    let success = false;
-    const { close } = getContext("simple-modal");
+	let success = false;
 
-    async function handleSubmitEvent({detail}) {
-        if (detail.success) {
-            success = detail.success;
-            await api.auth.getMe();
-        }
-    }
+	async function onSubmitEvent({ detail }) {
+		if (detail.success) {
+			success = detail.success;
+			await api.auth.getMe();
+		}
+	}
 </script>
 
-<style>
-    /* your styles go here */
-</style>
+<ModalWrapper>
+	{#if success}
+		<h3 class="text-neutral-dark font-medium border-b pb-3 mb-3 flex items-center">
+			<span class="bg-success-light-2 rounded-full p-1">
+				<CheckCircleIcon color="success" />
+			</span>
+			<span class="ml-8">{$t(`auth.code.success.title`)}</span>
+		</h3>
+		{@html $t(`auth.code.success.text`)}
+		<h5 class="w-full text-center text-neutral-dark">{$t('common.or')}</h5>
+		<div class="flex-center-middle text-neutral-dark">
+			<PrimaryButton on:click={closeModal}>
+				<a class="p-2 rounded" href="/my-account">{$t('auth.code.success.link')}</a>
+			</PrimaryButton>
+		</div>
+	{:else}
+		<ConfirmationEmailForm withoutShadow on:submitEvent={onSubmitEvent} />
+	{/if}
+</ModalWrapper>
 
-<Box>
-    {#if success}
-        <h3 class="text-lg text-neutral-dark font-medium border-b pb-3 mb-3 flex items-center">
-            <span class="bg-green-100 rounded-full p-1">
-                <CheckCircleIcon />
-            </span>
-            <span class="ml-8">{$t(`auth.code.success.title`)}</span>
-        </h3>
-        {@html $t(`auth.code.success.text`)}
-        <h5 class="w-full text-center text-gray-500">{$t("common.or")}</h5>
-        <div class="flex items-center text-gray-500 justify-center">
-            <a on:click={() => close()} class="p-2 bg-indigo-300 text-black rounded" href="/my-account">{$t("auth.code.success.link")}</a>
-        </div>
-    {:else}
-        <ConfirmationEmailForm withoutShadow on:submitEvent={handleSubmitEvent} />
-    {/if}
-</Box>
+<style>
+	/* your styles go here */
+</style>

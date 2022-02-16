@@ -1,23 +1,25 @@
 <script>
-    import { getContext } from "svelte";
     import { t } from '$lib/i18n';
     import AddressForm from "../forms/AddressForm.svelte";
-    import Box from "$lib/elements/box/Box.svelte";
-    import { openInfoModal } from "../../context/modal";
+    import ModalWrapper from "../../elements/modal/ModalWrapper.svelte";
+    import Button from "../../elements/button/Button.svelte";
+import { openModal } from '../../elements/modal/Modal.svelte';
+import InfoModal from '../../elements/modal/InfoModal.svelte';
 
     export let title, information, type, action;
-    const {open} = getContext("simple-modal");
 
-    function closeModal() {
-        openInfoModal(open, {
-            title: $t(`notifications.address.heading.${type}`),
-            description: $t(`notifications.address.description.${action}`),
-            status: "success"
+    function onSubmitEvent() {
+        openModal({
+            component: InfoModal,
+            props: {
+                title: $t(`notifications.address.heading.${type}`),
+                description: $t(`notifications.address.description.${action}`),
+                status: "success"
+            }
         });
     }
 </script>
 
-<Box>
-    <AddressForm {title} withoutShadow {information} {type} {action} on:submitEvent={closeModal} />
-    <button on:click={closeModal}>Close</button>
-</Box>
+<ModalWrapper>
+    <AddressForm {title} withoutShadow {information} {type} {action} on:submitEvent={onSubmitEvent} />
+</ModalWrapper>

@@ -1,14 +1,13 @@
 <script>
-    import {getContext} from "svelte";
     import { cart } from "$lib/stores";
     import api from "$lib/api";
     import { t } from '$lib/i18n'
-    import { openItemToCartSuccessModal } from "../../context/modal";
     import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
+    import { openModal } from "../../elements/modal/Modal.svelte";
+    import ItemToCartSuccessModal from "../modals/ItemToCartSuccessModal.svelte";
 
     export let product, quantity, selectedColor, selectedSize;
     let loading = false;
-    const { open } = getContext("simple-modal");
 
 	async function addItem() {
         let options = {};
@@ -28,7 +27,10 @@
         }
         await api.cart.addToCart($cart.id, product.id, quantity, options);
         loading = false;
-        openItemToCartSuccessModal(open, { product, selectedColor, selectedSize, quantity });
+        openModal({
+            component: ItemToCartSuccessModal,
+            props: { product, selectedColor, selectedSize, quantity }
+        });
     }
 </script>
 

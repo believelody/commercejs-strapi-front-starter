@@ -1,23 +1,22 @@
 <script>
-	import {getContext} from "svelte";
 	import { t } from '$lib/i18n'
 	import WithActionModal from '../../elements/modal/WithActionModal.svelte';
 	import CartSidebar from "../sidebars/CartSidebar.svelte";
 	import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
 	import SuccessButton from "../../elements/button/SuccessButton.svelte";
 	import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
+	import { closeModal } from '../../elements/modal/Modal.svelte';
 
 	export let product, selectedColor, selectedSize, quantity;
-	const { close } = getContext("simple-modal");
 
 	function showCart() {
 		openSidebar({ component: CartSidebar });
-		close();
+		closeModal();
 	}
 </script>
 
 <WithActionModal cancelText={$t("product.modal.cta.continue-shopping")} status="success" iconBgShade="light">
-	<CheckCircleIcon color="success" slot="icon" />
+	<CheckCircleIcon color="success" slot="icon" iconBgShade="light" />
 	<span slot="header">{$t("product.modal.title", {article: product.name})}</span>
 	<svelte:fragment slot="content">
 		<p class="text-lg text-neutral-dark">

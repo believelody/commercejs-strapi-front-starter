@@ -1,7 +1,4 @@
 <script>
-import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
-
-
 	export let products, meta;
 </script>
 

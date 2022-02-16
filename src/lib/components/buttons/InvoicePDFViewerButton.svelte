@@ -3,11 +3,12 @@
     import { localDateFromSeconds } from '../../utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
 	import FilePDFIcon from '$lib/elements/icon/FilePDFIcon.svelte';
+	import InfoButton from "$lib/elements/button/InfoButton.svelte";
 
 	export let data;
 	let printContent,
         loading = false,
-		iconColor = 'blue-500';
+		iconColor = "info";
 
 	async function printInvoice() {
         try {
@@ -48,17 +49,17 @@
 	<InvoiceOrder {data} />
 </div>
 
-<button
+<InfoButton
+	outlined
 	on:mouseenter={() => changeIconColorOnHoverBtn('white')}
 	on:focus={() => changeIconColorOnHoverBtn('white')}
-	on:mouseleave={() => changeIconColorOnHoverBtn('blue-500')}
-	on:blur={() => changeIconColorOnHoverBtn('blue-500')}
+	on:mouseleave={() => changeIconColorOnHoverBtn('info')}
+	on:blur={() => changeIconColorOnHoverBtn('info')}
 	on:click={printInvoice}
     disabled={loading}
-	class="border border-blue-500 rounded px-4 flex items-center justify-center hover:bg-blue-500 hover:text-white disabled:bg-gray-500 disabled:opacity-75 disabled:cursor-not-allowed"
 >
 	<FilePDFIcon size={4} color={iconColor} />
 	<span class="ml-2">{$t('order.account.table.body.button.bill')}</span>
-</button>
+</InfoButton>
 
 <style></style>
