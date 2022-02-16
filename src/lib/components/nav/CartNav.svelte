@@ -3,7 +3,7 @@
     import CartSidebar from "../sidebars/CartSidebar.svelte";
     import CartIcon from "$lib/elements/icon/CartIcon.svelte";
     import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
-    import { openSidebar } from "$lib/context/sidebar";
+    import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
 
     function toggleCart() {
         openSidebar({ component: CartSidebar });

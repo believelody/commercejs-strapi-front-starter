@@ -17,7 +17,7 @@
     /* your styles go here */
 </style>
 
-<LinkButton underlined on:click={showLoginModal}>
+<LinkButton on:click={showLoginModal}>
   <span class="hidden lg:inline">{$t("header.connexion")}</span>
   <LoginIcon color={$media.mobile ? "black" : "gray-600"} strokeWidth={$media.mobile ? 2 : 1} />
 </LinkButton>

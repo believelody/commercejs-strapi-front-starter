@@ -1,18 +1,17 @@
 <script>
 	import {getContext} from "svelte";
 	import { t } from '$lib/i18n'
-	import { sidebar } from '$lib/stores';
 	import WithActionModal from '../../elements/modal/WithActionModal.svelte';
 	import CartSidebar from "../sidebars/CartSidebar.svelte";
 	import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
 	import SuccessButton from "../../elements/button/SuccessButton.svelte";
-	import { openSidebar } from "../../context/sidebar";
+	import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
 
 	export let product, selectedColor, selectedSize, quantity;
 	const { close } = getContext("simple-modal");
 
 	function showCart() {
-		openSidebar(CartSidebar);
+		openSidebar({ component: CartSidebar });
 		close();
 	}
 </script>

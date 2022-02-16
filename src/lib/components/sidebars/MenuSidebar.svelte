@@ -1,10 +1,8 @@
 <script>
-    import { sidebar } from "$lib/stores";
 	import Brand from '$lib/elements/brand/Brand.svelte';
     import Footer from '../footer/Footer.svelte';
 	import ExtraLinks from '../links/ExtraLinks.svelte';
 	import MenuNav from '../nav/MenuNav.svelte';
-	import CloseButton from '../buttons/CloseButton.svelte';
 	import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
 </script>
 

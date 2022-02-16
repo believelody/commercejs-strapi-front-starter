@@ -21,7 +21,7 @@
 	import PaypalPaymentButton from '../buttons/PaypalPaymentButton.svelte';
 	import DiscountForm from '../forms/DiscountForm.svelte';
 	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-	import { openSidebar } from '../../context/sidebar';
+	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
 
 	let cardElement,
 		isCountryAvailable = true,

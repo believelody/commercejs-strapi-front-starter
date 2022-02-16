@@ -2,7 +2,7 @@
     import { onDestroy } from "svelte";
     import { sidebar } from "$lib/stores";
     import CloseButton from "../../components/buttons/CloseButton.svelte";
-    import { closeSidebar } from "../../context/sidebar";
+    import { closeSidebar } from "./Sidebar.svelte";
 
     export let transparent = false;
     let className;

@@ -2,12 +2,12 @@
     import MenuIcon from "$lib/elements/icon/MenuIcon.svelte";
     import MenuSidebar from "../sidebars/MenuSidebar.svelte";
     import IconButton from "../../elements/button/IconButton.svelte";
-import { openSidebar } from "../../context/sidebar";
+import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
 
     function openSidebarMenu() {
         openSidebar({
             component: MenuSidebar,
-            openFrom: "left",
+            options: { openFrom: "left" },
         });
     }
 </script>
