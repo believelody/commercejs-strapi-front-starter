@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { getNotificationsContext } from 'svelte-notifications';
 	import { t } from '$lib/i18n';
 	import api from '$lib/api';
 	import { jwt, profile, user } from '$lib/stores';
@@ -9,12 +8,11 @@
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import AuthModal from '../modals/AuthModal.svelte';
 	import ConfirmationEmailModal from '../modals/ConfirmationEmailModal.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
 	export let product;
 	let wishlist,
 		isInWishlist = false;
-
-	const { addNotification } = getNotificationsContext();
 
 	async function putInWishlist() {
 		if ($jwt && $user.confirmed) {
@@ -30,17 +28,11 @@
 				}
 			}
 			checkIfIsInWishlist();
-			addNotification({
-				position: 'bottom-left',
-				heading: $t('notifications.wishlist.heading'),
-				text: $t(`notifications.wishlist.description.${isInWishlist ? 'add' : 'remove'}`, {
+			notifications.success({
+				title: $t('notifications.wishlist.title'),
+				message: $t(`notifications.wishlist.message.${isInWishlist ? 'add' : 'remove'}`, {
 					name: wishlist?.product.name
-				}),
-				description: $t(`notifications.wishlist.description.${isInWishlist ? 'add' : 'remove'}`, {
-					name: wishlist?.product.name
-				}),
-				type: 'success',
-				removeAfter: 5000
+				})
 			});
 		} else if ($jwt && !$user.confirmed) {
 			openModal({ component: ConfirmationEmailModal });

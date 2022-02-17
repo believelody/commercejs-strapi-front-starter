@@ -196,26 +196,26 @@
     },
     "notifications": {
         "default": {
-            "heading": "Notification",
-            "description": "Votre action a été réalisée avec succès"
+            "title": "Notification",
+            "message": "Votre action a été réalisée avec succès"
         },
         "auth": {
-            "heading": "Authentification",
-            "description": {
+            "title": "Authentification",
+            "message": {
                 "login": "Content de vous revoir.",
                 "register": "Bienvenue parmis nous {{name}}. Pour accéder à votre espace personnel, vous devez confirmer votre email (si ce n'est pas déjà fait ;) )"
             }
         },
         "wishlist": {
-            "heading": "Produits favoris",
-            "description": {
+            "title": "Produits favoris",
+            "message": {
                 "add": "L'article {{name}} a bien été ajouté dans vos produits favoris. Rendez-vous dans Mon Compte -> Mes produits favoris pour les consulter.",
                 "remove": "L'article {{name}} a bien été retiré de vos produits favoris"
             }
         },
         "cart": {
-            "heading": "Panier",
-            "description": {
+            "title": "Panier",
+            "message": {
                 "add" : {
                     "one": "Le produit a bien été ajouté au panier",
                     "many": "Le produits ont bien été ajoutés au panier"
@@ -230,11 +230,11 @@
             }
         },
         "address": {
-            "heading": {
+            "title": {
                 "billing": "Adresse de facturation",
                 "shipping": "Adresse de livraison"
             },
-            "description": {
+            "message": {
                 "select": "Votre adresse a bien été sélectionnée",
                 "create": "Votre adresse a bien été enregistrée",
                 "update": "Votre adresse a bien été modifiée",
@@ -243,21 +243,21 @@
         },
         "order": {
             "email": {
-                "heading": "Email",
-                "description": "Votre email a été envoyé avec succès. Nous reviendrons vers vous dans les plus brefs délais."
+                "title": "Email",
+                "message": "Votre email a été envoyé avec succès. Nous reviendrons vers vous dans les plus brefs délais."
             }
         },
         "profile": {
-            "heading": "Informations personnelles",
-            "description": "Vos informations ont bien été mises à jour."
+            "title": "Informations personnelles",
+            "message": "Vos informations ont bien été mises à jour."
         },
         "password": {
-            "heading": "Mot de passe",
-            "description": "Votre de mot de passe a bien été modifié."
+            "title": "Mot de passe",
+            "message": "Votre de mot de passe a bien été modifié."
         },
         "review": {
-            "heading": "Avis",
-            "description": {
+            "title": "Avis",
+            "message": {
                 "success": "Votre avis a bien été enregistré, nous vous en remercions.",
                 "failure": "Un problème a été rencontré lors de l'enregistrement de votre avis."
             }

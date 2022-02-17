@@ -13,8 +13,8 @@
 				title,
 				description,
 				actionCallback,
-				notificationHeading: $t(`notifications.address.heading.${type}`),
-				notificationText: $t('notifications.address.description.remove')
+				notificationHeading: $t(`notifications.address.title.${type}`),
+				notificationText: $t('notifications.address.message.remove')
 			}
 		});
 	}

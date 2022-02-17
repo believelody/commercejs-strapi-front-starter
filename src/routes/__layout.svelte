@@ -1,7 +1,6 @@
 <script>
 	import '../app.css';
-	import "../styles/tailwind-output.css";
-	import Notifications from 'svelte-notifications';
+	import '../styles/tailwind-output.css';
 	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
 	import { cart, sidebar, locale, user, jwt, profile, media } from '$lib/stores';
@@ -9,9 +8,9 @@
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/elements/sidebar/Sidebar.svelte';
 	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
-	import Notification from "$lib/elements/notification/Notification.svelte";
-	import Toolbar from '../lib/components/toolbar/Toolbar.svelte';
-	import Modal from '../lib/elements/modal/Modal.svelte';
+	import Notification from '$lib/elements/notification/Notification.svelte';
+	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
+	import Modal from '$lib/elements/modal/Modal.svelte';
 
 	const exceptRoute = [/\/my-account/];
 
@@ -28,7 +27,7 @@
 	}
 
 	$: !$locale && locale.useLocalStorage();
-	$: !Object.values($user).some(v => v) && user.useLocalStorage();
+	$: !Object.values($user).some((v) => v) && user.useLocalStorage();
 	$: !$jwt && jwt.useLocalStorage();
 	$: {
 		if (!$profile) {
@@ -38,28 +37,27 @@
 				profile.useLocalStorage();
 			}
 		}
-	};
+	}
 </script>
 
-<Notifications item={Notification} withoutStyles>
-	<Modal />
-	<Sidebar />
-	{#if $page.url.pathname === '/checkout'}
-		<slot />
-	{:else}
-		<Header />
-		<div class="overflow-y-auto flex flex-col h-full">
-			<main class="flex flex-col flex-grow relative">
-				{#if ($navigating && !exceptRoute.some(route => $page.url.pathname.match(route)) || !jwt)}
-					<MoonLoading />
-				{:else}
-					<slot />
-				{/if}
-			</main>
-			{#if !$media.mobile}
-			<Footer />
+<Notification />
+<Modal />
+<Sidebar />
+{#if $page.url.pathname === '/checkout'}
+	<slot />
+{:else}
+	<Header />
+	<div class="overflow-y-auto flex flex-col h-full">
+		<main class="flex flex-col flex-grow relative">
+			{#if ($navigating && !exceptRoute.some((route) => $page.url.pathname.match(route))) || !jwt}
+				<MoonLoading />
+			{:else}
+				<slot />
 			{/if}
-		</div>
-		<Toolbar />
-	{/if}
-</Notifications>
+		</main>
+		{#if !$media.mobile}
+			<Footer />
+		{/if}
+	</div>
+	<Toolbar />
+{/if}

@@ -11,6 +11,7 @@
 	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
 	import DangerModal from '../../elements/modal/DangerModal.svelte';
 	import { closeSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
 	let loading = false;
 
@@ -24,11 +25,13 @@
 					const res = await api.cart.emptyCart($cart.id);
 					if (res.success) {
 						closeSidebar();
+						notifications.info({
+							title: $t('notifications.cart.title'),
+							message: $t('notifications.cart.message.empty')
+						});
 						closeModal();
 					}
-				},
-				notificationHeading: $t('notifications.cart.heading'),
-				notificationText: $t('notifications.cart.description.empty')
+				}
 			}
 		});
 	}
@@ -57,7 +60,7 @@
 				</div>
 				<p class="my-1 text-sm text-gray-500">{$t('cart.shipping-taxes')}</p>
 				<div class="py-2 grid grid-cols-1 gap-y-2">
-					<PrimaryButton block>
+					<PrimaryButton disabled={loading} block>
 						<a id="cart-id-goto-checkout" href="/checkout">
 							{#if loading}
 								{$t('cart.cta.loading')}

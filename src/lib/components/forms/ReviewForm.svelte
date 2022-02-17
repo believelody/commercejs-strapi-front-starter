@@ -1,6 +1,5 @@
 <script>
     import {createEventDispatcher} from 'svelte';
-    import {getNotificationsContext} from 'svelte-notifications';
     import api from "$lib/api";
     import {t} from '$lib/i18n';
     import File from '$lib/elements/input/FileInput.svelte';
@@ -14,7 +13,6 @@
         ratings = review?.ratings ?? 0,
         loading = false,
         error = "";
-    const {addNotification} = getNotificationsContext();
     const dispatch = createEventDispatcher();
 
     function removeImg(index) {
@@ -26,16 +24,12 @@
         const res = await api.review.create(item.product_id, description, ratings, images);
         if (res.success) {
             dispatch("submitEvent");
-            addNotification({
-                position: 'bottom-left',
-                heading: $t(`notifications.review.heading`),
-                text: $t(`notifications.review.description.success`),
-                description: $t(`notifications.review.description.success`),
-                type: 'success',
-                removeAfter: 5000
+            notifications.success({
+                title: $t(`notifications.review.title`),
+                message: $t(`notifications.review.message.success`),
             });
         } else {
-            error = $t(`notifications.review.description.failure`);
+            error = $t(`notifications.review.message.failure`);
         }
         loading = false;
     }

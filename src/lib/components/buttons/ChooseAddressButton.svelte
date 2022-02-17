@@ -1,40 +1,35 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    import { getNotificationsContext } from 'svelte-notifications';
-    import { t } from '$lib/i18n';
-    import api from '$lib/api';
-    import { sidebar } from '$lib/stores';
-import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
+	import { createEventDispatcher } from 'svelte';
+	import { t } from '$lib/i18n';
+	import api from '$lib/api';
+	import { sidebar } from '$lib/stores';
+	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
-    export let item;
-    let loading = false;
-    const dispatch = createEventDispatcher();
-    const { addNotification } = getNotificationsContext();
+	export let item;
+	let loading = false;
+	const dispatch = createEventDispatcher();
 
-    async function chooseAddress() {
-        loading = true;
-        dispatch("loading", {loading});
-        const res = await api.address.choose(item);
-        if (res.success) {
-            addNotification({
-                position: 'bottom-left',
-                heading: $t(`notifications.address.heading.${item.type}`),
-                text: $t(`notifications.address.description.select`),
-                description: $t(`notifications.address.description.select`),
-                type: 'success',
-                removeAfter: 5000
-            });
-            $sidebar = null;
-        }
-        loading = false;
-        dispatch("loading", {loading});
-    }
+	async function chooseAddress() {
+		loading = true;
+		dispatch('loading', { loading });
+		const res = await api.address.choose(item);
+		if (res.success) {
+			notifications.success({
+				title: $t(`notifications.address.title.${item.type}`),
+				message: $t(`notifications.address.message.select`)
+			});
+			$sidebar = null;
+		}
+		loading = false;
+		dispatch('loading', { loading });
+	}
 </script>
 
-<style>
-    /* your styles go here */
-</style>
-
 <PrimaryButton on:click={chooseAddress} disabled={loading}>
-    {$t("account.addresses.choose")}
+	{$t('account.addresses.choose')}
 </PrimaryButton>
+
+<style>
+	/* your styles go here */
+</style>

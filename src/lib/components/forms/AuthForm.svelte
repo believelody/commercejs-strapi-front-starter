@@ -1,25 +1,20 @@
 <script>
-	import { getNotificationsContext } from 'svelte-notifications';
 	import { t } from '$lib/i18n';
 	import { jwt } from '$lib/stores';
 	import LoginForm from './LoginForm.svelte';
 	import RegisterForm from './RegisterForm.svelte';
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import RegisterSuccessModal from '../modals/RegisterSuccessModal.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
 	let isLogin = true;
-	const { addNotification } = getNotificationsContext();
 
 	function onSubmitEvent({ detail }) {
 		if ($jwt) {
 			const name = `${detail.user?.firstname} ${detail.user?.lastname}`;
-			addNotification({
-				position: 'top-left',
-				heading: $t('notifications.auth.heading'),
-				text: $t(`notifications.auth.description.${detail.authType}`, { name }),
-				description: $t(`notifications.auth.description.${detail.authType}`, { name }),
-				type: 'success',
-				removeAfter: 5000
+			notifications.success({
+				title: $t('notifications.auth.title'),
+				message: $t(`notifications.auth.message.${detail.authType}`, { name })
 			});
 		}
 	}

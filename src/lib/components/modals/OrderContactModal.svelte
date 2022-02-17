@@ -1,5 +1,4 @@
 <script>
-	import { getNotificationsContext } from 'svelte-notifications';
 	import { t } from '$lib/i18n';
 	import api from '$lib/api';
 	import { requiredFieldsValidation } from '../../utils/form.util';
@@ -7,12 +6,12 @@
 	import WithActionModal from '$lib/elements/modal/WithActionModal.svelte';
 	import { closeModal } from '../../elements/modal/Modal.svelte';
 	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
 	export let reference, customer, orderId;
 	let information = { email: customer.email },
 		loading = false,
 		error;
-	const { addNotifications } = getNotificationsContext();
 
 	function getInformation({ detail }) {
 		information.subject = detail.subject;
@@ -26,13 +25,9 @@
 		loading = true;
 		const res = await api.user.sendOrderEmail(information, orderId);
 		if (res.success) {
-			addNotifications({
-				position: 'bottom-left',
-				heading: $t('notifications.order.email.heading'),
-				text: $t('notifications.order.email.description'),
-				description: $t('notifications.order.email.description'),
-				type: 'success',
-				removeAfter: 5000
+			notifications.success({
+				title: $t('notifications.order.email.title'),
+				message: $t('notifications.order.email.message')
 			});
 			closeModal();
 		} else {

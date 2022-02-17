@@ -1,18 +1,17 @@
 <script>
-	import { getNotificationsContext } from 'svelte-notifications';
 	import api from '$lib/api';
 	import { t } from '$lib/i18n';
-	import { cart, sidebar } from '$lib/stores';
+	import { cart } from '$lib/stores';
 	import CartSidebar from '../sidebars/CartSidebar.svelte';
 	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
 	import LoadingModal from '../modals/LoadingModal.svelte';
 	import SuccessButton from '../../elements/button/SuccessButton.svelte';
 	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import { notifications } from '../../elements/notification/Notification.svelte';
 
 	export let order;
 	let loading = false,
 		error;
-	const { addNotification } = getNotificationsContext();
 
 	async function reOrder() {
 		loading = true;
@@ -32,17 +31,11 @@
 			})
 		);
 		if (res.success) {
-			addNotification({
-				position: 'bottom-left',
-				heading: $t(`notifications.cart.heading`),
-				text: $t(
-					`notifications.cart.description.add.${order.line_items.length > 1 ? 'many' : 'one'}`
-				),
-				description: $t(
-					`notifications.cart.description.add.${order.line_items.length > 1 ? 'many' : 'one'}`
-				),
-				type: 'success',
-				removeAfter: 5000
+			notifications.danger({
+				title: $t(`notifications.cart.title`),
+				message: $t(
+					`notifications.cart.message.add.${order.line_items.length > 1 ? 'many' : 'one'}`
+				)
 			});
 			openSidebar({ component: CartSidebar });
 			loading = false;

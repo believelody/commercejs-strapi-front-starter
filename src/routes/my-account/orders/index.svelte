@@ -58,23 +58,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {#each paginatedOrders as order}
+                    {#each paginatedOrders as item}
                         <tr class="rounded my-2 border">
                             <td class="border w-2/16">
-                                <span class="flex justify-center">{order.customer_reference.split("-")[1]}</span>
+                                <span class="flex justify-center">{item.customer_reference.split("-")[1]}</span>
                             </td>
                             <td class="border w-4/16 px-1 text-center">
-                                {localDateFromSeconds(order.transactions[0].charge_date)}
+                                {localDateFromSeconds(item.transactions[0].charge_date)}
                             </td>
-                            <td class="border w-2/16 text-center">{order.order_value.formatted_with_symbol}</td>
+                            <td class="border w-2/16 text-center">{item.order_value.formatted_with_symbol}</td>
                             <!-- <td class="border w-4/16 px-1">
                                 <section class="flex flex-col">
-                                    <span>{order.shipping.street}</span>
-                                    {#if order.shipping.street_2}
-                                        <span>{order.shipping.street_2}</span>
+                                    <span>{item.shipping.street}</span>
+                                    {#if item.shipping.street_2}
+                                        <span>{item.shipping.street_2}</span>
                                     {/if}
-                                    <span>{order.shipping.town_city} {order.shipping.postal_zip_code}</span>
-                                    {#if order.shipping.county_state}
+                                    <span>{item.shipping.town_city} {item.shipping.postal_zip_code}</span>
+                                    {#if item.shipping.county_state}
                                         <span>{order.shipping.county_state}</span>
                                     {/if}
                                     <span>{$t(`country.${order.shipping.country.toLowerCase()}`)}</span>
@@ -84,9 +84,9 @@
                             <td class="border w-3/16 text-center">{$t("order.account.table.body.not-fulfill")}</td>
                             <td class="p-1">
                                 <section class="flex flex-col items-center">
-                                    <ReOrderButton />
-                                    <a href={`orders/${order.customer_reference}`} class="underline font-medium py-2">{$t("order.account.table.body.button.view")}</a>
-                                    <InvoicePDFViewerButton data={order} />
+                                    <ReOrderButton order={item.order} />
+                                    <a href={`orders/${item.customer_reference}`} class="underline font-medium py-2">{$t("order.account.table.body.button.view")}</a>
+                                    <InvoicePDFViewerButton data={item} />
                                 </section>
                             </td>
                         </tr>
