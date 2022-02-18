@@ -1,8 +1,8 @@
 <script context="module">
     import api from '$lib/api'
-    export async function load({ page }) {
-        const { slug } = page.params;
-        const { category } = await api.category.getCategories(slug);
+    export async function load({ params }) {
+        const { slug } = params;
+        const { category } = await api.category.getOneBySlug(slug);
         const { products, meta } = await api.category.getProductByCategory();
 
         return {

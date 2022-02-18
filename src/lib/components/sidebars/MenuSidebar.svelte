@@ -7,10 +7,10 @@
 </script>
 
 <SidebarWrapper class="h-screen overflow-y-hidden">
-	<h3 slot="header" class="py-4">
+	<h3 slot="header" class="flex-center-middle py-4">
 		<Brand />
 	</h3>
-	<div slot="content" class="flex-grow text-gray-700 overflow-y-auto border-t">
+	<div slot="content" class="h-full text-neutral overflow-y-auto border-t">
         <MenuNav />
 		<ExtraLinks />
     </div>

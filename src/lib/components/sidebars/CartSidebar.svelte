@@ -25,7 +25,7 @@
 					const res = await api.cart.emptyCart($cart.id);
 					if (res.success) {
 						closeSidebar();
-						notifications.info({
+						notifications.success({
 							title: $t('notifications.cart.title'),
 							message: $t('notifications.cart.message.empty')
 						});

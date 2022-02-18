@@ -22,7 +22,8 @@ const config = {
 			}
 		},
 		files: {
-			lib: "src/lib"
+			lib: "src/lib",
+			routes: "src/routes",
 		}
 	}
 };

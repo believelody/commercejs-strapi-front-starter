@@ -31,7 +31,7 @@
 			})
 		);
 		if (res.success) {
-			notifications.danger({
+			notifications.success({
 				title: $t(`notifications.cart.title`),
 				message: $t(
 					`notifications.cart.message.add.${order.line_items.length > 1 ? 'many' : 'one'}`
