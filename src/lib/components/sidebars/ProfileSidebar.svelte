@@ -8,7 +8,7 @@
     /* your styles go here */
 </style>
 
-<SidebarWrapper class="w-80">
-    <h3 slot="header" class="py-2 font-medium text-center">{$t("account.sidebar.title")}</h3>
+<SidebarWrapper class="md:w-80">
+    <h3 slot="header" class="box-border w-full pl-2 pr-14 py-2 font-medium">{$t("account.sidebar.title")}</h3>
     <MenuProfile slot="content" />
 </SidebarWrapper>

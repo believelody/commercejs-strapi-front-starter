@@ -1,5 +1,6 @@
 <script context="module">
 	import { sidebar } from '$lib/stores';
+import { transition_in } from 'svelte/internal';
 
 	/**
 	 *
@@ -17,10 +18,31 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 
-	let width;
+	let width, height;
 	function overlay_click(e) {
 		if ('close' in e.target.dataset) $sidebar = null;
 	}
+
+	function originPosition() {
+		let transitionOptions = { opacity: 1, duration: 750 }
+		switch ($sidebar?.options?.openFrom) {
+			case 'left':
+				transitionOptions.x = -width;
+				break;
+			case 'top':
+				transitionOptions.y = -height;
+				break;
+			case 'bottom':
+				transitionOptions.y = height;
+				break;
+			case 'right':		
+			default:
+				transitionOptions.x = width;
+				break;
+		}
+		return transitionOptions;
+	}
+
 </script>
 
 {#if $sidebar}
@@ -33,11 +55,13 @@
 		transition:fade={{ duration: 150 }}
 	>
 		<nav
-			class="h-screen fixed top-0
-			{$sidebar.options?.openFrom || 'right'}-0
+			class="{$sidebar?.options?.height ?? 'h-screen'} fixed
+			{$sidebar.options?.openFrom === 'left' ? 'left' : 'right'}-0
+			{$sidebar.options?.openFrom === 'bottom' ? 'bottom' : 'top'}-0
 			{$sidebar.options?.glass ? 'glass' : ''}"
 			bind:clientWidth={width}
-			transition:fly={{ x: $sidebar.options?.openFrom === 'left' ? -width : width, opacity: 1 }}
+			bind:clientHeight={height}
+			transition:fly={{ ...originPosition() }}
 		>
 			<svelte:component this={$sidebar.component} {...$sidebar.props} />
 		</nav>

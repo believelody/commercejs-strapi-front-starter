@@ -1,12 +1,9 @@
 <script>
 	import HidePasswordIcon from "$lib/elements/icon/HidePasswordIcon.svelte";
 	import ShowPasswordIcon from "$lib/elements/icon/ShowPasswordIcon.svelte";
-	import SearchIcon from "$lib/elements/icon/SearchIcon.svelte";
 
-	export let value, name, id = "", hint, error, label = "", placeholder, type = "text", required, search = false, transparent = false, align = "horizontal";
+	export let value, name, id = "", hint, error, label = "", placeholder, type = "text", required, icon, transparent = false, align = "horizontal";
 	let showPwd = false;
-
-
 </script>
 
 <div class="{$$props.class} w-full">
@@ -22,9 +19,9 @@
 				{/if}
 			</span>
 		{/if}
-		<section class="border rounded flex flex-grow p-3">
-			{#if search}
-				<SearchIcon class="mr-2" strokeWidth={2} />
+		<section class="border border-neutral rounded flex flex-grow p-3">
+			{#if icon}
+				<svelte:component this={icon.component} {...icon.props} />
 			{/if}
 			<input
 				value={value ?? ""}
@@ -48,10 +45,10 @@
 		</section>
 	</label>
 	{#if hint}
-		<span class="text-xs text-gray-400 italic">{hint}</span>
+		<span class="text-xs italic">{hint}</span>
 	{/if}
     {#if error}
-        <span class="text-xs text-red-400 italic">{error}</span>
+        <span class="text-xs text-danger italic">{error}</span>
     {/if}
 </div>
 

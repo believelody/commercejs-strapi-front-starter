@@ -6,8 +6,6 @@
 			collapse = false;
 		}
 	}
-
-    $: console.log(collapse);
 </script>
 
 <svelte:window on:keydown={onKeydown} />

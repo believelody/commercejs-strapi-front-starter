@@ -96,7 +96,7 @@
 	on:clicklinkoutside={() => (isDraft = false)}
 >
 	<Form id="profile-form" on:submt={submit}>
-		<div slot="content" class="p-2 grid gid-cols-1 gap-4">
+		<div slot="content" class="border border-neutral rounded p-2 grid gid-cols-1 gap-4">
 			<TextInput
 				name="firstname"
 				label={$t('identity.firstname.label')}

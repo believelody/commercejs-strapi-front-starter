@@ -15,7 +15,6 @@
 	async function submit() {
 		loading = true;
 		const res = await api.user.updatePassword(password, newPassword);
-		console.log(res);
 		if (res.success) {
 			notifications.success({
 				title: $t(`notifications.password.title`),
@@ -37,7 +36,7 @@
 </script>
 
 <Form on:submit={submit}>
-	<div slot="content" class="grid grid-cols-1 gap-4 bg-danger-light-1 p-2">
+	<div slot="content" class="border border-neutral rounded grid grid-cols-1 gap-4 bg-danger-light-1 p-2">
 		<TextInput
 			name="password"
 			type="password"

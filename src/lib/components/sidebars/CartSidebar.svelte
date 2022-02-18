@@ -39,7 +39,7 @@
 
 {#if $cart && $cart.total_unique_items > 0}
 	<SidebarWrapper>
-		<h3 slot="header" class="px-2 py-4 border-b font-medium text-neutral-dark">
+		<h3 slot="header" class="box-border pl-2 pr-14 py-4 w-full border-b font-medium text-neutral-dark">
 			{$t('cart.title')} : {$cart.total_unique_items}
 			{$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
 		</h3>

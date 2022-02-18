@@ -64,3 +64,16 @@ export const getIdBySlug = async slug => {
         console.log(error);
     }
 }
+
+export const getBySearch = async search => {
+    try {
+        const res = await fetch(`${baseUrl}/search/products?query=${search}`);
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        return { success: true, products: json.products, meta: json.meta };
+    } catch (error) {
+        console.log(error);
+    }
+}

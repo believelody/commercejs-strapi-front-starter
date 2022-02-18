@@ -25,7 +25,7 @@
         <option value={l}>{l}</option>
       {/each}
       </select> -->
-    <SearchProducts />
+    <SearchProducts transparent withoutShadow />
     <MenuNav />
     <CartNav />
     <AuthNav />

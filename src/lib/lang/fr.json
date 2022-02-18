@@ -100,7 +100,11 @@
             "payment": "Paiement par carte bancaire et par paypal"
         },
         "search": {
-            "placeholder": "Entrez un mot clé (Ex: chemise)"
+            "form": {
+                "hint": "Vous êtes dans dans la barre de recherche d'articles. Saisissez un terme et validez en cliquant sur le bouton ci-dessous.",
+                "submit": "Lancer la recherce",
+                "placeholder": "Saisissez un terme (Ex: chemise)"
+            }
         }
     },
     "order": {
