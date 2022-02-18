@@ -3,7 +3,7 @@
 	import ShowPasswordIcon from "$lib/elements/icon/ShowPasswordIcon.svelte";
 	import SearchIcon from "$lib/elements/icon/SearchIcon.svelte";
 
-	export let value, name, hint, error, label = "", placeholder, type = "text", required, search = false, transparent = false, align = "horizontal";
+	export let value, name, id = "", hint, error, label = "", placeholder, type = "text", required, search = false, transparent = false, align = "horizontal";
 	let showPwd = false;
 
 
@@ -30,7 +30,7 @@
 				value={value ?? ""}
 				{name}
 				type={showPwd ? "text" : type}
-				id={name}
+				id={id ?? name}
 				on:input
 				on:focus
 				class="flex-grow focus:outline-none bg-{transparent ? "transparent" : "white"}"

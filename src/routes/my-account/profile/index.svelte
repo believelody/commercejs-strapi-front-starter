@@ -6,7 +6,7 @@
 </script>
 
 <HeaderTitle title={$t("account.profile.title")} />
-<div class="grid grid-cols-1 gap-4 mb-4">
+<div class="w-full md:w-3/4 md:mx-auto grid grid-cols-1 gap-4 mb-4">
     <ProfileForm />
     <PasswordForm />
 </div>

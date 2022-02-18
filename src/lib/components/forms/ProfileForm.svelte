@@ -4,6 +4,7 @@
 	import { t } from '$lib/i18n';
 	import { profile } from '$lib/stores';
 	import TextInput from '$lib/elements/input/TextInput.svelte';
+	import CheckboxInput from '$lib/elements/input/CheckboxInput.svelte';
 	import { clickLinkOutside } from '../../actions/clickOutside';
 	import { emailValidation } from '../../utils/form.util';
 	import Form from '$lib/elements/form/Form.svelte';
@@ -116,6 +117,7 @@
 			/>
 			<TextInput
 				name="email"
+				id="email-form"
 				type="email"
 				label={$t('identity.email.label')}
 				placeholder={$t('identity.email.placeholder')}
@@ -132,7 +134,7 @@
 				on:input={(e) => (birthday = e.target.value)}
 				on:focus={resetError}
 			/>
-			<Checkbox
+			<CheckboxInput
 				bind:checked={subscribed}
 				name="subscribed"
 				class="py-2"

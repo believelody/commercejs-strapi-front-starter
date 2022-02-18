@@ -45,7 +45,7 @@
 	}
 
 	aside {
-		@apply hidden relative lg:flex lg:flex-col lg:col-span-1 xl:col-span-3;
+		@apply hidden relative lg:flex lg:flex-col lg:col-span-1;
 	}
 
 	.aside-profile {
@@ -53,6 +53,6 @@
 	}
 
 	article {
-		@apply relative bg-primary-light-2 lg:col-start-2 lg:col-span-2 xl:col-start-4 flex flex-col items-center rounded lg:shadow-lg pb-0 lg:pb-4;
+		@apply relative bg-primary-light-2 lg:col-start-2 lg:col-span-2 flex flex-col items-center rounded lg:shadow-lg pb-0 lg:pb-4;
 	}
 </style>
