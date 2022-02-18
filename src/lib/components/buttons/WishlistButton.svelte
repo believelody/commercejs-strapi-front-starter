@@ -61,13 +61,15 @@
 	<IconButton
 		on:click={putInWishlist}
 		shape="circle"
-		class="w-16 h-16 px-3"
+		class="w-16 h-16 px-3 {isInWishlist ? 'bg-white shadow-lg border' : ''}"
 		icon={HeartCircleIcon}
 		size={10}
-		color={isInWishlist ? 'red-500' : ''}
+		color={isInWishlist ? 'danger' : ''}
 	/>
 </div>
 
 <style>
-	/* your styles go here */
+	.in-wish-list {
+		@apply bg-white shadow-lg border;
+	}
 </style>

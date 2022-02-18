@@ -5,8 +5,9 @@
 	import { t } from '$lib/i18n';
 	import Accordion from '$lib/elements/accordion/Accordion.svelte';
 	import Dropdown from '$lib/elements/dropdown/Dropdown.svelte';
+import CategoriesNav from './CategoriesNav.svelte';
 
-	let categories, meta;
+	let categories = [], meta;
 
 	const links = [
 		{ url: '/categories/transport', text: $t('menu.categories.transport.label') },
@@ -19,49 +20,28 @@
 		const res = await api.category.getOneBySlug('pets');
 		if (res.error) {
 		}
-		console.log(res);
 		categories = res.category.children;
+        meta = res.category.meta;
 	}
 
 	onMount(async () => {
-		if (!categories) {
+		if (!categories.length) {
 			getCategories();
 		}
 	});
 </script>
 
 <section class="navigation">
-	<div class:active={$page.url.pathname.includes('categories')} class="link link-categories">
+	<div class="link link-categories">
 		<!-- Desktop and tablet -->
 		<Dropdown class="hidden md:inline">
-			<p slot="header" class="h-full">{$t('menu.categories.label')}</p>
-			<nav slot="content" class="w-36 border-2 rounded bg-gray-100 grid grid-cols-1 divide-y">
-				{#each categories as item}
-					<a
-						href={item.slug}
-						class="nav-a"
-					>
-						{item.name}
-					</a>
-				{/each}
-                <a href="/products" class="nav-a">
-					{$t('menu.categories.all.label')}
-				</a>
-			</nav>
+			<p slot="header" class:active={$page.url.pathname.includes('categories')} class="underline">{$t('menu.categories.label')}</p>
+			<CategoriesNav {categories} {meta} slot="content" />
 		</Dropdown>
 		<!-- Mobile -->
 		<Accordion class="md:hidden w-full" iconSize={6}>
 			<p slot="header">{$t('menu.categories.label')}</p>
-			<nav slot="content" class="link-categories-nav">
-				{#each categories as item}
-					<a href={item.slug} class="nav-a">
-						{item.name}
-					</a>
-				{/each}
-				<a href="/products" class="nav-a">
-					{$t('menu.categories.all.label')}
-				</a>
-			</nav>
+			<CategoriesNav {categories} {meta} slot="content" />
 		</Accordion>
 	</div>
 	<a class:active={$page.url.pathname === '/about'} href="/about" class="link link-about"
@@ -90,14 +70,6 @@
 	.link-categories {
 		@apply md:py-4 md:col-span-2 focus:bg-none;
 	}
-
-	.link-categories-nav {
-		@apply w-full grid grid-cols-1 bg-white text-left divide-y text-neutral-dark;
-	}
-
-    .nav-a {
-        @apply p-2 text-left bg-white flex items-center;
-    }
 
 	.link-about {
 		@apply py-2 md:py-4 md:col-span-2;

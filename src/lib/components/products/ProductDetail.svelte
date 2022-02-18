@@ -53,9 +53,9 @@
 		: 0;
 </script>
 
-<section class="container mx-auto text-gray-800 body-font">
+<section class="container mx-auto text-neutral-dark body-font">
 	<div class="py-4 lg:py-16">
-		<div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-4">
+		<div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
 			<div>
 				<Gallery images={product.assets} />
 			</div>
@@ -69,7 +69,7 @@
 						</div>
 						<WishlistButton {product} />
 					</section>
-					<h2 class="text-gray-900 title-font font-medium">{product.name}</h2>
+					<h2 class="text-neutral-dark title-font font-medium">{product.name}</h2>
 				</svelte:fragment>
 				<svelte:fragment slot="content">
 					<div class="flex my-2">
@@ -105,7 +105,7 @@
 							</button>
 						{/if}
 					</div>
-					<p class="flex-flex-grow leading-relaxed">{@html product.description}</p>
+					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
 					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
 						{#if colors}
 							<Colors {colors} bind:selectedColor />
@@ -140,4 +140,5 @@
 </section>
 
 <style>
+	@import '../../../styles/tailwind.css';
 </style>
