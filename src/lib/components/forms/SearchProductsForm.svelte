@@ -1,5 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from "$app/stores";
 	import { t } from '$lib/i18n';
     import { media } from "$lib/stores";
 	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
@@ -11,7 +12,7 @@
 		transparent = false,
 		withoutShadow = false;
 	let className,
-		search = '';
+		search = $page.url.pathname === "/search" ? $page.url.searchParams.get("word") : "";
 	export { className as class };
 
 	$: isValid = !!search;
@@ -34,6 +35,7 @@
 				  }
 				: null}
 			on:input={({ target }) => (search = target.value)}
+			value={search}
 			placeholder={$t('product.search.form.placeholder')}
 			hint={$media.mobile ? $t('product.search.form.hint') : ""}
 		/>

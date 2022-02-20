@@ -42,7 +42,8 @@
         },
         "star": {
             "placeholder": "Choisissez une valeur"
-        }
+        },
+        "price": "Prix"
     },
     "header": {
         "connexion": "Connexion",
@@ -314,10 +315,10 @@
     },
     "variants": {
         "color": {
-            "name": "Couleur"
+            "name": "Couleurs"
         },
         "size":{
-            "name": "Taille"
+            "name": "Tailles"
         }
     },
     "modal": {

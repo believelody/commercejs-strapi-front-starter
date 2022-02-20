@@ -1,13 +1,14 @@
 <script>
-	import { onMount } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import api from '$lib/api';
 	import { t } from '$lib/i18n';
+	import { categories } from "$lib/stores";
 	import Accordion from '$lib/elements/accordion/Accordion.svelte';
 	import Dropdown from '$lib/elements/dropdown/Dropdown.svelte';
-import CategoriesNav from './CategoriesNav.svelte';
+	import CategoriesNav from './CategoriesNav.svelte';
 
-	let categories = [], meta;
+	let meta;
 
 	const links = [
 		{ url: '/categories/transport', text: $t('menu.categories.transport.label') },
@@ -20,12 +21,12 @@ import CategoriesNav from './CategoriesNav.svelte';
 		const res = await api.category.getOneBySlug('pets');
 		if (res.error) {
 		}
-		categories = res.category.children;
+		$categories = res.category.children;
         meta = res.category.meta;
 	}
 
 	onMount(async () => {
-		if (!categories.length) {
+		if (!$categories.length) {
 			getCategories();
 		}
 	});
@@ -36,12 +37,12 @@ import CategoriesNav from './CategoriesNav.svelte';
 		<!-- Desktop and tablet -->
 		<Dropdown class="hidden md:inline">
 			<p slot="header" class:active={$page.url.pathname.includes('categories')} class="underline">{$t('menu.categories.label')}</p>
-			<CategoriesNav {categories} {meta} slot="content" />
+			<CategoriesNav categories={$categories} {meta} slot="content" />
 		</Dropdown>
 		<!-- Mobile -->
 		<Accordion class="md:hidden w-full" iconSize={6}>
 			<p slot="header">{$t('menu.categories.label')}</p>
-			<CategoriesNav {categories} {meta} slot="content" />
+			<CategoriesNav categories={$categories} {meta} slot="content" />
 		</Accordion>
 	</div>
 	<a class:active={$page.url.pathname === '/about'} href="/about" class="link link-about"

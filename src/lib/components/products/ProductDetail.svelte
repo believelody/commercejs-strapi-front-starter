@@ -108,7 +108,7 @@
 					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
 					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
 						{#if colors}
-							<Colors {colors} bind:selectedColor />
+							<Colors colors={colors.option} bind:selectedColor />
 						{/if}
 						{#if sizes}
 							<Sizes {sizes} bind:value={selectedSize} />

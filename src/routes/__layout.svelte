@@ -3,7 +3,7 @@
 	import '../styles/tailwind-output.css';
 	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
-	import { cart, sidebar, locale, user, jwt, profile, media } from '$lib/stores';
+	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import Header from '$lib/components/header/Header.svelte';
 	import Sidebar from '$lib/elements/sidebar/Sidebar.svelte';
@@ -12,7 +12,7 @@
 	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
 	import Modal from '$lib/elements/modal/Modal.svelte';
 
-	const exceptRoute = [/\/my-account/];
+	const exceptRoute = ["my-account", "search"];
 
 	$: {
 		if (!$cart) {
@@ -49,7 +49,7 @@
 	<Header />
 	<div class="overflow-y-auto flex flex-col h-full">
 		<main class="flex flex-col flex-grow relative">
-			{#if ($navigating && !exceptRoute.some((route) => $page.url.pathname.match(route))) || !jwt}
+			{#if ($navigating && !exceptRoute.some((route) => $page.url.pathname.includes(route))) || !jwt}
 				<MoonLoading />
 			{:else}
 				<slot />
