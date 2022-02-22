@@ -6,7 +6,7 @@
 import { getContext } from 'svelte';
 
 	export let min = 0,
-		max = 200;
+		max = 50;
     const filters = getContext("filters");
 	$: pricemarks = Array.from({ length: max / 10 }, (v, i) => i * 10);
 </script>
@@ -18,14 +18,15 @@ import { getContext } from 'svelte';
             values={[min, max]}
             {min}
             {max}
+			pushy
             range
             float
-            step={max / 20}
+            step={max / 10}
             pips
             first="label"
             last="label"
             suffix="€"
-            on:change={({ detail }) => $filters["prices"] = detail.values}
+            on:change={({ detail }) => $filters = $filters.set("prices", detail.values)}
         />
 	</div>
 </Card>

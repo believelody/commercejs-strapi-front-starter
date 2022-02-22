@@ -105,6 +105,12 @@
                 "hint": "Vous êtes dans dans la barre de recherche d'articles. Saisissez un terme et validez en cliquant sur le bouton ci-dessous.",
                 "submit": "Lancer la recherce",
                 "placeholder": "Saisissez un terme (Ex: chemise)"
+            },
+            "page": {
+                "header": {
+                    "singular": "Nous avons trouvé 1 article.",
+                    "plural": "Nous avons trouvé {{number}} articles."
+                }
             }
         }
     },

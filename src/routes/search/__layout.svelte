@@ -4,11 +4,11 @@
 	import { categories } from '$lib/stores';
 	import FilterPanelSearch from '../../lib/components/search/FilterPanelSearch.svelte';
 
-	const filters = writable({ prices: [], categories: [], colors: [], sizes: [] });
+	const filters = writable(new Map());
 	setContext('filters', filters);
 </script>
 
-<div class="bg-primary-light-1">
+<div class="bg-primary-light-2">
 	<div class="layout">
 		<aside>
 			<div class="aside-filter">
@@ -37,6 +37,6 @@
 	}
 
 	article {
-		@apply relative bg-white lg:col-start-2 lg:col-span-2 flex flex-col items-center rounded lg:shadow-lg pb-0 lg:pb-4;
+		@apply relative lg:col-start-2 lg:col-span-2 flex flex-col items-center pb-0 lg:pb-4;
 	}
 </style>
