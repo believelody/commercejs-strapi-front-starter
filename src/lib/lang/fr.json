@@ -43,7 +43,19 @@
         "star": {
             "placeholder": "Choisissez une valeur"
         },
-        "price": "Prix"
+        "price": "Prix",
+        "colors": {
+            "black": "noir",
+            "green": "vert",
+            "red": "rouge",
+            "white": "blanc",
+            "blue": "bleu",
+            "yellow": "jaune",
+            "purple": "violet",
+            "indigo": "indigo",
+            "orange": "orange",
+            "brown": "marron"
+        }
     },
     "header": {
         "connexion": "Connexion",
@@ -321,10 +333,10 @@
     },
     "variants": {
         "color": {
-            "name": "Couleurs"
+            "name": "Couleur"
         },
         "size":{
-            "name": "Tailles"
+            "name": "Taille"
         }
     },
     "modal": {

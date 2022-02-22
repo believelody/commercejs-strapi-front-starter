@@ -1,17 +1,34 @@
 <script>
+	import { getContext } from 'svelte';
 	import { t } from '$lib/i18n';
 	import Card from '../../elements/card/Card.svelte';
 	import ColorList from '../list/ColorList.svelte';
+	import { toggleFilterSelection } from "$lib/utils/product.util";
 
 	let colors = ['red', 'black', 'green', 'indigo', 'yellow', 'blue'],
 		selectedColor;
+	const filters = getContext("filters");
+
+	function selectColor(color) {
+		$filters = toggleFilterSelection($filters, "color", color);
+		if (!$filters.has("color")) {
+			selectedColor = "";
+		} else {
+			selectedColor = color;
+		}
+	}
 </script>
 
 <Card>
 	<h3 slot="header">{$t('variants.color.name')}</h3>
 	<div slot="content" class="flex-center-middle mx-auto">
 		<div class="color-list">
-			<ColorList {colors} {selectedColor} shape="circle" />
+			<ColorList
+				{colors}
+				{selectedColor}
+				on:selectColor={({ detail }) => selectColor(detail.selectedColor)}
+				shape="circle"
+			/>
 		</div>
 	</div>
 </Card>

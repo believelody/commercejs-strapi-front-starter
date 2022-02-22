@@ -18,6 +18,21 @@
 				return filteredProducts.filter((product) =>
 					product.categories.some((category) => category.name.toLowerCase() === value.toLowerCase())
 				);
+			case 'color':
+				return products.filter((product) => {
+					let colorVariant = product.variants.find(variant => variant.name.toLowerCase() === $t("variants.color.name").toLowerCase());
+					if (colorVariant) {
+						return colorVariant.options.some(option => option.name.toLowerCase() === value || option.name.toLowerCase().includes($t(`common.colors.${value}`)))
+					}
+					return product.name.toLowerCase().includes($t(`common.colors.${value}`));
+				})
+			case 'size':
+				return products.filter((product) => {
+					let sizeVariant = product.variants.find(variant => variant.name.toLowerCase() === $t("variants.size.name").toLowerCase());
+					return sizeVariant ? sizeVariant.options.some(option => {
+						return option.name.toLowerCase() === value;
+					}) : null;
+				})
 			default:
 				return [];
 		}
@@ -36,7 +51,6 @@
 		}
 	}
 
-	$: console.log(filteredProducts);
 </script>
 
 <h2>

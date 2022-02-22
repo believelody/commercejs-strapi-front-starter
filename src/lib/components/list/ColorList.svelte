@@ -1,7 +1,10 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
+
 	export let colors,
 		selectedColor,
 		shape = 'rounded';
+	const dispatch = createEventDispatcher();
 
 	function applyBackgroundColor(color) {
 		switch (color) {
@@ -23,17 +26,17 @@
 		}
 	}
 
-    function applyShape() {
-        switch (shape) {
-            case "circle":
-                return "rounded-full";
-            case "square":
-                return "rounded-none";
-            case "rounded":
-            default:
-                return "rounded";
-        }
-    }
+	function applyShape() {
+		switch (shape) {
+			case 'circle':
+				return 'rounded-full';
+			case 'square':
+				return 'rounded-none';
+			case 'rounded':
+			default:
+				return 'rounded';
+		}
+	}
 
 	function applyBorderColor(color) {
 		switch (color) {
@@ -58,7 +61,7 @@
 
 {#each colors as color}
 	<button
-		on:click={() => (selectedColor = color)}
+		on:click={() => dispatch('selectColor', { selectedColor: color })}
 		class="
             {selectedColor === color
 			? `box-border border-8 w-16 h-16 ${applyBorderColor(color)}`

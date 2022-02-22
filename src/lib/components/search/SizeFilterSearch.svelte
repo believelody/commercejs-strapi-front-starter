@@ -1,17 +1,34 @@
 <script>
+	import { getContext } from 'svelte';
 	import { t } from '$lib/i18n';
 	import Button from '../../elements/button/Button.svelte';
 	import Card from '../../elements/card/Card.svelte';
 	import SizeList from '../list/SizeList.svelte';
+	import { toggleFilterSelection } from '$lib/utils/product.util';
 
 	let sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'],
 		selectedSize;
+
+	const filters = getContext('filters');
+
+	function selectSize(size) {
+		$filters = toggleFilterSelection($filters, 'size', size);
+		if (!$filters.has('size')) {
+			selectedSize = '';
+		} else {
+			selectedSize = size;
+		}
+	}
 </script>
 
 <Card>
 	<h3 slot="header">{$t('variants.size.name')}</h3>
 	<div slot="content" class="size-list">
-		<SizeList {sizes} {selectedSize} />
+		<SizeList
+			{sizes}
+			{selectedSize}
+			on:selectSize={({ detail }) => selectSize(detail.selectedSize)}
+		/>
 	</div>
 </Card>
 

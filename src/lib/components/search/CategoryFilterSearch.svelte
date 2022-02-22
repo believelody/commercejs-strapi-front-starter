@@ -4,17 +4,12 @@
 	import { categories } from '$lib/stores';
 	import Card from '../../elements/card/Card.svelte';
 	import MoonLoading from '../loading/MoonLoading.svelte';
+	import { toggleFilterSelection } from "$lib/utils/product.util";
 
 	const filters = getContext("filters");
 
 	function selectFilterCategory(value) {
-		if ($filters.has("category") && $filters.get("category") === value) {
-			let updatedFilters = $filters;
-			updatedFilters.delete("category");
-			$filters = updatedFilters;
-		} else {
-			$filters = $filters.set("category", value);
-		}
+		$filters = toggleFilterSelection($filters, "category", value);
 	}
 </script>
 
