@@ -15,7 +15,6 @@
 			position = 'left-bottom',
 			component = null
 		}) {
-			console.log('in set');
 			_notifications.update((state) => {
 				return [...state, { id: id(), status, title, message, timeout, position, component }];
 			});
