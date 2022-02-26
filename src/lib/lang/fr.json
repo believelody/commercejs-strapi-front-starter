@@ -121,7 +121,7 @@
             "page": {
                 "header": {
                     "singular": "Nous avons trouvé 1 article.",
-                    "plural": "Nous avons trouvé {{number}} articles."
+                    "plural": "Nous avons trouvé {{number}} articles avec le terme <b>{{word}}</b>."
                 },
                 "nb-items": {
                     "label": "Afficher :"

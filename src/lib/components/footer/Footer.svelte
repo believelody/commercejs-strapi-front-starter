@@ -7,7 +7,7 @@
 	import TwitterIcon from '$lib/elements/icon/TwitterIcon.svelte';
 </script>
 
-<footer class="text-neutral-dark body-font border-t mt-4">
+<footer class="text-neutral-dark body-font border-t">
 	<div class="container flex md:px-5 md:py-4 mx-auto">
 		<div class="md:w-1/2 w-full px-4 py-2 md:py-0 border-t md:border-t-0">
 			<SubscriptionForm />

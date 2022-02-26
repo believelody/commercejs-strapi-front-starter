@@ -5,7 +5,7 @@
 	import MoonLoading from '../../lib/components/loading/MoonLoading.svelte';
 	import ResultPanelSearch from '../../lib/components/search/ResultPanelSearch.svelte';
 
-	const search = $page.url.searchParams.get('word');
+	$: search = $page.url.searchParams.get('word');
 </script>
 
 {#if search}
@@ -15,7 +15,7 @@
 		{#if res.error}
 			<h3 class="mt-8">{$t('auth.code.error')}</h3>
 		{:else}
-			<ResultPanelSearch products={res.products} meta={res.meta} />
+			<ResultPanelSearch word={search} products={res.products} meta={res.meta} />
 		{/if}
 	{:catch error}
 		<h3 class="mt-8">{$t('auth.code.error')}</h3>

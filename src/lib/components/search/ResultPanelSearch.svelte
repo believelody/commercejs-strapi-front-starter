@@ -9,6 +9,7 @@
 	import PaginateComponent from '../pagination/PaginateComponent.svelte';
 
 	export let products,
+		word,
 		filteredProducts = products;
 	let pageSizes = [6, 15, 24],
 		pageSize = pageSizes[0];
@@ -68,11 +69,12 @@
 	}
 </script>
 
-<h2 class="px-2 md:px-4 lg:px-0">
-	{$t(`product.search.page.header.${filteredProducts.length === 1 ? 'singular' : 'plural'}`, {
-		number: filteredProducts.length
+<h3 class="p-2 py-4 text-center lg:p-0">
+	{@html $t(`product.search.page.header.${filteredProducts.length === 1 ? 'singular' : 'plural'}`, {
+		number: filteredProducts.length,
+		word
 	})}
-</h2>
+</h3>
 <section class="box-border w-full flex items-center">
 	<div class="px-4 md:px-8">
 		<b>{$t('product.search.page.nb-items.label')}</b>
@@ -81,7 +83,7 @@
 		{#each pageSizes as size}
 			<li>
 				<Button
-					class="w-24 {pageSize === size ? 'border-2 border-neutral bg-white' : ''}"
+					class="w-24 disabled:text-neutral {pageSize === size ? 'border-2 border-neutral bg-white' : ''}"
 					on:click={() => (pageSize = size)}
 					disabled={filteredProducts.length < size}
 				>

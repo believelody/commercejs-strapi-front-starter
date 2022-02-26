@@ -1,3 +1,3 @@
-<section class="h-full flex items-center justify-center">
+<section class="h-full w-full flex-center-middle">
     <slot />
 </section>
