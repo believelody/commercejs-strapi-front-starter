@@ -25,11 +25,11 @@
 	@import '../../styles/tailwind.css';
 
 	.layout {
-		@apply relative container mx-auto grid grid-cols-3 gap-4 flex-grow lg:flex-grow-0 py-4;
+		@apply relative overflow-hidden container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 lg:py-4;
 	}
 
 	aside {
-		@apply hidden relative lg:flex lg:flex-col lg:col-span-1;
+		@apply relative lg:flex lg:flex-col lg:col-span-1;
 	}
 
 	.aside-filter {

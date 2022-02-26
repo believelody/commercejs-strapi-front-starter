@@ -1,8 +1,8 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 
-	export let colors,
-		selectedColor,
+	export let items,
+		selectedItem,
 		shape = 'rounded';
 	const dispatch = createEventDispatcher();
 
@@ -59,13 +59,14 @@
 	}
 </script>
 
-{#each colors as color}
+{#each items as item}
 	<button
-		on:click={() => dispatch('selectColor', { selectedColor: color })}
+		on:click={() => dispatch('selectColor', { selectedColor: item.value })}
 		class="
-            {selectedColor === color
-			? `box-border border-8 w-16 h-16 ${applyBorderColor(color)}`
-			: `border-none w-12 h-12 ${applyBackgroundColor(color)}`}
+			box-border
+            {selectedItem === item.name
+			? `border-8 w-16 h-16 ${applyBorderColor(item.name)}`
+			: `border-none w-12 h-12 ${applyBackgroundColor(item.name)}`}
             {applyShape()}
         "
 	/>

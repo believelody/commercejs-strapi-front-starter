@@ -1,44 +1,30 @@
-<script context="module">
+<script>
+	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
+	import { t } from '$lib/i18n';
+	import MoonLoading from '../../lib/components/loading/MoonLoading.svelte';
 	import ResultPanelSearch from '../../lib/components/search/ResultPanelSearch.svelte';
 
-	export async function load({ url }) {
-		// const search = url.searchParams.get('word');
-		// const res = await api.product.getBySearch(search);
-		// if (res.error) {
-		// 	return {
-		// 		props: { error: res.error }
-		// 	};
-		// }
-		// return {
-		// 	props: {
-		// 		products: res.products,
-		// 		meta: res.meta
-		// 	}
-		// };
-		const res = await api.product.getAll();
-
-        if (res.error) {
-            return {
-                props: { error: res.error }
-            }
-        }
-		console.log(res);
-		return {
-			props: { products: res.products, meta: res.meta }
-		};
-	}
+	const search = $page.url.searchParams.get('word');
 </script>
 
-<script>
-	export let products, meta;
-	let mockProducts = Array.from({ length: 175 }, (v, i) => i + 1);
-
-	$: console.log(products);
-</script>
-
-<ResultPanelSearch {products} {meta} />
+{#if search}
+	{#await api.product.getBySearch(search)}
+		<MoonLoading />
+	{:then res}
+		{#if res.error}
+			<h3 class="mt-8">{$t('auth.code.error')}</h3>
+		{:else}
+			<ResultPanelSearch products={res.products} meta={res.meta} />
+		{/if}
+	{:catch error}
+		<h3 class="mt-8">{$t('auth.code.error')}</h3>
+	{/await}
+{:else}
+	<h3 class="mt-8">{$t('product.search.page.error.empty')}</h3>
+{/if}
 
 <style>
+	@import '../../styles/tailwind.css';
 	/* your styles go here */
 </style>

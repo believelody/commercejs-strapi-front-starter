@@ -6,7 +6,7 @@
 	/* Button layout style */
 	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
 		.btn {
-			@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral disabled:opacity-75 disabled:cursor-not-allowed;
+			@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral-light-2 disabled:text-neutral disabled:opacity-75 disabled:cursor-not-allowed;
 		}
 		.btn-primary {
 			@apply text-white bg-primary hover:bg-primary-dark-1 disabled:bg-neutral-dark-1;

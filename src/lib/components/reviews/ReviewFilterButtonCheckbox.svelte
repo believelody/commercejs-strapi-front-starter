@@ -29,51 +29,21 @@
         <Star nb={score} />
     </section>
 	<section>
-		<button on:click={() => filterReview(5)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<Checkbox checked={filters.some((filter) => filter === 5)} name="filters" />
-			<Star nb={5} />
-			<span class="ml-4"
-				>{reviews.filter((review) => review.ratings === 5).length}
-				{$t('product.detail.reviews')}</span
-			>
-		</button>
-		<button on:click={() => filterReview(4)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<Checkbox checked={filters.some((filter) => filter === 4)} name="filters" />
-			<Star nb={4} />
-			<span class="ml-4"
-				>{reviews.filter((review) => review.ratings === 4).length}
-				{$t('product.detail.reviews')}</span
-			>
-		</button>
-		<button on:click={() => filterReview(3)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<Checkbox checked={filters.some((filter) => filter === 3)} name="filters" />
-			<Star nb={3} />
-			<span class="ml-4"
-				>{reviews.filter((review) => review.ratings === 3).length}
-				{$t('product.detail.reviews')}</span
-			>
-		</button>
-		<button on:click={() => filterReview(2)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<Checkbox checked={filters.some((filter) => filter === 2)} name="filters" />
-			<Star nb={2} />
-			<span class="ml-4"
-				>{reviews.filter((review) => review.ratings === 2).length}
-				{$t('product.detail.reviews')}</span
-			>
-		</button>
-		<button on:click={() => filterReview(1)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
-			<Checkbox checked={filters.some((filter) => filter === 1)} name="filters" />
-			<Star nb={1} />
-			<span class="ml-4"
-				>{reviews.filter((review) => review.ratings === 1).length}
-				{$t('product.detail.reviews')}</span
-			>
-		</button>
+		{#each Array.from({ length: 5 }, (v, i) => i + 1) as i}
+			<button on:click={() => filterReview(i)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
+				<CheckboxInput checked={filters.some((filter) => filter === i)} name="filters" />
+				<Star nb={i} />
+				<span class="ml-4">
+					{reviews.filter((review) => review.ratings === i).length}
+					{$t('product.detail.reviews')}
+				</span>
+			</button>
+		{/each}
 		<button
 			on:click={() => filterReview('images')}
 			class="w-auto p-2 hover:bg-gray-200 flex items-center"
 		>
-			<Checkbox checked={filters.some((filter) => filter === 'images')} name="filters" />
+			<CheckboxInput checked={filters.some((filter) => filter === 'images')} name="filters" />
 			{$t('review.product.filter.with-images')}
 			<span class="ml-4"
 				>{reviews.filter((review) => review.images.length).length}

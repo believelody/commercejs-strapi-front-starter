@@ -25,8 +25,8 @@
 	<h3 slot="header">{$t('variants.size.name')}</h3>
 	<div slot="content" class="size-list">
 		<SizeList
-			{sizes}
-			{selectedSize}
+			items={sizes.map(s => ({ name: s, value: s }))}
+			selectedItem={selectedSize}
 			on:selectSize={({ detail }) => selectSize(detail.selectedSize)}
 		/>
 	</div>

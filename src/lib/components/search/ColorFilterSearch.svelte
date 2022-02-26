@@ -24,8 +24,8 @@
 	<div slot="content" class="flex-center-middle mx-auto">
 		<div class="color-list">
 			<ColorList
-				{colors}
-				{selectedColor}
+				items={colors.map(c => ({ name: c, value: c }))}
+				selectedItem={ selectedColor }
 				on:selectColor={({ detail }) => selectColor(detail.selectedColor)}
 				shape="circle"
 			/>

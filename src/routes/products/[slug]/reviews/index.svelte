@@ -2,8 +2,8 @@
     import api from '$lib/api';
     import { reviewsProduct } from "$lib/stores";
 
-    export async function load({ page }) {
-        const { slug } = page.params;
+    export async function load({ params }) {
+        const { slug } = params;
         const storedReviews = get(reviewsProduct);
         const productRes = await api.product.getBySlug(slug);
         if (productRes.error) {

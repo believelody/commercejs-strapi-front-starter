@@ -2,17 +2,17 @@
 	import { createEventDispatcher } from 'svelte';
 	import Button from '../../elements/button/Button.svelte';
 
-	export let sizes, selectedSize;
+	export let items, selectedItem;
 
 	const dispatch = createEventDispatcher();
 </script>
 
-{#each sizes as size}
+{#each items as item}
 	<Button
-		class={selectedSize === size ? 'border-2 border-neutral bg-transparent font-medium' : ''}
-		on:click={() => dispatch('selectSize', { selectedSize: size })}
+		class={selectedItem === item.name ? 'border-2 border-neutral bg-transparent font-medium' : ''}
+		on:click={() => dispatch('selectSize', { selectedSize: item.value })}
 	>
-		<span class="uppercase">{size}</span>
+		<span class="uppercase">{item.name}</span>
 	</Button>
 {/each}
 

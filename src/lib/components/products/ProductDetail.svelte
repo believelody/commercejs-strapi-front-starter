@@ -26,7 +26,7 @@
 	const sizes = product?.variants[0];
 	const colors = product?.variants[1];
 	let selectedColor = colors?.options[0],
-		selectedSize,
+		selectedSize = sizes?.options[0],
 		qty = 1,
 		loading = false;
 
@@ -55,11 +55,11 @@
 
 <section class="container mx-auto text-neutral-dark body-font">
 	<div class="py-4 lg:py-16">
-		<div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+		<div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
 			<div>
 				<Gallery images={product.assets} />
 			</div>
-			<Card class="p-2 border" shape="rounded-xl" shadow="lg">
+			<Card class="p-2 md:m-2 lg:m-0 border" shape="rounded-xl" shadow="lg">
 				<svelte:fragment slot="header">
 					<section class="flex items-center justify-between">
 						<div class="flex py-2">
@@ -88,9 +88,8 @@
 								{#if !loading}
 									<Star nb={score} />
 									{score}/5
-									<span class="text-neutral-dark ml-3"
-										>{$reviewsProduct.length} {$t('product.detail.reviews')}</span
-									>
+									<span class="text-neutral-dark ml-3">
+										{$reviewsProduct.length} {$t('product.detail.reviews')}</span>
 								{:else}
 									<span class="text-neutral-dark ml-3">{$t('common.update')}</span>
 								{/if}
@@ -108,10 +107,10 @@
 					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
 					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
 						{#if colors}
-							<Colors colors={colors.option} bind:selectedColor />
+							<Colors colors={colors.options} bind:selectedColor />
 						{/if}
 						{#if sizes}
-							<Sizes {sizes} bind:value={selectedSize} />
+							<Sizes sizes={sizes.options} bind:selectedSize />
 						{/if}
 						<Quantity bind:value={qty} />
 					</div>
@@ -129,7 +128,7 @@
 	</div>
 	<div>
 		<section
-			class="mt-4 grid grid-cols-1 md:w-4/5 lg:w-auto md:mx-auto lg:grid-cols-3 gap-y-4 gap-x-4"
+			class="mt-4 grid grid-cols-1 md:w-3/5 lg:w-auto md:mx-auto lg:grid-cols-3 gap-4"
 		>
 			<ShippingBadge />
 			<SecurityBadge />

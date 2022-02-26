@@ -122,6 +122,12 @@
                 "header": {
                     "singular": "Nous avons trouvé 1 article.",
                     "plural": "Nous avons trouvé {{number}} articles."
+                },
+                "nb-items": {
+                    "label": "Afficher :"
+                },
+                "error": {
+                    "empty": "Aucun mot ou terme n'a été entré. Veuillez réessayer en utilisant la barre ou le bouton de recherche."
                 }
             }
         }

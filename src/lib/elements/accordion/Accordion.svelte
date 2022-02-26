@@ -3,7 +3,7 @@
     import ChevronDownIcon from '$lib/elements/icon/ChevronDownIcon.svelte';
     
     export let isOpen = false, iconSize = 8, iconColor, noContentBorderTop = false;
-    let duration = 300;
+    let duration = 750;
     
     function toggle() {
         isOpen = !isOpen;
