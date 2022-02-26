@@ -67,6 +67,7 @@
 			filteredProducts = products;
 		}
 	}
+	$: console.log($filters);
 </script>
 
 <h3 class="p-2 py-4 text-center lg:p-0">

@@ -1,6 +1,8 @@
 <script>
 	import '../app.css';
 	import '../styles/tailwind-output.css';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
 	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
@@ -13,6 +15,8 @@
 	import Modal from '$lib/elements/modal/Modal.svelte';
 
 	const exceptRoute = ["my-account", "search"];
+	const filters = writable(new Map());
+	setContext('filters', filters);
 
 	$: {
 		if (!$cart) {

@@ -6,10 +6,9 @@
 	import SizeList from '../list/SizeList.svelte';
 	import { toggleFilterSelection } from '$lib/utils/product.util';
 
-	let sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'],
-		selectedSize;
-
+	let sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
 	const filters = getContext('filters');
+	$: selectedSize = $filters.get('size') ?? '';
 
 	function selectSize(size) {
 		$filters = toggleFilterSelection($filters, 'size', size);
@@ -25,7 +24,7 @@
 	<h3 slot="header">{$t('variants.size.name')}</h3>
 	<div slot="content" class="size-list">
 		<SizeList
-			items={sizes.map(s => ({ name: s, value: s }))}
+			items={sizes.map((s) => ({ name: s, value: s }))}
 			selectedItem={selectedSize}
 			on:selectSize={({ detail }) => selectSize(detail.selectedSize)}
 		/>

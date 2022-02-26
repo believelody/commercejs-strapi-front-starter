@@ -21,7 +21,7 @@
     </button>
 
     {#if isOpen}
-        <div class={!noContentBorderTop ? "border-t-2" : ""} transition:slide={{ duration }}>
+        <div class="{!noContentBorderTop ? 'border-t-2' : ''}" transition:slide={{ duration }}>
             <slot name="content" />
         </div>
     {/if}

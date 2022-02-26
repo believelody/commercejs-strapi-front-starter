@@ -1,33 +1,50 @@
 <script>
+	import { getContext } from 'svelte';
+	import { t } from '$lib/i18n';
+	import { media } from "$lib/stores";
 	import Accordion from '../../elements/accordion/Accordion.svelte';
-
+	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import FilterSearchSidebar from '../sidebars/FilterSearchSidebar.svelte';
 	import CategoryFilterSearch from './CategoryFilterSearch.svelte';
 	import ColorFilterSearch from './ColorFilterSearch.svelte';
 	import PriceFilterSearch from './PriceFilterSearch.svelte';
 	import SizeFilterSearch from './SizeFilterSearch.svelte';
+	import SettingsIcon from '../../elements/icon/SettingsIcon.svelte';
+
+	const filters = getContext('filters');
+	function openFilterSearchSidebar() {
+		openSidebar({
+			component: FilterSearchSidebar,
+			props: {
+				filters
+			},
+			options: {
+				openFrom: $media.mobile ? 'top' : 'right'
+			}
+		});
+	}
 </script>
 
-<section class="hidden lg:block">
+<section class="content">
 	<CategoryFilterSearch />
 	<PriceFilterSearch />
 	<ColorFilterSearch />
 	<SizeFilterSearch />
 </section>
 
-<Accordion class="lg:hidden bg-white w-full shadow-md">
-	<h3 slot="header">Filtres</h3>
-	<div class="content" slot="content">
-		<CategoryFilterSearch />
-		<PriceFilterSearch />
-		<ColorFilterSearch />
-		<SizeFilterSearch />
-	</div>
-</Accordion>
+<h3 class="sidebar-trigger" on:click={openFilterSearchSidebar}>
+	<span>{$t('product.search.page.filters.sidebar-btn.label')}</span>
+	<SettingsIcon />
+</h3>
 
 <style>
 	@import '../../../styles/tailwind.css';
 
 	.content {
-		@apply grid grid-cols-1 md:grid-cols-2 md:gap-1 md:p-1;
+		@apply hidden lg:grid lg:grid-cols-1 lg:gap-2;
+	}
+
+	.sidebar-trigger {
+		@apply lg:hidden bg-white py-2 flex-center-middle gap-x-4 shadow-md;
 	}
 </style>

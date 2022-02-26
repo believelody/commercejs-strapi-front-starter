@@ -5,9 +5,9 @@
 	import ColorList from '../list/ColorList.svelte';
 	import { toggleFilterSelection } from "$lib/utils/product.util";
 
-	let colors = ['red', 'black', 'green', 'indigo', 'yellow', 'blue'],
-		selectedColor;
+	let colors = ['red', 'black', 'green', 'indigo', 'yellow', 'blue'];
 	const filters = getContext("filters");
+	$: selectedColor = $filters.get("color") ?? "";
 
 	function selectColor(color) {
 		$filters = toggleFilterSelection($filters, "color", color);

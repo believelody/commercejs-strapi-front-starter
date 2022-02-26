@@ -3,9 +3,6 @@
 	import { writable } from 'svelte/store';
 	import { categories } from '$lib/stores';
 	import FilterPanelSearch from '../../lib/components/search/FilterPanelSearch.svelte';
-
-	const filters = writable(new Map());
-	setContext('filters', filters);
 </script>
 
 <div class="bg-primary-light-2 h-full">
@@ -29,7 +26,7 @@
 	}
 
 	aside {
-		@apply relative sticky top-0 z-50 lg:z-0 lg:flex lg:flex-col lg:col-span-1;
+		@apply sticky lg:relative top-0 z-10 lg:z-0 lg:flex lg:flex-col lg:col-span-1;
 	}
 
 	.aside-filter {
