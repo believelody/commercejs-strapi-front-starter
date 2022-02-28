@@ -6,6 +6,8 @@
     import Thumbnails from "$lib/elements/thumbnail/Thumbnails.svelte";
 
     export let items;
+    let className;
+    export { className as class };
 
     function goToRelatedProduct(index) {
         goto(`/products/${items[index].permalink}`);
@@ -22,7 +24,7 @@
     }
 </script>
 
-<div class="w-full h-auto">
+<div class="w-full h-auto {className}">
     <HeaderTitle textSize="2xl" title={$t("product.detail.related")} />
     <Thumbnails
         let:index
@@ -34,7 +36,7 @@
         on:showPage={ ({detail}) => goToRelatedProduct(detail) }
     >
         <p slot="extra">
-            <a href={`/products/${items[index].permalink}`} class="w-full text-center">
+            <a href={`/products/${items[index].permalink}`} class="w-full text-center underline">
                 {items[index].name}
             </a>
         </p>

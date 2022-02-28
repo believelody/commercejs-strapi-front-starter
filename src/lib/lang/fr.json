@@ -94,7 +94,8 @@
         },
         "cart": {
             "add": "Ajouter au panier",
-            "adding": "Ajout en cours..."
+            "adding": "Ajout en cours...",
+            "sold-out": "Épuisé"
         },
         "modal": {
             "title": "Article: {{article}}",

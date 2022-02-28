@@ -53,9 +53,9 @@
 		: 0;
 </script>
 
-<section class="container mx-auto text-neutral-dark body-font">
+<div class="container mx-auto text-neutral-dark body-font">
 	<div class="py-4 lg:py-16">
-		<div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
+		<div class="mx-auto lg:grid lg:grid-cols-2 gap-4">
 			<div>
 				<Gallery images={product.assets} />
 			</div>
@@ -126,17 +126,13 @@
 			</Card>
 		</div>
 	</div>
-	<div>
-		<section
-			class="mt-4 grid grid-cols-1 md:w-3/5 lg:w-auto md:mx-auto lg:grid-cols-3 gap-4"
-		>
-			<ShippingBadge />
-			<SecurityBadge />
-			<PaymentBadge />
-		</section>
-		<RelatedProducts items={product.related_products} />
-	</div>
-</section>
+	<section class="mt-4 grid grid-cols-1 md:w-3/5 lg:w-auto md:mx-auto lg:grid-cols-3 gap-4">
+		<ShippingBadge />
+		<SecurityBadge />
+		<PaymentBadge />
+	</section>
+	<RelatedProducts class="py-4" items={product.related_products} />
+</div>
 
 <style>
 	@import '../../../styles/tailwind.css';

@@ -6,7 +6,8 @@
 		url,
 		pageSize = 15,
 		currentPage;
-
+	let className;
+	export { className as class };
 	$: paginatedItems = items.length ? paginate({ items, pageSize, currentPage }) : [];
 
 	function goToPage({ detail }) {
@@ -17,7 +18,7 @@
 	}
 </script>
 
-<div class="h-full w-full">
+<div class="h-full w-full {className}">
 	<slot {paginatedItems} />
 </div>
 {#if items.length >= pageSize}

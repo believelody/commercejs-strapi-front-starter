@@ -8,9 +8,7 @@
 	import ItemProduct from '../products/ItemProduct.svelte';
 	import PaginateComponent from '../pagination/PaginateComponent.svelte';
 
-	export let products,
-		word,
-		filteredProducts = products;
+	export let products, word, filteredProducts = products;
 	let pageSizes = [6, 15, 24],
 		pageSize = pageSizes[0];
 	const filters = getContext('filters');
@@ -67,7 +65,6 @@
 			filteredProducts = products;
 		}
 	}
-	$: console.log($filters);
 </script>
 
 <h3 class="p-2 py-4 text-center lg:p-0">
