@@ -21,6 +21,7 @@
 	import Card from '$lib/elements/card/Card.svelte';
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import AttributesProductsModal from '../modals/AttributesProductsModal.svelte';
+	import LinkButton from '../../elements/button/LinkButton.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -89,13 +90,14 @@
 									<Star nb={score} />
 									{score}/5
 									<span class="text-neutral-dark ml-3">
-										{$reviewsProduct.length} {$t('product.detail.reviews')}</span>
+										{$reviewsProduct.length} {$t('product.detail.reviews')}</span
+									>
 								{:else}
 									<span class="text-neutral-dark ml-3">{$t('common.update')}</span>
 								{/if}
 							</span>
 						{/if}
-						{#if product.attributes.some(attribute => attribute.value)}
+						{#if product.attributes.some((attribute) => attribute.value)}
 							<button
 								on:click={showAttributesModal}
 								class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s"
@@ -120,7 +122,11 @@
 						<span class="title-font font-medium text-2xl text-gray-900"
 							>{product.price.formatted_with_symbol}</span
 						>
-						<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
+						{#if product.quantity > 0}
+							<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
+						{:else}
+							<span class="sold-out">{$t('product.cart.sold-out')}</span>
+						{/if}
 					</div>
 				</svelte:fragment>
 			</Card>
@@ -136,4 +142,8 @@
 
 <style>
 	@import '../../../styles/tailwind.css';
+
+	.sold-out {
+		@apply py-4 px-16 text-lg border border-neutral rounded cursor-not-allowed
+	}
 </style>

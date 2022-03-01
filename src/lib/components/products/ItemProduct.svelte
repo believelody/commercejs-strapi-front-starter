@@ -15,7 +15,9 @@
 				{product.categories.find((category) => true).name}
 			</a>
 		</p>
-		<p class="product-name">{product.name}</p>
+		<p class="product-name">
+			<a href="/products/{product.permalink}">{product.name}</a>
+		</p>
 		<p class="mt-1">{product.price.formatted_with_symbol}</p>
 	</div>
 </li>
@@ -30,7 +32,7 @@
         @apply transition-transform duration-500 object-cover w-full h-full block;
     }
     .product-name {
-        @apply text-neutral-dark text-lg font-medium;
+        @apply text-neutral-dark text-lg font-medium underline;
     }
     .category-name {
         @apply text-neutral text-xs tracking-widest mb-1;
