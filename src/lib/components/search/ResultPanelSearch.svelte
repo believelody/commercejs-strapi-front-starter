@@ -6,7 +6,7 @@
 	import { t } from '$lib/i18n';
 	import Button from '../../elements/button/Button.svelte';
 	import ItemProduct from '../products/ItemProduct.svelte';
-	import PaginateComponent from '../pagination/PaginateComponent.svelte';
+	import PaginateComponent from '../../elements/pagination/PaginateComponent.svelte';
 
 	export let products, word, filteredProducts = products;
 	let pageSizes = [6, 15, 24],
@@ -81,7 +81,7 @@
 		{#each pageSizes as size}
 			<li>
 				<Button
-					class="w-24 disabled:text-neutral {pageSize === size ? 'border-2 border-neutral bg-white' : ''}"
+					class="w-24 disabled:text-neutral {pageSize === size && filteredProducts.length >= size ? 'border-2 border-neutral bg-white' : ''}"
 					on:click={() => (pageSize = size)}
 					disabled={filteredProducts.length < size}
 				>

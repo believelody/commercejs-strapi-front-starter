@@ -9,7 +9,7 @@
 	<span class="mr-3">{$t('variants.size.name')}</span>
 	<div class="grid grid-cols-3 items-center gap-4">
 		<SizeList
-			items={sizes.map((s) => ({ name: s.name, value: s }))}
+			items={sizes.map((s) => ({ name: s.name, value: s, isDisabled: s.quantity === 0 }))}
 			on:selectSize={({ detail }) => (selectedSize = detail.selectedSize)}
 			selectedItem={selectedSize.name}
 		/>

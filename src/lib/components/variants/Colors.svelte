@@ -9,7 +9,7 @@
 	<span class="mr-3">{$t('variants.color.name')}</span>
 	<div class="grid grid-cols-3 items-center gap-4">
 		<ColorList
-			items={colors.map((color) => ({ name: color.name, value: color }))}
+			items={colors.map((color) => ({ name: color.name, value: color, isDisabled: color.quantity === 0 }))}
 			on:selectColor={ ({ detail }) => selectedColor = detail.selectedColor }
 			selectedItem={ selectedColor.name }
 			shape="circle"

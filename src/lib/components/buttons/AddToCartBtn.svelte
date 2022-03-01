@@ -32,11 +32,12 @@
             props: { product, selectedColor, selectedSize, quantity }
         });
     }
+	$: isVariantsEmpty = product.variants.every(variant => variant.options.every(option => option.quantity === 0));
 </script>
 
 <PrimaryButton
     on:click={addItem}
-    disabled={loading}
+    disabled={loading || isVariantsEmpty}
     big
 >
 	{#if loading}

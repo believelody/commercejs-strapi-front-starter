@@ -64,11 +64,13 @@
 		on:click={() => dispatch('selectColor', { selectedColor: item.value })}
 		class="
 			box-border
-            {selectedItem === item.name
+            {selectedItem === item.name && !item.isDisabled
 			? `border-8 w-16 h-16 ${applyBorderColor(item.name)}`
 			: `border-none w-12 h-12 ${applyBackgroundColor(item.name)}`}
             {applyShape()}
+			disabled:opacity-50 disabled:cursor-not-allowed
         "
+		disabled={item.isDisabled}
 	/>
 {/each}
 

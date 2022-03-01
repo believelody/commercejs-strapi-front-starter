@@ -22,6 +22,7 @@
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import AttributesProductsModal from '../modals/AttributesProductsModal.svelte';
 	import LinkButton from '../../elements/button/LinkButton.svelte';
+import Button from '../../elements/button/Button.svelte';
 
 	export let product;
 	const sizes = product?.variants[0];
@@ -125,7 +126,7 @@
 						{#if product.quantity > 0}
 							<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
 						{:else}
-							<span class="sold-out">{$t('product.cart.sold-out')}</span>
+							<Button big disabled>{$t('product.cart.sold-out')}</Button>
 						{/if}
 					</div>
 				</svelte:fragment>
@@ -144,6 +145,6 @@
 	@import '../../../styles/tailwind.css';
 
 	.sold-out {
-		@apply py-4 px-16 text-lg border border-neutral rounded cursor-not-allowed
+		@apply py-4 px-16 text-lg border border-neutral rounded-lg cursor-not-allowed
 	}
 </style>
