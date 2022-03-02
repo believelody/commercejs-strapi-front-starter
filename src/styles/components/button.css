@@ -12,22 +12,22 @@
 			@apply text-white bg-primary hover:bg-primary-dark-1 disabled:bg-neutral-light-1;
 		}
 		.btn-secondary {
-			@apply text-white bg-secondary hover:bg-neutral-light-1 hover:text-secondary hover:border hover:border-secondary disabled:bg-neutral-dark-1;
+			@apply text-white bg-secondary hover:bg-neutral-light-1 hover:text-secondary hover:border hover:border-secondary disabled:bg-neutral-light-1;
 		}
 		.btn-link {
-			@apply text-neutral-dark bg-transparent hover:bg-gray-400 hover:text-neutral hover:bg-opacity-25 disabled:bg-neutral-dark-1;
+			@apply text-neutral-dark bg-transparent hover:bg-gray-400 hover:text-neutral hover:bg-opacity-25 disabled:bg-neutral-light-1;
 		}
 		.btn-success {
-			@apply text-white bg-success hover:bg-success-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-success hover:bg-success-dark-1 disabled:bg-neutral-light-1;
 		}
 		.btn-danger {
-			@apply text-white bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-light-1;
 		}
 		.btn-info {
-			@apply text-white bg-info hover:bg-info-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-info hover:bg-info-dark-1 disabled:bg-neutral-light-1;
 		}
 		.btn-warning {
-			@apply text-white bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-dark-1;
+			@apply text-white bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-light-1;
 		}
 		.btn-outlined {
 			@apply border border-neutral bg-neutral-light-2 text-neutral hover:bg-neutral-dark-1 hover:text-neutral-light disabled:bg-neutral-dark-1;
