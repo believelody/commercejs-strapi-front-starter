@@ -26,7 +26,7 @@
 
 	export let product;
 	const variants = writable([]);
-	let selectedVariant = {},
+	let selectedOption = {},
 		quantity = 1,
 		loading = false;
 	setContext('variants', variants);
@@ -68,19 +68,19 @@
 	$: score = $reviewsProduct.length
 		? $reviewsProduct.reduce((acc, cur) => acc + cur.ratings, 0) / $reviewsProduct.length
 		: 0;
-	$: matchingVariant = $variants.find((variant) => {
+	$: selectedVariant = $variants.find((variant) => {
 		return Object.entries(variant.options).every(
-			([variantGroupId, variantOptionId]) => variantOptionId === selectedVariant[variantGroupId]?.id
+			([variantGroupId, variantOptionId]) => variantOptionId === selectedOption[variantGroupId]?.id
 		);
 	});
 	$: isUnavailable = () => {
-		return Object.keys(selectedVariant).length &&
-			selectedVariant.constructor === Object &&
-			matchingVariant
+		return Object.keys(selectedOption).length &&
+			selectedOption.constructor === Object &&
+			selectedVariant
 			? product.quantity === 0 ||
 					product.is.sold_out ||
-					matchingVariant?.inventory === 0 ||
-					quantity > matchingVariant?.inventory
+					selectedVariant?.inventory === 0 ||
+					quantity > selectedVariant?.inventory
 			: false;
 	};
 </script>
@@ -145,8 +145,8 @@
 									this={selectVariantGroupComponent(variantGroup.name)}
 									{variantGroup}
 									on:selectOption={({ detail }) =>
-										(selectedVariant[variantGroup.id] = detail.selectedOption)}
-									selectedOption={selectedVariant[variantGroup.id]}
+										(selectedOption[variantGroup.id] = detail.selectedOption)}
+									selectedOption={selectedOption[variantGroup.id]}
 								/>
 							{/each}
 							<Quantity bind:value={quantity} />
@@ -161,7 +161,7 @@
 						{#if isUnavailable()}
 							<Button big disabled>{$t('product.cart.sold-out')}</Button>
 						{:else}
-							<AddToCartBtn {product} {quantity} {selectedVariant} />
+							<AddToCartBtn {product} {quantity} {selectedOption} {selectedVariant} />
 						{/if}
 					</div>
 				</svelte:fragment>

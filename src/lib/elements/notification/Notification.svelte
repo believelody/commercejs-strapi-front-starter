@@ -69,6 +69,7 @@
 <script>
 	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
+	import { media } from "$lib/stores";
 
 	let themes = {
 		danger: 'danger',
@@ -120,9 +121,7 @@
 	{#each $notifications as notification (notification.id)}
 		<div
 			animate:flip
-			class="notification bg-{themes[notification.status]} {applyPositionStyle(
-				notification.position
-			)}"
+			class="notification bg-{themes[notification.status]} {$media.mobile ? "top-center" : applyPositionStyle(notification.position)}"
 			in:fly={transitionParams}
 			out:fly={transitionParams}
 			on:click={() => handleButtonClick(notification.id)}
@@ -138,16 +137,20 @@
 </div>
 
 <style>
+	@import "../../../styles/tailwind-output.css";
 	.notifications {
 		@apply fixed grid grid-cols-1 gap-y-4 p-4 justify-start items-center;
 		z-index: 9999;
 	}
 
 	.notification {
-		@apply cursor-pointer max-w-lg p-2 shadow-sm;
+		@apply cursor-pointer max-w-lg p-4 shadow-sm;
 	}
 
 	.title, .message {
-		@apply text-white block font-medium;
+		@apply text-white;
+	}
+	.title {
+		@apply font-medium underline;
 	}
 </style>

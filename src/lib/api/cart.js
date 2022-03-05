@@ -37,7 +37,7 @@ export const addToCart = async (cartId, id, quantity, variant = null) => {
         const res = await fetch(`${baseUrl}/cart/${cartId}/add-item`, {
             method: "post",
             headers,
-            body: JSON.stringify({ quantity, id, variant })
+            body: JSON.stringify({ quantity, id, variant_id: variant.id })
         });
         const json = await res.json();
         if (json.error) {

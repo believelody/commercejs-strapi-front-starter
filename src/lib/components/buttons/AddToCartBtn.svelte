@@ -6,7 +6,7 @@
     import { openModal } from "../../elements/modal/Modal.svelte";
     import ItemToCartSuccessModal from "../modals/ItemToCartSuccessModal.svelte";
 
-    export let product, quantity, selectedVariant;
+    export let product, quantity, selectedVariant, selectedOption;
     let loading = false;
 
 	async function addItem() {
@@ -18,14 +18,14 @@
         loading = false;
         openModal({
             component: ItemToCartSuccessModal,
-            props: { product, selectedVariant, quantity }
+            props: { product, selectedOption, quantity }
         });
     }
 </script>
 
 <PrimaryButton
     on:click={addItem}
-    disabled={loading || Object.keys(selectedVariant).length < product.variants.length}
+    disabled={loading || (selectedVariant && Object.keys(selectedVariant).length < product.variants.length)}
     big
 >
 	{#if loading}

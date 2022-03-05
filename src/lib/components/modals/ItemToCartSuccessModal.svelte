@@ -7,7 +7,7 @@
 	import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
 	import { closeModal } from '../../elements/modal/Modal.svelte';
 
-	export let product, selectedVariant, quantity;
+	export let product, selectedOption, quantity;
 
 	function showCart() {
 		openSidebar({ component: CartSidebar });
@@ -24,7 +24,7 @@
 		</p>
 		<ul class="text-md mt-3 text-neutral-dark list-disc list-inside">
 			{$t("product.modal.item-detail.text")}
-			{#each Object.values(selectedVariant) as item}
+			{#each Object.values(selectedOption) as item}
 				<li>
 					{$t(`variants.${item.type}.name`)}:
 					<span class="capitalize">{item.type === "size" ? item.name : $t(`common.color.${item.name}`)}</span>
