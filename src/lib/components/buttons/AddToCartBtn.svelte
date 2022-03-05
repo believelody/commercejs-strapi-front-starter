@@ -6,38 +6,26 @@
     import { openModal } from "../../elements/modal/Modal.svelte";
     import ItemToCartSuccessModal from "../modals/ItemToCartSuccessModal.svelte";
 
-    export let product, quantity, selectedColor, selectedSize;
+    export let product, quantity, selectedVariant;
     let loading = false;
 
 	async function addItem() {
-        let options = {};
         loading = true;
-        if (product.variants) {
-            const sizeGroup = product.variants.find(group => group.name.toLowerCase() === "taille");
-            const colorGroup = product.variants.find(group => group.name.toLowerCase() === "couleur");
-            if (sizeGroup) {
-                options[sizeGroup.id] = selectedSize.id;
-            }
-            if (colorGroup) {
-                options[colorGroup.id] = selectedColor.id;
-            }
-        }
         if (!$cart) {
             await api.cart.createCart();
         }
-        await api.cart.addToCart($cart.id, product.id, quantity, options);
+        await api.cart.addToCart($cart.id, product.id, quantity, selectedVariant);
         loading = false;
         openModal({
             component: ItemToCartSuccessModal,
-            props: { product, selectedColor, selectedSize, quantity }
+            props: { product, selectedVariant, quantity }
         });
     }
-	$: isVariantsEmpty = product.variants.every(variant => variant.options.every(option => option.quantity === 0));
 </script>
 
 <PrimaryButton
     on:click={addItem}
-    disabled={loading || isVariantsEmpty}
+    disabled={loading || Object.keys(selectedVariant).length < product.variants.length}
     big
 >
 	{#if loading}

@@ -2,15 +2,15 @@
 	import { createEventDispatcher } from 'svelte';
 	import Button from '../../elements/button/Button.svelte';
 
-	export let items, selectedItem;
+	export let items, selectedOptionName;
 
 	const dispatch = createEventDispatcher();
 </script>
 
 {#each items as item}
 	<Button
-		class={selectedItem === item.name && !item.isDisabled ? 'border-2 border-neutral bg-transparent font-medium' : 'text-neutral'}
-		on:click={() => dispatch('selectSize', { selectedSize: item.value })}
+		class={selectedOptionName === item.name && !item.isDisabled ? 'border-2 border-neutral bg-transparent font-medium' : 'text-neutral-dark'}
+		on:click={() => dispatch('selectOption', { selectedOption: item.value })}
 		disabled={item.isDisabled}
 	>
 		<span class="uppercase">{item.name}</span>

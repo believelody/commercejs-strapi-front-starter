@@ -77,3 +77,16 @@ export const getBySearch = async search => {
         console.log(error);
     }
 }
+
+export const getVariants = async id => {
+    try {
+        const res = await fetch(`${baseUrl}/products/${id}/variants`);
+        const json = await res.json();
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        return { success: true, variants: json.variants.data };
+    } catch (error) {
+        console.log(error);
+    }
+}

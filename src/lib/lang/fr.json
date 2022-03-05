@@ -345,9 +345,11 @@
     },
     "variants": {
         "color": {
+            "key": "color",
             "name": "Couleur"
         },
         "size":{
+            "key": "size",
             "name": "Taille"
         }
     },

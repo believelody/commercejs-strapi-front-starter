@@ -1,17 +1,7 @@
 <script>
-	import { t } from '$lib/i18n';
-	import SizeList from '../list/SizeList.svelte';
+	import VariantList from '../list/VariantList.svelte';
 
-	export let sizes, selectedSize;
+	export let variantGroup, selectedOption;
 </script>
-
-<div class="flex items-center">
-	<span class="mr-3">{$t('variants.size.name')}</span>
-	<div class="grid grid-cols-3 items-center gap-4">
-		<SizeList
-			items={sizes.map((s) => ({ name: s.name, value: s, isDisabled: s.quantity === 0 }))}
-			on:selectSize={({ detail }) => (selectedSize = detail.selectedSize)}
-			selectedItem={selectedSize.name}
-		/>
-	</div>
-</div>
+ 
+<VariantList on:selectOption {variantGroup} {selectedOption} type="size" />

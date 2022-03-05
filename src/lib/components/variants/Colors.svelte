@@ -1,18 +1,7 @@
 <script>
-	import { t } from '$lib/i18n';
-	import ColorList from '../list/ColorList.svelte';
+	import VariantList from '../list/VariantList.svelte';
 
-	export let colors, selectedColor;
+	export let variantGroup, selectedOption;
 </script>
 
-<div class="flex items-center">
-	<span class="mr-3">{$t('variants.color.name')}</span>
-	<div class="grid grid-cols-3 items-center gap-4">
-		<ColorList
-			items={colors.map((color) => ({ name: color.name, value: color, isDisabled: color.quantity === 0 }))}
-			on:selectColor={ ({ detail }) => selectedColor = detail.selectedColor }
-			selectedItem={ selectedColor.name }
-			shape="circle"
-		/>
-	</div>
-</div>
+<VariantList on:selectOption {variantGroup} {selectedOption} type="color" shape="circle" />

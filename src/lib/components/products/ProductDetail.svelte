@@ -1,5 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
 	import api from '$lib/api';
 	import { t } from '$lib/i18n';
@@ -21,16 +22,14 @@
 	import Card from '$lib/elements/card/Card.svelte';
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import AttributesProductsModal from '../modals/AttributesProductsModal.svelte';
-	import LinkButton from '../../elements/button/LinkButton.svelte';
-import Button from '../../elements/button/Button.svelte';
+	import Button from '../../elements/button/Button.svelte';
 
 	export let product;
-	const sizes = product?.variants[0];
-	const colors = product?.variants[1];
-	let selectedColor = colors?.options[0],
-		selectedSize = sizes?.options[0],
-		qty = 1,
+	const variants = writable([]);
+	let selectedVariant = {},
+		quantity = 1,
 		loading = false;
+	setContext('variants', variants);
 
 	async function getProductReviews(productId) {
 		loading = true;
@@ -46,13 +45,44 @@ import Button from '../../elements/button/Button.svelte';
 		});
 	}
 
+	function selectVariantGroupComponent(value) {
+		switch (value) {
+			case $t('variants.color.key'):
+			case $t('variants.color.name'):
+				return Colors;
+			case $t('variants.size.key'):
+			case $t('variants.size.name'):
+				return Sizes;
+			default:
+				return null;
+		}
+	}
+
 	onMount(async () => {
 		await getProductReviews(product.id);
 	});
 
+	$: api.product.getVariants(product.id).then((res) => {
+		$variants = res.variants;
+	});
 	$: score = $reviewsProduct.length
 		? $reviewsProduct.reduce((acc, cur) => acc + cur.ratings, 0) / $reviewsProduct.length
 		: 0;
+	$: matchingVariant = $variants.find((variant) => {
+		return Object.entries(variant.options).every(
+			([variantGroupId, variantOptionId]) => variantOptionId === selectedVariant[variantGroupId]?.id
+		);
+	});
+	$: isUnavailable = () => {
+		return Object.keys(selectedVariant).length &&
+			selectedVariant.constructor === Object &&
+			matchingVariant
+			? product.quantity === 0 ||
+					product.is.sold_out ||
+					matchingVariant?.inventory === 0 ||
+					quantity > matchingVariant?.inventory
+			: false;
+	};
 </script>
 
 <div class="container mx-auto text-neutral-dark body-font">
@@ -108,25 +138,30 @@ import Button from '../../elements/button/Button.svelte';
 						{/if}
 					</div>
 					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
-					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
-						{#if colors}
-							<Colors colors={colors.options} bind:selectedColor />
-						{/if}
-						{#if sizes}
-							<Sizes sizes={sizes.options} bind:selectedSize />
-						{/if}
-						<Quantity bind:value={qty} />
-					</div>
+					{#if $variants.length}
+						<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
+							{#each product.variants as variantGroup}
+								<svelte:component
+									this={selectVariantGroupComponent(variantGroup.name)}
+									{variantGroup}
+									on:selectOption={({ detail }) =>
+										(selectedVariant[variantGroup.id] = detail.selectedOption)}
+									selectedOption={selectedVariant[variantGroup.id]}
+								/>
+							{/each}
+							<Quantity bind:value={quantity} />
+						</div>
+					{/if}
 				</svelte:fragment>
 				<svelte:fragment slot="extra">
 					<div class="flex items-center justify-between py-2">
 						<span class="title-font font-medium text-2xl text-gray-900"
 							>{product.price.formatted_with_symbol}</span
 						>
-						{#if product.quantity > 0}
-							<AddToCartBtn {product} quantity={qty} {selectedColor} {selectedSize} />
-						{:else}
+						{#if isUnavailable()}
 							<Button big disabled>{$t('product.cart.sold-out')}</Button>
+						{:else}
+							<AddToCartBtn {product} {quantity} {selectedVariant} />
 						{/if}
 					</div>
 				</svelte:fragment>
@@ -145,6 +180,6 @@ import Button from '../../elements/button/Button.svelte';
 	@import '../../../styles/tailwind.css';
 
 	.sold-out {
-		@apply py-4 px-16 text-lg border border-neutral rounded-lg cursor-not-allowed
+		@apply py-4 px-16 text-lg border border-neutral rounded-lg cursor-not-allowed;
 	}
 </style>

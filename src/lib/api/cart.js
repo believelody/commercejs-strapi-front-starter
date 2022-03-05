@@ -32,12 +32,12 @@ export const createCart = async () => {
     }
 }
 
-export const addToCart = async (cartId, id, quantity, options = null) => {
+export const addToCart = async (cartId, id, quantity, variant = null) => {
     try {
         const res = await fetch(`${baseUrl}/cart/${cartId}/add-item`, {
             method: "post",
             headers,
-            body: JSON.stringify({ quantity, id, options })
+            body: JSON.stringify({ quantity, id, variant })
         });
         const json = await res.json();
         if (json.error) {

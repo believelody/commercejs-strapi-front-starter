@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 
 	export let items,
-		selectedItem,
+		selectedOptionName,
 		shape = 'rounded';
 	const dispatch = createEventDispatcher();
 
@@ -61,10 +61,10 @@
 
 {#each items as item}
 	<button
-		on:click={() => dispatch('selectColor', { selectedColor: item.value })}
+		on:click={() => dispatch('selectOption', { selectedOption: item.value })}
 		class="
 			box-border
-            {selectedItem === item.name && !item.isDisabled
+            {selectedOptionName === item.name && !item.isDisabled
 			? `border-8 w-16 h-16 ${applyBorderColor(item.name)}`
 			: `border-none w-12 h-12 ${applyBackgroundColor(item.name)}`}
             {applyShape()}
