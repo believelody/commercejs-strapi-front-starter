@@ -9,8 +9,8 @@
 
 {#each items as item}
 	<Button
-		class={selectedOptionName === item.name && !item.isDisabled ? 'border-2 border-neutral bg-transparent font-medium' : 'text-neutral-dark'}
-		on:click={() => dispatch('selectOption', { selectedOption: item.value })}
+		class="box-border {selectedOptionName === item.name && !item.isDisabled ? 'border-2 border-neutral bg-transparent font-medium' : 'text-neutral-dark'}"
+		on:click={() => dispatch('selectOption', { selectedOption: { ...item.value, type : "size" } })}
 		disabled={item.isDisabled}
 	>
 		<span class="uppercase">{item.name}</span>

@@ -154,7 +154,7 @@
 					{/if}
 				</svelte:fragment>
 				<svelte:fragment slot="extra">
-					<div class="flex items-center justify-between py-2">
+					<div class="flex items-center justify-between pt-2">
 						<span class="title-font font-medium text-2xl text-gray-900"
 							>{product.price.formatted_with_symbol}</span
 						>

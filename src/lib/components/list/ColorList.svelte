@@ -61,7 +61,7 @@
 
 {#each items as item}
 	<button
-		on:click={() => dispatch('selectOption', { selectedOption: item.value })}
+		on:click={() => dispatch('selectOption', { selectedOption: { ...item.value, type : "color" }})}
 		class="
 			box-border
             {selectedOptionName === item.name && !item.isDisabled

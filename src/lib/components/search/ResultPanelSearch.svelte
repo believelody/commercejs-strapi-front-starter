@@ -32,10 +32,10 @@
 						return colorVariant.options.some(
 							(option) =>
 								option.name.toLowerCase() === value ||
-								option.name.toLowerCase().includes($t(`common.colors.${value}`))
+								option.name.toLowerCase().includes($t(`common.color.${value}`))
 						);
 					}
-					return product.name.toLowerCase().includes($t(`common.colors.${value}`));
+					return product.name.toLowerCase().includes($t(`common.color.${value}`));
 				});
 			case 'size':
 				return filteredProducts.filter((product) => {

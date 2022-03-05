@@ -44,7 +44,7 @@
             "placeholder": "Choisissez une valeur"
         },
         "price": "Prix",
-        "colors": {
+        "color": {
             "black": "noir",
             "green": "vert",
             "red": "rouge",
