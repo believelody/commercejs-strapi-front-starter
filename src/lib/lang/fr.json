@@ -346,11 +346,11 @@
     "variants": {
         "color": {
             "key": "color",
-            "name": "Couleur"
+            "name": "couleur"
         },
         "size":{
             "key": "size",
-            "name": "Taille"
+            "name": "taille"
         }
     },
     "modal": {

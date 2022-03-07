@@ -66,7 +66,9 @@
 		</div>
 	</div>
 	{#if $paymentMethod === 'stripe'}
-		<StripePaymentButton isValid={stripeValid} {cardElement} />
+		<section>
+			<StripePaymentButton isValid={stripeValid} {cardElement} />
+		</section>
 	{:else if $paymentMethod === 'paypal'}
 		<section
 			class="w-full bg-blue-500 {checkoutValid ? 'pt-2' : 'cursor-not-allowed py-4'} text-center"

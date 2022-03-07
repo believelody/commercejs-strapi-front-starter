@@ -46,7 +46,7 @@
 	}
 
 	function selectVariantGroupComponent(value) {
-		switch (value) {
+		switch (value.toLowerCase()) {
 			case $t('variants.color.key'):
 			case $t('variants.color.name'):
 				return Colors;
@@ -83,7 +83,14 @@
 					quantity > selectedVariant?.inventory
 			: false;
 	};
+
+	$: console.log(product);
 </script>
+
+<svelte:head>
+	<title>{product.seo?.title}</title>
+	<meta description={product.seo?.description} />
+</svelte:head>
 
 <div class="container mx-auto text-neutral-dark body-font">
 	<div class="py-4 lg:py-16">
@@ -138,8 +145,8 @@
 						{/if}
 					</div>
 					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
-					{#if $variants.length}
-						<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
+					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
+						{#if $variants.length}
 							{#each product.variants as variantGroup}
 								<svelte:component
 									this={selectVariantGroupComponent(variantGroup.name)}
@@ -149,15 +156,15 @@
 									selectedOption={selectedOption[variantGroup.id]}
 								/>
 							{/each}
-							<Quantity bind:value={quantity} />
-						</div>
-					{/if}
+						{/if}
+						<Quantity bind:value={quantity} />
+					</div>
 				</svelte:fragment>
 				<svelte:fragment slot="extra">
 					<div class="flex items-center justify-between pt-2">
-						<span class="title-font font-medium text-2xl text-gray-900"
-							>{product.price.formatted_with_symbol}</span
-						>
+						<span class="title-font font-medium text-2xl text-gray-900">
+							{selectedVariant?.price.formatted_with_symbol ?? product.price.formatted_with_symbol}
+						</span>
 						{#if isUnavailable()}
 							<Button big disabled>{$t('product.cart.sold-out')}</Button>
 						{:else}

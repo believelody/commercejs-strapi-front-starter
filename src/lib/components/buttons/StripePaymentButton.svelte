@@ -25,7 +25,8 @@
 <PrimaryButton
 	on:click={showModal}
 	disabled={!isValid}
-    block
+	large
+	block
 >
 	{#if $checkoutLoading}
 		{$t('common.update')}

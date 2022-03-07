@@ -18,7 +18,7 @@
 		try {
 			dispatch('loading', true);
 			if ($checkout) {
-				await api.checkout.checkQuantity($checkout.id, item.id, quantity, item.variant.id);
+				await api.checkout.checkQuantity($checkout.id, item.id, quantity, item.variant?.id);
 			}
 			const resUpdateQuantity = await api.cart.updateItemQuantity($cart.id, item.id, quantity);
 			if (resUpdateQuantity.success) {
@@ -33,7 +33,6 @@
 			dispatch('loading', false);
 		}
 	}
-	$: console.log($notifications);
 
 	function showRemoveItemModal(item) {
 		openModal({

@@ -13,7 +13,7 @@
 		on:click={() => dispatch('selectOption', { selectedOption: { ...item.value, type : "size" } })}
 		disabled={item.isDisabled}
 	>
-		<span class="uppercase">{item.name}</span>
+		<span>{item.name}</span>
 	</Button>
 {/each}
 

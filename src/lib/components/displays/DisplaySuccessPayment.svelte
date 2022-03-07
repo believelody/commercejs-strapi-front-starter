@@ -5,7 +5,7 @@
 	import FullAddress from '../addresses/FullAddress.svelte';
 	import { closeModal } from '../../elements/modal/Modal.svelte';
 
-	export let live, user, shipping, billing, isBillingSameAsShipping, reference;
+	export let live, user, shipping, billing, isBillingSameAsShipping, reference, conditionals;
 	let dataUser = user;
 
 	function showModal() {
@@ -35,9 +35,13 @@
 			<ul class="text-md text-neutral-dark list-disc list-inside">
 				{#each live.line_items as item}
 					<li>
-						{item.name} x {item.quantity} - {item.variants
-							.map((variant) => `${variant.variant_name} : ${variant.option_name}`)
-							.join(' , ')}
+						{item.name} x {item.quantity} - {
+							item.variants.length ?
+							`- ${item.variants
+								.map((variant) => `${variant.variant_name} : ${variant.option_name}`)
+								.join(' , ')}` :
+							''
+						}
 					</li>
 				{/each}
 			</ul>
@@ -45,27 +49,29 @@
 				{$t('checkout.payment.success.subtotal')} : {live.subtotal.formatted_with_symbol}
 			</p>
 		</div>
-		<div class="my-2 flex justify-start">
-			<section class="text-neutral-dark mr-4">
-				{$t(
-					`checkout.payment.success.${
-						isBillingSameAsShipping ? 'shipping-billing' : 'shipping'
-					}.title`
-				)} :
-			</section>
-			<section class="flex flex-col flex-grow text-md text-neutral-dark">
-				<FullAddress information={$shipping} />
-			</section>
-		</div>
-		{#if !isBillingSameAsShipping}
-			<div class="mt-2 flex justify-start">
+		{#if conditionals.has_physical_delivery}
+			<div class="my-2 flex justify-start">
 				<section class="text-neutral-dark mr-4">
-					{$t(`checkout.payment.success.billing.title`)} :
+					{$t(
+						`checkout.payment.success.${
+							isBillingSameAsShipping ? 'shipping-billing' : 'shipping'
+						}.title`
+					)} :
 				</section>
 				<section class="flex flex-col flex-grow text-md text-neutral-dark">
-					<FullAddress information={$billing} />
+					<FullAddress information={shipping} />
 				</section>
 			</div>
+			{#if !isBillingSameAsShipping}
+				<div class="mt-2 flex justify-start">
+					<section class="text-neutral-dark mr-4">
+						{$t(`checkout.payment.success.billing.title`)} :
+					</section>
+					<section class="flex flex-col flex-grow text-md text-neutral-dark">
+						<FullAddress information={billing} />
+					</section>
+				</div>
+			{/if}
 		{/if}
 		<div class="mt-2">
 			<p class="text-md text-neutral-dark">

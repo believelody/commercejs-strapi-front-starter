@@ -12,7 +12,7 @@
 			message,
 			status = 'default',
 			timeout,
-			position = 'top-left',
+			position,
 			component = null
 		}) {
 			_notifications.update((state) => {
@@ -115,7 +115,6 @@
 	const handleButtonClick = (notificationId) => {
 		notifications.remove(notificationId);
 	};
-	console.log(notifications);
 </script>
 
 <div class="notifications p-{$notifications.length ? 4 : 0}">

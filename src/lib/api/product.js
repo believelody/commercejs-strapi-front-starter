@@ -85,7 +85,7 @@ export const getVariants = async id => {
         if (json.error) {
             return { success: false, error: json.error };
         }
-        return { success: true, variants: json.variants.data };
+        return { success: true, variants: json.variants };
     } catch (error) {
         console.log(error);
     }

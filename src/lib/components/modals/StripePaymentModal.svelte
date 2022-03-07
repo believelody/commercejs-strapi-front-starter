@@ -74,12 +74,17 @@
 					delete customer.phone;
 				}
 				orderData = {
-					line_items: $checkout.live.line_items.map((item) => ({
-						[item.id]: {
-							variant_id: item.variant.id,
-							quantity: item.quantity
+					line_items: $checkout.live.line_items.map((item) => {
+						const orderItem = {
+							[item.id]: {
+								quantity: item.quantity
+							}
+						};
+						if (item.variant) {
+							orderItem[item.id]["variant_id"] = item.variant.id;
 						}
-					})),
+						return orderItem;
+					}),
 					customer: {
 						...customer,
 						meta: {
@@ -102,7 +107,7 @@
 				};
 
 				paymentResult = await api.checkout.onCaptureOrder($checkout.id, orderData);
-				if (paymentResult.status_payment === 'paid') {
+				if (paymentResult.success && paymentResult.status_payment === 'paid') {
 					goto('/');
 					paymentSuccess = true;
 					paymentError = false;
@@ -114,6 +119,8 @@
 			}
 		}
 	}
+
+	$: console.log($checkout);
 </script>
 
 <ModalWrapper>
@@ -126,6 +133,7 @@
 			billing={billingValue}
 			isBillingSameAsShipping={isBillingSameAsShippingValue}
 			{live}
+			conditionals={$checkout.conditionals}
 			reference={paymentResult.customer_reference}
 		/>
 	{:else if paymentError}

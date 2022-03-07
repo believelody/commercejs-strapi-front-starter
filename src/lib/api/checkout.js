@@ -65,7 +65,9 @@ export const checkQuantity = async (checkoutId, itemId, amount, variantId) => {
     try {
         let path = new URL(`${baseUrl}/checkout/${checkoutId}/check/${itemId}/quantity`);
         path.searchParams.append("amount", amount);
-        path.searchParams.append("variant_id", variantId);
+        if (variantId) {
+            path.searchParams.append("variant_id", variantId);
+        }
         const res = await fetch(path);
         const json = await res.json();
         if (json.error) {
@@ -122,7 +124,10 @@ export const onCaptureOrder = async (checkoutId, orderData) => {
             body: JSON.stringify(orderData)
         });
         const json = await res.json();
-        return json;
+        if (res.error) {
+            return { success: false, error: json.error }
+        }
+        return { success: true, ...json };
     } catch (error) {
         console.log("error: ", error);
     }

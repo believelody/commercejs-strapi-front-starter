@@ -21,11 +21,12 @@
             props: { product, selectedOption, quantity }
         });
     }
+    $: isValid = !!(!loading && selectedVariant ? Object.keys(selectedVariant).length === product.variants.length : !product.variant);
 </script>
 
 <PrimaryButton
     on:click={addItem}
-    disabled={loading || (selectedVariant && Object.keys(selectedVariant).length < product.variants.length)}
+    disabled={!isValid}
     big
 >
 	{#if loading}

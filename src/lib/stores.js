@@ -67,9 +67,9 @@ export const resetStores = () => {
 	checkout.set(null);
 	checkoutLoading.set(false);
 	paymentMethod.set(null);
-	shipping.set(null);
+	shipping.set({});
 	isBillingSameAsShipping.set(true);
-	billing.set(null);
+	billing.set({});
 	paypal.set(null);
 	stripe.set(null);
 }
