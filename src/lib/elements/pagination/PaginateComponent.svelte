@@ -21,7 +21,7 @@
 <div class="h-full w-full {className}">
 	<slot {paginatedItems} />
 </div>
-{#if items.length >= pageSize}
+{#if items.length > pageSize}
 	<section class="flex justify-center my-4 relative bottom-0">
 		<PaginationNav
 			totalItems={items.length}
