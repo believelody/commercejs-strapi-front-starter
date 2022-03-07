@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { t } from '$lib/i18n';
-	import { cart, checkout, sidebar } from '$lib/stores';
+	import { cart, checkout } from '$lib/stores';
 	import api from '$lib/api';
 	import TrashIcon from '$lib/elements/icon/TrashIcon.svelte';
 	import SecondaryButton from '../../elements/button/SecondaryButton.svelte';
@@ -9,6 +9,7 @@
 	import DangerModal from '../../elements/modal/DangerModal.svelte';
 	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
 	import { notifications } from '../../elements/notification/Notification.svelte';
+	import { closeSidebar } from '../../elements/sidebar/Sidebar.svelte';
 
 	export let items, loading;
 	const dispatch = createEventDispatcher();
@@ -32,6 +33,7 @@
 			dispatch('loading', false);
 		}
 	}
+	$: console.log($notifications);
 
 	function showRemoveItemModal(item) {
 		openModal({
@@ -48,7 +50,7 @@
 						});
 						closeModal();
 						if (!$cart.line_items.length) {
-							$sidebar = null;
+							closeSidebar();
 						}
 					}
 				}

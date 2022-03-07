@@ -1,6 +1,5 @@
 <script context="module">
 	import { sidebar } from '$lib/stores';
-import { transition_in } from 'svelte/internal';
 
 	/**
 	 *

@@ -55,7 +55,7 @@
 						<!-- <th class="w-4/16">{$t("order.account.table.header.shipping")}</th> -->
 						<!-- <th class="w-4/16">{$t("order.account.table.header.tracking")}</th> -->
 						<th class="w-3/16">{$t('order.account.table.header.fulfillment')}</th>
-						<th>{$t('order.account.table.header.details')}</th>
+						<th>{$t('order.account.table.header.options')}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -82,15 +82,20 @@
                                 </section>
                             </td> -->
 							<!-- <td></td> -->
-							<td class="border w-3/16 text-center">{$t('order.account.table.body.not-fulfill')}</td
-							>
-							<td class="p-1">
-								<section class="flex flex-col items-center">
+							<td class="border w-3/16 text-center">{$t('order.account.table.body.not-fulfill')}</td>
+							<td class="flex flex-col divide-y">
+								<section class="flex-center-middle py-2">
 									<ReOrderButton order={item.order} />
-									<a href={`orders/${item.customer_reference}`} class="underline font-medium py-2"
-										>{$t('order.account.table.body.button.view')}</a
-									>
-									<InvoicePDFViewerButton data={item} />
+								</section>
+								<section class="py-2 flex flex-col gap-y-2 items-center justify-center md:flex-row md:justify-around">
+									<div class="">
+										<a href={`orders/${item.customer_reference}`} class="underline font-medium">
+											{$t('order.account.table.body.button.view')}
+										</a>
+									</div>
+									<div class="">
+										<InvoicePDFViewerButton data={item} />
+									</div>
 								</section>
 							</td>
 						</tr>

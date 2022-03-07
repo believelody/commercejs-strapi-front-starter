@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
 	import { checkout, checkoutLoading } from '$lib/stores';
-import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
 	import { openModal } from '../../elements/modal/Modal.svelte';
 	import StripePaymentModal from '../modals/StripePaymentModal.svelte';
 

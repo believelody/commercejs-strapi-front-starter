@@ -11,10 +11,10 @@ import ModalWrapper from "../../elements/modal/ModalWrapper.svelte";
 
 <ModalWrapper>
     {#if topText}
-        <span class="mb-4 font-medium text-lg">{topText}</span>    
+        <span class="mb-4 font-medium text-lg text-center">{topText}</span>    
     {/if}
     <Moon size="260" color="#FF3E00" unit="px" />
     {#if bottomText}
-        <span class="mt-4 font-medium text-lg">{bottomText}</span>
+        <span class="mt-4 font-medium text-lg text-center">{bottomText}</span>
     {/if}
 </ModalWrapper>

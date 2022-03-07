@@ -12,7 +12,7 @@
 			message,
 			status = 'default',
 			timeout,
-			position = 'left-bottom',
+			position = 'top-left',
 			component = null
 		}) {
 			_notifications.update((state) => {
@@ -30,7 +30,7 @@
 			return '_' + Math.random().toString(36).substr(2, 9);
 		}
 
-		const notifications = derived(_notifications, ($_notifications, set) => {
+		const derivedNotifications = derived(_notifications, ($_notifications, set) => {
 			set($_notifications);
 			if ($_notifications.length > 0) {
 				timer = setTimeout(() => {
@@ -44,7 +44,7 @@
 				};
 			}
 		});
-		const { subscribe } = notifications;
+		const { subscribe } = derivedNotifications;
 
 		return {
 			subscribe,
@@ -78,7 +78,7 @@
 		info: 'info',
 		default: 'neutral'
 	};
-	let transitionParams = { x: -150, duration: 1000 };
+	const transitionParams = { x: -150, duration: 1000 };
 
 	const applyPositionStyle = (position) => {
 		switch (position) {
@@ -115,9 +115,10 @@
 	const handleButtonClick = (notificationId) => {
 		notifications.remove(notificationId);
 	};
+	console.log(notifications);
 </script>
 
-<div class="notifications">
+<div class="notifications p-{$notifications.length ? 4 : 0}">
 	{#each $notifications as notification (notification.id)}
 		<div
 			animate:flip
@@ -139,7 +140,7 @@
 <style>
 	@import "../../../styles/tailwind-output.css";
 	.notifications {
-		@apply fixed grid grid-cols-1 gap-y-4 p-4 justify-start items-center;
+		@apply fixed grid grid-cols-1 gap-y-4 justify-start items-center;
 		z-index: 9999;
 	}
 

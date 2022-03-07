@@ -149,7 +149,7 @@
                     "shipping": "Livraison",
                     "tracking": "N° suivi",
                     "fulfillment": "Statut d'envoi",
-                    "details": "Detail de la commande"
+                    "options": "Options de la commande"
                 },
                 "body": {
                     "button": {
