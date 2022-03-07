@@ -27,7 +27,7 @@
 </script>
 
 <div class="flex items-center">
-	<span class="mr-3">{$t(`variants.${type}.name`)}</span>
+	<span class="mr-3 capitalize">{$t(`variants.${type}.name`)}</span>
 	<div class="grid grid-cols-{variantGroup.options.length} items-center gap-4">
 		<svelte:component
 			this={selectListComponent(type)}
