@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { PaginationNav, paginate } from 'svelte-paginate';
+	import PaginateNav, { paginate } from './PaginateNav.svelte';
 
 	export let items,
 		url,
@@ -23,7 +23,7 @@
 </div>
 {#if items.length > pageSize}
 	<section class="flex justify-center my-4 relative bottom-0">
-		<PaginationNav
+		<PaginateNav
 			totalItems={items.length}
 			{pageSize}
 			{currentPage}
@@ -33,22 +33,3 @@
 		/>
 	</section>
 {/if}
-
-<style>
-	:global(.pagination-nav) {
-		display: flex;
-		justify-content: space-between;
-	}
-	:global(.number) {
-		margin: 0 8px;
-		cursor: pointer;
-	}
-	:global(.prev),
-	:global(.next) {
-		cursor: pointer;
-	}
-	:global(.active) {
-		text-decoration: underline;
-		font-weight: bold;
-	}
-</style>

@@ -86,6 +86,9 @@
         }
     },
     "product": {
+        "list": {
+            "empty": "Aucun article n'a été trouvé."
+        },
         "detail": {
             "reviews": "avis",
             "characteristics": "Caractéristiques",

@@ -18,7 +18,7 @@
 {/each}
 
 <style>
-	@import '../../../styles/tailwind.css';
+	@import '../../../styles/tailwind-output.css';
 
 	.active {
 		@apply border border-neutral bg-transparent;

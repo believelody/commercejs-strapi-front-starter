@@ -96,7 +96,7 @@
 	items={filteredProducts}
 	url={$page.url.href}
 	{pageSize}
-	currentPage={$page.url.searchParams.get('page') || 1}
+	currentPage={+$page.url.searchParams.get('page') || 1}
 >
 	<div class="product-list">
 		{#each paginatedItems as item}

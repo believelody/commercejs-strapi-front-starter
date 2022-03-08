@@ -43,7 +43,7 @@
             url={$page.url.href}
 			items={$orders}
 			{pageSize}
-			currentPage={$page.url.searchParams.get('page') || 1}
+			currentPage={+$page.url.searchParams.get('page') || 1}
             class="flex flex-col"
 		>
 			<table class="border shadow-md rounded bg-white">

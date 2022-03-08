@@ -26,7 +26,7 @@
 		let:paginatedItems
 		items={reviews}
 		url={$page.url.href}
-		currentPage={$page.url.searchParams.get('page') || 1}
+		currentPage={+$page.url.searchParams.get('page') || 1}
 	>
 		<ul class="w-full grid grid-cols-1 gap-y-4 flex-grow">
 			{#each paginatedItems as review}
