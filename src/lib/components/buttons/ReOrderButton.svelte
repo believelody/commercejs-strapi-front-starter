@@ -8,8 +8,10 @@
 	import SuccessButton from '../../elements/button/SuccessButton.svelte';
 	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
 	import { notifications } from '../../elements/notification/Notification.svelte';
+	import RenewIcon from '../../elements/icon/RenewIcon.svelte';
+	import CartIcon from '../../elements/icon/CartIcon.svelte';
 
-	export let order;
+	export let order, onlyIcon = false;
 	let loading = false,
 		error;
 
@@ -56,7 +58,14 @@
 </script>
 
 <SuccessButton on:click={reOrder}>
-	{$t('order.account.table.body.button.re-order')}
+	{#if onlyIcon}
+		<div class="flex items-center justify-around">
+			<RenewIcon color="white" />
+			<CartIcon color="white" />
+		</div>
+	{:else}
+		{$t('order.account.table.body.button.re-order')}
+	{/if}
 </SuccessButton>
 
 <style>

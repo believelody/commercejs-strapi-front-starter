@@ -11,7 +11,7 @@
 </script>
 
 <PrimaryButton on:click={toggleCart} class="bg-{$media.mobile ? 'transparent' : 'current'}">
-    <CartIcon />
+    <CartIcon strokeWidth={2} />
     {#if $cart?.total_unique_items}
         {#if $media.desktop}
             <span class="text-gray-900 title-font text-lg font-medium ml-4 bg-white rounded-full px-2">{$cart?.total_unique_items ?? 0}</span>

@@ -3,13 +3,14 @@
 	import { navigating, page } from '$app/stores';
 	import api from '$lib/api';
 	import { t } from '$lib/i18n';
-	import { orders } from '$lib/stores';
+	import { orders, media } from '$lib/stores';
 	import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
 	import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
 	import ReOrderButton from '../../../lib/components/buttons/ReOrderButton.svelte';
 	import InvoicePDFViewerButton from '../../../lib/components/buttons/InvoicePDFViewerButton.svelte';
 	import { localDateFromSeconds } from '../../../lib/utils/date.util';
 	import PaginateComponent from '../../../lib/elements/pagination/PaginateComponent.svelte';
+	import SearchIcon from '../../../lib/elements/icon/SearchIcon.svelte';
 
 	let error = null,
 		loading = false,
@@ -85,16 +86,20 @@
 							<td class="border w-3/16 text-center">{$t('order.account.table.body.not-fulfill')}</td>
 							<td class="flex flex-col divide-y">
 								<section class="flex-center-middle py-2">
-									<ReOrderButton order={item.order} />
+									<ReOrderButton order={item.order} onlyIcon={$media.mobile} />
 								</section>
-								<section class="py-2 flex flex-col gap-y-2 items-center justify-center md:flex-row md:justify-around">
-									<div class="">
-										<a href={`orders/${item.customer_reference}`} class="underline font-medium">
-											{$t('order.account.table.body.button.view')}
+								<section class="py-2 flex gap-y-2 items-center justify-around">
+									<div>
+										<a href={`orders/${item.customer_reference}`} class="underline font-medium border border-neutral p-1 flex rounded md:border-0">
+											{#if $media.mobile}
+												<SearchIcon size={$media.mobile ? 6 : 8} />
+											{:else}
+												{$t('order.account.table.body.button.view')}
+											{/if}
 										</a>
 									</div>
-									<div class="">
-										<InvoicePDFViewerButton data={item} />
+									<div>
+										<InvoicePDFViewerButton data={item} onlyIcon={$media.mobile} />
 									</div>
 								</section>
 							</td>

@@ -1,11 +1,12 @@
 <script>
 	import { t } from '$lib/i18n';
+	import { media } from "$lib/stores";
     import { localDateFromSeconds } from '../../utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
 	import FilePDFIcon from '$lib/elements/icon/FilePDFIcon.svelte';
 	import InfoButton from "$lib/elements/button/InfoButton.svelte";
 
-	export let data;
+	export let data, onlyIcon = false;
 	let printContent,
         loading = false,
 		iconColor = "info";
@@ -58,8 +59,10 @@
 	on:click={printInvoice}
     disabled={loading}
 >
-	<FilePDFIcon size={4} color={iconColor} />
-	<span class="ml-2">{$t('order.account.table.body.button.bill')}</span>
+	<FilePDFIcon size={$media.mobile ? 4 : 8} color={iconColor} />
+	{#if !onlyIcon}
+		<span class="ml-2">{$t('order.account.table.body.button.bill')}</span>
+	{/if}
 </InfoButton>
 
 <style></style>
