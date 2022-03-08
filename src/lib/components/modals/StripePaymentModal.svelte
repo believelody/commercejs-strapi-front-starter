@@ -119,8 +119,6 @@
 			}
 		}
 	}
-
-	$: console.log($checkout);
 </script>
 
 <ModalWrapper>

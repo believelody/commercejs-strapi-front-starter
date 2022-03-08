@@ -35,7 +35,8 @@
 			<ul class="text-md text-neutral-dark list-disc list-inside">
 				{#each live.line_items as item}
 					<li>
-						{item.name} x {item.quantity} - {
+						{item.name} x {item.quantity}
+						{
 							item.variants.length ?
 							`- ${item.variants
 								.map((variant) => `${variant.variant_name} : ${variant.option_name}`)

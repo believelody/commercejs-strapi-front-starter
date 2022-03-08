@@ -83,8 +83,6 @@
 					quantity > selectedVariant?.inventory
 			: false;
 	};
-
-	$: console.log(product);
 </script>
 
 <svelte:head>
