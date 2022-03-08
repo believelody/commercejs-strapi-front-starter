@@ -69,22 +69,3 @@
 		</ul>
 	</PaginateComponent>
 </div>
-
-<style>
-	:global(.pagination-nav) {
-		display: flex;
-		justify-content: space-between;
-	}
-	:global(.number) {
-		margin: 0 8px;
-		cursor: pointer;
-	}
-	:global(.prev),
-	:global(.next) {
-		cursor: pointer;
-	}
-	:global(.active) {
-		text-decoration: underline;
-		font-weight: bold;
-	}
-</style>
