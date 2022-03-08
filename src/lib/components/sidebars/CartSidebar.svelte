@@ -32,6 +32,10 @@
 						closeModal();
 					}
 				}
+			},
+			options: {
+				noCloseOnOuterClick: true,
+				noCloseOnEsc: true
 			}
 		});
 	}

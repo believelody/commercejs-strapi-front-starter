@@ -1,5 +1,6 @@
 <script context="module">
 	import { modal } from '$lib/stores';
+import { onMount } from 'svelte';
 
 	/**
 	 * 
@@ -20,22 +21,25 @@
 	let fadeDuration = $modal?.options?.duration ?? 150;
 
 	function overlayClick(e) {
-		if ('close' in e.target.dataset && !$modal?.options?.closeOnOuterClick) $modal = null;
+		if ('close' in e.target.dataset && !$modal?.options?.noCloseOnOuterClick) $modal = null;
 	}
 
 	function onKeydown(e) {
-		if (e.key === "Escape" && !$modal.options.closeOnEsc) {
+		if (e.key === "Escape" && !$modal?.options?.noCloseOnEsc) {
+			console.log(e.key);
+			e.preventDefault();
 			closeModal();
 		}
 	}
 </script>
 
+<svelte:window on:keydown={onKeydown} />
+
 {#if $modal}
 	<div
-        class="fixed top-0 right-0 bottom-0 left-0 flex-center-middle overlay {$modal.options?.glass ? '' : 'bg-black bg-opacity-50'}"
+        class="focus:bg-danger fixed top-0 right-0 bottom-0 left-0 flex-center-middle overlay {$modal.options?.glass ? '' : 'bg-black bg-opacity-50'}"
         data-close
         on:click={overlayClick}
-		on:keydown={onKeydown}
         transition:fade={{ duration: fadeDuration }}
 	>
         <nav

@@ -53,6 +53,10 @@
 						}
 					}
 				}
+			},
+			options: {
+				noCloseOnOuterClick: true,
+				noCloseOnEsc: true
 			}
 		});
 	}
