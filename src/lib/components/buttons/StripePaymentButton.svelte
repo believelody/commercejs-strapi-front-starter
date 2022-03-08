@@ -14,9 +14,9 @@
 				cardElement
 			},
 			options: {
-				closeButton: false,
-				closeOnEsc: false,
-				closeOnOuterClick: false
+				noCloseButton: true,
+				noCloseOnEsc: true,
+				noCloseOnOuterClick: true
 			}
 		});
 	}

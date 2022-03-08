@@ -1,6 +1,5 @@
 <script context="module">
 	import { modal } from '$lib/stores';
-import { onMount } from 'svelte';
 
 	/**
 	 * 
