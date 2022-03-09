@@ -18,12 +18,12 @@
 		? 'transparent'
 		: 'white'} flex flex-col relative {className}"
 >
-	{#if !$sidebar?.noCloseBtn && !$$slots.header}
+	{#if !$sidebar?.noCloseButton && !$$slots.header}
 		<CloseButton on:click={closeSidebar} class="position-absolute" />
 	{/if}
 	<div class="relative">
         <slot name="header" />
-		{#if !$sidebar?.noCloseBtn && $$slots.header}
+		{#if !$sidebar?.noCloseButton && $$slots.header}
         <div class="position-header border">
             <CloseButton class="bg-transparent" on:click={closeSidebar} />
         </div>

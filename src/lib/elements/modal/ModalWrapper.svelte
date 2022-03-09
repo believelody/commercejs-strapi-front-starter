@@ -14,7 +14,7 @@
 </script>
 
 <div class="py-2 px-4 max-w-lg rounded-lg bg-{transparent ? 'transparent' : 'white'} flex-center-middle {className} relative">
-    {#if !$modal?.options?.noCloseBtn}
+    {#if !$modal?.options?.noCloseButton}
         <CloseButton
             on:click={closeModal}
             class="absolute px-2 border rounded-full bg-white -top-4 -right-4"

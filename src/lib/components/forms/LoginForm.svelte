@@ -7,12 +7,14 @@
     import TextInput from '$lib/elements/input/TextInput.svelte';
     import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
     import Form from '$lib/elements/form/Form.svelte';
+    import { disableCloseModal, resetModalCloseOptions } from '../../elements/modal/Modal.svelte';
 
     export let withoutShadow = false, title;
     let identifier, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
     async function submit() {
+        disableCloseModal()
         loading = true;
         hasError = false;
         const res = await api.auth.login(identifier, password);
@@ -20,6 +22,7 @@
             dispatch("submitEvent", { authType: "login" });
         } else {
             hasError = true;
+            resetModalCloseOptions();
         }
         loading = false;
     }
@@ -67,7 +70,7 @@
         <div class="mx-auto-auto my-4 grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
             <PrimaryButton class="col-span-2" type="submit" disabled={!isValid || loading}>{$t(`auth.login.${loading ? "loading" : "submit"}`)}</PrimaryButton>
             <span class="text-center">{$t("common.or")}</span>
-            <PrimaryButton class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
+            <PrimaryButton disabled={loading} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
         </div>
     </svelte:fragment>
 </Form>

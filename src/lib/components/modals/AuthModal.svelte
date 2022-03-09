@@ -4,8 +4,9 @@
 	import LoginForm from '../forms/LoginForm.svelte';
 	import RegisterForm from '../forms/RegisterForm.svelte';
 	import ModalWrapper from '$lib/elements/modal/ModalWrapper.svelte';
-	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
 	import ConfirmationEmailModal from './ConfirmationEmailModal.svelte';
+	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
+	import { notifications } from "../../elements/notification/Notification.svelte";
 
 	let isLogin = true;
 	

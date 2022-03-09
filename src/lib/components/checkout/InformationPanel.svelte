@@ -30,7 +30,7 @@
 	function showSidebar() {
 		openSidebar({
             component: OrderSidebar,
-            noCloseBtn: true,
+            noCloseButton: true,
         });
 	}
 
