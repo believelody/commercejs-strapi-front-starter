@@ -144,7 +144,7 @@
 	}
 
 	.notification {
-		@apply cursor-pointer max-w-lg p-4 shadow-sm;
+		@apply cursor-pointer max-w-lg p-4 shadow-sm rounded;
 	}
 
 	.title, .message {
