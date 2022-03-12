@@ -15,15 +15,16 @@
 		billing
 	} from '$lib/stores';
 	import api from '$api';
-	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
-	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
-	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
-	import InfoModal from '../lib/elements/modal/InfoModal.svelte';
-	import { openModal } from '../lib/elements/modal/Modal.svelte';
+	import InformationPanel from '$components/checkout/InformationPanel.svelte';
+	import OrderPanel from '$components/checkout/OrderPanel.svelte';
+	import MoonLoading from '$components/loading/MoonLoading.svelte';
+	import InfoModal from '$elements/modal/InfoModal.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
+	import { varEnv } from '$utils/env.util';
 
 	onMount(async () => {
 		if (!isServer) {
-			$stripe = await loadStripe(import.meta.env.STRIPE_PUBLIC_KEY);
+			$stripe = await loadStripe(varEnv["stripePublicKey"]);
 		}
 		if ($cart && $cart.total_unique_items > 0) {
 			$checkoutLoading = true;

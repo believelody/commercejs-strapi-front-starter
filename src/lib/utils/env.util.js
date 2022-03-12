@@ -1,5 +1,5 @@
 const prefix = import.meta.prod ? "SVELTEKIT" : "VITE";
-export const getVarEnvFromMode = {
+export const varEnv = {
     stripePublicKey: import.meta.env[`${prefix}_STRIPE_PUBLIC_KEY`],
     paypalClient: import.meta.env[`${prefix}_PAYPAL_CLIENT`],
     paypalSecret: import.meta.env[`${prefix}_PAYPAL_SECRET`],

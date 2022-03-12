@@ -6,8 +6,8 @@
 	import HeaderTitle from '$components/header/HeaderTitle.svelte';
 	import MoonLoading from '$components/loading/MoonLoading.svelte';
 	import CenterSection from '$elements/center-section/CenterSection.svelte';
-	import DangerModal from '../../../lib/elements/modal/DangerModal.svelte';
-	import { openModal } from '../../../lib/elements/modal/Modal.svelte';
+	import DangerModal from '../../$elements/modal/DangerModal.svelte';
+	import { openModal } from '../../$elements/modal/Modal.svelte';
 
 	let wishlists = [],
 		loading = true;

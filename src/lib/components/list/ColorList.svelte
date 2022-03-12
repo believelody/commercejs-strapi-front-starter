@@ -63,10 +63,10 @@
 	<button
 		on:click={() => dispatch('selectOption', { selectedOption: { ...item.value, type : "color" }})}
 		class="
-			box-border
+			box-border w-12 h-12
             {selectedOptionName === item.name && !item.isDisabled
-			? `border-8 w-16 h-16 ${applyBorderColor(item.name)}`
-			: `border-none w-12 h-12 ${applyBackgroundColor(item.name)}`}
+			? `border-8 ${applyBorderColor(item.name)}`
+			: `border-none ${applyBackgroundColor(item.name)}`}
             {applyShape()}
 			disabled:opacity-50 disabled:cursor-not-allowed
         "

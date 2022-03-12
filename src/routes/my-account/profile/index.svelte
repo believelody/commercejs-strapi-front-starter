@@ -1,8 +1,8 @@
 <script>
     import { t } from '$lib/i18n';
-    import PasswordForm from '../../../lib/components/forms/PasswordForm.svelte';
-    import ProfileForm from "../../../lib/components/forms/ProfileForm.svelte";
-    import HeaderTitle from "../../../lib/components/header/HeaderTitle.svelte";
+    import PasswordForm from '../../$components/forms/PasswordForm.svelte';
+    import ProfileForm from "../../$components/forms/ProfileForm.svelte";
+    import HeaderTitle from "../../$components/header/HeaderTitle.svelte";
 </script>
 
 <HeaderTitle title={$t("account.profile.title")} />

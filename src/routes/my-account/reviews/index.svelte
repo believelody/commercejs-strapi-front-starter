@@ -5,8 +5,8 @@
     import api from '$api';
     import { orders, reviewsUser } from '$lib/stores';
     import HeaderTitle from '$components/header/HeaderTitle.svelte';
-    import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
-    import ReviewTabs from "../../../lib/components/tabs/ReviewTabs.svelte";
+    import MoonLoading from "../../$components/loading/MoonLoading.svelte";
+    import ReviewTabs from "../../$components/tabs/ReviewTabs.svelte";
 
     let orderItems = [], userOrders = [], loading = true;
 

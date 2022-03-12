@@ -1,8 +1,8 @@
 <script>
     import { t } from "$lib/i18n";
     import { profile } from "$lib/stores";
-    import AddressDisplay from "../../../lib/components/displays/AddressDisplay.svelte";
-    import HeaderTitle from "../../../lib/components/header/HeaderTitle.svelte";
+    import AddressDisplay from "../../$components/displays/AddressDisplay.svelte";
+    import HeaderTitle from "../../$components/header/HeaderTitle.svelte";
 
     $: addresses = $profile && $profile.addresses;
     $: shippings = addresses ? addresses.filter(address => address.type === "shipping") : [];
