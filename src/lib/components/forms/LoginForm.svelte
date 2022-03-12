@@ -9,7 +9,7 @@
     import Form from '$elements/form/Form.svelte';
     import { disableCloseModal, resetModalCloseOptions } from '$elements/modal/Modal.svelte';
 
-    export let withoutShadow = false, title;
+    export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
@@ -36,9 +36,10 @@
 
 <Form id="identity-form" on:submit={submit} {withoutShadow}>
     <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark my-2 text-center">{title}</h3>
-    <svelte:fragment slot="content">
+    <div slot="content" class="p-2 grid grid-cols-1 gap-y-4">
         <TextInput
             name="identifier"
+            id="identifier"
             type="email"
             required
             label={$t('identity.email.label')}
@@ -50,6 +51,7 @@
         />
         <TextInput
             name="password"
+            id="password"
             type="password"
             required
             label={$t('identity.password.label')}
@@ -60,17 +62,17 @@
             align={$media.mobile ? "vertical" : "horizontal"}
         />
         {#if hasError}
-            <div class="w-full flex items-center justify-center mt-2">
+            <div class="w-full flex items-center justify-center">
                 <span class="text-sm text-danger">{$t("auth.login.failed")}</span>
             </div>
         {/if}
-        <div class="w-full flex items-center justify-center mt-2">
+        <div class="w-full flex items-center justify-center">
             <button type="button" class="text-sm text-neutral text-center">{$t("identity.password-forgotten")} ?</button>
         </div>
-        <div class="mx-auto-auto my-4 grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
+        <div class="mx-auto-auto grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
             <PrimaryButton class="col-span-2" type="submit" disabled={!isValid || loading}>{$t(`auth.login.${loading ? "loading" : "submit"}`)}</PrimaryButton>
             <span class="text-center">{$t("common.or")}</span>
             <PrimaryButton disabled={loading} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
         </div>
-    </svelte:fragment>
+    </div>
 </Form>

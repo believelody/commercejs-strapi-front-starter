@@ -14,27 +14,35 @@
 	}
 
 	export function disableCloseModal() {
-		modal.update((modalData) => ({
-			...modalData,
-			options: {
-				...modalData.options,
-				noCloseOnEsc: true,
-				noCloseOnOuterClick: true,
-				noCloseButton: true
+		modal.update((modalData) => {
+			if (modalData) {
+				return {
+					...modalData,
+					options: {
+						...modalData.options,
+						noCloseOnEsc: true,
+						noCloseOnOuterClick: true,
+						noCloseButton: true
+					}
+				};
 			}
-		}));
+		});
 	}
 
 	export function resetModalCloseOptions() {
-		modal.update((modalData) => ({
-			...modalData,
-			options: {
-				...modalData.options,
-				noCloseOnEsc: false,
-				noCloseOnOuterClick: false,
-				noCloseButton: false
+		modal.update((modalData) => {
+			if (modalData) {
+				return {
+					...modalData,
+					options: {
+						...modalData.options,
+						noCloseOnEsc: false,
+						noCloseOnOuterClick: false,
+						noCloseButton: false
+					}
+				};
 			}
-		}));
+		});
 	}
 </script>
 
