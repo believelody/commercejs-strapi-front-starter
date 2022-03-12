@@ -1,1 +1,5 @@
-export const baseUrl = "http://localhost:1337";
+import { getVarEnvFromMode } from "./env.util";
+
+const prefix = import.meta.env.PROD ? "prod" : "dev"
+
+export const serverUrl = getVarEnvFromMode[`${prefix}ServerUrl`];

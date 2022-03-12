@@ -1,9 +1,9 @@
 <script>
     import { cart, media } from "$lib/stores";
     import CartSidebar from "../sidebars/CartSidebar.svelte";
-    import CartIcon from "$lib/elements/icon/CartIcon.svelte";
-    import PrimaryButton from "$lib/elements/button/PrimaryButton.svelte";
-    import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
+    import CartIcon from "$elements/icon/CartIcon.svelte";
+    import PrimaryButton from "$elements/button/PrimaryButton.svelte";
+    import { openSidebar } from "$elements/sidebar/Sidebar.svelte";
 
     function toggleCart() {
         openSidebar({ component: CartSidebar });

@@ -1,6 +1,6 @@
 <script>
     import Moon from "svelte-loading-spinners/dist/ts/Moon.svelte";
-import ModalWrapper from "../../elements/modal/ModalWrapper.svelte";
+import ModalWrapper from "$elements/modal/ModalWrapper.svelte";
 
     export let topText, bottomText;
 </script>

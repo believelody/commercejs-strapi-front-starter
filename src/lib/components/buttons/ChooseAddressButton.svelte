@@ -1,10 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
+	import api from '$api';
 	import { sidebar } from '$lib/stores';
-	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	export let item;
 	let loading = false;

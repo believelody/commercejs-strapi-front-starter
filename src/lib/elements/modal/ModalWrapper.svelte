@@ -1,7 +1,7 @@
 <script>
     import { onDestroy } from "svelte";
     import { modal } from "$lib/stores";
-    import CloseButton from "../../components/buttons/CloseButton.svelte";
+    import CloseButton from "$components/buttons/CloseButton.svelte";
     import { closeModal } from "./Modal.svelte";
 
     export let transparent = false;

@@ -1,5 +1,5 @@
 <script>
-    import ModalWrapper from "../../elements/modal/ModalWrapper.svelte";
+    import ModalWrapper from "$elements/modal/ModalWrapper.svelte";
 
     export let image, alt;
 </script>

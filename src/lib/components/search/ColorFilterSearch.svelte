@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { t } from '$lib/i18n';
-	import Card from '../../elements/card/Card.svelte';
+	import Card from '$elements/card/Card.svelte';
 	import ColorList from '../list/ColorList.svelte';
 	import { toggleFilterSelection } from "$lib/utils/product.util";
 

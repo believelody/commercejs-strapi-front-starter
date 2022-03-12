@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import VariantListDisplay from '../displays/VariantsListDisplay.svelte';
 
     export let item;

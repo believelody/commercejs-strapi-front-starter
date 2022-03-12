@@ -2,9 +2,9 @@
     import { onMount } from "svelte";
     import { navigating } from '$app/stores';
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import { orders, reviewsUser } from '$lib/stores';
-    import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
+    import HeaderTitle from '$components/header/HeaderTitle.svelte';
     import MoonLoading from "../../../lib/components/loading/MoonLoading.svelte";
     import ReviewTabs from "../../../lib/components/tabs/ReviewTabs.svelte";
 

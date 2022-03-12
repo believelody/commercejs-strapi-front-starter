@@ -2,13 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { user } from '$lib/stores';
-	import api from '$lib/api';
-	import TextInput from '$lib/elements/input/TextInput.svelte';
-	import Form from '$lib/elements/form/Form.svelte';
-	import { closeModal } from '../../elements/modal/Modal.svelte';
-import LinkButton from '../../elements/button/LinkButton.svelte';
-import Button from '../../elements/button/Button.svelte';
-import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import api from '$api';
+	import TextInput from '$elements/input/TextInput.svelte';
+	import Form from '$elements/form/Form.svelte';
+	import { closeModal } from '$elements/modal/Modal.svelte';
+import LinkButton from '$elements/button/LinkButton.svelte';
+import Button from '$elements/button/Button.svelte';
+import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 
 	export let withoutShadow = false;
 	let code = '',

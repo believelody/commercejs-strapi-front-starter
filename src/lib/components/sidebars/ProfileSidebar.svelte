@@ -1,6 +1,6 @@
 <script>
     import { t } from "$lib/i18n";
-    import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
+    import SidebarWrapper from "$elements/sidebar/SidebarWrapper.svelte";
     import MenuProfile from "../profile/MenuProfile.svelte";
 </script>
 

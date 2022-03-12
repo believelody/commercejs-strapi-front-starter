@@ -1,12 +1,12 @@
 <script>
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
-	import { requiredFieldsValidation } from '../../utils/form.util';
+	import api from '$api';
+	import { requiredFieldsValidation } from '$utils/form.util';
 	import ContactForm from '../forms/ContactForm.svelte';
-	import WithActionModal from '$lib/elements/modal/WithActionModal.svelte';
-	import { closeModal } from '../../elements/modal/Modal.svelte';
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import WithActionModal from '$elements/modal/WithActionModal.svelte';
+	import { closeModal } from '$elements/modal/Modal.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	export let reference, customer, orderId;
 	let information = { email: customer.email },

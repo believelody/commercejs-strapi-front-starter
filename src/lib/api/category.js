@@ -1,9 +1,9 @@
-import { baseUrl } from "../utils/url.util";
+import { serverUrl } from "$utils/url.util";
 
 
 export const getAll = async () => {
     try {
-        const res = await fetch(`${baseUrl}/categories`);
+        const res = await fetch(`${serverUrl}/categories`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -16,7 +16,7 @@ export const getAll = async () => {
 
 export const getOneBySlug = async (slug) => {
     try {
-        const res = await fetch(`${baseUrl}/categories/${slug}`);
+        const res = await fetch(`${serverUrl}/categories/${slug}`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -29,7 +29,7 @@ export const getOneBySlug = async (slug) => {
 
 export const getProductByCategory = async slug => {
     try {
-        const res = await fetch(`${baseUrl}/products/category/${slug}`);
+        const res = await fetch(`${serverUrl}/products/category/${slug}`);
         const json = res.json();
         return json;
     } catch (error) {

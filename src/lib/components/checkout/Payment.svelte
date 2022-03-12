@@ -3,8 +3,8 @@
 	import { t } from '$lib/i18n';
 	import { stripe, checkout, paymentMethod } from '$lib/stores';
 	import {Card, Container} from 'svelte-stripe-js';
-    import Radio from '../../elements/input/RadioInput.svelte';
-    import PaypalIcon from '$lib/elements/icon/PaypalIcon.svelte';
+    import Radio from '$elements/input/RadioInput.svelte';
+    import PaypalIcon from '$elements/icon/PaypalIcon.svelte';
 
 	export let cardElement;
 

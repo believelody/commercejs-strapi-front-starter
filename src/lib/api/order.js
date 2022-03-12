@@ -1,9 +1,9 @@
-import { baseUrl } from "../utils/url.util";
+import { serverUrl } from "$utils/url.util";
 import { authenticateHeaders } from '$lib/utils/header.util';
 
 export const getAll = async () => {
     try {
-        const res = await fetch(`${baseUrl}/users/me/orders`, {
+        const res = await fetch(`${serverUrl}/users/me/orders`, {
             method: "get",
             headers: authenticateHeaders()
         });
@@ -19,7 +19,7 @@ export const getAll = async () => {
 
 export const getOne = async (reference) => {
     try {
-        const res = await fetch(`${baseUrl}/users/me/orders/${reference}?type=reference`, {
+        const res = await fetch(`${serverUrl}/users/me/orders/${reference}?type=reference`, {
             method: "get",
             headers: authenticateHeaders()
         });

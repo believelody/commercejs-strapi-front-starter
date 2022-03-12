@@ -1,8 +1,8 @@
 <script>
 	import { t } from '$lib/i18n';
-	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import AddressModal from '../modals/AddressModal.svelte';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 
 	export let type,
 		withoutShadow = false;

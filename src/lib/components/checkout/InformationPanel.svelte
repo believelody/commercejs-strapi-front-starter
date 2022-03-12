@@ -15,13 +15,13 @@
 	import Addresses from './Addresses.svelte';
 	import Identity from './Identity.svelte';
 	import Payment from './Payment.svelte';
-	import ArrowRightIcon from '$lib/elements/icon/ArrowRightIcon.svelte';
+	import ArrowRightIcon from '$elements/icon/ArrowRightIcon.svelte';
 	import ShippingMethods from './ShippingMethods.svelte';
 	import StripePaymentButton from '../buttons/StripePaymentButton.svelte';
 	import PaypalPaymentButton from '../buttons/PaypalPaymentButton.svelte';
 	import DiscountForm from '../forms/DiscountForm.svelte';
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { openSidebar } from '$elements/sidebar/Sidebar.svelte';
 
 	let cardElement,
 		isCountryAvailable = true,

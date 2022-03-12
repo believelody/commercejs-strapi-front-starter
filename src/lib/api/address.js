@@ -1,5 +1,5 @@
 import {get} from "svelte/store";
-import { baseUrl } from "../utils/url.util";
+import { serverUrl } from "$utils/url.util";
 import { authenticateHeaders, headers } from '$lib/utils/header.util';
 import {billing, profile, shipping} from "../stores";
 
@@ -19,7 +19,7 @@ const setAddressStores = data => {
 export const getAll = async (type = "") => {
     try {
         const profileStore = get(profile);
-        let path = `${baseUrl}/addresses`;
+        let path = `${serverUrl}/addresses`;
         if (type) {
             path += `?type=${type}`;
         }
@@ -44,7 +44,7 @@ export const getAll = async (type = "") => {
 
 export const getCountries = async () => {
     try {
-        const res = await fetch(`${baseUrl}/addresses/countries`, {
+        const res = await fetch(`${serverUrl}/addresses/countries`, {
             method: "get",
             headers
         });
@@ -60,7 +60,7 @@ export const getCountries = async () => {
 
 export const getSubdivisions = async (countryCode) => {
     try {
-        const res = await fetch(`${baseUrl}/addresses/countries/${countryCode}/subdivisions`, {
+        const res = await fetch(`${serverUrl}/addresses/countries/${countryCode}/subdivisions`, {
             method: "get",
             headers
         });
@@ -76,7 +76,7 @@ export const getSubdivisions = async (countryCode) => {
 
 export const create = async (data) => {
     try {
-        const res = await fetch(`${baseUrl}/addresses`, {
+        const res = await fetch(`${serverUrl}/addresses`, {
             method: "post",
             headers: authenticateHeaders(),
             body: JSON.stringify(data),
@@ -96,7 +96,7 @@ export const create = async (data) => {
 
 export const update = async (data) => {
     try {
-        const res = await fetch(`${baseUrl}/addresses/${data.id}`, {
+        const res = await fetch(`${serverUrl}/addresses/${data.id}`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify(data),
@@ -116,7 +116,7 @@ export const update = async (data) => {
 export const choose = async (data) => {
     try {
         const profileStore = get(profile);
-        const res = await fetch(`${baseUrl}/users/me`, {
+        const res = await fetch(`${serverUrl}/users/me`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify({
@@ -144,7 +144,7 @@ export const choose = async (data) => {
 export const remove = async (id) => {
     try {
         // const profileStore = get(profile);
-        const res = await fetch(`${baseUrl}/addresses/${id}`, {
+        const res = await fetch(`${serverUrl}/addresses/${id}`, {
             method: "delete",
             headers: authenticateHeaders()
         });

@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { navigating } from '$app/stores';
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
-	import HeaderTitle from '$lib/components/header/HeaderTitle.svelte';
-	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
-	import CenterSection from '$lib/elements/center-section/CenterSection.svelte';
+	import api from '$api';
+	import HeaderTitle from '$components/header/HeaderTitle.svelte';
+	import MoonLoading from '$components/loading/MoonLoading.svelte';
+	import CenterSection from '$elements/center-section/CenterSection.svelte';
 	import DangerModal from '../../../lib/elements/modal/DangerModal.svelte';
 	import { openModal } from '../../../lib/elements/modal/Modal.svelte';
 

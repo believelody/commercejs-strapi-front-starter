@@ -5,7 +5,7 @@
 
     onMount(async () => {
         $paypal = await loadScript({
-            "client-id": import.meta.env.VITE_PAYPAL_CLIENT_ID,
+            "client-id": import.meta.env.PAYPAL_CLIENT_ID,
         });
         $paypal.Buttons({
             style: {

@@ -3,7 +3,7 @@
     import {profile} from '$lib/stores';
     import AuthForm from '../forms/AuthForm.svelte';
     import GuestForm from '../forms/GuestForm.svelte';
-    import CheckboxInput from "../../elements/input/CheckboxInput.svelte";
+    import CheckboxInput from "$elements/input/CheckboxInput.svelte";
 
     let isGuest = false;
 </script>

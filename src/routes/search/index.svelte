@@ -1,6 +1,6 @@
 <script>
 	import { navigating, page } from '$app/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
 	import MoonLoading from '../../lib/components/loading/MoonLoading.svelte';
 	import ResultPanelSearch from '../../lib/components/search/ResultPanelSearch.svelte';

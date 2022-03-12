@@ -1,5 +1,5 @@
 <script context="module">
-    import api from '$lib/api'
+    import api from '$api'
     export async function load() {
         const { categories, meta } = await api.category.getAll();
 

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import api from '$lib/api';
+	import api from '$api';
 	import { profile, user } from '$lib/stores';
 	import PrivateRoute from '../../lib/components/private/PrivateRoute.svelte';
 	import MenuProfile from '../../lib/components/profile/MenuProfile.svelte';

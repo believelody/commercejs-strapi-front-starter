@@ -1,10 +1,10 @@
-import {baseUrl} from "../utils/url.util";
-import {authenticateHeaders} from "../utils/header.util";
+import {serverUrl} from "$utils/url.util";
+import {authenticateHeaders} from "$utils/header.util";
 import {profile} from "../stores";
 
 export const update = async (data) => {
     try {
-        const res = await fetch(`${baseUrl}/users/me`, {
+        const res = await fetch(`${serverUrl}/users/me`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify(data)
@@ -23,7 +23,7 @@ export const update = async (data) => {
 
 export const sendOrderEmail = async (data, id) => {
     try {
-        const res = await fetch(`${baseUrl}/users/me/orders/${id}/contact`, {
+        const res = await fetch(`${serverUrl}/users/me/orders/${id}/contact`, {
             method: "post",
             headers: authenticateHeaders(),
             body: JSON.stringify(data)
@@ -40,7 +40,7 @@ export const sendOrderEmail = async (data, id) => {
 
 export const updatePassword = async (password, newPassword) => {
     try {
-        const res = await fetch(`${baseUrl}/users/me/update-password`, {
+        const res = await fetch(`${serverUrl}/users/me/update-password`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify({ password, newPassword })

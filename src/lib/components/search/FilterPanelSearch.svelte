@@ -2,14 +2,14 @@
 	import { getContext } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { media } from "$lib/stores";
-	import Accordion from '../../elements/accordion/Accordion.svelte';
-	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import Accordion from '$elements/accordion/Accordion.svelte';
+	import { openSidebar } from '$elements/sidebar/Sidebar.svelte';
 	import FilterSearchSidebar from '../sidebars/FilterSearchSidebar.svelte';
 	import CategoryFilterSearch from './CategoryFilterSearch.svelte';
 	import ColorFilterSearch from './ColorFilterSearch.svelte';
 	import PriceFilterSearch from './PriceFilterSearch.svelte';
 	import SizeFilterSearch from './SizeFilterSearch.svelte';
-	import SettingsIcon from '../../elements/icon/SettingsIcon.svelte';
+	import SettingsIcon from '$elements/icon/SettingsIcon.svelte';
 
 	const filters = getContext('filters');
 	function openFilterSearchSidebar() {

@@ -3,12 +3,12 @@ import { goto } from '$app/navigation'
 import { user, jwt } from '$lib/stores';
 import { profile } from '../stores';
 import { getAll } from './address';
-import { authenticateHeaders, headers } from '../utils/header.util';
-import { baseUrl } from '../utils/url.util';
+import { authenticateHeaders, headers } from '$utils/header.util';
+import { serverUrl } from '$utils/url.util';
 
 export const login = async (identifier, password) => {
     try {
-        const res = await fetch(`${baseUrl}/auth/local`, {
+        const res = await fetch(`${serverUrl}/auth/local`, {
             method: "post",
             headers,
             body: JSON.stringify({ identifier, password })
@@ -31,7 +31,7 @@ export const login = async (identifier, password) => {
 
 export const register = async (firstname, lastname, email, password) => {
     try {
-        const res = await fetch(`${baseUrl}/auth/local/register`, {
+        const res = await fetch(`${serverUrl}/auth/local/register`, {
             method: "post",
             headers,
             body: JSON.stringify({ firstname, lastname, email, password })
@@ -62,7 +62,7 @@ export const logout = () => {
 
 export const getMe = async () => {
     try {
-        const res = await fetch(`${baseUrl}/users/me`, {
+        const res = await fetch(`${serverUrl}/users/me`, {
             method: "get",
             headers: authenticateHeaders()
         });
@@ -81,7 +81,7 @@ export const getMe = async () => {
 
 export const codeVerification = async (email, code) => {
     try {
-        const res = await fetch(`${baseUrl}/auth/email-confirmation`, {
+        const res = await fetch(`${serverUrl}/auth/email-confirmation`, {
             method: "post",
             headers,
             body: JSON.stringify({ email, code })
@@ -101,7 +101,7 @@ export const codeVerification = async (email, code) => {
 
 export const resendCode = async (email) => {
     try {
-        const res = await fetch(`${baseUrl}/auth/send-email-confirmation`, {
+        const res = await fetch(`${serverUrl}/auth/send-email-confirmation`, {
             method: "post",
             headers,
             body: JSON.stringify({ email }),

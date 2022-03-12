@@ -1,14 +1,14 @@
 <script>
 	import { page } from '$app/stores';
 	import { t } from '$lib/i18n';
-	import Star from '../../elements/star/Star.svelte';
-	import { fullName } from '../../utils/user.util';
-	import { localDateFromString } from '../../utils/date.util';
-	import Card from '../../elements/card/Card.svelte';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import Star from '$elements/star/Star.svelte';
+	import { fullName } from '$utils/user.util';
+	import { localDateFromString } from '$utils/date.util';
+	import Card from '$elements/card/Card.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
 	import { fullOpacityBackground } from '$lib/utils/modal.util';
-	import PaginateComponent from '../../elements/pagination/PaginateComponent.svelte';
+	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
 
 	export let reviews;
 

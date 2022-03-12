@@ -1,8 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
-	import ArrowLeft from '$lib/elements/icon/ArrowLeftIcon.svelte';
-	import ArrowRight from '$lib/elements/icon/ArrowRightIcon.svelte';
-	import Thumbnails from '$lib/elements/thumbnail/Thumbnails.svelte';
+	import ArrowLeft from '$elements/icon/ArrowLeftIcon.svelte';
+	import ArrowRight from '$elements/icon/ArrowRightIcon.svelte';
+	import Thumbnails from '$elements/thumbnail/Thumbnails.svelte';
 
 	export let images, selectedIndex = 0;
 	let Carousel; // for saving Carousel component class

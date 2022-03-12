@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
     import { profile, sidebar } from '$lib/stores';
-    import CenterSection from '$lib/elements/center-section/CenterSection.svelte';
+    import CenterSection from '$elements/center-section/CenterSection.svelte';
     import ItemAddress from '../addresses/ItemAddress.svelte';
 
     export let items, type;

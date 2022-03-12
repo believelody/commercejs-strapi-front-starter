@@ -1,11 +1,11 @@
 <script>
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
+	import api from '$api';
 	import ConfirmationEmailForm from '../forms/ConfirmationEmailForm.svelte';
-	import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
-	import { closeModal } from '../../elements/modal/Modal.svelte';
-	import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
+	import { closeModal } from '$elements/modal/Modal.svelte';
+	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 
 	let success = false;
 

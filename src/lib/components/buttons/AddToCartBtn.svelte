@@ -1,9 +1,9 @@
 <script>
     import { cart } from "$lib/stores";
-    import api from "$lib/api";
+    import api from "$api";
     import { t } from '$lib/i18n'
-    import PrimaryButton from "../../elements/button/PrimaryButton.svelte";
-    import { openModal } from "../../elements/modal/Modal.svelte";
+    import PrimaryButton from "$elements/button/PrimaryButton.svelte";
+    import { openModal } from "$elements/modal/Modal.svelte";
     import ItemToCartSuccessModal from "../modals/ItemToCartSuccessModal.svelte";
 
     export let product, quantity, selectedVariant, selectedOption;

@@ -1,6 +1,6 @@
 <script>
-    import IconButton from "../../elements/button/IconButton.svelte";
-	import CloseIcon from '../../elements/icon/CloseIcon.svelte';
+    import IconButton from "$elements/button/IconButton.svelte";
+	import CloseIcon from '$elements/icon/CloseIcon.svelte';
 
 	let className;
 	export { className as class };

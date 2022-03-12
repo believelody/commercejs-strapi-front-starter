@@ -1,5 +1,5 @@
 <script context="module">
-    import api from '$lib/api'
+    import api from '$api'
 import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';
     export async function load({ params }) {
         const { slug } = params;

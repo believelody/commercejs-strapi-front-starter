@@ -1,5 +1,5 @@
 <script>
-	import SidebarWrapper from '../../elements/sidebar/SidebarWrapper.svelte';
+	import SidebarWrapper from '$elements/sidebar/SidebarWrapper.svelte';
 	import CategoryFilterSearch from '../search/CategoryFilterSearch.svelte';
 	import ColorFilterSearch from '../search/ColorFilterSearch.svelte';
 	import PriceFilterSearch from '../search/PriceFilterSearch.svelte';

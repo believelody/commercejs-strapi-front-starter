@@ -1,6 +1,6 @@
 <script>
-	import HidePasswordIcon from "$lib/elements/icon/HidePasswordIcon.svelte";
-	import ShowPasswordIcon from "$lib/elements/icon/ShowPasswordIcon.svelte";
+	import HidePasswordIcon from "$elements/icon/HidePasswordIcon.svelte";
+	import ShowPasswordIcon from "$elements/icon/ShowPasswordIcon.svelte";
 
 	export let value, name, id = "", hint, error, label = "", placeholder, type = "text", required, icon, transparent = false, align = "horizontal";
 	let showPwd = false;

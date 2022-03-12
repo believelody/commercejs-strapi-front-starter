@@ -1,8 +1,8 @@
 <script>
     import {createEventDispatcher} from 'svelte';
     import {t} from '$lib/i18n';
-    import CheckboxInput from '../../elements/input/CheckboxInput.svelte';
-    import Star from '../../elements/star/Star.svelte';
+    import CheckboxInput from '$elements/input/CheckboxInput.svelte';
+    import Star from '$elements/star/Star.svelte';
 
     export let reviews;
     const INIT_VALUES = [5, 4, 3, 2, 1, 'images'];

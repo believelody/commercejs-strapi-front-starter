@@ -1,5 +1,5 @@
 <script context="module">
-    import api from '$lib/api';
+    import api from '$api';
 
 	export async function load() {
 		const res = await api.product.getAll();
@@ -16,7 +16,7 @@
 </script>
 
 <script>
-	import ProductList from '$lib/components/products/ProductList.svelte';
+	import ProductList from '$components/products/ProductList.svelte';
 
 	export let products, meta, error;
 </script>

@@ -3,10 +3,10 @@
 	import { page } from "$app/stores";
 	import { t } from '$lib/i18n';
     import { media } from "$lib/stores";
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-	import Form from '../../elements/form/Form.svelte';
-	import SearchIcon from '../../elements/icon/SearchIcon.svelte';
-	import TextInput from '../../elements/input/TextInput.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import Form from '$elements/form/Form.svelte';
+	import SearchIcon from '$elements/icon/SearchIcon.svelte';
+	import TextInput from '$elements/input/TextInput.svelte';
 
 	export let noIcon = false,
 		transparent = false,

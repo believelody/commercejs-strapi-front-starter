@@ -1,10 +1,10 @@
 import { cart } from "../stores";
-import { baseUrl } from '../utils/url.util';
-import { headers } from "../utils/header.util";
+import { serverUrl } from '$utils/url.util';
+import { headers } from "$utils/header.util";
 
 export const getById = async (id) => {
     try {
-        const res = await fetch(`${baseUrl}/cart/${id}`);
+        const res = await fetch(`${serverUrl}/cart/${id}`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error }
@@ -19,7 +19,7 @@ export const getById = async (id) => {
 
 export const createCart = async () => {
     try {
-        const res = await fetch(`${baseUrl}/cart`);
+        const res = await fetch(`${serverUrl}/cart`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error }
@@ -38,7 +38,7 @@ export const addToCart = async (cartId, id, quantity, variant = null) => {
         body["variant_id"] = variant.id;
     }
     try {
-        const res = await fetch(`${baseUrl}/cart/${cartId}/add-item`, {
+        const res = await fetch(`${serverUrl}/cart/${cartId}/add-item`, {
             method: "post",
             headers,
             body: JSON.stringify(body)
@@ -57,7 +57,7 @@ export const addToCart = async (cartId, id, quantity, variant = null) => {
 
 export const addItems = async (cartId, items) => {
     try {
-        const res = await fetch(`${baseUrl}/cart/${cartId}/add-items`, {
+        const res = await fetch(`${serverUrl}/cart/${cartId}/add-items`, {
             method: "post",
             headers,
             body: JSON.stringify(items)
@@ -76,7 +76,7 @@ export const addItems = async (cartId, items) => {
 
 export const updateItemQuantity = async (cartId, id, quantity) => {
     try {
-        const res = await fetch(`${baseUrl}/cart/${cartId}/items/${id}`, {
+        const res = await fetch(`${serverUrl}/cart/${cartId}/items/${id}`, {
             method: "put",
             headers,
             body: JSON.stringify({ quantity })
@@ -95,7 +95,7 @@ export const updateItemQuantity = async (cartId, id, quantity) => {
 
 export const deleteItem = async (cartId, itemId) => {
     try {
-        const res = await fetch(`${baseUrl}/cart/${cartId}/items/${itemId}`, {
+        const res = await fetch(`${serverUrl}/cart/${cartId}/items/${itemId}`, {
             method: "delete"
         });
         const json = await res.json();
@@ -112,7 +112,7 @@ export const deleteItem = async (cartId, itemId) => {
 
 export const emptyCart = async (cartId) => {
     try {
-        const res = await fetch(`${baseUrl}/cart/${cartId}/items`, {
+        const res = await fetch(`${serverUrl}/cart/${cartId}/items`, {
             method: "delete"
         });
         const json = await res.json();

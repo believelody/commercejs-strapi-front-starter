@@ -1,10 +1,10 @@
 <script>
   import { t } from '$lib/i18n';
   import { media } from "$lib/stores";
-  import LoginIcon from '$lib/elements/icon/LoginIcon.svelte';
+  import LoginIcon from '$elements/icon/LoginIcon.svelte';
   import AuthModal from '../modals/AuthModal.svelte';
-  import LinkButton from '$lib/elements/button/LinkButton.svelte';
-  import { openModal } from '../../elements/modal/Modal.svelte';
+  import LinkButton from '$elements/button/LinkButton.svelte';
+  import { openModal } from '$elements/modal/Modal.svelte';
 
   function showLoginModal() {
     openModal({ component: AuthModal });

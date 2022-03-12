@@ -1,7 +1,7 @@
 <script>
     import { t } from "$lib/i18n";
-    import ShieldIcon from "$lib/elements/icon/ShieldIcon.svelte";
-    import TrustBadge from "$lib/elements/badge/TrustBadge.svelte";
+    import ShieldIcon from "$elements/icon/ShieldIcon.svelte";
+    import TrustBadge from "$elements/badge/TrustBadge.svelte";
 </script>
 
 <style>

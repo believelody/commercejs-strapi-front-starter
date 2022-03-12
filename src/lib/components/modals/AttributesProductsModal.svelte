@@ -1,5 +1,5 @@
 <script>
-	import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
+	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 	import AttributesProducts from '../products/AttributesProducts.svelte';
 
     export let attributes;

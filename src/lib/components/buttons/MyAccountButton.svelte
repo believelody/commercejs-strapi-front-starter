@@ -3,9 +3,9 @@
 	import { goto } from "$app/navigation";
     import { t } from "$lib/i18n";
     import { media } from "$lib/stores";
-    import LinkButton from "../../elements/button/LinkButton.svelte";
-    import UserCircleIcon from "../../elements/icon/UserCircleIcon.svelte";
-    import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
+    import LinkButton from "$elements/button/LinkButton.svelte";
+    import UserCircleIcon from "$elements/icon/UserCircleIcon.svelte";
+    import { openSidebar } from "$elements/sidebar/Sidebar.svelte";
     import ProfileSidebar from "../sidebars/ProfileSidebar.svelte";
 
     $: isActive = $page.url.pathname.includes("/my-account");

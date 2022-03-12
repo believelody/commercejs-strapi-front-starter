@@ -1,0 +1,17 @@
+// jsconfig.json
+{
+    // ...
+    "compilerOptions": {
+        "baseUrls": "./",
+        "paths": {
+            "$elements/*": ["src/lib/elements/*"],
+            "$utils/*": ["src/lib/utils/*"],
+            "$componens/*": ["src/lib/componens/*"],
+            "$api/*": ["src/lib/api/*"],
+            "$styles/*": ["src/styles/*"],
+            "$lang/*": ["src/lib/lang/*"],
+            "$routes/*": ["src/routes/*"],
+        }
+    },
+    // ...
+}

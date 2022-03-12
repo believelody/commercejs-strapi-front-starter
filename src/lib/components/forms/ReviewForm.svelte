@@ -1,11 +1,11 @@
 <script>
     import {createEventDispatcher} from 'svelte';
-    import api from "$lib/api";
+    import api from "$api";
     import {t} from '$lib/i18n';
-    import File from '$lib/elements/input/FileInput.svelte';
-    import TextareaInput from "$lib/elements/input/TextareaInput.svelte";
+    import File from '$elements/input/FileInput.svelte';
+    import TextareaInput from "$elements/input/TextareaInput.svelte";
     import SelectStar from '../stars/SelectStar.svelte';
-    import Form from '$lib/elements/form/Form.svelte';
+    import Form from '$elements/form/Form.svelte';
 
     export let item, review, withoutShadow = false;
     let description = review?.description ?? "",

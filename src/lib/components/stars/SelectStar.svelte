@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';    
-    import Star from "$lib/elements/star/Star.svelte";
-    import Dropdown from '$lib/elements/dropdown/Dropdown.svelte';
+    import Star from "$elements/star/Star.svelte";
+    import Dropdown from '$elements/dropdown/Dropdown.svelte';
 
     export let max = 5, value = 0;
 </script>

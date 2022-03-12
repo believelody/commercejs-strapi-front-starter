@@ -1,5 +1,8 @@
 import preprocess from 'svelte-preprocess';
 
+// @filename: index.js
+import path from 'path';
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
@@ -19,6 +22,17 @@ const config = {
 			vite: { optimizeDeps: { include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep'] } },
 			ssr: {
 				noExternal: ["svelte-stripe-js"],
+			},
+			resolve: {
+				alias: {
+					$utils: path.resolve('./src/lib/utils'),
+					$elements: path.resolve('./src/lib/elements'),
+					$styles: path.resolve('./src/styles'),
+					$routes: path.resolve('./src/routes'),
+					$components: path.resolve('./src/lib/components'),
+					$api: path.resolve('./src/lib/api'),
+					$lang: path.resolve('./src/lib/lang'),
+				}
 			}
 		},
 		files: {

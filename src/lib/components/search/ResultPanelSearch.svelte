@@ -3,9 +3,9 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
-	import Button from '../../elements/button/Button.svelte';
+	import Button from '$elements/button/Button.svelte';
 	import ItemProduct from '../products/ItemProduct.svelte';
-	import PaginateComponent from '../../elements/pagination/PaginateComponent.svelte';
+	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
 
 	export let products, word, filteredProducts = products;
 	let pageSizes = [6, 15, 24],

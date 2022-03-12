@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
-    import DangerIcon from '$lib/elements/icon/DangerIcon.svelte';
-    import { closeModal } from '../../elements/modal/Modal.svelte';
+    import DangerIcon from '$elements/icon/DangerIcon.svelte';
+    import { closeModal } from '$elements/modal/Modal.svelte';
 </script>
 
 <style>

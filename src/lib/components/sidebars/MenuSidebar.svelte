@@ -1,9 +1,9 @@
 <script>
-	import Brand from '$lib/elements/brand/Brand.svelte';
+	import Brand from '$elements/brand/Brand.svelte';
     import Footer from '../footer/Footer.svelte';
 	import ExtraLinks from '../links/ExtraLinks.svelte';
 	import MenuNav from '../nav/MenuNav.svelte';
-	import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
+	import SidebarWrapper from "$elements/sidebar/SidebarWrapper.svelte";
 </script>
 
 <SidebarWrapper class="h-screen overflow-y-hidden">

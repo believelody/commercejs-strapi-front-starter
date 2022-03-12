@@ -1,10 +1,10 @@
 <script>
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
-	import TextInput from '$lib/elements/input/TextInput.svelte';
-	import Form from '$lib/elements/form/Form.svelte';
-	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import TextInput from '$elements/input/TextInput.svelte';
+	import Form from '$elements/form/Form.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	let password = '',
 		newPassword = '',

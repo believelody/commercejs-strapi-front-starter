@@ -1,14 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
+	import api from '$api';
 	import { jwt, profile, user } from '$lib/stores';
-	import HeartCircleIcon from '$lib/elements/icon/HeartCircleIcon.svelte';
-	import IconButton from '../../elements/button/IconButton.svelte';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import HeartCircleIcon from '$elements/icon/HeartCircleIcon.svelte';
+	import IconButton from '$elements/button/IconButton.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 	import AuthModal from '../modals/AuthModal.svelte';
 	import ConfirmationEmailModal from '../modals/ConfirmationEmailModal.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	export let product;
 	let wishlist,

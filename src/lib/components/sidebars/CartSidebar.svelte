@@ -1,17 +1,17 @@
 <script>
 	import { sidebar, cart } from '$lib/stores';
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
+	import api from '$api';
 	import CartList from '../list/CartList.svelte';
-	import SidebarWrapper from '$lib/elements/sidebar/SidebarWrapper.svelte';
-	import DangerButton from '../../elements/button/DangerButton.svelte';
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-	import CenterSection from '../../elements/center-section/CenterSection.svelte';
-	import LinkButton from '../../elements/button/LinkButton.svelte';
-	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
-	import DangerModal from '../../elements/modal/DangerModal.svelte';
-	import { closeSidebar } from '../../elements/sidebar/Sidebar.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import SidebarWrapper from '$elements/sidebar/SidebarWrapper.svelte';
+	import DangerButton from '$elements/button/DangerButton.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import CenterSection from '$elements/center-section/CenterSection.svelte';
+	import LinkButton from '$elements/button/LinkButton.svelte';
+	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
+	import DangerModal from '$elements/modal/DangerModal.svelte';
+	import { closeSidebar } from '$elements/sidebar/Sidebar.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	let loading = false;
 

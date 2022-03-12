@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import Button from '../../elements/button/Button.svelte';
+	import Button from '$elements/button/Button.svelte';
 
 	export let items, selectedOptionName;
 

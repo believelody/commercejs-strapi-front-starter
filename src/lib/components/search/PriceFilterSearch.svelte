@@ -1,7 +1,7 @@
 <script>
 	import RangeSlider from 'svelte-range-slider-pips';
 	import { t } from '$lib/i18n';
-	import Card from '../../elements/card/Card.svelte';
+	import Card from '$elements/card/Card.svelte';
 	import ColorList from '../list/ColorList.svelte';
 import { getContext } from 'svelte';
 

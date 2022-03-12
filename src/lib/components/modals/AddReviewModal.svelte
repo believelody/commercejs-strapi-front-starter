@@ -1,9 +1,9 @@
 <script>
-    import api from '$lib/api';
+    import api from '$api';
     import { reviewsUser } from "$lib/stores";
     import ReviewForm from "../forms/ReviewForm.svelte";
-    import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
-    import { closeModal } from '../../elements/modal/Modal.svelte';
+    import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
+    import { closeModal } from '$elements/modal/Modal.svelte';
 
     export let item, review;
     

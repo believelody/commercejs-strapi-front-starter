@@ -1,5 +1,5 @@
 <script>
-    import SidebarWrapper from "../../elements/sidebar/SidebarWrapper.svelte";
+    import SidebarWrapper from "$elements/sidebar/SidebarWrapper.svelte";
     import OrderSummary from "./OrderSummary.svelte";
 </script>
 

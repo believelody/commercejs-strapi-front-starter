@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { navigating, page } from '$app/stores';
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import { localDateFromSeconds } from '$lib/utils/date.util';
     import MoonLoading from '../../../lib/components/loading/MoonLoading.svelte';
     import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';

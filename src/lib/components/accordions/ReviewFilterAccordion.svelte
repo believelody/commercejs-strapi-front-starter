@@ -1,6 +1,6 @@
 <script>
     import {t} from "$lib/i18n";
-    import Accordion from "../../elements/accordion/Accordion.svelte";
+    import Accordion from "$elements/accordion/Accordion.svelte";
     import ReviewFilterButtonCheckbox from "../reviews/ReviewFilterButtonCheckbox.svelte";
 
     export let reviews;

@@ -2,7 +2,7 @@
 	import { t } from '$lib/i18n';
 	import { profile } from '$lib/stores';
 	import CloseIcon from '../icon/CloseIcon.svelte';
-	import ImageModal from '../../components/modals/ImageModal.svelte';
+	import ImageModal from '$components/modals/ImageModal.svelte';
 	import { openModal } from '../modal/Modal.svelte';
 
 	export let name,

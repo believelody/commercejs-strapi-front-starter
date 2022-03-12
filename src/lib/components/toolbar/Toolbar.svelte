@@ -2,10 +2,10 @@
 	import { fly } from 'svelte/transition';
 	import CartNav from '../nav/CartNav.svelte';
 	import MenuButton from '../buttons/MenuButton.svelte';
-	import Logo from '$lib/elements/logo/Logo.svelte';
+	import Logo from '$elements/logo/Logo.svelte';
 	import AuthNav from '../nav/AuthNav.svelte';
 	import SearchButton from '../buttons/SearchButton.svelte';
-	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
+	import { openSidebar } from '$elements/sidebar/Sidebar.svelte';
 	import SearchSidebar from '../sidebars/SearchSidebar.svelte';
 
 	let toolbarHeight;
@@ -32,7 +32,7 @@
 </section>
 
 <style>
-	@import '../../../styles/tailwind.css';
+	@import '../../../styles/tailwind-output.css';
 
 	section {
 		@apply bg-primary h-20 grid grid-cols-5 md:hidden justify-center h-20;

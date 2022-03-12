@@ -1,8 +1,8 @@
 <script>
     import { t } from '$lib/i18n';
     import { shipping, checkout, checkoutLoading } from '$lib/stores'
-    import api from '$lib/api';
-    import Radio from "../../elements/input/RadioInput.svelte";
+    import api from '$api';
+    import Radio from "$elements/input/RadioInput.svelte";
 
     async function selectShippingMethod(id) {
         $checkoutLoading = true;

@@ -1,6 +1,6 @@
 <script>
     import {t} from '$lib/i18n';
-    import Accordion from '../../elements/accordion/Accordion.svelte';
+    import Accordion from '$elements/accordion/Accordion.svelte';
     import ShippingInfo from '../checkout/ShippingInfo.svelte';
     import TotalCheckout from '../checkout/TotalCheckout.svelte';
     import CartList from '../list/CartList.svelte';

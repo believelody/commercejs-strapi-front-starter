@@ -1,15 +1,15 @@
 <script>
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
 	import { cart } from '$lib/stores';
 	import CartSidebar from '../sidebars/CartSidebar.svelte';
-	import { closeModal, openModal } from '../../elements/modal/Modal.svelte';
+	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
 	import LoadingModal from '../modals/LoadingModal.svelte';
-	import SuccessButton from '../../elements/button/SuccessButton.svelte';
-	import { openSidebar } from '../../elements/sidebar/Sidebar.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
-	import RenewIcon from '../../elements/icon/RenewIcon.svelte';
-	import CartIcon from '../../elements/icon/CartIcon.svelte';
+	import SuccessButton from '$elements/button/SuccessButton.svelte';
+	import { openSidebar } from '$elements/sidebar/Sidebar.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
+	import RenewIcon from '$elements/icon/RenewIcon.svelte';
+	import CartIcon from '$elements/icon/CartIcon.svelte';
 
 	export let order, onlyIcon = false;
 	let loading = false,

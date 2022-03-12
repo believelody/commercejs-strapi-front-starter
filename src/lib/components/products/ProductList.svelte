@@ -1,8 +1,8 @@
 <script>
 	import { page } from '$app/stores';
 	import { t } from "$lib/i18n";
-	import CenterSection from '../../elements/center-section/CenterSection.svelte';
-	import PaginateComponent from '../../elements/pagination/PaginateComponent.svelte';
+	import CenterSection from '$elements/center-section/CenterSection.svelte';
+	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
 	import ItemProduct from './ItemProduct.svelte';
 
 	export let products, meta, withoutPadding = false;

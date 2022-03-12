@@ -1,11 +1,11 @@
 import { get } from "svelte/store";
 import { reviewsProduct, reviewsUser, user } from "../stores";
-import { authenticateHeaders, authorizationHeaders, headers } from "../utils/header.util";
-import { baseUrl } from "../utils/url.util"
+import { authenticateHeaders, authorizationHeaders, headers } from "$utils/header.util";
+import { serverUrl } from "$utils/url.util"
 
 export const getFromUser = async () => {
     try {
-        const res = await fetch(`${baseUrl}/reviews`, {
+        const res = await fetch(`${serverUrl}/reviews`, {
             method: "get",
             headers: authenticateHeaders()
         });
@@ -22,7 +22,7 @@ export const getFromUser = async () => {
 
 export const getFromProductId = async (id) => {
     try {
-        const res = await fetch(`${baseUrl}/reviews?product_id=${id}`, {
+        const res = await fetch(`${serverUrl}/reviews?product_id=${id}`, {
             method: "get",
             headers
         });
@@ -40,7 +40,7 @@ export const getFromProductId = async (id) => {
 export const create = async (productId, description, ratings, images) => {
     try {
         let userId = get(user).id;        
-        const res = await fetch(`${baseUrl}/reviews`, {
+        const res = await fetch(`${serverUrl}/reviews`, {
             method: "post",
             headers: authenticateHeaders(),
             body: JSON.stringify({
@@ -63,7 +63,7 @@ export const create = async (productId, description, ratings, images) => {
             for (let image of images) {
                 formData.append("files", image, image.name);
             }
-            const formRes = await fetch(`${baseUrl}/upload`, {
+            const formRes = await fetch(`${serverUrl}/upload`, {
                 method: "post",
                 headers: authorizationHeaders(),
                 body: formData
@@ -82,7 +82,7 @@ export const create = async (productId, description, ratings, images) => {
 export const update = async (wishlist) => {
     try {
         const users = wishlist.users.find(item => item.id === get(user).id) ? wishlist.users.filter(item => item.id !== get(user).id) : [...wishlist.users, get(user)];
-        const res = await fetch(`${baseUrl}/reviews/${wishlist.id}`, {
+        const res = await fetch(`${serverUrl}/reviews/${wishlist.id}`, {
             method: "put",
             headers: authenticateHeaders(),
             body: JSON.stringify({ users })

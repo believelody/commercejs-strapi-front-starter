@@ -1,13 +1,13 @@
 <script>
 	import { t } from '$lib/i18n';
 	import { checkout, checkoutLoading } from '$lib/stores';
-	import api from '$lib/api';
-	import Form from '$lib/elements/form/Form.svelte';
-	import TextInput from '$lib/elements/input/TextInput.svelte';
-	import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+	import api from '$api';
+	import Form from '$elements/form/Form.svelte';
+	import TextInput from '$elements/input/TextInput.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import DiscountSuccessModal from '../modals/DiscountSuccessModal.svelte';
 	import DiscountFailedModal from '../modals/DiscountFailedModal.svelte';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 
 	export let withoutShadow = false;
 	let code,

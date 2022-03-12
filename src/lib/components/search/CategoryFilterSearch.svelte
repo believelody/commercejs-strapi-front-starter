@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { t } from '$lib/i18n';
 	import { categories } from '$lib/stores';
-	import Card from '../../elements/card/Card.svelte';
+	import Card from '$elements/card/Card.svelte';
 	import MoonLoading from '../loading/MoonLoading.svelte';
 	import { toggleFilterSelection } from "$lib/utils/product.util";
 

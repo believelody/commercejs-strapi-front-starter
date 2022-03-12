@@ -1,10 +1,10 @@
-import { baseUrl } from "../utils/url.util";
-import { headers } from "../utils/header.util";
+import { serverUrl } from "$utils/url.util";
+import { headers } from "$utils/header.util";
 import { checkout, checkoutLoading } from "../stores";
 
 export const getCheckout = async (checkoutId) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${checkoutId}`);
+        const res = await fetch(`${serverUrl}/checkout/${checkoutId}`);
         const json = await res.json();
         checkout.set(json);
     } catch (error) {
@@ -14,7 +14,7 @@ export const getCheckout = async (checkoutId) => {
 
 export const getCheckoutByCart = async (id) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${id}?type=cart`);
+        const res = await fetch(`${serverUrl}/checkout/${id}?type=cart`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -28,7 +28,7 @@ export const getCheckoutByCart = async (id) => {
 
 export const getCountries = async (tokenId) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${tokenId}/available-countries`);
+        const res = await fetch(`${serverUrl}/checkout/${tokenId}/available-countries`);
         const json = await res.json();
         if (res.error) {
             return { success: false };
@@ -41,7 +41,7 @@ export const getCountries = async (tokenId) => {
 
 export const getSubdivisions = async (checkoutId, countryCode) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/countries/${countryCode}/subdivisions`);
+        const res = await fetch(`${serverUrl}/checkout/${checkoutId}/countries/${countryCode}/subdivisions`);
         const json = await res.json();
         return json.subdivisions;
     } catch (error) {
@@ -51,7 +51,7 @@ export const getSubdivisions = async (checkoutId, countryCode) => {
 
 export const chooseShippingMethod = async (checkoutId, shippingMethodId, country) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/check/shipping?shipping_option_id=${shippingMethodId}&country=${country}`);
+        const res = await fetch(`${serverUrl}/checkout/${checkoutId}/check/shipping?shipping_option_id=${shippingMethodId}&country=${country}`);
         const json = await res.json();
         if (json.valid) {
             await getCheckout(checkoutId);
@@ -63,7 +63,7 @@ export const chooseShippingMethod = async (checkoutId, shippingMethodId, country
 
 export const checkQuantity = async (checkoutId, itemId, amount, variantId) => {
     try {
-        let path = new URL(`${baseUrl}/checkout/${checkoutId}/check/${itemId}/quantity`);
+        let path = new URL(`${serverUrl}/checkout/${checkoutId}/check/${itemId}/quantity`);
         path.searchParams.append("amount", amount);
         if (variantId) {
             path.searchParams.append("variant_id", variantId);
@@ -83,7 +83,7 @@ export const checkQuantity = async (checkoutId, itemId, amount, variantId) => {
 
 export const checkVariant = async (checkoutId, itemId, variantId = "", groupId = "", optionId = "") => {
     try {
-        let path = new URL(`${baseUrl}/checkout/${checkoutId}/check/${itemId}/variant`);
+        let path = new URL(`${serverUrl}/checkout/${checkoutId}/check/${itemId}/variant`);
         if (variantId) {
             path.searchParams.append("variant_id", variantId);
         }
@@ -103,7 +103,7 @@ export const checkVariant = async (checkoutId, itemId, variantId = "", groupId =
 
 export const checkDiscount = async (checkoutId, code) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/check/discount?code=${code}`);
+        const res = await fetch(`${serverUrl}/checkout/${checkoutId}/check/discount?code=${code}`);
         const json = await res.json();
         if (json.valid) {
             checkoutLoading.set(true);
@@ -118,7 +118,7 @@ export const checkDiscount = async (checkoutId, code) => {
 
 export const onCaptureOrder = async (checkoutId, orderData) => {
     try {
-        const res = await fetch(`${baseUrl}/checkout/${checkoutId}/capture-order`, {
+        const res = await fetch(`${serverUrl}/checkout/${checkoutId}/capture-order`, {
             method: "post",
             headers,
             body: JSON.stringify(orderData)

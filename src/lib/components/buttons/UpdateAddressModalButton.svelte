@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
-	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 	import AddressModal from '../modals/AddressModal.svelte';
 
 	export let information;

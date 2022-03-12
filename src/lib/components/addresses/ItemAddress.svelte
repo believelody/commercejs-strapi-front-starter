@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import AddressSidebarButton from '../buttons/AddressSidebarButton.svelte';
-    import CheckCircleIcon from '$lib/elements/icon/CheckCircleIcon.svelte';
+    import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
     import ChooseAddressButton from '../buttons/ChooseAddressButton.svelte';
     import UpdateAddressModalButton from '../buttons/UpdateAddressModalButton.svelte';
     import RemoveAddressModalButton from '../buttons/RemoveAddressModalButton.svelte';

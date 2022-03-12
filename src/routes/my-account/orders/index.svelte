@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { navigating, page } from '$app/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
 	import { orders, media } from '$lib/stores';
 	import HeaderTitle from '../../../lib/components/header/HeaderTitle.svelte';

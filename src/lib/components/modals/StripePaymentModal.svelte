@@ -11,11 +11,11 @@
 		billing,
 		isBillingSameAsShipping
 	} from '$lib/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import DisplaySuccessPayment from '../displays/DisplaySuccessPayment.svelte';
 	import FailedPaymentDisplay from '../displays/FailedPaymentDisplay.svelte';
 	import StripePaymentLoading from '../loading/StripePaymentLoading.svelte';
-	import ModalWrapper from '../../elements/modal/ModalWrapper.svelte';
+	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 
 	export let cardElement;
 	let paymentError,

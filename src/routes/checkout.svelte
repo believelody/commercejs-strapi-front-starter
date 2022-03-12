@@ -14,7 +14,7 @@
 		shipping,
 		billing
 	} from '$lib/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import InformationPanel from '../lib/components/checkout/InformationPanel.svelte';
 	import OrderPanel from '../lib/components/checkout/OrderPanel.svelte';
 	import MoonLoading from '../lib/components/loading/MoonLoading.svelte';
@@ -23,7 +23,7 @@
 
 	onMount(async () => {
 		if (!isServer) {
-			$stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+			$stripe = await loadStripe(import.meta.env.STRIPE_PUBLIC_KEY);
 		}
 		if ($cart && $cart.total_unique_items > 0) {
 			$checkoutLoading = true;

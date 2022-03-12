@@ -1,10 +1,10 @@
 <script>
 	import { t } from '$lib/i18n';
 	import { media } from "$lib/stores";
-    import { localDateFromSeconds } from '../../utils/date.util';
+    import { localDateFromSeconds } from '$utils/date.util';
 	import InvoiceOrder from '../print/InvoiceOrder.svelte';
-	import FilePDFIcon from '$lib/elements/icon/FilePDFIcon.svelte';
-	import InfoButton from "$lib/elements/button/InfoButton.svelte";
+	import FilePDFIcon from '$elements/icon/FilePDFIcon.svelte';
+	import InfoButton from "$elements/button/InfoButton.svelte";
 
 	export let data, onlyIcon = false;
 	let printContent,

@@ -1,15 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
 	import { profile } from '$lib/stores';
-	import TextInput from '$lib/elements/input/TextInput.svelte';
-	import CheckboxInput from '$lib/elements/input/CheckboxInput.svelte';
+	import TextInput from '$elements/input/TextInput.svelte';
+	import CheckboxInput from '$elements/input/CheckboxInput.svelte';
 	import { clickLinkOutside } from '../../actions/clickOutside';
-	import { emailValidation } from '../../utils/form.util';
-	import Form from '$lib/elements/form/Form.svelte';
-	import PrimaryButton from '$lib/elements/button/PrimaryButton.svelte';
-	import { notifications } from '../../elements/notification/Notification.svelte';
+	import { emailValidation } from '$utils/form.util';
+	import Form from '$elements/form/Form.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	let firstname,
 		lastname,

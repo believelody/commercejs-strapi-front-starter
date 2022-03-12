@@ -3,7 +3,7 @@
     import { t } from "$lib/i18n";
     import { media } from "$lib/stores";
     import HeaderTitle from "../header/HeaderTitle.svelte";
-    import Thumbnails from "$lib/elements/thumbnail/Thumbnails.svelte";
+    import Thumbnails from "$elements/thumbnail/Thumbnails.svelte";
 
     export let items;
     let className;

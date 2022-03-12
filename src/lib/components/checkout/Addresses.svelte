@@ -1,11 +1,11 @@
 <script>
     import { createEventDispatcher, onMount } from 'svelte';
     import { derived } from 'svelte/store';
-    import api from '$lib/api';
+    import api from '$api';
     import { t } from '$lib/i18n';
     import { shipping, billing, isBillingSameAsShipping, checkout, jwt } from '$lib/stores';
     import AddressForm from "../forms/AddressForm.svelte";
-    import CheckboxInput from '../../elements/input/CheckboxInput.svelte';
+    import CheckboxInput from '$elements/input/CheckboxInput.svelte';
     import AddressSidebarButton from '../buttons/AddressSidebarButton.svelte';
 
     let checkoutId, countriesAvailableForShipping, isCountryAvailableForShipping = null;

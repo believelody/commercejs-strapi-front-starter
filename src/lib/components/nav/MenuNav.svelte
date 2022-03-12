@@ -1,11 +1,11 @@
 <script>
 	import { getContext, onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
 	import { categories } from "$lib/stores";
-	import Accordion from '$lib/elements/accordion/Accordion.svelte';
-	import Dropdown from '$lib/elements/dropdown/Dropdown.svelte';
+	import Accordion from '$elements/accordion/Accordion.svelte';
+	import Dropdown from '$elements/dropdown/Dropdown.svelte';
 	import CategoriesNav from './CategoriesNav.svelte';
 
 	let meta;

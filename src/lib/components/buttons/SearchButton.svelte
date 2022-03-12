@@ -1,6 +1,6 @@
 <script>
-	import IconButton from '../../elements/button/IconButton.svelte';
-	import SearchIcon from '../../elements/icon/SearchIcon.svelte';
+	import IconButton from '$elements/button/IconButton.svelte';
+	import SearchIcon from '$elements/icon/SearchIcon.svelte';
 
 	let className;
 	export { className as class };

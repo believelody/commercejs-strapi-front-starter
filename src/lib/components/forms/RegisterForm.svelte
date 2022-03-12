@@ -1,12 +1,12 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import { media } from "$lib/stores";
-    import TextInput from '$lib/elements/input/TextInput.svelte';
-    import {emailValidation} from '../../utils/form.util';
-    import Form from '$lib/elements/form/Form.svelte';
-import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
+    import TextInput from '$elements/input/TextInput.svelte';
+    import {emailValidation} from '$utils/form.util';
+    import Form from '$elements/form/Form.svelte';
+import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 
     export let withoutShadow = false, title;
     let firstname, lastname, email, password, loading = false, hasError = false;

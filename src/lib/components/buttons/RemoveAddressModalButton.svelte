@@ -1,6 +1,6 @@
 <script>
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import DangerModalButton from "./DangerModalButton.svelte";
 
     export let information;

@@ -1,5 +1,5 @@
 <script context="module">
-    import api from '$lib/api';
+    import api from '$api';
 
     export async function load({ params }) {
         const { slug } = params;
@@ -17,7 +17,7 @@
 </script>
 
 <script>
-    import ProductDetail from "$lib/components/products/ProductDetail.svelte";
+    import ProductDetail from "$components/products/ProductDetail.svelte";
     export let product, error;
 </script>
 

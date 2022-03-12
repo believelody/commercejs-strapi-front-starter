@@ -1,8 +1,8 @@
-import { baseUrl } from "../utils/url.util";
+import { serverUrl } from "$utils/url.util";
 
 export const getAll = async () => {
     try {
-        const res = await fetch(`${baseUrl}/products/category/pets`);
+        const res = await fetch(`${serverUrl}/products/category/pets`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -15,7 +15,7 @@ export const getAll = async () => {
 
 export const getBySlug = async slug => {
     try {
-        const res = await fetch(`${baseUrl}/products/${slug}?type=permalink`);
+        const res = await fetch(`${serverUrl}/products/${slug}?type=permalink`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -28,7 +28,7 @@ export const getBySlug = async slug => {
 
 export const getById = async id => {
     try {
-        const res = await fetch(`${baseUrl}/products/${id}`);
+        const res = await fetch(`${serverUrl}/products/${id}`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -41,7 +41,7 @@ export const getById = async id => {
 
 export const getSlug = async id => {
     try {
-        const res = await fetch(`${baseUrl}/products/${id}/slug`);
+        const res = await fetch(`${serverUrl}/products/${id}/slug`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -54,7 +54,7 @@ export const getSlug = async id => {
 
 export const getIdBySlug = async slug => {
     try {
-        const res = await fetch(`${baseUrl}/products/${slug}/get-id`);
+        const res = await fetch(`${serverUrl}/products/${slug}/get-id`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -67,7 +67,7 @@ export const getIdBySlug = async slug => {
 
 export const getBySearch = async search => {
     try {
-        const res = await fetch(`${baseUrl}/search/products?query=${search}`);
+        const res = await fetch(`${serverUrl}/search/products?query=${search}`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };
@@ -80,7 +80,7 @@ export const getBySearch = async search => {
 
 export const getVariants = async id => {
     try {
-        const res = await fetch(`${baseUrl}/products/${id}/variants`);
+        const res = await fetch(`${serverUrl}/products/${id}/variants`);
         const json = await res.json();
         if (json.error) {
             return { success: false, error: json.error };

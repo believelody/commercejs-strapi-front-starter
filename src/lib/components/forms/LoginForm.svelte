@@ -1,13 +1,13 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
-    import api from '$lib/api';
+    import api from '$api';
     import { media } from "$lib/stores";
-    import {emailValidation} from '../../utils/form.util';
-    import TextInput from '$lib/elements/input/TextInput.svelte';
-    import PrimaryButton from '../../elements/button/PrimaryButton.svelte';
-    import Form from '$lib/elements/form/Form.svelte';
-    import { disableCloseModal, resetModalCloseOptions } from '../../elements/modal/Modal.svelte';
+    import {emailValidation} from '$utils/form.util';
+    import TextInput from '$elements/input/TextInput.svelte';
+    import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+    import Form from '$elements/form/Form.svelte';
+    import { disableCloseModal, resetModalCloseOptions } from '$elements/modal/Modal.svelte';
 
     export let withoutShadow = false, title;
     let identifier, password, loading = false, hasError = false;

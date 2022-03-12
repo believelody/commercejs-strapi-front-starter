@@ -1,9 +1,9 @@
 <script>
     import {t} from '$lib/i18n';
     import {createEventDispatcher} from 'svelte';
-    import Form from '$lib/elements/form/Form.svelte';
-    import SelectInput from "../../elements/input/SelectInput.svelte";
-    import TextareaInput from "../../elements/input/TextareaInput.svelte";
+    import Form from '$elements/form/Form.svelte';
+    import SelectInput from "$elements/input/SelectInput.svelte";
+    import TextareaInput from "$elements/input/TextareaInput.svelte";
 
     export let withoutShadow, hideSubmit, withAttachments = false;
     let selectObject, message = "", files;

@@ -1,11 +1,11 @@
 <script>
 	import { t } from '$lib/i18n'
-	import WithActionModal from '../../elements/modal/WithActionModal.svelte';
+	import WithActionModal from '$elements/modal/WithActionModal.svelte';
 	import CartSidebar from "../sidebars/CartSidebar.svelte";
-	import CheckCircleIcon from '../../elements/icon/CheckCircleIcon.svelte';
-	import SuccessButton from "../../elements/button/SuccessButton.svelte";
-	import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
-	import { closeModal } from '../../elements/modal/Modal.svelte';
+	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
+	import SuccessButton from "$elements/button/SuccessButton.svelte";
+	import { openSidebar } from "$elements/sidebar/Sidebar.svelte";
+	import { closeModal } from '$elements/modal/Modal.svelte';
 
 	export let product, selectedOption, quantity;
 

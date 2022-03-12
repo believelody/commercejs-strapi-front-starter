@@ -1,7 +1,7 @@
 <script>
     import { t } from '$lib/i18n';
     import FullAddress from "../addresses/FullAddress.svelte";
-    import { localDateFromSeconds } from '../../utils/date.util';
+    import { localDateFromSeconds } from '$utils/date.util';
 
     export let data;
 </script>

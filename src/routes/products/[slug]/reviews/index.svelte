@@ -1,5 +1,5 @@
 <script context="module">
-    import api from '$lib/api';
+    import api from '$api';
     import { reviewsProduct } from "$lib/stores";
 
     export async function load({ params }) {

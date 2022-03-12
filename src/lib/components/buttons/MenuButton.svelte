@@ -1,8 +1,8 @@
 <script>
-    import MenuIcon from "$lib/elements/icon/MenuIcon.svelte";
+    import MenuIcon from "$elements/icon/MenuIcon.svelte";
     import MenuSidebar from "../sidebars/MenuSidebar.svelte";
-    import IconButton from "../../elements/button/IconButton.svelte";
-import { openSidebar } from "../../elements/sidebar/Sidebar.svelte";
+    import IconButton from "$elements/button/IconButton.svelte";
+import { openSidebar } from "$elements/sidebar/Sidebar.svelte";
 
     function openSidebarMenu() {
         openSidebar({

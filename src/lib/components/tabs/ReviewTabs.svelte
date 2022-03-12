@@ -1,11 +1,11 @@
 <script>
 	import { Tab, TabList, TabPanel, Tabs } from 'svelte-tabs';
 	import { goto } from '$app/navigation';
-	import api from '$lib/api';
+	import api from '$api';
 	import { t } from '$lib/i18n';
-	import Star from '../../elements/star/Star.svelte';
-	import { localDateFromString } from '../../utils/date.util';
-	import { openModal } from '../../elements/modal/Modal.svelte';
+	import Star from '$elements/star/Star.svelte';
+	import { localDateFromString } from '$utils/date.util';
+	import { openModal } from '$elements/modal/Modal.svelte';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
 	import { fullOpacityBackground } from '$lib/utils/modal.util';
 	import AddReviewModal from '../modals/AddReviewModal.svelte';

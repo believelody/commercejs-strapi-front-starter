@@ -4,15 +4,15 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { navigating, page } from '$app/stores';
-	import api from '$lib/api';
+	import api from '$api';
 	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
-	import Footer from '$lib/components/footer/Footer.svelte';
-	import Header from '$lib/components/header/Header.svelte';
-	import Sidebar from '$lib/elements/sidebar/Sidebar.svelte';
-	import MoonLoading from '$lib/components/loading/MoonLoading.svelte';
-	import Notification from '$lib/elements/notification/Notification.svelte';
-	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
-	import Modal from '$lib/elements/modal/Modal.svelte';
+	import Footer from '$components/footer/Footer.svelte';
+	import Header from '$components/header/Header.svelte';
+	import Sidebar from '$elements/sidebar/Sidebar.svelte';
+	import MoonLoading from '$components/loading/MoonLoading.svelte';
+	import Notification from '$elements/notification/Notification.svelte';
+	import Toolbar from '$components/toolbar/Toolbar.svelte';
+	import Modal from '$elements/modal/Modal.svelte';
 
 	const exceptRoute = ["my-account", "search"];
 	const filters = writable(new Map());
