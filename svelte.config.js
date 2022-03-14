@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+import adapter from '@sveltejs/adapter-auto';
 
 // @filename: index.js
 import path from 'path';
@@ -18,6 +19,7 @@ const config = {
 		domains: ["res.cloudinary.com"],
 	},
 	kit: {
+		adapter: adapter(),
 		vite: {
 			vite: { optimizeDeps: { include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep'] } },
 			ssr: {

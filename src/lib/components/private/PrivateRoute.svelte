@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import { browser } from '$app/env';
     import { navigating } from '$app/stores';
     import { jwt, orders } from '$lib/stores';
     import MoonLoading from "../loading/MoonLoading.svelte";
@@ -11,7 +12,7 @@
         if ($jwt) {
             isAuth = true;
         } else {
-            if (window) {
+            if (browser) {
                 window.history.back();
             }
         }
