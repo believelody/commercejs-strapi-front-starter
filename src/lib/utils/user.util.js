@@ -1,1 +1,1 @@
-export const fullName = (user) => `${user.firstname} ${user.lastname}`;
+export const fullName = (user) => user ? `${user.firstname} ${user.lastname}` : "";
