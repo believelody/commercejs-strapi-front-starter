@@ -29,9 +29,9 @@
 <script>
     import { get } from 'svelte/store';
     import { t } from "$lib/i18n";
-    import ReviewList from '../../../$components/list/ReviewList.svelte';
-    import ReviewFilter from '../../../$components/reviews/ReviewFilter.svelte';
-    import HeaderTitle from "../../../$components/header/HeaderTitle.svelte";
+    import ReviewList from '$components/list/ReviewList.svelte';
+    import ReviewFilter from '$components/reviews/ReviewFilter.svelte';
+    import HeaderTitle from "$components/header/HeaderTitle.svelte";
 
     export let product, error;
     let filteredReviews = $reviewsProduct || [];

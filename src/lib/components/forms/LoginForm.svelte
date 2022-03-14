@@ -36,7 +36,7 @@
 
 <Form id="identity-form" on:submit={submit} {withoutShadow}>
     <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark my-2 text-center">{title}</h3>
-    <div slot="content" class="p-2 grid grid-cols-1 gap-y-4">
+    <svelte:fragment slot="content">
         <TextInput
             name="identifier"
             id="identifier"
@@ -74,5 +74,5 @@
             <span class="text-center">{$t("common.or")}</span>
             <PrimaryButton disabled={loading} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
         </div>
-    </div>
+    </svelte:fragment>
 </Form>

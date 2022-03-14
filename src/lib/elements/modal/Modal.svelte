@@ -6,7 +6,7 @@
 	 * @param modalData is an object with component, props and options as properties
 	 */
 	export function openModal(modalData) {
-		modal.set(modalData);
+		modal.set(typeof modalData === "function" ? { component: modalData } : modalData);
 	}
 
 	export function closeModal() {
@@ -15,33 +15,35 @@
 
 	export function disableCloseModal() {
 		modal.update((modalData) => {
-			if (modalData) {
-				return {
-					...modalData,
-					options: {
-						...modalData.options,
-						noCloseOnEsc: true,
-						noCloseOnOuterClick: true,
-						noCloseButton: true
-					}
-				};
+			if (!modalData) {
+				return null;
 			}
+			return {
+				...modalData,
+				options: {
+					...modalData.options,
+					noCloseOnEsc: true,
+					noCloseOnOuterClick: true,
+					noCloseButton: true
+				}
+			};
 		});
 	}
 
 	export function resetModalCloseOptions() {
 		modal.update((modalData) => {
-			if (modalData) {
-				return {
-					...modalData,
-					options: {
-						...modalData.options,
-						noCloseOnEsc: false,
-						noCloseOnOuterClick: false,
-						noCloseButton: false
-					}
-				};
+			if (!modalData) {
+				return null;
 			}
+			return {
+				...modalData,
+				options: {
+					...modalData.options,
+					noCloseOnEsc: false,
+					noCloseOnOuterClick: false,
+					noCloseButton: false
+				}
+			};
 		});
 	}
 </script>
@@ -67,10 +69,11 @@
 
 {#if $modal}
 	<div
-		class="focus:bg-danger fixed top-0 right-0 bottom-0 left-0 flex-center-middle overlay {$modal
-			.options?.glass
+		class="focus:bg-danger fixed top-0 right-0 bottom-0 left-0 flex-center-middle overlay {
+			$modal.options?.glass
 			? ''
-			: 'bg-black bg-opacity-50'}"
+			: 'bg-black bg-opacity-50'
+		}"
 		data-close
 		on:click={overlayClick}
 		transition:fade={{ duration: fadeDuration }}

@@ -10,7 +10,7 @@
 </script>
 
 <script>
-    import ProductList from "../$components/products/ProductList.svelte";
+    import ProductList from "$components/products/ProductList.svelte";
 
     export let categories, meta;
 </script>

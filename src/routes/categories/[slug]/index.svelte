@@ -1,6 +1,6 @@
 <script context="module">
     import api from '$api'
-import HeaderTitle from '../../$components/header/HeaderTitle.svelte';
+import HeaderTitle from '$components/header/HeaderTitle.svelte';
     export async function load({ params }) {
         const { slug } = params;
         const { category } = await api.category.getOneBySlug(slug);
@@ -13,7 +13,7 @@ import HeaderTitle from '../../$components/header/HeaderTitle.svelte';
 </script>
 
 <script>
-    import ProductList from "../../$components/products/ProductList.svelte";
+    import ProductList from "$components/products/ProductList.svelte";
 
     export let category, products = [], meta;
 </script>

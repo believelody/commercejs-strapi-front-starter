@@ -4,15 +4,15 @@
     import { t } from '$lib/i18n';
     import api from '$api';
     import { localDateFromSeconds } from '$lib/utils/date.util';
-    import MoonLoading from '../../$components/loading/MoonLoading.svelte';
-    import HeaderTitle from '../../$components/header/HeaderTitle.svelte';
-    import ItemsOrderList from '../../$components/order/ItemsOrderList.svelte';
-    import DeliveryOrder from '../../$components/order/DeliveryOrder.svelte';
-    import ReOrderButton from '../../$components/buttons/ReOrderButton.svelte';
-    import InvoicePDFViewerButton from '../../$components/buttons/InvoicePDFViewerButton.svelte';
-    import AddressesOrder from '../../$components/order/AddressesOrder.svelte';
-    import PaymentOrder from '../../$components/order/PaymentOrder.svelte';
-    import ContactOrderButton from '../../$components/buttons/ContactOrderButton.svelte';
+    import MoonLoading from '$components/loading/MoonLoading.svelte';
+    import HeaderTitle from '$components/header/HeaderTitle.svelte';
+    import ItemsOrderList from '$components/order/ItemsOrderList.svelte';
+    import DeliveryOrder from '$components/order/DeliveryOrder.svelte';
+    import ReOrderButton from '$components/buttons/ReOrderButton.svelte';
+    import InvoicePDFViewerButton from '$components/buttons/InvoicePDFViewerButton.svelte';
+    import AddressesOrder from '$components/order/AddressesOrder.svelte';
+    import PaymentOrder from '$components/order/PaymentOrder.svelte';
+    import ContactOrderButton from '$components/buttons/ContactOrderButton.svelte';
     
     let data = null, error = null;
 

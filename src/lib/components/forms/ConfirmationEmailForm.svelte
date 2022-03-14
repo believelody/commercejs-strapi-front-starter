@@ -5,10 +5,10 @@
 	import api from '$api';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import Form from '$elements/form/Form.svelte';
-	import { closeModal } from '$elements/modal/Modal.svelte';
-import LinkButton from '$elements/button/LinkButton.svelte';
-import Button from '$elements/button/Button.svelte';
-import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { closeModal, disableCloseModal, resetModalCloseOptions } from '$elements/modal/Modal.svelte';
+	import LinkButton from '$elements/button/LinkButton.svelte';
+	import Button from '$elements/button/Button.svelte';
+	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 
 	export let withoutShadow = false;
 	let code = '',
@@ -20,23 +20,28 @@ import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 
 	async function submit() {
 		loading = true;
+		disableCloseModal();
 		const res = await api.auth.codeVerification($user.email, code);
-		if (res.statusCode == 400) {
+		if (res.success) {
+			resetModalCloseOptions();
+			dispatch('submitEvent', { success: true });
+		} else {
 			hasError = true;
 			errorCode = res.message;
-		} else if (res.success) {
-			dispatch('submitEvent', { success: res.success });
+			resetModalCloseOptions();
 		}
 		loading = false;
 	}
 
 	async function resendCode() {
 		loading = true;
+		disableCloseModal();
 		const res = await api.auth.resendCode($user.email);
-		if (res.sent) {
+		if (res.success) {
 			codeResent = true;
 		} else if (res.error) {
 			hasError = true;
+			resetModalCloseOptions();
 		}
 		loading = false;
 	}
@@ -64,26 +69,16 @@ import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 			on:input={(e) => (code = e.target.value)}
 			on:focus={() => (hasError = false)}
 		/>
-		<PrimaryButton
-			disabled={!code || loading}
-			type="submit"
-		>
+		<PrimaryButton disabled={!code || loading} type="submit">
 			{$t('common.validate')}
 		</PrimaryButton>
-		<Button
-			disabled={loading}
-			type="button"
-			on:click={logoutAndClose}
-		>
+		<Button disabled={loading} type="button" on:click={logoutAndClose}>
 			{$t('account.logout')}
 		</Button>
 	</svelte:fragment>
 </Form>
-<LinkButton
-	disabled={loading}
-	on:click={resendCode}
->
-    {$t('auth.code.no-code')}
+<LinkButton disabled={loading} on:click={resendCode}>
+	{$t('auth.code.no-code')}
 </LinkButton>
 {#if codeResent}
 	<h5 class="text-center lg:text-left text-sm text-primary py-2">{$t('auth.code.resent')}</h5>

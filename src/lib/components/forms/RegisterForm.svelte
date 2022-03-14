@@ -7,12 +7,14 @@
     import {emailValidation} from '$utils/form.util';
     import Form from '$elements/form/Form.svelte';
 import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+import { disableCloseModal, resetModalCloseOptions } from '$lib/elements/modal/Modal.svelte';
 
     export let withoutShadow = false, title;
     let firstname, lastname, email, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
     async function submit() {
+        disableCloseModal()
         loading = true;
         hasError = false;
         const res = await api.auth.register(firstname, lastname, email, password);
@@ -21,6 +23,7 @@ import PrimaryButton from '$elements/button/PrimaryButton.svelte';
             firstname = lastname = email = password = "";
         } else {
             hasError = true;
+            resetModalCloseOptions();
         }
         loading = false;
     }

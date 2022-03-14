@@ -2,7 +2,7 @@
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { categories } from '$lib/stores';
-	import FilterPanelSearch from '../$components/search/FilterPanelSearch.svelte';
+	import FilterPanelSearch from '$components/search/FilterPanelSearch.svelte';
 </script>
 
 <div class="bg-primary-light-2 h-full">

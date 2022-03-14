@@ -6,7 +6,7 @@
 		url,
 		pageSize = 15,
 		currentPage;
-	let className;
+	let className = "";
 	export { className as class };
 	$: paginatedItems = items.length ? paginate({ items, pageSize, currentPage }) : [];
 

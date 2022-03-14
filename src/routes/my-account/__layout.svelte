@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import api from '$api';
 	import { profile, user } from '$lib/stores';
-	import PrivateRoute from '../$components/private/PrivateRoute.svelte';
-	import MenuProfile from '../$components/profile/MenuProfile.svelte';
-	import ConfirmationEmailModal from '../$components/modals/ConfirmationEmailModal.svelte';
-	import { openModal } from '../$elements/modal/Modal.svelte';
+	import PrivateRoute from '$components/private/PrivateRoute.svelte';
+	import MenuProfile from '$components/profile/MenuProfile.svelte';
+	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
+	import { openModal } from '$elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if ($user.confirmed) {
@@ -17,7 +17,13 @@
 			}
 		} else {
 			if (window) {
-				openModal(ConfirmationEmailModal);
+				openModal({
+					component: ConfirmationEmailModal,
+					options: {
+						noCloseOnEsc: true,
+						noCloseOnOuterClick: true
+					}
+				});
 				window.history.back();
 			}
 		}

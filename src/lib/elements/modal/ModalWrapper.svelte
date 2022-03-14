@@ -5,7 +5,7 @@
     import { closeModal } from "./Modal.svelte";
 
     export let transparent = false;
-    let className;
+    let className = "";
     export { className as class };
 
 	onDestroy(() => {

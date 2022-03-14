@@ -11,7 +11,8 @@
 	export let noIcon = false,
 		transparent = false,
 		withoutShadow = false;
-	let className,
+	let className =
+ "",
 		search = $page.url.pathname === "/search" ? $page.url.searchParams.get("word") : "";
 	export { className as class };
 

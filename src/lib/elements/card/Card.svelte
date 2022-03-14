@@ -1,6 +1,6 @@
 <script>
     export let shadow = "md", shape = "round", bgColor = "white";
-    let className;
+    let className = "";
     export { className as class };
 
     function classForShape() {

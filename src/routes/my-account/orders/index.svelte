@@ -4,13 +4,13 @@
 	import api from '$api';
 	import { t } from '$lib/i18n';
 	import { orders, media } from '$lib/stores';
-	import HeaderTitle from '../../$components/header/HeaderTitle.svelte';
-	import MoonLoading from '../../$components/loading/MoonLoading.svelte';
-	import ReOrderButton from '../../$components/buttons/ReOrderButton.svelte';
-	import InvoicePDFViewerButton from '../../$components/buttons/InvoicePDFViewerButton.svelte';
+	import HeaderTitle from '$components/header/HeaderTitle.svelte';
+	import MoonLoading from '$components/loading/MoonLoading.svelte';
+	import ReOrderButton from '$components/buttons/ReOrderButton.svelte';
+	import InvoicePDFViewerButton from '$components/buttons/InvoicePDFViewerButton.svelte';
 	import { localDateFromSeconds } from '../../../lib/utils/date.util';
-	import PaginateComponent from '../../$elements/pagination/PaginateComponent.svelte';
-	import SearchIcon from '../../$elements/icon/SearchIcon.svelte';
+	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
+	import SearchIcon from '$elements/icon/SearchIcon.svelte';
 
 	let error = null,
 		loading = false,

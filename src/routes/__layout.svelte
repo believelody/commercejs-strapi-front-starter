@@ -1,6 +1,5 @@
 <script>
 	import '../app.css';
-	import '../styles/tailwind-output.css';
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { navigating, page } from '$app/stores';

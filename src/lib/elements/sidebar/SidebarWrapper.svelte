@@ -5,7 +5,7 @@
 	import { closeSidebar } from './Sidebar.svelte';
 
 	export let transparent = false;
-	let className;
+	let className = "";
 	export { className as class };
 
 	onDestroy(() => {

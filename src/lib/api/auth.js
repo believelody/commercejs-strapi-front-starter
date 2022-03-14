@@ -87,13 +87,14 @@ export const codeVerification = async (email, code) => {
             body: JSON.stringify({ email, code })
         });
         const json = await res.json();
-        if (json.success) {
-            user.set({
-                ...get(user),
-                confirmed: true,
-            });
+        if (json.error) {
+            return { success: false, error: json.error };
         }
-        return json;
+        user.set({
+            ...get(user),
+            confirmed: true,
+        });
+        return { success: true };
     } catch (error) {
         console.log(error);
     }
@@ -107,7 +108,10 @@ export const resendCode = async (email) => {
             body: JSON.stringify({ email }),
         });
         const json = await res.json();
-        return json;
+        if (json.error) {
+            return { success: false, error: json.error };
+        }
+        return { success: true };
     } catch (error) {
         console.log(error);
     }

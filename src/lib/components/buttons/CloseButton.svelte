@@ -2,7 +2,7 @@
     import IconButton from "$elements/button/IconButton.svelte";
 	import CloseIcon from '$elements/icon/CloseIcon.svelte';
 
-	let className;
+	let className = "";
 	export { className as class };
 </script>
 

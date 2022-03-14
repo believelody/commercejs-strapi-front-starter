@@ -1,8 +1,8 @@
 <script>
     import Button from "./Button.svelte";
 
-    export let icon, shape;
-    let className;
+    export let icon, shape = "";
+    let className = "";
     export { className as class }
 </script>
 

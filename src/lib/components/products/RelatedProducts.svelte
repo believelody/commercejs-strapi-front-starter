@@ -6,7 +6,7 @@
     import Thumbnails from "$elements/thumbnail/Thumbnails.svelte";
 
     export let items;
-    let className;
+    let className = "";
     export { className as class };
 
     function goToRelatedProduct(index) {

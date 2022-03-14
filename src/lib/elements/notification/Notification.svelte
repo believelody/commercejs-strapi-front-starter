@@ -10,9 +10,9 @@
 		function send({
 			title,
 			message,
-			status = 'default',
-			timeout,
-			position,
+			status,
+			timeout = TIMEOUT,
+			position = "top-left",
 			component = null
 		}) {
 			_notifications.update((state) => {
@@ -38,7 +38,7 @@
 						state.shift();
 						return state;
 					});
-				}, $_notifications[0].timeout ?? TIMEOUT);
+				}, $_notifications[0].timeout);
 				return () => {
 					clearTimeout(timer);
 				};
@@ -50,16 +50,16 @@
 			subscribe,
 			send,
 			remove,
-			default: ({ title, message, component, timeout }) =>
-				send({ title, message, component, status: 'default', timeout }),
-			danger: ({ title, message, component, timeout }) =>
-				send({ title, message, component, status: 'danger', timeout }),
-			warning: ({ title, message, component, timeout }) =>
-				send({ title, message, component, status: 'warning', timeout }),
-			info: ({ title, message, component, timeout }) =>
-				send({ title, message, component, status: 'info', timeout }),
-			success: ({ title, message, component, timeout }) =>
-				send({ title, message, component, status: 'success', timeout })
+			default: ({ title, message, position, component, timeout }) =>
+				send({ title, message, position, component, status: 'default', timeout }),
+			danger: ({ title, message, position, component, timeout }) =>
+				send({ title, message, position, component, status: 'danger', timeout }),
+			warning: ({ title, message, position, component, timeout }) =>
+				send({ title, message, position, component, status: 'warning', timeout }),
+			info: ({ title, message, position, component, timeout }) =>
+				send({ title, message, position, component, status: 'info', timeout }),
+			success: ({ title, message, component, position, timeout }) =>
+				send({ title, message, position, component, status: 'success', timeout })
 		};
 	}
 
@@ -115,6 +115,8 @@
 	const handleButtonClick = (notificationId) => {
 		notifications.remove(notificationId);
 	};
+
+	$: console.log($notifications);
 </script>
 
 <div class="notifications p-{$notifications.length ? 4 : 0}">

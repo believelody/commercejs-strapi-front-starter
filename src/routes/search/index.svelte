@@ -2,8 +2,8 @@
 	import { navigating, page } from '$app/stores';
 	import api from '$api';
 	import { t } from '$lib/i18n';
-	import MoonLoading from '../$components/loading/MoonLoading.svelte';
-	import ResultPanelSearch from '../$components/search/ResultPanelSearch.svelte';
+	import MoonLoading from '$components/loading/MoonLoading.svelte';
+	import ResultPanelSearch from '$components/search/ResultPanelSearch.svelte';
 
 	$: search = $page.url.searchParams.get('word');
 </script>

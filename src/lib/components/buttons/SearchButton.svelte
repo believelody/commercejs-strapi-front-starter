@@ -2,7 +2,7 @@
 	import IconButton from '$elements/button/IconButton.svelte';
 	import SearchIcon from '$elements/icon/SearchIcon.svelte';
 
-	let className;
+	let className = "";
 	export { className as class };
 </script>
 
