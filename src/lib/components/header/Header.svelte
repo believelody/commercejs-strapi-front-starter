@@ -10,7 +10,7 @@
 </script>
 
 <header class="hidden md:border-b md:inline bg-neutral-light-2 text-neutral-dark body-font">
-  <div class="mx-auto flex-center-middle md:py-2 lg:py-5">
+  <div class="mx-auto flex-center-middle md:py-2">
       <a href="/">
           {#if $media.tablet}
               <div class="px-2">
