@@ -1,5 +1,6 @@
 <script context="module">
 	import { modal } from '$lib/stores';
+import { get } from 'svelte/store';
 
 	/**
 	 *
@@ -10,7 +11,11 @@
 	}
 
 	export function closeModal() {
-		modal.set(null);
+		const modalStore = get(modal);
+		if (modalStore) {
+			console.log(modalStore);
+			modal.set(null)
+		}
 	}
 
 	export function disableCloseModal() {

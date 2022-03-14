@@ -1,7 +1,7 @@
 <script>
     import {createEventDispatcher} from "svelte";
 
-    export let name, items, defaultValue = "", hint, error, label = "", placeholder, required;
+    export let name = "", items = [], defaultValue = "", hint = "", error = "", label = "", placeholder, required = false;
     let value = defaultValue;
     const dispatch = createEventDispatcher();
 

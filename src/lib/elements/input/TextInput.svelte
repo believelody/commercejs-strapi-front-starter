@@ -2,7 +2,7 @@
 	import HidePasswordIcon from "$elements/icon/HidePasswordIcon.svelte";
 	import ShowPasswordIcon from "$elements/icon/ShowPasswordIcon.svelte";
 
-	export let value = "", name = "", id = "", hint = "", error, label = "", placeholder = "", type = "text", required = false, icon, transparent = false, align = "horizontal";
+	export let value = "", name = "", id = "", hint = "", error = "", label = "", placeholder = "", type = "text", required = false, icon = null, transparent = false, align = "horizontal";
 	let showPwd = false, className = "";
 	export { className as class };
 </script>

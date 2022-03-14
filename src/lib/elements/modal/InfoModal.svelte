@@ -42,7 +42,7 @@
 
 <ModalWrapper>
 	<h3
-		class="grid grid-cols-2 items-center gap-x-4 border-b border-gray-200 pb-2 w-full"
+		class="flex items-center gap-x-4 border-b border-gray-200 pb-2 w-full"
 		id="modal-title"
 	>
 		{#if !noIcon}

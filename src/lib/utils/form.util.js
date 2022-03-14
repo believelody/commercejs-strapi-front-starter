@@ -4,3 +4,7 @@ export const requiredFieldsValidation = (obj, fields) => {
     const validators = obj ? fields.map(field => obj[field]) : [];
     return validators.every(field => field);
 }
+
+export const onInput = (e, data) => {
+    data[e.target.name] = e.target.value;
+}
