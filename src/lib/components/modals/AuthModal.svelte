@@ -18,11 +18,7 @@
 				title: $t('notifications.auth.title'),
 				message: $t(`notifications.auth.message.${detail.authType}`, { name }),
 			});
-			if (detail.authType === 'register') {
-				openModal(ConfirmationEmailModal);
-			} else {
-				closeModal();
-			}
+			closeModal();
 		}
 	}
 </script>

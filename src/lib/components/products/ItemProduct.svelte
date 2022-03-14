@@ -2,7 +2,7 @@
 	export let product;
 </script>
 
-<li>
+<li class="hover:border hover:border-neutral hover:rounded">
 	<a href="/products/{product.permalink}" class="block relative h-48 rounded overflow-hidden">
 		<img
 			alt={product.name}
