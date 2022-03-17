@@ -30,9 +30,11 @@
 	function showSidebar() {
 		openSidebar({
             component: OrderSidebar,
-            noCloseButton: true,
+            options: { noCloseButton: true },
         });
 	}
+
+	$: console.log($stripe);
 
 	$: checkoutValid = !!(
 		requiredFieldsValidation($jwt ? $profile?.customer : $guest, ['firstname', 'email']) &&

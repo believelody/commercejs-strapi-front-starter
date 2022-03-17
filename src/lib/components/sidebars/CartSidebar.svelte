@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { sidebar, cart } from '$lib/stores';
 	import { t } from '$lib/i18n';
 	import api from '$api';
@@ -39,11 +40,18 @@
 			}
 		});
 	}
+
+	function gotToCheckout() {
+		goto('/checkout');
+	}
 </script>
 
 {#if $cart && $cart.total_unique_items > 0}
 	<SidebarWrapper>
-		<h3 slot="header" class="box-border pl-2 pr-14 py-4 w-full border-b font-medium text-neutral-dark">
+		<h3
+			slot="header"
+			class="box-border pl-2 pr-14 py-4 w-full border-b font-medium text-neutral-dark"
+		>
 			{$t('cart.title')} : {$cart.total_unique_items}
 			{$t(`cart.items.${$cart.total_unique_items > 1 ? 'plural' : 'singular'}`)}
 		</h3>
@@ -64,17 +72,20 @@
 				</div>
 				<p class="my-1 text-sm text-gray-500">{$t('cart.shipping-taxes')}</p>
 				<div class="py-2 grid grid-cols-1 gap-y-2">
-					<PrimaryButton disabled={loading} block>
-						<a id="cart-id-goto-checkout" href="/checkout">
-							{#if loading}
-								{$t('cart.cta.loading')}
-							{:else}
-								{$t('cart.cta.checkout')}
-							{/if}
-						</a>
+					<PrimaryButton
+						id="cart-id-goto-checkout"
+						on:click={gotToCheckout}
+						disabled={loading}
+						block
+					>
+						{#if loading}
+							{$t('cart.cta.loading')}
+						{:else}
+							{$t('cart.cta.checkout')}
+						{/if}
 					</PrimaryButton>
 					<p class="text-center">{$t('cart.or')}</p>
-					<LinkButton on:click={() => ($sidebar = null)} class="text-primary font-medium">
+					<LinkButton on:click={closeSidebar} class="text-primary font-medium">
 						{$t('cart.cta.continue-shopping')}
 					</LinkButton>
 				</div>
