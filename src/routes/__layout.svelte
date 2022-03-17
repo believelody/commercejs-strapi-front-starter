@@ -12,12 +12,8 @@
 	import Notification from '$elements/notification/Notification.svelte';
 	import Toolbar from '$components/toolbar/Toolbar.svelte';
 	import Modal from '$elements/modal/Modal.svelte';
-import { serverUrl } from '$lib/utils/url.util';
-import { varEnv } from '$lib/utils/env.util';
 
 	const exceptRoute = ["my-account", "search"];
-	const filters = writable(new Map());
-	setContext('filters', filters);
 
 	$: {
 		if (!$cart) {

@@ -3,6 +3,9 @@
 	import { writable } from 'svelte/store';
 	import { categories } from '$lib/stores';
 	import FilterPanelSearch from '$components/search/FilterPanelSearch.svelte';
+	
+	const filters = writable(new Map());
+	setContext('filters', filters);
 </script>
 
 <div class="bg-primary-light-2 h-full">
