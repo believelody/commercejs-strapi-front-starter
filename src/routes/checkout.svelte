@@ -23,8 +23,6 @@
 	import { varEnv } from '$utils/env.util';
 
 	onMount(async () => {
-		console.log(isServer);
-		console.log(varEnv["stripePublicKey"]);
 		if (!isServer) {
 			$stripe = await loadStripe(varEnv["stripePublicKey"]);
 		}

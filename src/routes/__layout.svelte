@@ -13,11 +13,11 @@
 	import Toolbar from '$components/toolbar/Toolbar.svelte';
 	import Modal from '$elements/modal/Modal.svelte';
 import { serverUrl } from '$lib/utils/url.util';
+import { varEnv } from '$lib/utils/env.util';
 
 	const exceptRoute = ["my-account", "search"];
 	const filters = writable(new Map());
 	setContext('filters', filters);
-    $: console.log(serverUrl);
 
 	$: {
 		if (!$cart) {
@@ -36,7 +36,7 @@ import { serverUrl } from '$lib/utils/url.util';
 	$: !$jwt && jwt.useLocalStorage();
 	$: {
 		if (!$profile) {
-			if (!profile.useLocalStorage() && $user.confirmed) {
+			if ($user.confirmed) {
 				api.auth.getMe();
 			} else {
 				profile.useLocalStorage();
