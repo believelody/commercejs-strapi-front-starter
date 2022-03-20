@@ -16,13 +16,13 @@
 
 <div>
 	<div class="flex flex-col justify-center">
-		<h3 class="flex items-center border-b border-gray-200 pb-2" id="modal-title">
+		<h3 class="flex items-center border-b border-neutral-200 pb-2" id="modal-title">
 			<span class="bg-green-100 rounded-full"><CheckCircleIcon size={12} /></span>
-			<span class="ml-4 text-lg leading-6 font-medium text-gray-900"
+			<span class="ml-4 text-lg leading-6 font-medium text-neutral-900"
 				>{$t('checkout.payment.success.title')}</span
 			>
 		</h3>
-		<h3 class="mt-2 w-full text-lg leading-6 text-gray-800">
+		<h3 class="mt-2 w-full text-lg leading-6 text-neutral-800">
 			{$t('checkout.payment.success.order-reference', {
 				name: `${dataUser.firstname} ${dataUser.lastname}`,
 				reference
@@ -59,7 +59,7 @@
 						}.title`
 					)} :
 				</section>
-				<section class="flex flex-col flex-grow text-md text-neutral-dark">
+				<section class="flex flex-col grow text-md text-neutral-dark">
 					<FullAddress information={shipping} />
 				</section>
 			</div>
@@ -68,7 +68,7 @@
 					<section class="text-neutral-dark mr-4">
 						{$t(`checkout.payment.success.billing.title`)} :
 					</section>
-					<section class="flex flex-col flex-grow text-md text-neutral-dark">
+					<section class="flex flex-col grow text-md text-neutral-dark">
 						<FullAddress information={billing} />
 					</section>
 				</div>
@@ -82,16 +82,16 @@
 				{$t('checkout.payment.success.shipping-cost')} : {live.shipping.price.formatted_with_symbol}
 			</p>
 		</div>
-		<div class="mt-2 pt-2 border-t border-gray-200">
+		<div class="mt-2 pt-2 border-t border-neutral-200">
 			<p class="text-lg text-center font-medium text-neutral-dark">
 				{$t('checkout.payment.success.total')} : {live.total.formatted_with_symbol}
 			</p>
 		</div>
 	</div>
-	<div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center">
+	<div class="bg-neutral-50 px-4 py-3 sm:px-6 flex justify-center">
 		<button
 			on:click={close}
-			class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+			class="mt-3 w-full inline-flex justify-center rounded-md border border-neutral-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-neutral-700 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
 		>
 			{$t('checkout.payment.success.modal.close')}
 		</button>

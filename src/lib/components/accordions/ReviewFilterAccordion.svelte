@@ -10,7 +10,7 @@
     /* your styles go here */
 </style>
 
-<Accordion class="bg-gray-100 border shadow-md rounded">
+<Accordion class="bg-neutral-100 border shadow-md rounded">
     <h3 slot="header" class="py-2 text-lg font:semibold text-center">{$t("review.product.filter.header")}</h3>
     <div slot="content" class="w-full border rounded divide-y">
         <ReviewFilterButtonCheckbox {reviews} on:filter />

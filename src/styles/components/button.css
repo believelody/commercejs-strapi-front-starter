@@ -4,51 +4,49 @@
 
 @layer components {
 	/* Button layout style */
-	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
-		.btn {
-			@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral-light-1 disabled:text-neutral disabled:opacity-75 disabled:cursor-not-allowed;
-		}
-		.btn-primary {
-			@apply text-white bg-primary hover:bg-primary-dark-1 disabled:bg-neutral-light-1;
-		}
-		.btn-secondary {
-			@apply text-white bg-secondary hover:bg-neutral-light-1 hover:text-secondary hover:border hover:border-secondary disabled:bg-neutral-light-1;
-		}
-		.btn-link {
-			@apply text-neutral-dark bg-transparent hover:bg-gray-400 hover:text-neutral hover:bg-opacity-25 disabled:bg-neutral-light-1;
-		}
-		.btn-success {
-			@apply text-white bg-success hover:bg-success-dark-1 disabled:bg-neutral-light-1;
-		}
-		.btn-danger {
-			@apply text-white bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-light-1;
-		}
-		.btn-info {
-			@apply text-white bg-info hover:bg-info-dark-1 disabled:bg-neutral-light-1;
-		}
-		.btn-warning {
-			@apply text-white bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-light-1;
-		}
-		.btn-outlined {
-			@apply border border-neutral bg-white text-neutral hover:bg-neutral-dark-1 hover:text-neutral-light disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-primary {
-			@apply border border-primary bg-white text-primary hover:bg-primary-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-secondary {
-			@apply border border-secondary bg-white text-secondary hover:bg-secondary hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-success {
-			@apply border border-success bg-white text-success hover:bg-success-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-danger {
-			@apply border border-danger bg-white text-danger hover:bg-danger-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-info {
-			@apply border border-info bg-white text-info hover:bg-info-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
-		.btn-outlined-warning {
-			@apply border border-warning bg-white text-warning hover:bg-warning-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
-		}
+	.btn {
+		@apply box-border bg-neutral flex items-center justify-center text-neutral-dark outline-none hover:bg-neutral-dark-2 hover:text-white disabled:bg-neutral-light-1 disabled:text-neutral disabled:opacity-75 disabled:cursor-not-allowed;
+	}
+	.btn-primary {
+		@apply text-white bg-primary hover:bg-primary-dark-1 disabled:bg-neutral-light-1;
+	}
+	.btn-secondary {
+		@apply text-white bg-secondary hover:bg-neutral-light-1 hover:text-secondary hover:border hover:border-secondary disabled:bg-neutral-light-1;
+	}
+	.btn-link {
+		@apply text-neutral-dark bg-transparent hover:bg-neutral-400 hover:text-neutral hover:bg-opacity-25 disabled:bg-neutral-light-1;
+	}
+	.btn-success {
+		@apply text-white bg-success hover:bg-success-dark-1 disabled:bg-neutral-light-1;
+	}
+	.btn-danger {
+		@apply text-white bg-danger hover:bg-danger-dark-1 disabled:bg-neutral-light-1;
+	}
+	.btn-info {
+		@apply text-white bg-info hover:bg-info-dark-1 disabled:bg-neutral-light-1;
+	}
+	.btn-warning {
+		@apply text-white bg-warning hover:bg-warning-dark-1 disabled:bg-neutral-light-1;
+	}
+	.btn-outlined {
+		@apply border border-neutral bg-white text-neutral hover:bg-neutral-dark-1 hover:text-neutral-light disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-primary {
+		@apply border border-primary bg-white text-primary hover:bg-primary-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-secondary {
+		@apply border border-secondary bg-white text-secondary hover:bg-secondary hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-success {
+		@apply border border-success bg-white text-success hover:bg-success-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-danger {
+		@apply border border-danger bg-white text-danger hover:bg-danger-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-info {
+		@apply border border-info bg-white text-info hover:bg-info-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
+	}
+	.btn-outlined-warning {
+		@apply border border-warning bg-white text-warning hover:bg-warning-dark-1 hover:text-neutral-light hover:border-transparent disabled:bg-neutral-light-1 disabled:border-none;
 	}
 }

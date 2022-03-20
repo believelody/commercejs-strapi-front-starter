@@ -12,6 +12,6 @@
     {#if typeof $checkout.live.discount === "object" && !Array.isArray($checkout.live.discount)}
         <span class="font-semibold text-indigo-500">{$checkout.live.discount.code} - {$checkout.live.discount.value}{$checkout.live.discount.type === "percentage" ? "%" : "€"}</span>
     {:else}
-        <span class="font-semibold italic text-sm text-gray-400">{$t("discount.empty")}</span>
+        <span class="font-semibold italic text-sm text-neutral-400">{$t("discount.empty")}</span>
     {/if}
 </div>

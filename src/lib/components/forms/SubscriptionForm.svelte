@@ -13,7 +13,7 @@
 
 <div class="flex flex-wrap sm:flex-no-wrap justify-center items-center md:justify-start">
 	<Form on:submit={submit} class="w-full" withoutShadow>
-		<h2 slot="header" class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3 uppercase">
+		<h2 slot="header" class="title-font font-medium text-neutral-900 tracking-widest text-sm mb-3 uppercase">
 			{$t('footer.subscription.title')}
 		</h2>
 		<div slot="content" class="grid grid-cols-1 gap-4">
@@ -26,7 +26,7 @@
 			<PrimaryButton class="lg:col-start-3">{$t('footer.subscription.cta')}</PrimaryButton>
 		</div>
 	</Form>
-	<p class="text-gray-500 text-sm mt-2 md:text-left text-center">
+	<p class="text-neutral-500 text-sm mt-2 md:text-left text-center">
 		{$t('footer.subscription.description')}
 	</p>
 </div>

@@ -16,7 +16,7 @@
 </style>
 
 <div class="mx-2 md:mx-12">
-    <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
+    <h2 class="uppercase tracking-wide text-lg font-semibold text-neutral-700 my-2">
 		{$t("checkout.shipping-methods.title")}
 	</h2>
     <section class="bg-white shadow-md rounded text-neutral-dark md:text-lg grid grid-cols-2 gap-4">

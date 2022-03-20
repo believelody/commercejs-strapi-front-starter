@@ -8,7 +8,7 @@
 	<div class="relative">
 		<select
 			bind:value
-			class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10"
+			class="rounded border appearance-none border-neutral-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10"
 		>
 			{#each Array(5) as _, index (index)}
 				<option value={index + 1}>{index + 1}</option>

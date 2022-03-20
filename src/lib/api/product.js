@@ -1,7 +1,6 @@
 import { serverUrl } from "$utils/url.util";
 
 export const getAll = async () => {
-    console.log(serverUrl);
     try {
         const res = await fetch(`${serverUrl}/products/category/pets`);
         const json = await res.json();

@@ -46,7 +46,7 @@
 		<Tab>
 			<span>{$t('review.tabs.pending')}</span>
 			{#if pendingReviews.length}
-				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full"
+				<span class="px-2 py-1 ml-4 text-white bg-neutral-500 rounded-full"
 					>{pendingReviews.length}</span
 				>
 			{/if}
@@ -54,7 +54,7 @@
 		<Tab>
 			<span>{$t('review.tabs.done')}</span>
 			{#if reviews.length}
-				<span class="px-2 py-1 ml-4 text-white bg-gray-500 rounded-full">{reviews.length}</span>
+				<span class="px-2 py-1 ml-4 text-white bg-neutral-500 rounded-full">{reviews.length}</span>
 			{/if}
 		</Tab>
 	</TabList>
@@ -64,7 +64,7 @@
 			{#each pendingReviews as item}
 				<li class="flex items-center w-full px-4 border">
 					<section class="flex flex-col w-1/2">
-						<span class="text-lg text-gray-800">{item.product_name}</span>
+						<span class="text-lg text-neutral-800">{item.product_name}</span>
 						{#each item.variants as variant}
 							<span class="text-sm text-neutral-dark">{variant.variant_name} : {variant.option_name}</span>
 						{/each}
@@ -92,7 +92,7 @@
 					<div class="flex items-stretch w-full px-4">
 						<section class="flex flex-col w-full">
 							<div class="flex justify-between mb-2">
-								<div class="flex flex-col md:flex-row items-start md:items-center text-lg text-gray-800">
+								<div class="flex flex-col md:flex-row items-start md:items-center text-lg text-neutral-800">
 									<button
 										on:click={() => goToProductPage(review.productId)}
 										class="mr-4 font-medium underline border-none"
@@ -101,7 +101,7 @@
 									</button>
 									<Star nb={review.ratings} />
 								</div>
-								<div class="text-lg italic text-gray-500">
+								<div class="text-lg italic text-neutral-500">
 									{localDateFromString(review.created_at)}
 								</div>
 							</div>
@@ -115,7 +115,7 @@
 					{#if review.description}
 						<div class="px-4">
 							<h4 class="mr-2 font-medium text-md">{$t('review.list.description')} :</h4>
-							<p class="pl-4 border-l-2 border-gray-400">{review.description}</p>
+							<p class="pl-4 border-l-2 border-neutral-400">{review.description}</p>
 						</div>
 					{/if}
 					{#if review.images.length}

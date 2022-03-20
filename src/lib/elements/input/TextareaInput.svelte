@@ -25,7 +25,7 @@
         />
 	</label>
 	{#if hint}
-		<span class="text-xs text-gray-400 italic">{hint}</span>
+		<span class="text-xs text-neutral-400 italic">{hint}</span>
 	{/if}
     {#if error}
         <span class="text-xs text-red-400 italic">{error}</span>

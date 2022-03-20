@@ -41,7 +41,7 @@
 </style>
 
 <section class="w-full flex flex-col p-2 mb-2 border">
-    <span class="text-lg text-gray-800">{item.product_name}</span>
+    <span class="text-lg text-neutral-800">{item.product_name}</span>
     {#each item.variants as variant}
         <span class="text-md text-neutral-dark">{variant.variant_name} : {variant.option_name}</span>
     {/each}
@@ -80,7 +80,7 @@
             </ul>
         {/if}
         <div class="w-auto my-2 xl:mx-4 flex flex-col xl:flex-row justify-center items-center">
-            <button disabled={!isValid || loading} class="bg-indigo-600 text-white hover:bg-indigo-700 px-6 py-2 rounded disabled:opacity-75 disabled:bg-gray-400 disabled:text-black disabled:cursor-not-allowed">{$t("common.confirm")}</button>
+            <button disabled={!isValid || loading} class="bg-indigo-600 text-white hover:bg-indigo-700 px-6 py-2 rounded disabled:opacity-75 disabled:bg-neutral-400 disabled:text-black disabled:cursor-not-allowed">{$t("common.confirm")}</button>
         </div>
         {#if error}
             <span class="text-red-500">{error}</span>

@@ -30,7 +30,7 @@
     </section>
 	<section>
 		{#each Array.from({ length: 5 }, (v, i) => i + 1) as i}
-			<button on:click={() => filterReview(i)} class="w-auto p-2 hover:bg-gray-200 flex items-center">
+			<button on:click={() => filterReview(i)} class="w-auto p-2 hover:bg-neutral-200 flex items-center">
 				<CheckboxInput checked={filters.some((filter) => filter === i)} name="filters" />
 				<Star nb={i} />
 				<span class="ml-4">
@@ -41,7 +41,7 @@
 		{/each}
 		<button
 			on:click={() => filterReview('images')}
-			class="w-auto p-2 hover:bg-gray-200 flex items-center"
+			class="w-auto p-2 hover:bg-neutral-200 flex items-center"
 		>
 			<CheckboxInput checked={filters.some((filter) => filter === 'images')} name="filters" />
 			{$t('review.product.filter.with-images')}

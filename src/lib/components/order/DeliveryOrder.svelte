@@ -30,7 +30,7 @@
         </div>
         <div class="border-t pt-2 flex justify-center text-lg">
             <span>{$t("order.detail.delivery.content.tracking")} :</span>
-            <span class="ml-3 italic text-gray-500">{$t("order.detail.delivery.content.no-tracking")}</span>
+            <span class="ml-3 italic text-neutral-500">{$t("order.detail.delivery.content.no-tracking")}</span>
         </div>
     </section>
 </OrderAccordion>

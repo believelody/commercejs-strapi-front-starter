@@ -1,39 +1,14 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  purge: ["src/**/*.{html,js,svelte}"],
-  mode: "jit",
-  darkMode: false, // or 'media' or 'class'
+  content: ["src/**/*.{html,js,svelte}"],
   theme: {
-    extend: {},
-  },
-  variants: {
     extend: {
-      opacity: ['disabled', 'group-focus', 'checked', 'visited'],
-      cursor: ['disabled', 'group-focus', 'checked', 'visited'],
-      backgroundColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      backgroundOpacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      borderWidth: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      borderStyle: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      borderColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      borderOpacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      boxShadow: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      gradientColorStops: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      opacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      outline: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      placeholderColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      placeholderOpacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      ringColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      ringOffsetColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      ringOffsetWidth: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      ringOpacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      ringWidth: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      rotate: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      scale: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      skew: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      textColor: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      textDecoration: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      textOpacity: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
-      translate: ['disabled', 'active', 'group-focus', 'checked', 'visited'],
+      colors: {
+        green: colors.emerald,
+        yellow: colors.amber,
+        purple: colors.violet,
+      }
     },
   },
-  plugins: [],
 }

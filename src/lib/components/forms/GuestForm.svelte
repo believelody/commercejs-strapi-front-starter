@@ -22,7 +22,7 @@
 </script>
 
 <fieldset class="mb-3 bg-white shadow-lg rounded text-neutral-dark">
-	<div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
+	<div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-neutral-300">
 		<TextInput
 			name="firstname"
 			label={$t('identity.firstname.label')}
@@ -39,7 +39,7 @@
 			on:input={onInput}
 		/>
 	</div>
-	<div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-gray-300">
+	<div class="w-full flex flex-col xl:flex-row justify-between xl:border-b xl:border-neutral-300">
 		<TextInput
 			name="email"
 			type="email"

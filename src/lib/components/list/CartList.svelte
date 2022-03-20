@@ -62,15 +62,15 @@
 	}
 </script>
 
-<div class="border-b border-gray-200 flex-grow mt-1 overflow-y-hidden">
+<div class="border-b border-neutral-200 grow mt-1 overflow-y-hidden">
 	<div class="h-full px-2 overflow-y-auto">
 		<div class="h-full flow-root">
-			<ul role="list" class="h-full divide-y divide-gray-200">
+			<ul role="list" class="h-full divide-y divide-neutral-200">
 				{#each items as item}
 					<li class="py-6 flex">
 						<a
 							href="/products/{item.permalink}"
-							class="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden"
+							class="shrink-0 w-24 h-24 border border-neutral-200 rounded-md overflow-hidden"
 						>
 							<img
 								src={item.image.url}
@@ -82,13 +82,13 @@
 						<div class="ml-4 flex-1 flex flex-col">
 							<div>
 								<div class="flex justify-between">
-									<h3 class="text-base font-medium text-gray-900">
+									<h3 class="text-base font-medium text-neutral-900">
 										<a href="/products/{item.permalink}">{item.name}</a>
 									</h3>
 									<p class="ml-4 text-indigo-500">{item.line_total.formatted_with_symbol}</p>
 								</div>
 								{#each item.variants as variant}
-									<p class="mt-1 text-sm text-gray-500">
+									<p class="mt-1 text-sm text-neutral-500">
 										{variant.variant_name} : {variant.option_name}
 									</p>
 								{/each}

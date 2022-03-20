@@ -5,7 +5,7 @@
 </script>
 
 <ModalWrapper>
-    <div class="flex-center-middle flex-grow">
+    <div class="flex-center-middle grow">
         <img src={image} alt={alt || "image"} />
     </div>
 </ModalWrapper>

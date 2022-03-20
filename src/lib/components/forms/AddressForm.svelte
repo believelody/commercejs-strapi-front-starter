@@ -131,11 +131,11 @@
             required
         /> -->
 		{#if !hideSubmitButton}
-			<div class="flex justify-center flex-grow pt-3 pb-2">
+			<div class="flex justify-center grow pt-3 pb-2">
 				<button
 					disabled={!isValid || loading}
 					type="submit"
-					class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-gray-500 disabled:cursor-not-allowed"
+					class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-neutral-500 disabled:cursor-not-allowed"
 				>
 					{#if loading}
 						{$t("common.update")}

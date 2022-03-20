@@ -15,7 +15,7 @@
 			{shippingMethod.description} - {shippingMethod.price.formatted_with_symbol}
 		</span>
 	{:else}
-		<span class="font-semibold italic text-sm text-gray-400">
+		<span class="font-semibold italic text-sm text-neutral-400">
 			{$t("checkout.shipping.no-method")}
 		</span>
 	{/if}

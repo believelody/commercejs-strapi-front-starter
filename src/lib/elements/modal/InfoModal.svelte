@@ -42,7 +42,7 @@
 
 <ModalWrapper>
 	<h3
-		class="flex items-center gap-x-4 border-b border-gray-200 pb-2 w-full"
+		class="flex items-center gap-x-4 border-b border-neutral-200 pb-2 w-full"
 		id="modal-title"
 	>
 		{#if !noIcon}
@@ -60,7 +60,7 @@
 				{/if}
 			</span>
 		{/if}
-		<span class="ml-4 leading-6 font-medium text-gray-900">{title}</span>
+		<span class="ml-4 leading-6 font-medium text-neutral-900">{title}</span>
 	</h3>
 	<p class="mt-2 text-md text-neutral-dark">
 		{description}

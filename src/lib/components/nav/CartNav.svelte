@@ -14,7 +14,7 @@
     <CartIcon strokeWidth={2} />
     {#if $cart?.total_unique_items}
         {#if $media.desktop}
-            <span class="text-gray-900 title-font text-lg font-medium ml-4 bg-white rounded-full px-2">{$cart?.total_unique_items ?? 0}</span>
+            <span class="text-neutral-900 title-font text-lg font-medium ml-4 bg-white rounded-full px-2">{$cart?.total_unique_items ?? 0}</span>
         {:else}
             <sup class="font-medium text-white text-lg rounded-full">
                 {$cart?.total_unique_items ?? 0}

@@ -136,14 +136,14 @@
 						{#if product.attributes.some((attribute) => attribute.value)}
 							<button
 								on:click={showAttributesModal}
-								class="ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s"
+								class="ml-3 pl-3 py-2 border-l-2 border-neutral-200 space-x-2s"
 							>
 								{$t('product.detail.characteristics')}
 							</button>
 						{/if}
 					</div>
-					<p class="flex flex-grow leading-relaxed">{@html product.description}</p>
-					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-gray-300">
+					<p class="flex grow leading-relaxed">{@html product.description}</p>
+					<div class="grid grid-cols-1 gap-2 md:gap-4 md:py-2 py-6 border-b border-neutral-300">
 						{#if $variants.length}
 							{#each product.variants as variantGroup}
 								<svelte:component
@@ -160,7 +160,7 @@
 				</svelte:fragment>
 				<svelte:fragment slot="extra">
 					<div class="flex items-center justify-between pt-2">
-						<span class="title-font font-medium text-2xl text-gray-900">
+						<span class="title-font font-medium text-2xl text-neutral-900">
 							{selectedVariant?.price.formatted_with_symbol ?? product.price.formatted_with_symbol}
 						</span>
 						{#if isUnavailable()}

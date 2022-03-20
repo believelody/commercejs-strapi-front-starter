@@ -52,7 +52,7 @@
 	}
 </script>
 
-<h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 text-center my-2">
+<h2 class="uppercase tracking-wide text-lg font-semibold text-neutral-700 text-center my-2">
 	{$t('auth.code.title')}
 </h2>
 <Form

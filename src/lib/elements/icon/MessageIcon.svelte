@@ -1,4 +1,4 @@
-<a href="/" class="text-gray-500">
+<a href="/" class="text-neutral-500">
 	<svg
 		fill="currentColor"
 		stroke-linecap="round"

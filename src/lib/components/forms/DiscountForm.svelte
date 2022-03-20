@@ -27,7 +27,7 @@
 
 <div class="box-border max-w-md mx-2 md:mx-auto">
 	<Form on:submit={submit} {withoutShadow}>
-		<h3 slot="header" class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">
+		<h3 slot="header" class="uppercase tracking-wide text-lg font-semibold text-neutral-700 my-2">
 			{$t('discount.title')}
 		</h3>
 		<div class="p-2 grid grid-cols-3 gap-x-2 md:gap-x-4" slot="content">

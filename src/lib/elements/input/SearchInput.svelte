@@ -30,7 +30,7 @@
             type="text"
             id={name}
             list="list-{name}"
-            class="border rounded flex-grow focus:outline-none p-3"
+            class="border rounded grow focus:outline-none p-3"
             {placeholder}
         />
         <datalist id="list-{name}">
@@ -40,7 +40,7 @@
         </datalist>
     </label>
     {#if hint}
-        <span class="text-xs text-gray-400 italic">{hint}</span>
+        <span class="text-xs text-neutral-400 italic">{hint}</span>
     {/if}
     {#if error}
         <span class="text-xs text-red-400 italic">{error}</span>

@@ -47,7 +47,7 @@
 	@import "../../styles/tailwind.css";
 
 	.layout {
-		@apply relative container mx-auto grid grid-rows-1 gap-4 flex-grow lg:flex-grow-0 lg:mt-4;
+		@apply relative container mx-auto grid grid-rows-1 gap-4 grow lg:grow-0 lg:mt-4;
 	}
 
 	aside {

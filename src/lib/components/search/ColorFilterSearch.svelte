@@ -25,7 +25,7 @@
 		<div class="color-list">
 			<ColorList
 				items={colors.map(c => ({ name: c, value: c }))}
-				selectedItem={ selectedColor }
+				selectedOptionName={ selectedColor }
 				on:selectColor={({ detail }) => selectColor(detail.selectedColor)}
 				shape="circle"
 			/>

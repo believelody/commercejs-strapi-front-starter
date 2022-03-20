@@ -1,7 +1,4 @@
 <script>
-	import '../app.css';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import { navigating, page } from '$app/stores';
 	import api from '$api';
 	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
@@ -13,7 +10,7 @@
 	import Toolbar from '$components/toolbar/Toolbar.svelte';
 	import Modal from '$elements/modal/Modal.svelte';
 
-	const exceptRoute = ["my-account", "search"];
+	const exceptRoute = ['my-account', 'search'];
 
 	$: {
 		if (!$cart) {
@@ -49,8 +46,10 @@
 {:else}
 	<Header />
 	<div class="overflow-y-auto flex flex-col h-full">
-		<main class="flex flex-col flex-grow relative">
-			{#if ($navigating && !exceptRoute.some((route) => $page.url.pathname.includes(route))) || !jwt}
+		<main class="flex flex-col grow relative">
+			{#if ($navigating && !exceptRoute.some((route) =>
+					$page.url.pathname.includes(route)
+				)) || !jwt}
 				<MoonLoading />
 			{:else}
 				<slot />
@@ -62,3 +61,7 @@
 	</div>
 	<Toolbar />
 {/if}
+
+<style global lang="postcss">
+	@import '../app.css';
+</style>

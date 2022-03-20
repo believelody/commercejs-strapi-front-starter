@@ -66,11 +66,11 @@
 				{$t('cart.cta.empty')}
 			</DangerButton>
 			<div class="py-2 px-4 w-full">
-				<div class="flex justify-between text-base font-medium text-gray-900">
+				<div class="flex justify-between text-base font-medium text-neutral-900">
 					<p>{$t('cart.subtotal')}</p>
 					<p>{$cart.subtotal.formatted_with_symbol}</p>
 				</div>
-				<p class="my-1 text-sm text-gray-500">{$t('cart.shipping-taxes')}</p>
+				<p class="my-1 text-sm text-neutral-500">{$t('cart.shipping-taxes')}</p>
 				<div class="py-2 grid grid-cols-1 gap-y-2">
 					<PrimaryButton
 						id="cart-id-goto-checkout"

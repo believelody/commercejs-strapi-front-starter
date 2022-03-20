@@ -36,7 +36,7 @@
         <ArrowLeftCircle/>
     </div>
     {#each thumbnails as thumbnail, index (index)}
-        <div class="flex flex-col items-center {currentPageIndex === index && !noSelectedItemBorder ? 'border-2 border-gray-800' : ''}">
+        <div class="flex flex-col items-center {currentPageIndex === index && !noSelectedItemBorder ? 'border-2 border-neutral-800' : ''}">
             <img
                 src={thumbnail.url}
                 alt={thumbnail.filename || thumbnail.name}                

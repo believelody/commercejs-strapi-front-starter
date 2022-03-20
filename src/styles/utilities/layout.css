@@ -4,9 +4,7 @@
 
 @layer utilities {
 	/* Border layout style */
-	@variants responsive, hover, group-hover, focus, group-focus, active, disabled {
-        .flex-center-middle {
-            @apply flex items-center justify-center;
-        }
-    }
+	.flex-center-middle {
+		@apply flex items-center justify-center;
+	}
 }

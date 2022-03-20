@@ -20,7 +20,7 @@
 				{/if}
 			</span>
 		{/if}
-		<section class="border border-neutral rounded flex flex-grow p-3">
+		<section class="border border-neutral rounded flex grow p-3">
 			{#if icon}
 				<svelte:component this={icon.component} {...icon.props} />
 			{/if}
@@ -31,7 +31,7 @@
 				id={id ?? name}
 				on:input
 				on:focus
-				class="flex-grow focus:outline-none bg-{transparent ? "transparent" : "white"}"
+				class="grow focus:outline-none bg-{transparent ? "transparent" : "white"}"
 				{placeholder}
 			/>
 			{#if type === "password"}

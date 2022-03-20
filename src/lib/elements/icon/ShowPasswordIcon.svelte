@@ -1,6 +1,6 @@
 <script>
 	export let size = 8,
-		color = 'gray-500';
+		color = 'neutral-500';
 </script>
 
 <svg class="h-{size} w-{size} text-{color}" fill="none" viewBox="0 0 24 24" stroke="currentColor">

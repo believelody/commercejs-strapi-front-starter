@@ -25,12 +25,12 @@
     /* your styles go here */
 </style>
 
-<div class="flex-grow mt-1 overflow-y-hidden">
+<div class="grow mt-1 overflow-y-hidden">
     <div class="h-full px-2 overflow-y-auto">
         <div class="flow-root">
-            <ul role="list" class="h-full divide-y divide-gray-200">
+            <ul role="list" class="h-full divide-y divide-neutral-200">
                 {#each items as item}
-                    <li class="{item.id === $profile?.customer.meta[type]?.id ? "bg-blue-100 relative" : ""} shadow-md p-2 my-2 border border-gray-300 rounded flex flex-col justify-center items-center">
+                    <li class="{item.id === $profile?.customer.meta[type]?.id ? "bg-blue-100 relative" : ""} shadow-md p-2 my-2 border border-neutral-300 rounded flex flex-col justify-center items-center">
                         <ItemAddress
                             information={item}
                             on:loading={dispatchLoading}

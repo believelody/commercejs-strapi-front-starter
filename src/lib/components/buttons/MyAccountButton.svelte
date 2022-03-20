@@ -26,6 +26,6 @@
 </style>
 
 <LinkButton underlinedOnHover on:click={onClick}>
-    <UserCircleIcon strokeWidth={isActive ? 2 : 1} size={$media.mobile ? 10 : 8} color={$media.tablet || $media.desktop ? "gray-600" : "black"} />
+    <UserCircleIcon strokeWidth={isActive ? 2 : 1} size={$media.mobile ? 10 : 8} color={$media.tablet || $media.desktop ? "neutral-600" : "black"} />
     <span class:active={isActive} class="hidden lg:inline">{$t('header.my-account')}</span>
 </LinkButton>

@@ -19,7 +19,7 @@
     <h3 slot="header" class="py-2 text-center font-medium text-neutral-dark">
         {$t(`account.addresses.sidebar.${type}.title`)}
     </h3>
-    <div slot="extra" class="w-full border-b order-last border-gray-300 flex items-center justify-center py-2">
+    <div slot="extra" class="w-full border-b order-last border-neutral-300 flex items-center justify-center py-2">
         <div class="mt-2">
             <CreateAddressModalButton
                 {type}

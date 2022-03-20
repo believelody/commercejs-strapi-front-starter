@@ -60,12 +60,12 @@
 					/>
 				</a>
 				<div class="mt-4">
-					<h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+					<h3 class="text-neutral-500 text-xs tracking-widest title-font mb-1">
 						<a href="/categories/{wishlist.product.categories.find(() => true).name}">
 							{wishlist.product.categories.find(() => true).name}
 						</a>
 					</h3>
-					<h2 class="text-gray-900 title-font text-lg font-medium">
+					<h2 class="text-neutral-900 title-font text-lg font-medium">
 						<a href="/products/{wishlist.product.permalink}">{wishlist.product.name}</a>
 					</h2>
 					<p class="mt-1">{wishlist.product.price.formatted_with_symbol}</p>

@@ -9,8 +9,8 @@
   import Logo from "$elements/logo/Logo.svelte";
 </script>
 
-<header class="hidden md:border-b md:inline bg-neutral-light-2 text-neutral-dark body-font">
-  <div class="mx-auto flex-center-middle md:py-2">
+<header class="hidden md:border-b md:inline">
+  <div class="mx-auto flex-center-middle md:py-2 text-neutral-dark body-font bg-neutral-light-2">
       <a href="/">
           {#if $media.tablet}
               <div class="px-2">

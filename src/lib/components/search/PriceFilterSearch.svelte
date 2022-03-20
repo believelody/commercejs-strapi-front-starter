@@ -44,7 +44,7 @@ import { getContext } from 'svelte';
 		@apply px-4 text-lg;
 	}
 	.range-wrapper input {
-		@apply flex-grow;
+		@apply grow;
 	}
 
     :global(.rangeSlider) {

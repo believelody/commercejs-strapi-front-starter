@@ -14,7 +14,7 @@
 		{disabled}
 		id={name}
 		{name}
-		class="text-left flex-grow border rounded py-2 {value ? "text-black" : "text-gray-400"} bg-transparent cursor-pointer focus:outline-none"
+		class="text-left grow border rounded py-2 {value ? "text-black" : "text-neutral-400"} bg-transparent cursor-pointer focus:outline-none"
 	>
 		<slot />                    
 	</select>

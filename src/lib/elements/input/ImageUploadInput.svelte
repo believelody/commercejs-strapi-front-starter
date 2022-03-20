@@ -64,7 +64,7 @@
 </div>
 <button
 	on:click={() => field.click()}
-	class="w-full border-none my-1 underline text-center text-xs text-gray-400 italic"
+	class="w-full border-none my-1 underline text-center text-xs text-neutral-400 italic"
 	>{$t(`account.profile.image.btn.${image ? 'change' : 'add'}`)}</button
 >
 

@@ -38,9 +38,9 @@ import { disableCloseModal, resetModalCloseOptions } from '$lib/elements/modal/M
 <Form id="register-form" on:submit={submit} {withoutShadow} class="flex-col">
     <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark m-2 text-center">{title}</h3>
     <svelte:fragment slot="content">
-        <!-- <div class="w-full flex justify-between border-b border-gray-300 py-3 px-2">
+        <!-- <div class="w-full flex justify-between border-b border-neutral-300 py-3 px-2">
             <span class="sm:text-right xl:mr-2">{$t("identity.civility.title")}</span>
-            <div class="flex justify-around flex-grow">
+            <div class="flex justify-around grow">
                 <Radio
                     label={$t("identity.civility.m")}
                     name="gender"

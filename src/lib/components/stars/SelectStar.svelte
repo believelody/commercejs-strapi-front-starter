@@ -17,12 +17,12 @@
                 <Star nb={value} />
             </span>
         {:else}
-            <span class="italic text-gray-500 cursor-pointer">{$t("common.star.placeholder")}</span>
+            <span class="italic text-neutral-500 cursor-pointer">{$t("common.star.placeholder")}</span>
         {/if}
     </svelte:fragment>
     <ul slot="content" class="absolute left-0 bg-white border">
         {#each Array(max) as star, index}
-            <li class="px-2 py-1 hover:bg-gray-200 cursor-pointer" on:click={() => value = index + 1}>
+            <li class="px-2 py-1 hover:bg-neutral-200 cursor-pointer" on:click={() => value = index + 1}>
                 <Star nb={index + 1} />
             </li>
         {/each}

@@ -19,13 +19,13 @@
             <h2 class="text-3xl font-bold mb-6 pb-2 tracking-wider uppercase">{$t("order.invoice.header")}</h2>
 
             <div class="mb-1 flex items-center">
-                <span class="w-32 text-gray-800 block font-bold text-xs uppercase tracking-wide">{$t("order.invoice.number")}</span>
+                <span class="w-32 text-neutral-800 block font-bold text-xs uppercase tracking-wide">{$t("order.invoice.number")}</span>
                 <span class="mr-4 inline-block">:</span>
                 <span>{data.customer_reference}</span>
             </div>
 
             <div class="mb-1 flex items-center">
-                <span class="w-32 text-gray-800 block font-bold text-xs uppercase tracking-wide">{$t("order.invoice.date")}</span>
+                <span class="w-32 text-neutral-800 block font-bold text-xs uppercase tracking-wide">{$t("order.invoice.date")}</span>
                 <span class="mr-4 inline-block">:</span>
                 <span>{localDateFromSeconds(data.created)}</span>
             </div>
@@ -39,7 +39,7 @@
 
     <div class="flex justify-between mb-10">
         <div class="w-1/2">
-            <span class="text-gray-800 block mb-2 font-bold text-xs uppercase tracking-wide">{$t("order.invoice.shipping")}:</span>
+            <span class="text-neutral-800 block mb-2 font-bold text-xs uppercase tracking-wide">{$t("order.invoice.shipping")}:</span>
             <FullAddress information={{
                 title: data.shipping.name,
                 address1: data.shipping.street,
@@ -52,7 +52,7 @@
             }} />
         </div>
         <div class="w-1/2">
-            <span class="text-gray-800 block mb-2 font-bold text-xs uppercase tracking-wide">{$t("order.invoice.billing")}:</span>
+            <span class="text-neutral-800 block mb-2 font-bold text-xs uppercase tracking-wide">{$t("order.invoice.billing")}:</span>
             <FullAddress information={{
                 title: data.billing.name,
                 address1: data.billing.street,
@@ -65,7 +65,7 @@
             }} />
         </div>
         <!-- <div class="w-1/2">
-            <span class="text-gray-800 block mb-2 font-bold text-xs uppercase tracking-wide">From:</span>
+            <span class="text-neutral-800 block mb-2 font-bold text-xs uppercase tracking-wide">From:</span>
             <div>
                 <div x-text="from.name"></div>
                 <div x-text="from.address"></div>
@@ -86,14 +86,14 @@
         <div class="px-1 w-32 text-right">
             <p class="leading-none">
                 <span class="block uppercase tracking-wide text-xs font-bold text-neutral-dark">{$t("order.invoice.price")}</span>
-                <span class="font-medium text-xs text-gray-500">{$t("order.invoice.tax")}</span>
+                <span class="font-medium text-xs text-neutral-500">{$t("order.invoice.tax")}</span>
             </p>
         </div>
 
         <div class="px-1 w-32 text-right">
             <p class="leading-none">
                 <span class="block uppercase tracking-wide text-xs font-bold text-neutral-dark">{$t("order.invoice.item-total")}</span>
-                <span class="font-medium text-xs text-gray-500">{$t("order.invoice.tax")}</span>
+                <span class="font-medium text-xs text-neutral-500">{$t("order.invoice.tax")}</span>
             </p>
         </div>
     </div>
@@ -102,7 +102,7 @@
             <li>
                 <div class="flex flex-wrap -mx-1 py-2 border-b">
                     <div class="flex-1 px-1">
-                        <p class="text-gray-800">{item.name}</p>
+                        <p class="text-neutral-800">{item.name}</p>
                         <p class="text-sm text-neutral-dark">
                             {#each item.variants as variant}
                                 <span>{variant.variant_name} :</span>
@@ -112,15 +112,15 @@
                     </div>
 
                     <div class="px-1 w-32 text-right">
-                        <p class="text-gray-800">{item.quantity}</p>
+                        <p class="text-neutral-800">{item.quantity}</p>
                     </div>
 
                     <div class="px-1 w-32 text-right">
-                        <p class="text-gray-800">{item.price.formatted_with_symbol}</p>
+                        <p class="text-neutral-800">{item.price.formatted_with_symbol}</p>
                     </div>
 
                     <div class="px-1 w-32 text-right">
-                        <p class="text-gray-800">{item.line_total_with_tax.formatted_with_symbol}</p>
+                        <p class="text-neutral-800">{item.line_total_with_tax.formatted_with_symbol}</p>
                     </div>
                 </div>
             </li>
@@ -129,9 +129,9 @@
 
     <div class="py-2 ml-auto mt-20" style="width: 320px">
         <div class="flex justify-between mb-3">
-            <div class="text-gray-800 text-right flex-1">{$t("order.invoice.items-total")}</div>
+            <div class="text-neutral-800 text-right flex-1">{$t("order.invoice.items-total")}</div>
             <div class="text-right w-40">
-                <div class="text-gray-800 font-medium">{data.order.subtotal.formatted_with_symbol}</div>
+                <div class="text-neutral-800 font-medium">{data.order.subtotal.formatted_with_symbol}</div>
             </div>
         </div>
         <div class="flex justify-between mb-4">
@@ -151,7 +151,7 @@
             <div class="flex justify-between">
                 <div class="text-xl text-neutral-dark text-right flex-1">{$t("order.invoice.total")}</div>
                 <div class="text-right w-40">
-                    <div class="text-xl text-gray-800 font-bold">{data.order.total_with_tax.formatted_with_symbol}</div>
+                    <div class="text-xl text-neutral-800 font-bold">{data.order.total_with_tax.formatted_with_symbol}</div>
                 </div>
             </div>
         </div>

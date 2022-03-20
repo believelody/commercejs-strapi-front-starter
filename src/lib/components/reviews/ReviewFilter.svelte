@@ -12,7 +12,7 @@
 </style>
 
 <!-- Desktop layout -->
-<Card class="bg-gray-100 border hidden lg:block">
+<Card class="bg-neutral-100 border hidden lg:block">
     <h3 slot="header" class="py-2 text-lg font:semibold text-center">{$t("review.product.filter.header")}</h3>
     <div slot="content" class="m-1 lg:m-0 border-t border-b flex flex-col lg:flex-col divide-y lg:divide-x-0 lg:divide-x">
         <ReviewFilterButtonCheckbox {reviews} on:filter />

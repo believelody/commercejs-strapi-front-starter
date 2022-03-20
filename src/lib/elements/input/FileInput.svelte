@@ -32,12 +32,12 @@
 			{multiple}
 			on:input={onInput}
 			{accept}
-			class="flex-grow focus:outline-none px-3 xl:px-0"
+			class="grow focus:outline-none px-3 xl:px-0"
 			{placeholder}
 		/>
 	</label>
 	{#if hint}
-		<span class="text-xs text-gray-400 italic">{hint}</span>
+		<span class="text-xs text-neutral-400 italic">{hint}</span>
 	{/if}
 </div>
 
