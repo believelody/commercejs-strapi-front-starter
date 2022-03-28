@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   content: ["src/**/*.{html,js,svelte}"],
@@ -8,7 +8,7 @@ module.exports = {
         green: colors.emerald,
         yellow: colors.amber,
         purple: colors.violet,
-      }
+      },
     },
   },
 }

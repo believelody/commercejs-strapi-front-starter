@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	import { navigating, page } from '$app/stores';
 	import api from '$api';
 	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
@@ -61,7 +62,3 @@
 	</div>
 	<Toolbar />
 {/if}
-
-<style global lang="postcss">
-	@import '../app.css';
-</style>

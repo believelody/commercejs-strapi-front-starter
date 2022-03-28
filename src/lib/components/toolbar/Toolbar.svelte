@@ -1,5 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
 	import CartNav from '../nav/CartNav.svelte';
 	import MenuButton from '../buttons/MenuButton.svelte';
 	import Logo from '$elements/logo/Logo.svelte';

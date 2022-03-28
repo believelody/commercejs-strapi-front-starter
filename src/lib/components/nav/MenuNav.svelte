@@ -1,28 +1,21 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import api from '$api';
 	import { t } from '$lib/i18n';
-	import { categories } from "$lib/stores";
+	import { categories } from '$lib/stores';
 	import Accordion from '$elements/accordion/Accordion.svelte';
 	import Dropdown from '$elements/dropdown/Dropdown.svelte';
 	import CategoriesNav from './CategoriesNav.svelte';
 
 	let meta;
 
-	const links = [
-		{ url: '/categories/transport', text: $t('menu.categories.transport.label') },
-		{ url: '/categories/jeu', text: $t('menu.categories.game.label') },
-		{ url: '/categories/soin-esthetique', text: $t('menu.categories.caring.label') },
-		{ url: '/products', text: $t('menu.categories.all.label') }
-	];
-
 	async function getCategories() {
 		const res = await api.category.getOneBySlug('pets');
 		if (res.error) {
 		}
 		$categories = res.category.children;
-        meta = res.category.meta;
+		meta = res.category.meta;
 	}
 
 	onMount(async () => {
@@ -36,21 +29,23 @@
 	<div class="link link-categories">
 		<!-- Desktop and tablet -->
 		<Dropdown class="hidden md:inline">
-			<p slot="header" class:active={$page.url.pathname.includes('categories')} class="underline">{$t('menu.categories.label')}</p>
+			<p slot="header" class:active={$page.url.pathname.includes('categories')} class="underline">
+				{$t('menu.categories.label')}
+			</p>
 			<CategoriesNav categories={$categories} {meta} slot="content" />
 		</Dropdown>
 		<!-- Mobile -->
-		<Accordion class="md:hidden w-full" iconSize={6}>
+		<Accordion
+			class="md:hidden w-full"
+			iconSize={6}
+			timing="easy-in"
+		>
 			<p slot="header">{$t('menu.categories.label')}</p>
 			<CategoriesNav categories={$categories} {meta} slot="content" />
 		</Accordion>
 	</div>
-	<a class:active={$page.url.pathname === '/about'} href="/about" class="link link-about"
-		>{$t('menu.about.label')}</a
-	>
-	<a class:active={$page.url.pathname === '/blog'} href="/blog" class="link link-blog"
-		>{$t('menu.blog.label')}</a
-	>
+	<a class:active={$page.url.pathname === '/about'} href="/about" class="link link-about">{$t('menu.about.label')}</a>
+	<a class:active={$page.url.pathname === '/blog'} href="/blog" class="link link-blog">{$t('menu.blog.label')}</a>
 </section>
 
 <style>
