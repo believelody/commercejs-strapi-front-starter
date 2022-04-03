@@ -2,32 +2,29 @@
 	import { t } from '$lib/i18n';
 	import { checkout, checkoutLoading } from '$lib/stores';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import StripePaymentModal from '../modals/StripePaymentModal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let cardElement, isValid;
 
 	function showModal() {
-		openModal({
-			component: StripePaymentModal,
-			props: {
-				cardElement
+		modal.open(
+			{
+				component: StripePaymentModal,
+				props: {
+					cardElement
+				}
 			},
-			options: {
+			{
 				noCloseButton: true,
 				noCloseOnEsc: true,
 				noCloseOnOuterClick: true
 			}
-		});
+		);
 	}
 </script>
 
-<PrimaryButton
-	on:click={showModal}
-	disabled={!isValid}
-	large
-	block
->
+<PrimaryButton on:click={showModal} disabled={!isValid} large block>
 	{#if $checkoutLoading}
 		{$t('common.update')}
 	{:else}

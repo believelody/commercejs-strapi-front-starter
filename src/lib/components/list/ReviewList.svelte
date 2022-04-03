@@ -5,19 +5,21 @@
 	import { fullName } from '$utils/user.util';
 	import { localDateFromString } from '$utils/date.util';
 	import Card from '$elements/card/Card.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
 	import { fullOpacityBackground } from '$lib/utils/modal.util';
 	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let reviews;
 
 	function showModal(index, review) {
-		openModal({
-			component: ReviewImageViewerModal,
-			props: { images: review.images, selectedIndex: index },
-			options: { ...fullOpacityBackground }
-		});
+		modal.open(
+			{
+				component: ReviewImageViewerModal,
+				props: { images: review.images, selectedIndex: index }
+			},
+			{ ...fullOpacityBackground }
+		);
 	}
 </script>
 

@@ -2,12 +2,12 @@
 	import { t } from '$lib/i18n';
 	import DangerButton from '$elements/button/DangerButton.svelte';
 	import DangerModal from '$elements/modal/DangerModal.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let title, description, actionCallback, type;
 
 	async function showRemoveModal() {
-		openModal({
+		modal.open({
 			component: DangerModal,
 			props: {
 				title,

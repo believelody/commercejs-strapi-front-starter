@@ -3,7 +3,7 @@
 	import { profile } from '$lib/stores';
 	import CloseIcon from '../icon/CloseIcon.svelte';
 	import ImageModal from '$components/modals/ImageModal.svelte';
-	import { openModal } from '../modal/Modal.svelte';
+	import { modal } from '../modal/Modal.svelte';
 
 	export let name,
 		image = '';
@@ -26,7 +26,7 @@
 
 	function showModal() {
 		if (image) {
-			openModal({
+			modal.open({
 				component: ImageModal,
 				props: {
 					image,

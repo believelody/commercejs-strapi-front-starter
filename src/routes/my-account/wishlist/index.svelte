@@ -7,13 +7,13 @@
 	import MoonLoading from '$components/loading/MoonLoading.svelte';
 	import CenterSection from '$elements/center-section/CenterSection.svelte';
 	import DangerModal from '$elements/modal/DangerModal.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	let wishlists = [],
 		loading = true;
 
 	async function showRemoveWishlisModal(item) {
-		openModal({
+		modal.open({
 			component: DangerModal,
 			props: {
 				title: $t('wishlist.account.remove.modal.title'),

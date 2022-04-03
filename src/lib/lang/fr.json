@@ -461,7 +461,8 @@
                     "description": "Souhaitez-vous réellement effectuer cette action ? Vous ne pourrez plus revenir en arrière."
                 }
             },
-            "empty-list": "Vous n'avez aucune adresse"
+            "empty-list": "Vous n'avez aucune adresse",
+            "saved": "<p>L'addresse a été enregistrée avec succès.</p><p>Vous pouvez fermer la fenêtre de dialogue.</p>"
         },
         "wishlist": {
             "link": "Mes produits favoris"

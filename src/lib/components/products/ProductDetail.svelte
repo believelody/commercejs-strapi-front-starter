@@ -20,7 +20,6 @@
 	import SecurityBadge from '../badges/SecurityBadge.svelte';
 	import PaymentBadge from '../badges/PaymentBadge.svelte';
 	import Card from '$elements/card/Card.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import AttributesProductsModal from '../modals/AttributesProductsModal.svelte';
 	import Button from '$elements/button/Button.svelte';
 
@@ -39,7 +38,7 @@
 	}
 
 	function showAttributesModal() {
-		openModal({
+		modals.open({
 			component: AttributesProductsModal,
 			props: { attributes: product.attributes }
 		});

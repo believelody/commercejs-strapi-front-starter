@@ -5,10 +5,10 @@
 	import { t } from '$lib/i18n';
 	import Star from '$elements/star/Star.svelte';
 	import { localDateFromString } from '$utils/date.util';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
 	import { fullOpacityBackground } from '$lib/utils/modal.util';
 	import AddReviewModal from '../modals/AddReviewModal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let pendingReviews, reviews, orderItems;
 	let loading = false;
@@ -23,19 +23,23 @@
 	}
 
 	function showReviewViewerModal(index, review) {
-		openModal({
-			component: ReviewImageViewerModal,
-			props: { images: review.images, selectedIndex: index },
-			options: { ...fullOpacityBackground }
-		});
+		modal.open(
+			{
+				component: ReviewImageViewerModal,
+				props: { images: review.images, selectedIndex: index }
+			},
+			{ ...fullOpacityBackground }
+		);
 	}
 
 	function showAddReviewModal(item) {
-		openModal({
-			component: AddReviewModal,
-			props: { item },
-			options: { ...fullOpacityBackground }
-		});
+		modal.open(
+			{
+				component: AddReviewModal,
+				props: { item }
+			},
+			{ ...fullOpacityBackground }
+		);
 	}
 
 	$: extractProductInfo = (productId) => orderItems.find((item) => item.product_id === productId);
@@ -66,7 +70,9 @@
 					<section class="flex flex-col w-1/2">
 						<span class="text-lg text-neutral-800">{item.product_name}</span>
 						{#each item.variants as variant}
-							<span class="text-sm text-neutral-dark">{variant.variant_name} : {variant.option_name}</span>
+							<span class="text-sm text-neutral-dark"
+								>{variant.variant_name} : {variant.option_name}</span
+							>
 						{/each}
 					</section>
 					<section class="w-1/2">
@@ -92,7 +98,9 @@
 					<div class="flex items-stretch w-full px-4">
 						<section class="flex flex-col w-full">
 							<div class="flex justify-between mb-2">
-								<div class="flex flex-col md:flex-row items-start md:items-center text-lg text-neutral-800">
+								<div
+									class="flex flex-col md:flex-row items-start md:items-center text-lg text-neutral-800"
+								>
 									<button
 										on:click={() => goToProductPage(review.productId)}
 										class="mr-4 font-medium underline border-none"

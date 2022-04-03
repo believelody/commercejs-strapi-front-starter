@@ -1,23 +1,23 @@
 <script>
-    import api from '$api';
-    import { reviewsUser } from "$lib/stores";
-    import ReviewForm from "../forms/ReviewForm.svelte";
-    import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
-    import { closeModal } from '$elements/modal/Modal.svelte';
+	import api from '$api';
+	import { reviewsUser } from '$lib/stores';
+	import ReviewForm from '../forms/ReviewForm.svelte';
+	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
-    export let item, review;
-    
-    async function close() {
-        const res = await api.review.getFromUser();
-        $reviewsUser = res.success ? res.reviews : [];
-        closeModal();
-    }
+	export let item, review, modalId;
+
+	async function close(modalId) {
+		const res = await api.review.getFromUser();
+		$reviewsUser = res.success ? res.reviews : [];
+		modal.close(modalId);
+	}
 </script>
 
-<style>
-    /* your styles go here */
-</style>
-
 <ModalWrapper>
-    <ReviewForm on:submitEvent={close} {item} {review} withoutShadow />
+	<ReviewForm on:submitEvent={() => close(modalId)} {item} {review} withoutShadow />
 </ModalWrapper>
+
+<style>
+	/* your styles go here */
+</style>

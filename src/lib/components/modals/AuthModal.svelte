@@ -4,13 +4,13 @@
 	import LoginForm from '../forms/LoginForm.svelte';
 	import RegisterForm from '../forms/RegisterForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
-	import { closeModal } from '$elements/modal/Modal.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
 	import { fullName } from '$lib/utils/user.util';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	let isLogin = true;
 
-	function onSubmitEvent({ detail }) {
+	function onSubmitEvent({ detail }, modalId) {
 		if ($jwt) {
 			const name = fullName(detail.user);
 			notifications.success({
@@ -20,17 +20,17 @@
 						? $t(`notifications.auth.message.register`, { name })
 						: $t(`notifications.auth.message.login`)
 			});
-			closeModal();
+			modal.close(modalId, {});
 		}
 	}
 </script>
 
-<ModalWrapper>
+<ModalWrapper let:modalId>
 	{#if isLogin}
 		<LoginForm
 			title={$t('auth.login.title')}
 			withoutShadow
-			on:submitEvent={onSubmitEvent}
+			on:submitEvent={(e) => onSubmitEvent(e, modalId)}
 			on:toggleAuth={() => (isLogin = false)}
 		/>
 	{:else}

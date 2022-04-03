@@ -7,7 +7,7 @@
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import DiscountSuccessModal from '../modals/DiscountSuccessModal.svelte';
 	import DiscountFailedModal from '../modals/DiscountFailedModal.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let withoutShadow = false;
 	let code,
@@ -17,7 +17,7 @@
 	async function submit() {
 		loading = true;
 		isCodeValid = await api.checkout.checkDiscount($checkout.id, code);
-		openModal({
+		modal.open({
 			component: isCodeValid ? DiscountSuccessModal : DiscountFailedModal
 		});
 		loading = false;

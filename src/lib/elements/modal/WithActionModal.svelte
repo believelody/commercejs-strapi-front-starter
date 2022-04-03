@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
 	import LinkButton from '../button/LinkButton.svelte';
-	import { closeModal } from './Modal.svelte';
+import { modal } from './Modal.svelte';
 	import ModalWrapper from './ModalWrapper.svelte';
 
 	export let cancelText = $t('modal.cancel.text'),
@@ -22,7 +22,7 @@
 	}
 </script>
 
-<ModalWrapper>
+<ModalWrapper let:modalId>
 	<h3
 		class="flex items-center text-lg leading-6 font-medium text-neutral-900"
 		id="modal-title"
@@ -44,7 +44,7 @@
 		{#if $$slots.cancel}
 			<slot name="cancel" />
 		{:else}
-			<LinkButton on:click={closeModal} class="w-full border md:order-first">
+			<LinkButton on:click={() => modal.close(modalId)} class="w-full border md:order-first">
 				{cancelText}
 			</LinkButton>
 		{/if}

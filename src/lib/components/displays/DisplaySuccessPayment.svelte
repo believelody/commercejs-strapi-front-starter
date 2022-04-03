@@ -3,14 +3,14 @@
 	import { resetStores } from '$lib/stores';
 	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
 	import FullAddress from '../addresses/FullAddress.svelte';
-	import { closeModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let live, user, shipping, billing, isBillingSameAsShipping, reference, conditionals;
 	let dataUser = user;
 
 	function close() {
 		resetStores();
-		closeModal();
+		modal.closeAll();
 	}
 </script>
 
@@ -36,13 +36,11 @@
 				{#each live.line_items as item}
 					<li>
 						{item.name} x {item.quantity}
-						{
-							item.variants.length ?
-							`- ${item.variants
-								.map((variant) => `${variant.variant_name} : ${variant.option_name}`)
-								.join(' , ')}` :
-							''
-						}
+						{item.variants.length
+							? `- ${item.variants
+									.map((variant) => `${variant.variant_name} : ${variant.option_name}`)
+									.join(' , ')}`
+							: ''}
 					</li>
 				{/each}
 			</ul>

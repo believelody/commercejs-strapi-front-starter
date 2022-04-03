@@ -4,9 +4,9 @@
 	import { requiredFieldsValidation } from '$utils/form.util';
 	import ContactForm from '../forms/ContactForm.svelte';
 	import WithActionModal from '$elements/modal/WithActionModal.svelte';
-	import { closeModal } from '$elements/modal/Modal.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
+import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let reference, customer, orderId;
 	let information = { email: customer.email },
@@ -29,7 +29,7 @@
 				title: $t('notifications.order.email.title'),
 				message: $t('notifications.order.email.message')
 			});
-			closeModal();
+			modal.closeAll();
 		} else {
 			error = res.error;
 		}

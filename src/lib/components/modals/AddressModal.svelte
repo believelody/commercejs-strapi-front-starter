@@ -2,16 +2,34 @@
 	import { t } from '$lib/i18n';
 	import AddressForm from '../forms/AddressForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
-	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
-	import InfoModal from '$elements/modal/InfoModal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
-	export let title, information, type, action;
-
+	export let title,
+		information = {},
+		type,
+		action,
+		modalId;
+	let success = false;
 	function onSubmitEvent() {
-		closeModal();
+		success = true;
+	}
+
+	$: {
+		if (success) {
+			modal.close(modalId);
+		}
 	}
 </script>
 
-<ModalWrapper>
-	<AddressForm {title} withoutShadow {information} {type} {action} on:submitEvent={onSubmitEvent} />
+<ModalWrapper {modalId}>
+	{#if !success}
+		<AddressForm
+			{title}
+			withoutShadow
+			bind:information
+			{type}
+			{action}
+			on:submitEvent={onSubmitEvent}
+		/>
+	{/if}
 </ModalWrapper>

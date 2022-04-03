@@ -3,14 +3,15 @@
 	import api from '$api';
 	import { t } from '$lib/i18n';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import ItemToCartSuccessModal from '../modals/ItemToCartSuccessModal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let product, quantity, selectedVariant, selectedOption;
-	let loading = false, hasError = false;
+	let loading = false,
+		hasError = false;
 
 	async function addItem() {
-        let createCartRes ;
+		let createCartRes;
 		loading = hasError = true;
 		if (!$cart) {
 			createCartRes = await api.cart.createCart();
@@ -23,7 +24,7 @@
 				selectedVariant
 			);
 			if (addToCartRes.success) {
-				openModal({
+				modal.open({
 					component: ItemToCartSuccessModal,
 					props: { product, selectedOption, quantity }
 				});
@@ -31,8 +32,8 @@
 				hasError = true;
 			}
 		} else if (createCartRes.error) {
-            hasError = true;
-        }
+			hasError = true;
+		}
 		loading = false;
 	}
 	$: isValid =

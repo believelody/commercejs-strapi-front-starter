@@ -19,12 +19,12 @@
 	import OrderPanel from '$components/checkout/OrderPanel.svelte';
 	import MoonLoading from '$components/loading/MoonLoading.svelte';
 	import InfoModal from '$elements/modal/InfoModal.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import { varEnv } from '$utils/env.util';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if (!isServer) {
-			$stripe = await loadStripe(varEnv["stripePublicKey"]);
+			$stripe = await loadStripe(varEnv['stripePublicKey']);
 		}
 		if ($cart && $cart.total_unique_items > 0) {
 			$checkoutLoading = true;
@@ -37,7 +37,7 @@
 			}
 			$checkoutLoading = false;
 		} else if (window) {
-			openModal({
+			modal.open({
 				component: InfoModal,
 				props: {
 					title: $t('checkout.no-cart.title'),

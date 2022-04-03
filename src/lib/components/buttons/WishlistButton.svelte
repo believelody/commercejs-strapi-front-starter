@@ -5,10 +5,10 @@
 	import { jwt, profile, user } from '$lib/stores';
 	import HeartCircleIcon from '$elements/icon/HeartCircleIcon.svelte';
 	import IconButton from '$elements/button/IconButton.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import AuthModal from '../modals/AuthModal.svelte';
 	import ConfirmationEmailModal from '../modals/ConfirmationEmailModal.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let product;
 	let wishlist,
@@ -35,9 +35,9 @@
 				})
 			});
 		} else if ($jwt && !$user.confirmed) {
-			openModal({ component: ConfirmationEmailModal });
+			modal.open(ConfirmationEmailModal);
 		} else {
-			openModal({ component: AuthModal });
+			modal.open(AuthModal);
 		}
 	}
 

@@ -3,7 +3,7 @@
 	import { t } from '$lib/i18n';
 	import { cart } from '$lib/stores';
 	import CartSidebar from '../sidebars/CartSidebar.svelte';
-	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 	import LoadingModal from '../modals/LoadingModal.svelte';
 	import SuccessButton from '$elements/button/SuccessButton.svelte';
 	import { openSidebar } from '$elements/sidebar/Sidebar.svelte';
@@ -47,14 +47,14 @@
 	}
 
 	$: loading
-		? openModal({
+		? modal.open({
 				component: LoadingModal,
 				props: {
 					topText: $t('notifications.cart.loading.top'),
 					bottomText: $t('notifications.cart.loading.bottom')
 				}
 		  })
-		: closeModal();
+		: modal.closeAll();
 </script>
 
 <SuccessButton on:click={reOrder}>

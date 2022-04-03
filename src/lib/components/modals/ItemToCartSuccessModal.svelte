@@ -5,13 +5,13 @@
 	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
 	import SuccessButton from "$elements/button/SuccessButton.svelte";
 	import { openSidebar } from "$elements/sidebar/Sidebar.svelte";
-	import { closeModal } from '$elements/modal/Modal.svelte';
+import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let product, selectedOption, quantity;
 
 	function showCart() {
 		openSidebar({ component: CartSidebar });
-		closeModal();
+		modal.closeAll();
 	}
 </script>
 

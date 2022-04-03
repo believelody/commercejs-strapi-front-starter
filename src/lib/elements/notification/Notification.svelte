@@ -1,10 +1,11 @@
 <script context="module">
 	import { writable, derived } from 'svelte/store';
+	import { id } from '$utils/helper.util';
 
 	const TIMEOUT = 5000;
 	let timer;
 
-	function createNotificationStore(timeout) {
+	function createNotificationStore() {
 		const _notifications = writable([]);
 
 		function send({
@@ -24,10 +25,6 @@
 			_notifications.update((state) =>
 				state.filter((notification) => notification.id !== notificationId)
 			);
-		}
-
-		function id() {
-			return '_' + Math.random().toString(36).substring(2, 9);
 		}
 
 		const derivedNotifications = derived(_notifications, ($_notifications, set) => {

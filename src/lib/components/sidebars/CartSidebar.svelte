@@ -9,36 +9,38 @@
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import CenterSection from '$elements/center-section/CenterSection.svelte';
 	import LinkButton from '$elements/button/LinkButton.svelte';
-	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
 	import DangerModal from '$elements/modal/DangerModal.svelte';
 	import { closeSidebar } from '$elements/sidebar/Sidebar.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	let loading = false;
 
 	function showEmptyCartModal() {
-		openModal({
-			component: DangerModal,
-			props: {
-				title: $t('cart.modal.empty.title'),
-				description: $t('modal.description.default'),
-				actionCallback: async () => {
-					const res = await api.cart.emptyCart($cart.id);
-					if (res.success) {
-						closeSidebar();
-						notifications.success({
-							title: $t('notifications.cart.title'),
-							message: $t('notifications.cart.message.empty')
-						});
-						closeModal();
+		modal.open(
+			{
+				component: DangerModal,
+				props: {
+					title: $t('cart.modal.empty.title'),
+					description: $t('modal.description.default'),
+					actionCallback: async (modalId) => {
+						const res = await api.cart.emptyCart($cart.id);
+						if (res.success) {
+							modal.close(modalId);
+							closeSidebar();
+							notifications.success({
+								title: $t('notifications.cart.title'),
+								message: $t('notifications.cart.message.empty')
+							});
+						}
 					}
 				}
 			},
-			options: {
+			{
 				noCloseOnOuterClick: true,
 				noCloseOnEsc: true
 			}
-		});
+		);
 	}
 
 	function gotToCheckout() {

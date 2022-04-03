@@ -5,7 +5,7 @@
 	import PrivateRoute from '$components/private/PrivateRoute.svelte';
 	import MenuProfile from '$components/profile/MenuProfile.svelte';
 	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if ($user.confirmed) {
@@ -17,12 +17,9 @@
 			}
 		} else {
 			if (window) {
-				openModal({
-					component: ConfirmationEmailModal,
-					options: {
-						noCloseOnEsc: true,
-						noCloseOnOuterClick: true
-					}
+				modal.open(ConfirmationEmailModal, {
+					noCloseOnEsc: true,
+					noCloseOnOuterClick: true
 				});
 				window.history.back();
 			}
@@ -44,7 +41,7 @@
 </div>
 
 <style>
-	@import "../../styles/tailwind.css";
+	@import '../../app.css';
 
 	.layout {
 		@apply relative container mx-auto grid grid-rows-1 gap-4 grow lg:grow-0 lg:mt-4;

@@ -5,10 +5,10 @@
 	import api from '$api';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import Form from '$elements/form/Form.svelte';
-	import { closeModal, disableCloseModal, resetModalCloseOptions } from '$elements/modal/Modal.svelte';
 	import LinkButton from '$elements/button/LinkButton.svelte';
 	import Button from '$elements/button/Button.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let withoutShadow = false;
 	let code = '',
@@ -20,35 +20,34 @@
 
 	async function submit() {
 		loading = true;
-		disableCloseModal();
+		modal.disableCloseModal();
 		const res = await api.auth.codeVerification($user.email, code);
 		if (res.success) {
-			resetModalCloseOptions();
 			dispatch('submitEvent', { success: true });
 		} else {
 			hasError = true;
 			errorCode = res.message;
-			resetModalCloseOptions();
 		}
+		modal.resetModalCloseOptions();
 		loading = false;
 	}
 
 	async function resendCode() {
 		loading = true;
-		disableCloseModal();
+		modal.disableCloseModal();
 		const res = await api.auth.resendCode($user.email);
 		if (res.success) {
 			codeResent = true;
 		} else if (res.error) {
 			hasError = true;
-			resetModalCloseOptions();
 		}
+		modal.resetModalCloseOptions();
 		loading = false;
 	}
 
 	function logoutAndClose() {
 		api.auth.logout();
-		closeModal();
+		modal.closeAll();
 	}
 </script>
 

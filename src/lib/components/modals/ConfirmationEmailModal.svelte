@@ -3,10 +3,11 @@
 	import api from '$api';
 	import ConfirmationEmailForm from '../forms/ConfirmationEmailForm.svelte';
 	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
-	import { closeModal } from '$elements/modal/Modal.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
+	export let modalId;
 	let success = false;
 
 	async function onSubmitEvent({ detail }) {
@@ -28,7 +29,7 @@
 		{@html $t(`auth.code.success.text`)}
 		<h5 class="w-full text-center text-neutral-dark">{$t('common.or')}</h5>
 		<div class="flex-center-middle text-neutral-dark">
-			<PrimaryButton on:click={closeModal}>
+			<PrimaryButton on:click={() => modal.close(modalId)}>
 				<a class="p-2 rounded" href="/my-account">{$t('auth.code.success.link')}</a>
 			</PrimaryButton>
 		</div>

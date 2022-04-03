@@ -7,14 +7,14 @@
     import TextInput from '$elements/input/TextInput.svelte';
     import PrimaryButton from '$elements/button/PrimaryButton.svelte';
     import Form from '$elements/form/Form.svelte';
-    import { disableCloseModal, resetModalCloseOptions } from '$elements/modal/Modal.svelte';
+    import { modal } from '$elements/modal/Modal.svelte';
 
     export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
     async function submit() {
-        disableCloseModal()
+        modal.disableCloseModal()
         loading = true;
         hasError = false;
         const res = await api.auth.login(identifier, password);
@@ -22,7 +22,7 @@
             dispatch("submitEvent", { authType: "login" });
         } else {
             hasError = true;
-            resetModalCloseOptions();
+            modal.resetModalCloseOptions();
         }
         loading = false;
     }

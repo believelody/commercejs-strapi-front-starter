@@ -7,9 +7,9 @@
 	import SecondaryButton from '$elements/button/SecondaryButton.svelte';
 	import IconButton from '$elements/button/IconButton.svelte';
 	import DangerModal from '$elements/modal/DangerModal.svelte';
-	import { closeModal, openModal } from '$elements/modal/Modal.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
 	import { closeSidebar } from '$elements/sidebar/Sidebar.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	export let items, loading;
 	const dispatch = createEventDispatcher();
@@ -35,30 +35,32 @@
 	}
 
 	function showRemoveItemModal(item) {
-		openModal({
-			component: DangerModal,
-			props: {
-				title: $t('cart.modal.delete-item.title', { name: item.name }),
-				description: $t('cart.modal.delete-item.description'),
-				actionCallback: async () => {
-					const res = await api.cart.deleteItem($cart.id, item.id);
-					if (res.success) {
-						notifications.success({
-							title: $t('notifications.cart.title'),
-							message: $t('notifications.cart.message.remove', { name: item.name })
-						});
-						closeModal();
-						if (!$cart.line_items.length) {
-							closeSidebar();
+		modal.open(
+			{
+				component: DangerModal,
+				props: {
+					title: $t('cart.modal.delete-item.title', { name: item.name }),
+					description: $t('cart.modal.delete-item.description'),
+					actionCallback: async (modalId) => {
+						const res = await api.cart.deleteItem($cart.id, item.id);
+						if (res.success) {
+							notifications.success({
+								title: $t('notifications.cart.title'),
+								message: $t('notifications.cart.message.remove', { name: item.name })
+							});
+							modal.close(modalId);
+							if (!$cart.line_items.length) {
+								closeSidebar();
+							}
 						}
 					}
 				}
 			},
-			options: {
+			{
 				noCloseOnOuterClick: true,
 				noCloseOnEsc: true
 			}
-		});
+		);
 	}
 </script>
 

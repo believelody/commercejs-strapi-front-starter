@@ -3,9 +3,9 @@
 	import { jwt } from '$lib/stores';
 	import LoginForm from './LoginForm.svelte';
 	import RegisterForm from './RegisterForm.svelte';
-	import { openModal } from '$elements/modal/Modal.svelte';
 	import RegisterSuccessModal from '../modals/RegisterSuccessModal.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
 
 	let isLogin = true;
 
@@ -20,7 +20,7 @@
 	}
 
 	function showModal(user) {
-		openModal({
+		modal.open({
 			component: RegisterSuccessModal,
 			props: { fullname: `${user.firstname} ${user.lastname}` }
 		});

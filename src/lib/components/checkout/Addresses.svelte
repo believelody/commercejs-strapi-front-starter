@@ -20,6 +20,7 @@
         }
     });
 
+    $: console.log($shipping);
     $: checkoutId = derived(checkout, $checkout => $checkout ? $checkout.id : checkoutId);
     $: isCountryAvailableForShipping = countriesAvailableForShipping?.hasOwnProperty($shipping?.country?.key);
     $: dispatch("isCountryAvailable", {isCountryAvailableForShipping});
@@ -34,7 +35,6 @@
         hideSubmitButton
         hideTitleAddress
         contentClass="md:text-lg"
-        {checkoutId}
         bind:information={$shipping}
         title={$t(`checkout.address.${$isBillingSameAsShipping ? "isBillingSameAsShipping" : "shipping"}`)}
     />
@@ -59,7 +59,6 @@
             hideTitleAddress
             headerClass="mt-4"
             contentClass="md:text-lg"
-            {checkoutId}
             bind:information={$billing}
             title={$t("checkout.address.billing")}
         />

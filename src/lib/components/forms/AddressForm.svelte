@@ -1,21 +1,22 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { beforeUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import api from '$api';
+	import api from '$lib/api';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import Search from '$elements/input/SearchInput.svelte';
 	import Form from '$elements/form/Form.svelte';
 	import { onInput, requiredFieldsValidation } from '$utils/form.util';
-	import { disableCloseModal, resetModalCloseOptions } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { shipping } from '$lib/stores';
 
 	export let information = {},
-		type,
+		type = '',
 		title,
 		hideSubmitButton = false,
 		submitLabel = '',
 		withoutShadow = false,
 		hideTitleAddress = false,
-		action,
+		action = '',
 		headerClass = '',
 		contentClass = '';
 	let countries = [],
@@ -25,17 +26,19 @@
 	const dispatch = createEventDispatcher();
 
 	async function submit() {
-		disableCloseModal();
-		loading = true;
-		hasError = false;
-		const res = await api.address[action]({ ...information, type });
-		if (res.success) {
-			dispatch('submitEvent');
-		} else {
-			resetModalCloseOptions();
-			hasError = true;
+		if (action) {
+			modal.disableCloseModal();
+			loading = true;
+			hasError = false;
+			const res = await api.address[action]({ ...information, type });
+			if (res.success) {
+				loading = false;
+				dispatch('submitEvent');
+			} else {
+				modal.resetModalCloseOptions();
+				hasError = true;
+			}
 		}
-		loading = false;
 	}
 
 	async function getCountries() {
@@ -54,10 +57,10 @@
 
 	onMount(async () => {
 		await getCountries();
+	});
 
-		return () => {
-			console.log('destroyed');
-		};
+	beforeUpdate(() => {
+		console.log("updated");
 	});
 
 	// $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
@@ -133,12 +136,12 @@
 		{#if !hideSubmitButton}
 			<div class="flex justify-center grow pt-3 pb-2">
 				<button
-					disabled={!isValid || loading}
+					disabled={loading || !isValid}
 					type="submit"
 					class="text-center w-1/2 px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-75 disabled:bg-neutral-500 disabled:cursor-not-allowed"
 				>
 					{#if loading}
-						{$t("common.update")}
+						{$t('common.update')}
 					{:else if submitLabel}
 						{submitLabel}
 					{:else}
