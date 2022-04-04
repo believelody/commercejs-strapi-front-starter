@@ -13,7 +13,6 @@
         {#if information}
             <ItemAddress
                 {information}
-                {items}
                 primary="update"
                 secondary="select"
             />

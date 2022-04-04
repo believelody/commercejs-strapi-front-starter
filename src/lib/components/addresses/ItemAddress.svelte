@@ -7,7 +7,7 @@
     import RemoveAddressModalButton from '../buttons/RemoveAddressModalButton.svelte';
     import FullAddress from './FullAddress.svelte';
 
-    export let information, loading, isSelected = false, primary, secondary;
+    export let information, loading = false, isSelected = false, primary, secondary;
     const dispatch = createEventDispatcher();
 </script>
 
