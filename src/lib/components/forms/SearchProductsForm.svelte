@@ -41,7 +41,7 @@
 			hint={$media.mobile ? $t('product.search.form.hint') : ""}
 		/>
 		<div class="md:hidden">
-			<PrimaryButton type="submit" block disabled={!isValid}>
+			<PrimaryButton block disabled={!isValid}>
 				{$t('product.search.form.submit')}
 			</PrimaryButton>
 		</div>

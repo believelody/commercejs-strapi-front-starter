@@ -10,15 +10,13 @@
 	export let modalId;
 	let success = false;
 
-	async function onSubmitEvent({ detail }) {
-		if (detail.success) {
-			success = detail.success;
-			await api.auth.getMe();
-		}
+	async function onSubmitEvent() {
+		success = true;
+		await api.auth.getMe();
 	}
 </script>
 
-<ModalWrapper>
+<ModalWrapper {modalId}>
 	{#if success}
 		<h3 class="text-neutral-dark font-medium border-b pb-3 mb-3 flex items-center">
 			<span class="bg-success-light-2 rounded-full p-1">

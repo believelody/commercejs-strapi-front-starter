@@ -105,9 +105,9 @@
 			</div>
 		{/if}
 		<div class="mx-auto-auto my-4 grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
-			<PrimaryButton class="col-span-2" type="submit" disabled={!isValid || loading}
-				>{$t(`auth.register.${loading ? 'loading' : 'submit'}`)}</PrimaryButton
-			>
+			<PrimaryButton class="col-span-2" disabled={!isValid || loading}>
+				{$t(`auth.register.${loading ? 'loading' : 'submit'}`)}
+			</PrimaryButton>
 			<span class="text-center">{$t('common.or')}</span>
 			<PrimaryButton
 				class="col-span-2"

@@ -17,7 +17,7 @@
 	}}
 	{...$$restProps}
 >
-	+ {$t(`account.addresses.${type}.label`)}
+	+ {$t(`account.addresses.add`)}
 </PrimaryButton>
 
 <style>

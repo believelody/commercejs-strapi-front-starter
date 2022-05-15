@@ -38,7 +38,7 @@
 	}
 
 	function showAttributesModal() {
-		modals.open({
+		modal.open({
 			component: AttributesProductsModal,
 			props: { attributes: product.attributes }
 		});

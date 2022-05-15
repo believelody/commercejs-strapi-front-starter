@@ -10,12 +10,8 @@
 	let cartLoading = false;
 </script>
 
-<h3 class="flex items-center justify-between py-4 text-neutral-dark px-8 border-b">
+<h3 class="text-center py-4 text-neutral-dark px-8 border-b">
 	<span>{$t('checkout.summary')}</span>
-	<CloseButton
-		on:click={() => ($sidebar = null)}
-		class="bg-transparent lg:hidden"
-	/>
 </h3>
 <CartList
 	on:loading={(e) => cartLoading = e.detail}
@@ -33,5 +29,5 @@
 <TotalCheckout loading={$checkoutLoading || cartLoading} total={$checkout.live.total.formatted_with_symbol} />
 
 <style>
-	/* your styles go here */
+	@import "'../../../styles/tailwind.css";
 </style>

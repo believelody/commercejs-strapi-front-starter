@@ -43,7 +43,6 @@
 		function disableCloseModal() {
 			_modal.update((state) => {
 				const isModalEmpty = !state.items.length;
-				console.log('disableCloseModal: ', isModalEmpty);
 				if (isModalEmpty) {
 					return state;
 				}
@@ -62,7 +61,6 @@
 		function resetModalCloseOptions() {
 			_modal.update((state) => {
 				const isModalEmpty = !!state.items.length;
-				console.log('resetModalCloseOptions: ', isModalEmpty);
 				if (isModalEmpty) {
 					return state;
 				}
@@ -79,7 +77,6 @@
 		}
 
 		function closeAll() {
-			console.log('close all');
 			_modal.set(INITIAL_STATE);
 		}
 

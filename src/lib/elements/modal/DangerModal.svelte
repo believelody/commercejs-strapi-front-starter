@@ -26,8 +26,6 @@
 			loading = false;
 		}
 	}
-
-	$: console.log(modalId);
 </script>
 
 <ModalWrapper {modalId}>

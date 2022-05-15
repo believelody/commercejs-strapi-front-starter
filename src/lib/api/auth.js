@@ -54,10 +54,10 @@ export const register = async (firstname, lastname, email, password) => {
 }
 
 export const logout = () => {
+    goto("/");
     profile.set(null);
     user.set({});
     jwt.set(null);
-    goto("/");
 }
 
 export const getMe = async () => {

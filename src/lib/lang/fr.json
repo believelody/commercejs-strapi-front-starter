@@ -462,7 +462,7 @@
                 }
             },
             "empty-list": "Vous n'avez aucune adresse",
-            "saved": "<p>L'addresse a été enregistrée avec succès.</p><p>Vous pouvez fermer la fenêtre de dialogue.</p>"
+            "saved": "L'addresse a été enregistrée avec succès."
         },
         "wishlist": {
             "link": "Mes produits favoris"
@@ -553,13 +553,13 @@
         "login": {
             "title": "Connexion",
             "submit": "Se connecter",
-            "loading": "Connexion en cours ...",
+            "loading": "Connexion en cours",
             "failed": "Email ou mot de passe incorrect"
         },
         "register": {
             "title": "Inscription",
             "submit": "Créer un compte",
-            "loading": "Création du compte en cours...",
+            "loading": "Création du compte en cours",
             "failed": "Cet email est déjà utilisé"
         },
         "code": {

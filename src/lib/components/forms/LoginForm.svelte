@@ -70,7 +70,7 @@
             <button type="button" class="text-sm text-neutral text-center">{$t("identity.password-forgotten")} ?</button>
         </div>
         <div class="mx-auto-auto grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
-            <PrimaryButton class="col-span-2" type="submit" disabled={!isValid || loading}>{$t(`auth.login.${loading ? "loading" : "submit"}`)}</PrimaryButton>
+            <PrimaryButton class="col-span-2" disabled={!isValid || loading}>{$t(`auth.login.${loading ? "loading" : "submit"}`)}</PrimaryButton>
             <span class="text-center">{$t("common.or")}</span>
             <PrimaryButton disabled={loading} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
         </div>

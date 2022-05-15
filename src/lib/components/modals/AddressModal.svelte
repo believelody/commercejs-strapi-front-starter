@@ -3,6 +3,7 @@
 	import AddressForm from '../forms/AddressForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { notifications } from '$lib/elements/notification/Notification.svelte';
 
 	export let title,
 		information = {},
@@ -10,6 +11,7 @@
 		action,
 		modalId;
 	let success = false;
+
 	function onSubmitEvent() {
 		success = true;
 	}
@@ -17,6 +19,10 @@
 	$: {
 		if (success) {
 			modal.close(modalId);
+			notifications.success({
+				title: $t(`account.addresses.${type}.label`),
+				message: $t('account.addresses.saved')
+			});
 		}
 	}
 </script>

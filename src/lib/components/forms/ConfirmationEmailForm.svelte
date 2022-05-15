@@ -23,7 +23,7 @@
 		modal.disableCloseModal();
 		const res = await api.auth.codeVerification($user.email, code);
 		if (res.success) {
-			dispatch('submitEvent', { success: true });
+			dispatch('submitEvent');
 		} else {
 			hasError = true;
 			errorCode = res.message;

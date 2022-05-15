@@ -8,6 +8,7 @@
 	import { fullName } from '$lib/utils/user.util';
 	import { modal } from '$lib/elements/modal/Modal.svelte';
 
+	export let modalId;
 	let isLogin = true;
 
 	function onSubmitEvent({ detail }, modalId) {
@@ -20,12 +21,12 @@
 						? $t(`notifications.auth.message.register`, { name })
 						: $t(`notifications.auth.message.login`)
 			});
-			modal.close(modalId, {});
+			modal.close(modalId);
 		}
 	}
 </script>
 
-<ModalWrapper let:modalId>
+<ModalWrapper {modalId}>
 	{#if isLogin}
 		<LoginForm
 			title={$t('auth.login.title')}
@@ -37,7 +38,7 @@
 		<RegisterForm
 			title={$t('auth.register.title')}
 			withoutShadow
-			on:submitEvent={onSubmitEvent}
+			on:submitEvent={(e) => onSubmitEvent(e, modalId)}
 			on:toggleAuth={() => (isLogin = true)}
 		/>
 	{/if}

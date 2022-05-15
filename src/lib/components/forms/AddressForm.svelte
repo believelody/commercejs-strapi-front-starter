@@ -60,7 +60,7 @@
 	});
 
 	beforeUpdate(() => {
-		console.log("updated");
+		console.log("address form updated");
 	});
 
 	// $: information.country && getSubdivisions(information.country.key).then(res => subdivisions = res);
