@@ -8,23 +8,25 @@
     import PrimaryButton from '$elements/button/PrimaryButton.svelte';
     import Form from '$elements/form/Form.svelte';
     import { modal } from '$elements/modal/Modal.svelte';
+import { useProgressWithLockModal } from '$lib/utils/progress';
 
     export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, loading = false, hasError = false;
     const dispatch = createEventDispatcher();
 
     async function submit() {
-        modal.disableCloseModal()
-        loading = true;
         hasError = false;
-        const res = await api.auth.login(identifier, password);
-        if (res.success) {
+        // const res = await api.auth.login(identifier, password);
+        const res = await fetch("/api/auth/login", {
+            method: "post",
+            body: JSON.stringify({ identifier, password });
+        });
+        const json = await res.json();
+        if (json.success) {
             dispatch("submitEvent", { authType: "login" });
         } else {
             hasError = true;
-            modal.resetModalCloseOptions();
         }
-        loading = false;
     }
 
     $: isValid = !!(identifier && password && emailValidation(identifier))
@@ -34,7 +36,7 @@
     /* your styles go here */
 </style>
 
-<Form id="identity-form" on:submit={submit} {withoutShadow}>
+<Form id="identity-form" on:submit={async => useProgressWithLockModal(submit)} {withoutShadow}>
     <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark my-2 text-center">{title}</h3>
     <svelte:fragment slot="content">
         <TextInput

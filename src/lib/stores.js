@@ -57,6 +57,7 @@ export const orders = writable([]);
 export const categories = writable([]);
 export const reviewsUser = writable([]);
 export const reviewsProduct = writable([]);
+export const progress = writable(false);
 
 export const resetStores = () => {
 	guest.set(null);

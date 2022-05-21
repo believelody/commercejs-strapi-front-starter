@@ -1,3 +1,4 @@
+import { modal } from "$lib/elements/modal/Modal.svelte";
 import { media } from "$lib/stores";
 import { get } from "svelte/store";
 
@@ -20,5 +21,14 @@ export const darkBackground = {
     styleWindow: {
         width: $media.mobile ? "100%" : "80%",
         margin: "0 auto"
+    }
+}
+
+export async function useLockModal(cb) {
+    try {
+        modal.disableCloseModal();
+        await cb();
+    } finally {
+        modal.resetModalCloseOptions();
     }
 }
