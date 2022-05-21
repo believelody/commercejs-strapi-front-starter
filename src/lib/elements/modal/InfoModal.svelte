@@ -7,7 +7,7 @@
 	export let title,
 		description,
 		status,
-		iconBgShade,
+		iconBgShade = "",
 		noIcon = false;
 
 	function applyStatusStyle() {

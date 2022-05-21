@@ -136,12 +136,12 @@
 <style>
 	@import "../../../styles/tailwind-output.css";
 	.notifications {
-		@apply fixed grid grid-cols-1 gap-y-4 justify-start items-center;
+		@apply fixed grid grid-cols-1 gap-y-4 justify-start items-center border border-danger;
 		z-index: 9999;
 	}
 
 	.notification {
-		@apply cursor-pointer max-w-lg p-4 shadow-sm rounded;
+		@apply cursor-pointer fixed max-w-lg p-4 shadow-sm rounded;
 	}
 
 	.title, .message {

@@ -14,7 +14,15 @@
 		 * @param modalData is an object with component, props and options as properties
 		 */
 		function open(modalData, options = null) {
-			const data = typeof modalData === 'function' ? { component: modalData } : modalData;
+			let data;
+			if (typeof modalData === 'function') {
+				data = { component: modalData };
+			} else {
+				data = modalData;
+			}
+			if (!data.props) {
+				data.props = {};
+			}
 			_modal.update((state) => {
 				return {
 					...state,
@@ -119,7 +127,6 @@
 </script>
 
 <svelte:window on:keydown={onKeydown} />
-
 {#if $modal.items.length}
 	<div
 		class="

@@ -8,7 +8,7 @@
 	import { fullName } from '$lib/utils/user.util';
 	import { modal } from '$lib/elements/modal/Modal.svelte';
 
-	export let modalId;
+	export let modalId, title;
 	let isLogin = true;
 
 	function onSubmitEvent({ detail }, modalId) {
@@ -29,7 +29,7 @@
 <ModalWrapper {modalId}>
 	{#if isLogin}
 		<LoginForm
-			title={$t('auth.login.title')}
+			title={title || $t('auth.login.title')}
 			withoutShadow
 			on:submitEvent={(e) => onSubmitEvent(e, modalId)}
 			on:toggleAuth={() => (isLogin = false)}

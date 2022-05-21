@@ -359,7 +359,8 @@
     "modal": {
         "close": "Fermer",
         "description": {
-            "default": "Voulez-vous vraiment effectuer cette action ?"
+            "default": "Voulez-vous vraiment effectuer cette action ?",
+            "error": "Une erreur a été détectée. Nous vous prions de nous excuser."
         },
         "cta": {
             "text": {
@@ -374,6 +375,9 @@
                 "default": "En cours",
                 "deleting": "Suppression..."
             }
+        },
+        "title": {
+            "error": "Erreur"
         }
     },
     "account": {
@@ -579,7 +583,8 @@
         "success": {
             "title": "Merci de faire partie de la communauté PetLovers, {{name}}",
             "description": "Nous vous avons envoyé un email de confirmation avec un code. Celà ne vous empêche pas de faire vos achats sur notre site-web. Vous aurez cependant quelques restrictions. Alors ne tardez pas et confirmez votre email ! Cela vous prendra quelques secondes, promis ;)"
-        }
+        },
+        "not-authenticated": "Veuillez vous connecter svp."
     },
     "identity": {
         "greetings": {
