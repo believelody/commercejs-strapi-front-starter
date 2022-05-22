@@ -54,6 +54,7 @@
 	// 		}
 	// 	}
 	// }
+	$: console.log("$session : ", $session);
 	beforeNavigate((navigation) => {
 		if (isRoutePrivate(navigation.to.pathname) && !$session.authenticated) {
 			modal.open({ component: AuthModal, props: { title: $t('auth.not-authenticated') } });

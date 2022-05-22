@@ -1,0 +1,27 @@
+import * as cookie from "cookie";
+import api from "$lib/api";
+
+export async function post({ request }) {
+    const body = await request.json();
+    const res = await api.server.post(`auth/local`, body);
+    if (res.error) {
+        console.log(res.message);
+        return {
+            status: res.statusCode,
+            body: { success: false, error: res.message }
+        }
+    }
+    const { user: { email, id, username, provider, confirmed, blocked }, jwt } = res;
+    return {
+        body: { success: true },
+        headers: {
+            "Set-Cookie": cookie.serialize('user', JSON.stringify({ email, id, username, provider, confirmed, blocked, jwt }), {
+                httpOnly : true,
+                sameSite : "lax",
+                maxAge : 60 * 60 * 24 * 7,
+                path: "/"
+            }),
+            "Authorization": `Bearer ${jwt}`
+        }
+    }
+}

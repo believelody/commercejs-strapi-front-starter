@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
     import api from '$api';
 
 	export async function load() {
@@ -13,12 +13,14 @@
 			props: { products: res.products, meta: res.meta }
 		};
 	}
-</script>
+</script> -->
 
 <script>
 	import ProductList from '$components/products/ProductList.svelte';
 
 	export let products, meta, error;
+
+	console.log(products);
 </script>
 
 <ProductList {products} {meta} />

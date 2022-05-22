@@ -2,27 +2,22 @@
     import { createEventDispatcher } from 'svelte';
     import { t } from '$lib/i18n';
     import api from '$api';
-    import { media } from "$lib/stores";
+    import { media, progress } from "$lib/stores";
     import {emailValidation} from '$utils/form.util';
     import TextInput from '$elements/input/TextInput.svelte';
     import PrimaryButton from '$elements/button/PrimaryButton.svelte';
     import Form from '$elements/form/Form.svelte';
-    import { modal } from '$elements/modal/Modal.svelte';
 import { useProgressWithLockModal } from '$lib/utils/progress';
 
     export let withoutShadow = false, title = $t("auth.login.title");
-    let identifier, password, loading = false, hasError = false;
+    let identifier, password, hasError = false;
     const dispatch = createEventDispatcher();
 
     async function submit() {
         hasError = false;
         // const res = await api.auth.login(identifier, password);
-        const res = await fetch("/api/auth/login", {
-            method: "post",
-            body: JSON.stringify({ identifier, password });
-        });
-        const json = await res.json();
-        if (json.success) {
+        const res = await api.client.post("auth/login", { identifier, password });
+        if (res.success) {
             dispatch("submitEvent", { authType: "login" });
         } else {
             hasError = true;
@@ -72,9 +67,9 @@ import { useProgressWithLockModal } from '$lib/utils/progress';
             <button type="button" class="text-sm text-neutral text-center">{$t("identity.password-forgotten")} ?</button>
         </div>
         <div class="mx-auto-auto grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
-            <PrimaryButton class="col-span-2" disabled={!isValid || loading}>{$t(`auth.login.${loading ? "loading" : "submit"}`)}</PrimaryButton>
+            <PrimaryButton class="col-span-2" disabled={!isValid || $progress}>{$t(`auth.login.${$progress ? "loading" : "submit"}`)}</PrimaryButton>
             <span class="text-center">{$t("common.or")}</span>
-            <PrimaryButton disabled={loading} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
+            <PrimaryButton disabled={$progress} class="col-span-2" outlined type="button" on:click={e => dispatch("toggleAuth")}>{$t("auth.register.submit")}</PrimaryButton>
         </div>
     </svelte:fragment>
 </Form>
