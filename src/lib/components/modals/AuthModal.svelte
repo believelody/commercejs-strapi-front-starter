@@ -1,6 +1,5 @@
 <script>
 	import { t } from '$lib/i18n';
-	import { jwt } from '$lib/stores';
 	import LoginForm from '../forms/LoginForm.svelte';
 	import RegisterForm from '../forms/RegisterForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
@@ -12,17 +11,14 @@
 	let isLogin = true;
 
 	function onSubmitEvent({ detail }, modalId) {
-		if ($jwt) {
-			const name = fullName(detail.user);
-			notifications.success({
-				title: $t('notifications.auth.title'),
-				message:
-					detail.authType === 'register'
-						? $t(`notifications.auth.message.register`, { name })
-						: $t(`notifications.auth.message.login`)
-			});
-			modal.close(modalId);
-		}
+		notifications.success({
+			title: $t('notifications.auth.title'),
+			message:
+				detail.authType === 'register'
+					? $t(`notifications.auth.message.register`, { name: fullName(detail.user) })
+					: $t(`notifications.auth.message.login`)
+		});
+		modal.close(modalId);
 	}
 </script>
 

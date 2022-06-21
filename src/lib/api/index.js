@@ -14,6 +14,12 @@ const headers = {
     "Content-Type": "application/json"
 }
 
+export const setAuthorization = jwt => {
+    if (jwt) {
+        headers["Authorization"] = `Bearer ${jwt}`;
+    }
+}
+
 async function get(path) {
     const res = await fetch(path);
     const json = await res.json();

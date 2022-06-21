@@ -7,7 +7,7 @@
     import TextInput from '$elements/input/TextInput.svelte';
     import PrimaryButton from '$elements/button/PrimaryButton.svelte';
     import Form from '$elements/form/Form.svelte';
-import { useProgressWithLockModal } from '$lib/utils/progress';
+    import { useProgressWithLockModal } from '$lib/utils/progress';
 
     export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, hasError = false;

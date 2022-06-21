@@ -1,5 +1,5 @@
 <script context="module">
-	export async function load({ url, session }) {
+	export async function load({ fetch, url, session }) {
 		if (isRoutePrivate(url.pathname) && !session.authenticated) {
 			const translate = get(t);
 			modal.open({ component: AuthModal, props: { title: translate('auth.not-authenticated') } });
@@ -8,7 +8,19 @@
 				redirect: '/'
 			};
 		}
-		return {};
+		// if (!stuff.profile) {
+		// 	const res =
+		// }
+		authenticated.set(!!session.authenticated);
+		return {
+			stuff:
+				session.user && session.authenticated
+					? {
+							user: session.user,
+							authenticated: session.authenticated
+					  }
+					: {}
+		};
 	}
 </script>
 
@@ -18,7 +30,7 @@
 	import { beforeNavigate } from '$app/navigation';
 	import api from '$api';
 	import { t } from '$lib/i18n';
-	import { cart, sidebar, locale, user, jwt, profile, media, categories } from '$lib/stores';
+	import { cart, sidebar, locale, media, authenticated } from '$lib/stores';
 	import Footer from '$components/footer/Footer.svelte';
 	import Header from '$components/header/Header.svelte';
 	import Sidebar from '$elements/sidebar/Sidebar.svelte';
@@ -43,7 +55,7 @@
 	}
 
 	$: !$locale && locale.useLocalStorage();
-	$: !Object.values($user).some((v) => v) && user.useLocalStorage();
+	// $: !Object.values($user).some((v) => v) && user.useLocalStorage();
 	// $: !$jwt && jwt.useLocalStorage();
 	// $: {
 	// 	if (!$profile) {
@@ -54,9 +66,9 @@
 	// 		}
 	// 	}
 	// }
-	$: console.log("$session : ", $session);
+	$: console.log('$session : ', $session);
 	beforeNavigate((navigation) => {
-		if (isRoutePrivate(navigation.to.pathname) && !$session.authenticated) {
+		if (isRoutePrivate(navigation.to.pathname) && !$authenticated) {
 			modal.open({ component: AuthModal, props: { title: $t('auth.not-authenticated') } });
 			navigation.cancel();
 		}
@@ -72,7 +84,7 @@
 	<Header />
 	<div class="overflow-y-auto flex flex-col h-full">
 		<main class="flex flex-col grow relative">
-			{#if ($navigating && !isRoutePrivate($page.url.pathname))}
+			{#if $navigating && !isRoutePrivate($page.url.pathname)}
 				<MoonLoading />
 			{:else}
 				<slot />

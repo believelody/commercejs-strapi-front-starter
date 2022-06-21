@@ -1,10 +1,12 @@
 <script>
-    import { jwt } from "$lib/stores";
-	import MyAccountButton from "../buttons/MyAccountButton.svelte";
-    import LoginButton from "../buttons/LoginButton.svelte";
+	import MyAccountButton from '../buttons/MyAccountButton.svelte';
+	import LoginButton from '../buttons/LoginButton.svelte';
+	import { authenticated } from '$lib/stores';
+
+	$: console.log("authenticated : ", $authenticated);
 </script>
 
-{#if $jwt}
+{#if $authenticated}
 	<MyAccountButton />
 {:else}
 	<LoginButton />
