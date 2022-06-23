@@ -4,8 +4,8 @@
 	import RegisterForm from '../forms/RegisterForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
-	import { fullName } from '$lib/utils/user.util';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { fullName } from '$utils/user.util';
+	import { modal } from '$elements/modal/Modal.svelte';
 import { authenticated } from '$lib/stores';
 
 	export let modalId, title;

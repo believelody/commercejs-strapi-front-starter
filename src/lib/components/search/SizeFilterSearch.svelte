@@ -4,7 +4,7 @@
 	import Button from '$elements/button/Button.svelte';
 	import Card from '$elements/card/Card.svelte';
 	import SizeList from '../list/SizeList.svelte';
-	import { toggleFilterSelection } from '$lib/utils/product.util';
+	import { toggleFilterSelection } from '$utils/product.util';
 
 	let sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
 	const filters = getContext('filters');

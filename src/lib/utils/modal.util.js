@@ -1,4 +1,4 @@
-import { modal } from "$lib/elements/modal/Modal.svelte";
+import { modal } from "$elements/modal/Modal.svelte";
 import { media } from "$lib/stores";
 import { get } from "svelte/store";
 

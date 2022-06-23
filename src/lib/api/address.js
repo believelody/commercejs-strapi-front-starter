@@ -1,6 +1,6 @@
 import {get} from "svelte/store";
 import { serverUrl } from "$utils/url.util";
-import { authenticateHeaders, headers } from '$lib/utils/header.util';
+import { authenticateHeaders, headers } from '$utils/header.util';
 import {billing, profile, shipping} from "../stores";
 
 const setAddressStores = data => {

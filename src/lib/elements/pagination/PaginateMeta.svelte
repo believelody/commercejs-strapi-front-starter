@@ -1,17 +1,16 @@
 <script>
 	import { goto } from '$app/navigation';
-	import PaginateNav, { paginate } from './PaginateNav.svelte';
+	import PaginateNav from './PaginateNav.svelte';
 
 	export let items,
 		url,
-		pageSize = 10,
-		total = 0,
+		meta,
+        pageSize = 10,
 		currentPage;
 	let className = "";
 	export { className as class };
 
-	$: totalItems = total > 0 ? total : items.length;
-	$: paginatedItems = totalItems ? paginate({ items, pageSize, currentPage }) : [];
+	const totalItems = meta.pagination.total || items.length;
 
 	function goToPage({ detail }) {
 		currentPage = detail.page;
@@ -23,7 +22,7 @@
 </script>
 
 <div class="h-full w-full {className}">
-	<slot {paginatedItems} />
+	<slot paginatedItems={items} />
 </div>
 {#if totalItems > pageSize}
 	<section class="flex justify-center my-4 relative bottom-0">

@@ -6,7 +6,7 @@
 	import WithActionModal from '$elements/modal/WithActionModal.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
-import { modal } from '$lib/elements/modal/Modal.svelte';
+import { modal } from '$elements/modal/Modal.svelte';
 
 	export let reference, customer, orderId;
 	let information = { email: customer.email },

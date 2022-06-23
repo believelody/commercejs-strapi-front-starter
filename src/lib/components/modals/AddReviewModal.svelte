@@ -3,7 +3,7 @@
 	import { reviewsUser } from '$lib/stores';
 	import ReviewForm from '../forms/ReviewForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let item, review, modalId;
 

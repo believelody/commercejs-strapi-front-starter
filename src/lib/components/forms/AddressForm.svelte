@@ -1,12 +1,12 @@
 <script>
 	import { beforeUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { t } from '$lib/i18n';
-	import api from '$lib/api';
+	import api from '$api';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import Search from '$elements/input/SearchInput.svelte';
 	import Form from '$elements/form/Form.svelte';
 	import { onInput, requiredFieldsValidation } from '$utils/form.util';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 	import { shipping } from '$lib/stores';
 
 	export let information = {},

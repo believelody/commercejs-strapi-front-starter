@@ -1,5 +1,5 @@
 import { serverUrl } from "$utils/url.util";
-import { authenticateHeaders } from '$lib/utils/header.util';
+import { authenticateHeaders } from '$utils/header.util';
 
 export const getAll = async () => {
     try {

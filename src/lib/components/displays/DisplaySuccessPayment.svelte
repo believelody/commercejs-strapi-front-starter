@@ -3,7 +3,7 @@
 	import { resetStores } from '$lib/stores';
 	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
 	import FullAddress from '../addresses/FullAddress.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let live, user, shipping, billing, isBillingSameAsShipping, reference, conditionals;
 	let dataUser = user;

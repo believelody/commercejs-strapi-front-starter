@@ -6,9 +6,9 @@
 	import Star from '$elements/star/Star.svelte';
 	import { localDateFromString } from '$utils/date.util';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
-	import { fullOpacityBackground } from '$lib/utils/modal.util';
+	import { fullOpacityBackground } from '$utils/modal.util';
 	import AddReviewModal from '../modals/AddReviewModal.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let pendingReviews, reviews, orderItems;
 	let loading = false;

@@ -3,7 +3,7 @@
 	import { checkout, checkoutLoading } from '$lib/stores';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import StripePaymentModal from '../modals/StripePaymentModal.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let cardElement, isValid;
 

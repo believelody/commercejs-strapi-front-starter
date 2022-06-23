@@ -12,7 +12,7 @@
 	import DangerModal from '$elements/modal/DangerModal.svelte';
 	import { closeSidebar } from '$elements/sidebar/Sidebar.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	let loading = false;
 

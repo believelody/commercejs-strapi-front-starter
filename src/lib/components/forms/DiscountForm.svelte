@@ -7,7 +7,7 @@
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
 	import DiscountSuccessModal from '../modals/DiscountSuccessModal.svelte';
 	import DiscountFailedModal from '../modals/DiscountFailedModal.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let withoutShadow = false;
 	let code,

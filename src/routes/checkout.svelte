@@ -20,7 +20,7 @@
 	import MoonLoading from '$components/loading/MoonLoading.svelte';
 	import InfoModal from '$elements/modal/InfoModal.svelte';
 	import { varEnv } from '$utils/env.util';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if (!isServer) {

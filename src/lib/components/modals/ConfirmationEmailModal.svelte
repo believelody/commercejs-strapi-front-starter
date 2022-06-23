@@ -5,7 +5,7 @@
 	import CheckCircleIcon from '$elements/icon/CheckCircleIcon.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let modalId;
 	let success = false;

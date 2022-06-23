@@ -7,7 +7,7 @@
     import TextInput from '$elements/input/TextInput.svelte';
     import PrimaryButton from '$elements/button/PrimaryButton.svelte';
     import Form from '$elements/form/Form.svelte';
-    import { useProgressWithLockModal } from '$lib/utils/progress';
+    import { useProgressWithLockModal } from '$utils/progress';
 
     export let withoutShadow = false, title = $t("auth.login.title");
     let identifier, password, hasError = false;
@@ -15,7 +15,6 @@
 
     async function submit() {
         hasError = false;
-        // const res = await api.auth.login(identifier, password);
         const res = await api.client.post("auth/login", { identifier, password });
         if (res.success) {
             dispatch("submitEvent", { authType: "login" });
@@ -31,7 +30,7 @@
     /* your styles go here */
 </style>
 
-<Form id="identity-form" on:submit={async => useProgressWithLockModal(submit)} {withoutShadow}>
+<Form id="identity-form" on:submit={() => useProgressWithLockModal(submit)} {withoutShadow}>
     <h3 slot="header" class="tracking-wide font-semibold text-neutral-dark my-2 text-center">{title}</h3>
     <svelte:fragment slot="content">
         <TextInput

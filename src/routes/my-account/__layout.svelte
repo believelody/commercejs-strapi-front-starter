@@ -5,7 +5,7 @@
 	import PrivateRoute from '$components/private/PrivateRoute.svelte';
 	import MenuProfile from '$components/profile/MenuProfile.svelte';
 	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	onMount(async () => {
 		if ($user.confirmed) {

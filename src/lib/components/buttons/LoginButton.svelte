@@ -4,7 +4,7 @@
 	import LoginIcon from '$elements/icon/LoginIcon.svelte';
 	import AuthModal from '../modals/AuthModal.svelte';
 	import LinkButton from '$elements/button/LinkButton.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	function showLoginModal() {
 		modal.open(AuthModal);

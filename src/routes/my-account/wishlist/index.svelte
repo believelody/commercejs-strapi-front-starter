@@ -7,7 +7,7 @@
 	import MoonLoading from '$components/loading/MoonLoading.svelte';
 	import CenterSection from '$elements/center-section/CenterSection.svelte';
 	import DangerModal from '$elements/modal/DangerModal.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	let wishlists = [],
 		loading = true;

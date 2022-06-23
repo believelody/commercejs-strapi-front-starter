@@ -1,8 +1,8 @@
-import api from "$lib/api";
+import api from "$api";
 
 export async function get({ url }) {
     const urlParams = url.searchParams;
-    const limit = urlParams.get('limit') || 6;
+    const limit = urlParams.get('limit') || 10;
     const page = urlParams.get('page') || 1;
     try {
         const res = await api.server.get(`products/category/pets?limit=${limit}&page=${page}`);

@@ -1,6 +1,6 @@
 <script context="module">
 	import { derived, writable } from 'svelte/store';
-	import { id } from '$lib/utils/helper.util';
+	import { id } from '$utils/helper.util';
 
 	function createModalStore() {
 		const INITIAL_STATE = {

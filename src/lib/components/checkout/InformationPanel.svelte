@@ -10,7 +10,7 @@
 		checkout,
 		stripe
 	} from '$lib/stores';
-	import { requiredFieldsValidation, emailValidation } from '$lib/utils/form.util';
+	import { requiredFieldsValidation, emailValidation } from '$utils/form.util';
 	import OrderSidebar from './OrderSidebar.svelte';
 	import Addresses from './Addresses.svelte';
 	import Identity from './Identity.svelte';

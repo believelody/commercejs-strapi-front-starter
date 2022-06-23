@@ -3,7 +3,7 @@
 	import { t } from '$lib/i18n';
 	import Card from '$elements/card/Card.svelte';
 	import ColorList from '../list/ColorList.svelte';
-	import { toggleFilterSelection } from "$lib/utils/product.util";
+	import { toggleFilterSelection } from "$utils/product.util";
 
 	let colors = ['red', 'black', 'green', 'indigo', 'yellow', 'blue'];
 	const filters = getContext("filters");

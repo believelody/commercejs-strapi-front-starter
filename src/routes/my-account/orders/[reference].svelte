@@ -3,7 +3,7 @@
     import { navigating, page } from '$app/stores';
     import { t } from '$lib/i18n';
     import api from '$api';
-    import { localDateFromSeconds } from '$lib/utils/date.util';
+    import { localDateFromSeconds } from '$utils/date.util';
     import MoonLoading from '$components/loading/MoonLoading.svelte';
     import HeaderTitle from '$components/header/HeaderTitle.svelte';
     import ItemsOrderList from '$components/order/ItemsOrderList.svelte';

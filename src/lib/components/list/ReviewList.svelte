@@ -6,9 +6,9 @@
 	import { localDateFromString } from '$utils/date.util';
 	import Card from '$elements/card/Card.svelte';
 	import ReviewImageViewerModal from '../modals/ReviewImageViewerModal.svelte';
-	import { fullOpacityBackground } from '$lib/utils/modal.util';
+	import { fullOpacityBackground } from '$utils/modal.util';
 	import PaginateComponent from '$elements/pagination/PaginateComponent.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let reviews;
 

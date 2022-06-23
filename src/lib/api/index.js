@@ -8,7 +8,7 @@ import * as address from './address';
 import * as wishlist from './wishlist';
 import * as review from './review';
 import * as user from './user';
-import { serverUrl } from '$lib/utils/url.util';
+import { serverUrl } from '$utils/url.util';
 
 const headers = {
     "Content-Type": "application/json"

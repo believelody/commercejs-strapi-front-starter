@@ -9,7 +9,7 @@
 	import DangerModal from '$elements/modal/DangerModal.svelte';
 	import { notifications } from '$elements/notification/Notification.svelte';
 	import { closeSidebar } from '$elements/sidebar/Sidebar.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let items, loading;
 	const dispatch = createEventDispatcher();

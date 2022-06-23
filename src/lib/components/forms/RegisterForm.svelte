@@ -2,12 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { t } from '$lib/i18n';
 	import api from '$api';
-	import { media } from '$lib/stores';
+	import { media, progress } from '$lib/stores';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import { emailValidation } from '$utils/form.util';
 	import Form from '$elements/form/Form.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
+import { useProgressWithLockModal } from '$lib/utils/progress';
 
 	export let withoutShadow = false,
 		title;
@@ -15,13 +16,10 @@
 		lastname,
 		email,
 		password,
-		loading = false,
 		hasError = false;
 	const dispatch = createEventDispatcher();
 
 	async function submit() {
-		modal.disableCloseModal();
-		loading = true;
 		hasError = false;
 		const res = await api.client.post('auth/register', { firstname, lastname, email, password });
 		if (res.success) {
@@ -29,15 +27,13 @@
 			firstname = lastname = email = password = '';
 		} else {
 			hasError = true;
-			modal.resetModalCloseOptions();
 		}
-		loading = false;
 	}
 
 	$: isValid = !!(firstname && password && email && emailValidation(email));
 </script>
 
-<Form id="register-form" on:submit={submit} {withoutShadow} class="flex-col">
+<Form id="register-form" on:submit={() => useProgressWithLockModal(submit)} {withoutShadow} class="flex-col">
 	<h3 slot="header" class="tracking-wide font-semibold text-neutral-dark m-2 text-center">
 		{title}
 	</h3>
@@ -105,8 +101,8 @@
 			</div>
 		{/if}
 		<div class="mx-auto-auto my-4 grid grid-cols-1 md:grid-cols-5 gap-y-2 items-center">
-			<PrimaryButton class="col-span-2" disabled={!isValid || loading}>
-				{$t(`auth.register.${loading ? 'loading' : 'submit'}`)}
+			<PrimaryButton class="col-span-2" disabled={!isValid || $progress}>
+				{$t(`auth.register.${$progress ? 'loading' : 'submit'}`)}
 			</PrimaryButton>
 			<span class="text-center">{$t('common.or')}</span>
 			<PrimaryButton

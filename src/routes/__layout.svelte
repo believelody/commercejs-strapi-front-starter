@@ -38,8 +38,8 @@
 	import Notification from '$elements/notification/Notification.svelte';
 	import Toolbar from '$components/toolbar/Toolbar.svelte';
 	import Modal, { modal } from '$elements/modal/Modal.svelte';
-	import { isRoutePrivate } from '$lib/utils/url.util';
-	import AuthModal from '$lib/components/modals/AuthModal.svelte';
+	import { isRoutePrivate } from '$utils/url.util';
+	import AuthModal from '$components/modals/AuthModal.svelte';
 	import { get } from 'svelte/store';
 
 	$: {
@@ -55,17 +55,6 @@
 	}
 
 	$: !$locale && locale.useLocalStorage();
-	// $: !Object.values($user).some((v) => v) && user.useLocalStorage();
-	// $: !$jwt && jwt.useLocalStorage();
-	// $: {
-	// 	if (!$profile) {
-	// 		if ($user.confirmed) {
-	// 			api.auth.getMe();
-	// 		} else {
-	// 			profile.useLocalStorage();
-	// 		}
-	// 	}
-	// }
 	$: console.log('$session : ', $session);
 	beforeNavigate((navigation) => {
 		if (isRoutePrivate(navigation.to.pathname) && !$authenticated) {

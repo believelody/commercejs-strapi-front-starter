@@ -1,5 +1,5 @@
 <script>
-import InfoModal from "$lib/elements/modal/InfoModal.svelte";
+import InfoModal from "$elements/modal/InfoModal.svelte";
 import { t } from "$lib/i18n";
 
 </script>

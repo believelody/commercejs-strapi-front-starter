@@ -1,7 +1,7 @@
 <script>
 	import { t } from '$lib/i18n';
 	import DangerIcon from '$elements/icon/DangerIcon.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 </script>
 
 <div>

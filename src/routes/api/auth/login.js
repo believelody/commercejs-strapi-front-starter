@@ -1,5 +1,5 @@
 import * as cookie from "cookie";
-import api, { setAuthorization } from "$lib/api";
+import api, { setAuthorization } from "$api";
 
 export async function post({ request }) {
     const body = await request.json();

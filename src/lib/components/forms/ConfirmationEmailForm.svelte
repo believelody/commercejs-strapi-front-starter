@@ -8,7 +8,7 @@
 	import LinkButton from '$elements/button/LinkButton.svelte';
 	import Button from '$elements/button/Button.svelte';
 	import PrimaryButton from '$elements/button/PrimaryButton.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
 
 	export let withoutShadow = false;
 	let code = '',

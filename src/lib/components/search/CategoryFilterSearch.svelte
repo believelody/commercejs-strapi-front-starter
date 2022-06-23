@@ -4,7 +4,7 @@
 	import { categories } from '$lib/stores';
 	import Card from '$elements/card/Card.svelte';
 	import MoonLoading from '../loading/MoonLoading.svelte';
-	import { toggleFilterSelection } from "$lib/utils/product.util";
+	import { toggleFilterSelection } from "$utils/product.util";
 
 	const filters = getContext("filters");
 

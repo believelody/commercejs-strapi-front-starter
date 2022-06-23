@@ -2,8 +2,8 @@
 	import { t } from '$lib/i18n';
 	import AddressForm from '../forms/AddressForm.svelte';
 	import ModalWrapper from '$elements/modal/ModalWrapper.svelte';
-	import { modal } from '$lib/elements/modal/Modal.svelte';
-	import { notifications } from '$lib/elements/notification/Notification.svelte';
+	import { modal } from '$elements/modal/Modal.svelte';
+	import { notifications } from '$elements/notification/Notification.svelte';
 
 	export let title,
 		information = {},
