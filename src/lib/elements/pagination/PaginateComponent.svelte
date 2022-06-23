@@ -5,10 +5,13 @@
 	export let items,
 		url,
 		pageSize = 15,
+		total = 0,
 		currentPage;
 	let className = "";
 	export { className as class };
-	$: paginatedItems = items.length ? paginate({ items, pageSize, currentPage }) : [];
+
+	$: totalItems = total > 0 ? total : items.length;
+	$: paginatedItems = totalItems ? paginate({ items, pageSize, currentPage }) : [];
 
 	function goToPage({ detail }) {
 		currentPage = detail.page;
@@ -21,10 +24,10 @@
 <div class="h-full w-full {className}">
 	<slot {paginatedItems} />
 </div>
-{#if items.length > pageSize}
+{#if totalItems > pageSize}
 	<section class="flex justify-center my-4 relative bottom-0">
 		<PaginateNav
-			totalItems={items.length}
+			{totalItems}
 			{pageSize}
 			{currentPage}
 			limit={1}

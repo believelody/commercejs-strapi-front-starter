@@ -1,9 +1,6 @@
-import * as cookie from "cookie";
-import api, { setAuthorization } from "$lib/api";
-
 export async function post({ request }) {
     const body = await request.json();
-    const res = await api.server.post(`auth/local`, body);
+    const res = await api.server.post(`auth/local/register`, body);
     if (res.error) {
         console.log(res);
         return {

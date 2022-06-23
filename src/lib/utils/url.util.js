@@ -2,7 +2,7 @@ import { varEnv } from "./env.util";
 
 const prefix = import.meta.env.PROD ? "prod" : "dev";
 
-const privateRoutes = ['my-account', 'search', 'about'];
+const privateRoutes = ['my-account'];
 
 export const serverUrl = varEnv[`${prefix}ServerUrl`];
 

@@ -23,7 +23,7 @@
 		modal.disableCloseModal();
 		loading = true;
 		hasError = false;
-		const res = await api.auth.register(firstname, lastname, email, password);
+		const res = await api.client.post('auth/register', { firstname, lastname, email, password });
 		if (res.success) {
 			dispatch('submitEvent', { user: { firstname, lastname }, authType: 'register' });
 			firstname = lastname = email = password = '';
