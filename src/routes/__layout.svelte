@@ -4,22 +4,13 @@
 			const translate = get(t);
 			modal.open({ component: AuthModal, props: { title: translate('auth.not-authenticated') } });
 			return {
-				status: 307,
+				status: 302,
 				redirect: '/'
 			};
 		}
-		// if (!stuff.profile) {
-		// 	const res =
-		// }
-		authenticated.set(!!session.authenticated);
+		authenticated.set(session.authenticated);
 		return {
-			stuff:
-				session.user && session.authenticated
-					? {
-							user: session.user,
-							authenticated: session.authenticated
-					  }
-					: {}
+			props: {}
 		};
 	}
 </script>
@@ -41,6 +32,7 @@
 	import { isRoutePrivate } from '$utils/url.util';
 	import AuthModal from '$components/modals/AuthModal.svelte';
 	import { get } from 'svelte/store';
+	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
 
 	$: {
 		if (!$cart) {
@@ -61,6 +53,14 @@
 			modal.open({ component: AuthModal, props: { title: $t('auth.not-authenticated') } });
 			navigation.cancel();
 		}
+		if (isRoutePrivate(navigation.to.pathname) && !$session.user.confirmed) {
+			console.log("test");
+			modal.open(ConfirmationEmailModal, {
+				noCloseOnEsc: true,
+				noCloseOnOuterClick: true
+			});
+			navigation.cancel();
+		}
 	});
 </script>
 
@@ -73,7 +73,7 @@
 	<Header />
 	<div class="overflow-y-auto flex flex-col h-full">
 		<main class="flex flex-col grow relative">
-			{#if $navigating && !isRoutePrivate($page.url.pathname)}
+			{#if $navigating}
 				<MoonLoading />
 			{:else}
 				<slot />

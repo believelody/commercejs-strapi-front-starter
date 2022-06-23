@@ -6,25 +6,6 @@
 	import MenuProfile from '$components/profile/MenuProfile.svelte';
 	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
 	import { modal } from '$elements/modal/Modal.svelte';
-
-	onMount(async () => {
-		if ($user.confirmed) {
-			if (!$profile) {
-				await api.auth.getMe();
-			}
-			if (!$profile?.addresses) {
-				await api.address.getAll();
-			}
-		} else {
-			if (window) {
-				modal.open(ConfirmationEmailModal, {
-					noCloseOnEsc: true,
-					noCloseOnOuterClick: true
-				});
-				window.history.back();
-			}
-		}
-	});
 </script>
 
 <div class="layout">
@@ -34,9 +15,7 @@
 		</div>
 	</aside>
 	<article>
-		<PrivateRoute>
-			<slot />
-		</PrivateRoute>
+		<slot />
 	</article>
 </div>
 
