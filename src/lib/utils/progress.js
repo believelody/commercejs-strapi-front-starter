@@ -4,7 +4,7 @@ import { useLockModal } from "./modal.util";
 export async function useProgress(cb) {
     try {
         progress.set(true);
-        await cb()
+        return await cb();
     } finally {
         progress.set(false)
     }

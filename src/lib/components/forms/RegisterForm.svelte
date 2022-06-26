@@ -23,7 +23,7 @@ import { useProgressWithLockModal } from '$lib/utils/progress';
 		hasError = false;
 		const res = await api.client.post('auth/register', { firstname, lastname, email, password });
 		if (res.success) {
-			dispatch('submitEvent', { user: { firstname, lastname }, authType: 'register' });
+			dispatch('submitEvent', { user: { firstname, lastname, ...res.user }, authType: 'register' });
 			firstname = lastname = email = password = '';
 		} else {
 			hasError = true;

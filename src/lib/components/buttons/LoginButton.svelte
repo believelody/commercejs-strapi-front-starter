@@ -1,5 +1,6 @@
 <script>
 	import { t } from '$lib/i18n';
+	import { page } from '$app/stores'
 	import { media } from '$lib/stores';
 	import LoginIcon from '$elements/icon/LoginIcon.svelte';
 	import AuthModal from '../modals/AuthModal.svelte';
@@ -11,7 +12,7 @@
 	}
 </script>
 
-<LinkButton on:click={showLoginModal}>
+<LinkButton disabled={$page.url.pathname === "/authentication"} on:click={showLoginModal}>
 	<span class="hidden lg:inline">{$t('header.connexion')}</span>
 	<LoginIcon color={$media.mobile ? 'black' : 'neutral-600'} strokeWidth={$media.mobile ? 2 : 1} />
 </LinkButton>

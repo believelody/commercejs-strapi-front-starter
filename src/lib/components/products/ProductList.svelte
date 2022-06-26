@@ -30,23 +30,6 @@
 					{/each}
 				</ul>
 			</PaginateMeta>
-			<!-- <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-				{#each products as product}
-					<ItemProduct {product} />
-				{/each}
-			</ul>
-			{#if totalItems > pageSize}
-				<section class="flex justify-center my-4 relative bottom-0">
-					<PaginateNav
-						{totalItems}
-						{pageSize}
-						{currentPage}
-						limit={1}
-						showStepOptions
-						on:setPage={goToPage}
-					/>
-				</section>
-			{/if} -->
 		{:else}
 			<CenterSection>
 				<span>{$t('product.list.empty')}</span>

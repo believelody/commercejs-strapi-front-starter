@@ -6,7 +6,7 @@
 	import { notifications } from '$elements/notification/Notification.svelte';
 	import { fullName } from '$utils/user.util';
 	import { modal } from '$elements/modal/Modal.svelte';
-import { authenticated } from '$lib/stores';
+import { authenticated, confirmed, user } from '$lib/stores';
 
 	export let modalId, title;
 	let isLogin = true;
@@ -20,6 +20,7 @@ import { authenticated } from '$lib/stores';
 					: $t(`notifications.auth.message.login`)
 		});
 		$authenticated = true;
+		$confirmed = detail.user.confirmed;
 		modal.close(modalId);
 	}
 </script>

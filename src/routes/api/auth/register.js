@@ -1,4 +1,7 @@
-export async function post({ request }) {
+import * as cookie from "cookie";
+import { setAuthorization } from "$lib/api";
+
+export async function post({ request, locals }) {
     const body = await request.json();
     const res = await api.server.post(`auth/local/register`, body);
     if (res.error) {
@@ -9,6 +12,7 @@ export async function post({ request }) {
         }
     }
     const { user: { email, id, username, provider, confirmed, blocked }, jwt } = res;
+    const user = { email, id, username, provider, confirmed, blocked };
     setAuthorization(jwt);
     const cookieOptions = {
         httpOnly: true,
@@ -16,13 +20,13 @@ export async function post({ request }) {
         maxAge: 60 * 60 * 24 * 7,
         path: "/"
     };
+    locals.user = user;
     return {
-        body: { success: true },
+        body: { success: true, user },
         headers: {
             "Set-Cookie": [
-                cookie.serialize('user', JSON.stringify({ email, id, username, provider, confirmed, blocked }), cookieOptions),
+                cookie.serialize('user', JSON.stringify(user), cookieOptions),
                 cookie.serialize('authenticated', "true", cookieOptions),
-                cookie.serialize('jwt', jwt, cookieOptions)
             ],
         }
     }

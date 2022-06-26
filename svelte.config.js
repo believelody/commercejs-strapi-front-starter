@@ -38,6 +38,13 @@ const config = {
 					$api: path.resolve('./src/lib/api'),
 					$lang: path.resolve('./src/lib/lang'),
 				}
+			},
+			onwarn: (warning, handler) => {
+				console.log('111');
+				const { code } = warning;
+				if (code === "css-unused-selector")
+					return;
+				handler(warning);
 			}
 		},
 		files: {

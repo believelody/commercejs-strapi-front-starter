@@ -3,7 +3,7 @@
 </script>
 
 <li class="hover:border hover:border-neutral hover:rounded">
-	<a href="/products/{product.permalink}" class="block relative h-48 rounded overflow-hidden">
+	<a sveltekit:prefetch href="/products/{product.permalink}" class="block relative h-48 rounded overflow-hidden">
 		<img
 			alt={product.name}
 			src={product.media.source}
@@ -16,7 +16,7 @@
 			</a>
 		</p>
 		<p class="product-name">
-			<a href="/products/{product.permalink}">{product.name}</a>
+			<a sveltekit:prefetch href="/products/{product.permalink}">{product.name}</a>
 		</p>
 		<p class="mt-1">{product.price.formatted_with_symbol}</p>
 	</div>

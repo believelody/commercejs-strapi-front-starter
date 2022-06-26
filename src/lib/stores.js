@@ -59,6 +59,7 @@ export const reviewsUser = writable([]);
 export const reviewsProduct = writable([]);
 export const progress = writable(false);
 export const authenticated = writable(false);
+export const confirmed = writable(false);
 
 export const resetStores = () => {
 	guest.set(null);
