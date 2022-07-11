@@ -1,7 +1,8 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+	import { session } from '$app/stores';
 	import { t } from '$lib/i18n';
-	import { user } from '$lib/stores';
+	import { confirmed, authenticated } from '$lib/stores';
 	import api from '$api';
 	import TextInput from '$elements/input/TextInput.svelte';
 	import Form from '$elements/form/Form.svelte';
@@ -21,7 +22,7 @@
 	async function submit() {
 		loading = true;
 		modal.disableCloseModal();
-		const res = await api.auth.codeVerification($user.email, code);
+		const res = await api.auth.codeVerification($session.user.email, code);
 		if (res.success) {
 			dispatch('submitEvent');
 		} else {
@@ -35,7 +36,7 @@
 	async function resendCode() {
 		loading = true;
 		modal.disableCloseModal();
-		const res = await api.auth.resendCode($user.email);
+		const res = await api.auth.resendCode($session.user.email);
 		if (res.success) {
 			codeResent = true;
 		} else if (res.error) {
@@ -45,8 +46,10 @@
 		loading = false;
 	}
 
-	function logoutAndClose() {
-		api.auth.logout();
+	async function logoutAndClose() {
+		const res = await api.client.post("auth/logout");
+        $authenticated = false;
+        $confirmed = false;
 		modal.closeAll();
 	}
 </script>

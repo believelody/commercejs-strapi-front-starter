@@ -1,7 +1,7 @@
 import * as cookie from "cookie";
 import api, { setAuthorization } from "$api";
 
-export async function post({ request, locals }) {
+export async function post({ request }) {
     const body = await request.json();
     const res = await api.server.post(`auth/local`, body);
     console.log("login api : ", res);
@@ -12,8 +12,7 @@ export async function post({ request, locals }) {
             body: { success: false, error: res.message }
         }
     }
-    const { user: { email, id, username, provider, confirmed, blocked }, jwt } = res;
-    const user = { email, id, username, provider, confirmed, blocked };
+    const { user, jwt } = res;
     setAuthorization(jwt);
     const cookieOptions = {
         httpOnly: true,
@@ -21,9 +20,8 @@ export async function post({ request, locals }) {
         maxAge: 60 * 60 * 24 * 7,
         path: "/"
     };
-    locals.user = user;
     return {
-        body: { success: true, user },
+        body: { success: true, user, authenticated: true },
         headers: {
             "Set-Cookie": [
                 cookie.serialize('user', JSON.stringify(user), cookieOptions),

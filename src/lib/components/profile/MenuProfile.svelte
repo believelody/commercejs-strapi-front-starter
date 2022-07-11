@@ -1,13 +1,18 @@
 <script>
-    import { page } from "$app/stores";
+    import { page, session } from "$app/stores";
+    import { goto } from "$app/navigation";
     import api from "$api";
     import { t } from "$lib/i18n";
-    import {profile} from "$lib/stores";
+    import { profile } from "$lib/stores";
     import ImageUpload from "$elements/input/ImageUploadInput.svelte";
     import LogoutIcon from "$elements/icon/LogoutIcon.svelte";
 
-    function logout() {
-        api.auth.logout();
+    async function logout() {
+        const res = await api.client.post("auth/logout");
+        if (res.success) {
+            $session = {};
+        }
+        goto("/");
     }
 </script>
 

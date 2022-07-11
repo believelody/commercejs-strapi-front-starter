@@ -1,7 +1,7 @@
 import * as cookie from "cookie";
 import { setAuthorization } from "$lib/api";
 
-export async function post({ request, locals }) {
+export async function post({ request }) {
     const body = await request.json();
     const res = await api.server.post(`auth/local/register`, body);
     if (res.error) {
@@ -20,9 +20,8 @@ export async function post({ request, locals }) {
         maxAge: 60 * 60 * 24 * 7,
         path: "/"
     };
-    locals.user = user;
     return {
-        body: { success: true, user },
+        body: { success: true, user, authenticated: true },
         headers: {
             "Set-Cookie": [
                 cookie.serialize('user', JSON.stringify(user), cookieOptions),

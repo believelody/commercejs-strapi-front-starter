@@ -20,8 +20,15 @@ export const setAuthorization = jwt => {
     }
 }
 
+export const unsetAuthorization = () => {
+    delete headers["Authorization"];
+}
+
 async function get(path) {
-    const res = await fetch(path);
+    const res = await fetch(path, {
+        method: "get",
+        headers
+    });
     const json = await res.json();
     return json;
 }
@@ -48,7 +55,8 @@ async function put(path, body) {
 
 async function del(path) {
     const res = await fetch(path, {
-        method: "delete"
+        method: "delete",
+        headers
     });
     const json = await res.json();
     return json;
@@ -56,10 +64,10 @@ async function del(path) {
 
 export default {
     client: {
-        get: path => get(`/api/${path}`),
-        post: (path, body) => post(`/api/${path}`, body),
-        put: (path, body) => put(`/api/${path}`, body),
-        delete: path => del(`/api/${path}`),
+        get: path => get(`http://localhost:3000/api/${path}`),
+        post: (path, body) => post(`http://localhost:3000/api/${path}`, body),
+        put: (path, body) => put(`http://localhost:3000/api/${path}`, body),
+        delete: path => del(`http://localhost:3000/api/${path}`),
     },
     server: {
         get: path => get(`${serverUrl}/${path}`),

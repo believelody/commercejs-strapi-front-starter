@@ -11,7 +11,7 @@
 
 <header class="hidden md:border-b md:inline">
   <div class="mx-auto flex-center-middle md:py-2 text-neutral-dark body-font bg-neutral-light-2">
-      <a href="/">
+      <a href="/" sveltekit:prefetch>
           {#if $media.tablet}
               <div class="px-2">
                   <Logo/>

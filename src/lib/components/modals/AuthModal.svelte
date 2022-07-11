@@ -1,4 +1,5 @@
 <script>
+	import { session } from '$app/stores';
 	import { t } from '$lib/i18n';
 	import LoginForm from '../forms/LoginForm.svelte';
 	import RegisterForm from '../forms/RegisterForm.svelte';
@@ -19,8 +20,12 @@ import { authenticated, confirmed, user } from '$lib/stores';
 					? $t(`notifications.auth.message.register`, { name: fullName(detail.user) })
 					: $t(`notifications.auth.message.login`)
 		});
-		$authenticated = true;
-		$confirmed = detail.user.confirmed;
+		// $authenticated = true;
+		// $confirmed = detail.user.confirmed;
+		$session = {
+			user : detail.user,
+			authenticated : detail.authenticated
+		}
 		modal.close(modalId);
 	}
 </script>

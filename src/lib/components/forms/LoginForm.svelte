@@ -17,7 +17,7 @@
         hasError = false;
         const res = await api.client.post("auth/login", { identifier, password });
         if (res.success) {
-            dispatch("submitEvent", { authType: "login", user: res.user });
+            dispatch("submitEvent", { authType: "login", ...res });
         } else {
             hasError = true;
         }

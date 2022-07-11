@@ -6,11 +6,11 @@
 
 <nav>
 	{#each categories as item}
-		<a href="/categories/{item.slug}">
+		<a sveltekit:prefetch href="/categories/{item.slug}">
 			{item.name}
 		</a>
 	{/each}
-	<a href="/products">
+	<a sveltekit:prefetch href="/products">
 		{$t('menu.categories.all.label')}
 	</a>
 </nav>

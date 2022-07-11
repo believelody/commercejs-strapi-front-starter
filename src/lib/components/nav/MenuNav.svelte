@@ -44,8 +44,8 @@
 			<CategoriesNav categories={$categories} {meta} slot="content" />
 		</Accordion>
 	</div>
-	<a class:active={$page.url.pathname === '/about'} href="/about" class="link link-about">{$t('menu.about.label')}</a>
-	<a class:active={$page.url.pathname === '/blog'} href="/blog" class="link link-blog">{$t('menu.blog.label')}</a>
+	<a sveltekit:prefetch class:active={$page.url.pathname === '/about'} href="/about" class="link link-about">{$t('menu.about.label')}</a>
+	<a sveltekit:prefetch class:active={$page.url.pathname === '/blog'} href="/blog" class="link link-blog">{$t('menu.blog.label')}</a>
 </section>
 
 <style>

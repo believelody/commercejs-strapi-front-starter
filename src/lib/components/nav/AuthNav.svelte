@@ -1,10 +1,10 @@
 <script>
+	import { session } from '$app/stores';
 	import MyAccountButton from '../buttons/MyAccountButton.svelte';
 	import LoginButton from '../buttons/LoginButton.svelte';
-	import { authenticated } from '$lib/stores';
 </script>
 
-{#if $authenticated}
+{#if $session.authenticated}
 	<MyAccountButton />
 {:else}
 	<LoginButton />

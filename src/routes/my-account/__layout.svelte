@@ -1,5 +1,8 @@
 <script>
+	import { page } from '$app/stores'
 	import MenuProfile from '$components/profile/MenuProfile.svelte';
+
+	$: console.log("layout my-account stuff : ", $page.stuff);
 </script>
 
 <div class="layout">

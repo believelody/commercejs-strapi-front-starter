@@ -1,9 +1,8 @@
 <script>
 	import { t } from '$lib/i18n';
-	import { navigating } from '$app/stores';
+	import { navigating, session } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { notifications } from '$lib/elements/notification/Notification.svelte';
-	import { authenticated, confirmed } from '$lib/stores';
 	import LoginForm from '$lib/components/forms/LoginForm.svelte';
 	import RegisterForm from '$lib/components/forms/RegisterForm.svelte';
 
@@ -17,8 +16,10 @@
 					? $t(`notifications.auth.message.register`, { name: fullName(detail.user) })
 					: $t(`notifications.auth.message.login`)
 		});
-		$authenticated = true;
-		$confirmed = detail.user.confirmed;
+		$session = {
+			user : detail.user,
+			authenticated : detail.authenticated
+		}
 		goto($navigating.from.pathname);
 	}
 </script>
