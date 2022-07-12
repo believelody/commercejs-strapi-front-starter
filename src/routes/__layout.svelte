@@ -1,6 +1,18 @@
 <script context="module">
-	export async function load({ url, session, stuff }) {
-		if (isRoutePrivate(url.pathname) && !session.authenticated) {
+	export async function load({ url, session }) {
+		let authorize = !!session.authenticated;
+		let user;
+		if (!authorize) {
+			const res = await api.client.get('users/me');
+			if (res.error) {
+				return {
+					props: { error: res.error }
+				};
+			}
+			authorize = res.success;
+			user = res.user;
+		}
+		if (isRoutePrivate(url.pathname) && !authorize) {
 			// const translate = get(t);
 			// modal.open({ component: AuthModal, props: { title: translate('auth.not-authenticated') } });
 			return {
@@ -8,27 +20,15 @@
 				redirect: '/authentication'
 			};
 		}
-		console.log("session authenticated : ", session.authenticated);
-		if (session.authenticated) {
-			const res = await api.client.get("users/me");
-			console.log("layout users me : ", res);
-			if (!res.success) {
-				return {
-					props: { error: res.error, }
-				};
-			}
-			return {
-				stuff : { ...stuff, user: res.user }
-			}
-		}
 		return {
-			props: {}
+			props: { user, authenticated: authorize }
 		};
 	}
 </script>
 
 <script>
 	import '../app.css';
+	import { onMount } from 'svelte';
 	import { navigating, page, session } from '$app/stores';
 	import { beforeNavigate } from '$app/navigation';
 	import api from '$api';
@@ -45,7 +45,7 @@
 	import AuthModal from '$components/modals/AuthModal.svelte';
 	import ConfirmationEmailModal from '$components/modals/ConfirmationEmailModal.svelte';
 
-	export let error;
+	export let error, user, authenticated;
 
 	$: {
 		if (!$cart) {
@@ -60,8 +60,10 @@
 	}
 
 	$: !$locale && locale.useLocalStorage();
-	$: console.log("layout stuff : ", $page.stuff);
-	$: console.log("error : ", error);
+
+	onMount(() => {
+		$session = { ...$session, user, authenticated };
+	});
 
 	beforeNavigate((navigation) => {
 		if (isRoutePrivate(navigation.to.pathname) && !$session.authenticated) {
@@ -69,7 +71,7 @@
 				modal.open({ component: AuthModal, props: { title: $t('auth.not-authenticated') } });
 			}
 			navigation.cancel();
-		} else if (isRoutePrivate(navigation.to.pathname) && !$session.user.confirmed) {
+		} else if (isRoutePrivate(navigation.to.pathname) && !$session.user?.confirmed) {
 			modal.open(ConfirmationEmailModal, {
 				noCloseOnEsc: true,
 				noCloseOnOuterClick: true

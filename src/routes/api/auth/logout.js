@@ -14,7 +14,7 @@ export async function post() {
         body: { success: true },
         headers: {
             "Set-Cookie": [
-                cookie.serialize('user', "", cookieOptions),
+                cookie.serialize('jwt', "", cookieOptions),
                 cookie.serialize('authenticated', "", cookieOptions)
             ],
         }
